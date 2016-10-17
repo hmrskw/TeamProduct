@@ -62,6 +62,9 @@ public class GraphicManager : MonoBehaviour
         //服装調整用...zでサイズ指定
         Vector3 clothesVec;
 
+        /// <summary>
+        /// 初期化
+        /// </summary>
         public void Setup()
         {
             name = "名前";
@@ -78,6 +81,9 @@ public class GraphicManager : MonoBehaviour
             ChangeTexs();
         }
 
+        /// <summary>
+        /// 上書きされた番号に変える
+        /// </summary>
         public void ChangeTexs()
         {
             //RawImaget.textureを変更する
@@ -90,11 +96,17 @@ public class GraphicManager : MonoBehaviour
 
         }
 
+        /// <summary>
+        /// 顔の画像を上書きされた番号に変える
+        /// </summary>
         public void ChangeFace()
         {
             face.texture = characterVariationsBuffer[id].faceTexs[faceNumber];
         }
 
+        /// <summary>
+        /// 服装の画像を上書きされた番号に変える
+        /// </summary>
         public void ChangeClothes()
         {
             clothes.texture = characterVariationsBuffer[id].clothesTexs[clothesNumber];
@@ -136,11 +148,7 @@ public class GraphicManager : MonoBehaviour
     //現在の背景番号
     int backgroundCurrent;
 
-    //次の背景番号
-    //-1の場合は無の状態 0~ で上書きする
-    //int backgroundNext;
 
-    // Use this for initialization
     void Start ()
     {
 
@@ -164,8 +172,10 @@ public class GraphicManager : MonoBehaviour
             //座標が原点になるで指定
             characters[i].obj.transform.localPosition  = new Vector3(0, 0, 0);
             
+            //体パーツへの参照スクリプト
             characters[i].charScript = characters[i].obj.GetComponent<Character>();
             
+            //初期化
             characters[i].Setup();
         }
 
