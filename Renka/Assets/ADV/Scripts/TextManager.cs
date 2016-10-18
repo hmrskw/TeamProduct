@@ -9,6 +9,10 @@ public class TextManager : MonoBehaviour
     //ゲージなどの最大値が決まった値を扱うクラス
     public class IntGage
     {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="val">最大値の設定</param>
         public IntGage(int val) { max = val; num = 0; }
 
         //ゲージの最大
@@ -17,14 +21,21 @@ public class TextManager : MonoBehaviour
         //実際値
         public int num;
 
-        //実際値が最大かどうか
+        /// <summary>
+        /// /実際値が最大かどうか
+        /// </summary>
+        /// <returns>最大時 : true</returns>
         public bool CheckMax()
         {
             if (num >= max) return true;
             return false;
         }
 
-        //実際値に加算
+        /// <summary>
+        /// 実際値に加算
+        /// </summary>
+        /// <param name="val">加算値、デフォルトの場合は1加算</param>
+        /// <returns>最大値の時 : true</returns>
         public bool Add(int val = 1)
         {
             num += val;
@@ -36,15 +47,19 @@ public class TextManager : MonoBehaviour
             return false;
         }
 
-        //実際値を0にリセットする
-        //引数をとる場合、最大値を変更
+        /// <summary>
+        /// 実際値を0にリセットする
+        /// </summary>
+        /// <param name="val">引数をとる場合、最大値を変更</param>
         public void Reset(int val = -1)
         {
             if (val != -1) max = val;
             num = 0;
         }
 
-        //実際値を最大に
+        /// <summary>
+        ///実際値を最大に
+        /// </summary>
         public void AddNumMax() { num = max; }
     }
 
@@ -97,6 +112,7 @@ public class TextManager : MonoBehaviour
     IntGage charIntervalCount = new IntGage(0);
 
     ReadCSV readCSV;
+
     void Awake()
     {
         readCSV = new ReadCSV();
@@ -116,6 +132,10 @@ public class TextManager : MonoBehaviour
         StartCoroutine(ADVUpdate());
     }
 
+    /// <summary>
+    /// ADVのアップデート
+    /// </summary>
+    /// <returns></returns>
     IEnumerator ADVUpdate()
     {
         //float waitFrame = wait / 60f;
@@ -124,6 +144,7 @@ public class TextManager : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 //文字送り表示中かどうか
+                //文字送りが終わってるとき
                 if (stringCount.CheckMax())
                 {
                     //次の文章が無ければループを抜ける
@@ -135,27 +156,41 @@ public class TextManager : MonoBehaviour
                     stringCount.Reset(/*dialogue[wordsCount.num].word.Length*/readCSV.CsvData[wordsCount.num].text.Length);
                     //text.text = words[wordCount.num].word.Substring(0, stringCount.num);
                 }
+                //文字送り中
                 else
                 {
                     stringCount.AddNumMax();
                     Debug.Log("すべて表示する");
+
+                    //キャラクター名を表示
                     nameText.text = readCSV.CsvData[wordsCount.num].sendCharacter;
+
+                    //一文すべてを表示する
                     text.text = readCSV.CsvData[wordsCount.num].text;
                 }
             }
 
+            //文字送り中の時
             if (!stringCount.CheckMax())
             {
+                //文字の表示間隔カウントが最大でないとき
                 if (!charIntervalCount.CheckMax())
                 {
+                    //文字の表示間隔カウントを１足す
                     charIntervalCount.Add();
                 }
                 else
                 {
+                    //文に文字数カウントを足す
                     stringCount.Add();
 
+                    //文字表示間隔カウントのリセット
                     charIntervalCount.Reset();
+
+                    //キャラクター名を表示
                     nameText.text = readCSV.CsvData[wordsCount.num].sendCharacter;
+
+                    //文の文字を足す
                     text.text = readCSV.CsvData[wordsCount.num].text.Substring(0, stringCount.num);
                 }
             }
