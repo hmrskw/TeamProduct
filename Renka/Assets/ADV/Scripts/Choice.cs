@@ -15,12 +15,11 @@ public class Choice : MonoBehaviour
     //ボタンUIから
     //public Button button;
 
-    public int point{
-        set;get;
-    } 
+    public int point{ set; get; } 
 
     //ボタンを離したかどうかの変数
     public bool isReleased { get; set; }
+
     //int pushCount;
 
     /// <summary>
@@ -31,6 +30,14 @@ public class Choice : MonoBehaviour
     {
         isReleased = false;
         text = TextObj.GetComponent<Text>();
+    }
+
+    public void AddPoint()
+    {
+        Debug.Log("aaa");
+        Debug.Log(point);
+        DataManager.Instance.likeabillity += point;
+        isReleased = true;
     }
 
     /// <summary>

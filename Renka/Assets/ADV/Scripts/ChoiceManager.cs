@@ -61,14 +61,10 @@ public class ChoiceManager : MonoBehaviour
     Choice[] choiceScripts;
 
     //選択肢がでて、ボタンを押せる状態か
-    bool isActiveChoices;
+    public bool isActiveChoices { get; private set; }
 
     //選択されたときのボタン番号 押されてないときは -1
     int selectNumber;
-
-    //好感度ポイント
-    int likeabillity;
-
 
     [SerializeField, Tooltip("選択肢の出現座標")]
     Vector3 choicePos;
@@ -77,7 +73,7 @@ public class ChoiceManager : MonoBehaviour
     float choiceWidth;
 
     void Start()
-    {
+    {          
         //参照用スクリプトを生成
         choiceScripts = new Choice[choiceObjNum];
 
@@ -89,7 +85,6 @@ public class ChoiceManager : MonoBehaviour
             choiceScripts[i].Setup();
             choiceScripts[i].transform.localScale = Vector3.one;
             choiceScripts[i].transform.localPosition = Vector3.zero;
-            //choiceScripts[i].Point = choicesArray[0].choies[i].point;
             choiceScripts[i].gameObject.SetActive(false);
         }
 
@@ -103,42 +98,43 @@ public class ChoiceManager : MonoBehaviour
 
     }
 
-    void Update ()
+    void Update()
     {
-        TestUpdate();
+        if (Input.GetKeyDown(KeyCode.Return)) Debug.Log(DataManager.Instance.likeabillity);
+    }
 
-        if (isActiveChoices)
+    /// <summary>
+    /// 選択肢
+    /// </summary>
+    public void Choice ()
+    {
+        //選択肢を押したあと離した時
+        for (int i = 0; i < choiceScripts.Length; ++i)
         {
-            //選択肢を押したあと離した時
-            for (int i = 0; i < choiceScripts.Length; ++i)
+            if (!choiceScripts[i].isReleased) continue;
+
+            Debug.Log("Add好感度 : " + DataManager.Instance.likeabillity);
+
+            //選択肢を消す
+            for (int k = 0; k < choiceScripts.Length; ++k)
             {
-                //Debug.Log(i);
-                if (!choiceScripts[i].isReleased) continue;
-                //好感度の加算
-                likeabillity += choicesArray[0].choies[i].point;
-                Debug.Log("Add好感度 : " + likeabillity);
-
-                //選択肢を消す
-                for (int k = 0; k < choiceScripts.Length; ++k)
-                {
-                    choiceScripts[k].gameObject.SetActive(false);
-                    choiceScripts[k].Reset();
-                }
-
-                isActiveChoices = false;
-                break;
+                choiceScripts[k].gameObject.SetActive(false);
+                choiceScripts[k].Reset();
             }
-        }
 
+            isActiveChoices = false;
+            break;
+        }
 	}
 
     /// <summary>
-    /// 確認用
+    /// 選択肢を描画する
     /// </summary>
-    void TestUpdate()
+    /// <param name="wordsCount">CSVの何行目を読み込むか</param>
+    public void DrawChoice(int wordsCount)
     {
         //0番目の選択を出現させる
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (/*Input.GetKeyDown(KeyCode.Return)*/ReadCSV.Instance.CsvData[wordsCount].choiceNum != 0)
         {
             //選択肢から選択の数を取得
             int num = choicesArray[0].choies.Length;
@@ -146,8 +142,11 @@ public class ChoiceManager : MonoBehaviour
             {
                 //選択肢の配列が小さい場合
                 if (i > choiceScripts.Length -1 ) break;
+
+                //選択肢が選ばれたときに入るポイントをコピー
+                choiceScripts[i].point = ReadCSV.Instance.CsvData[wordsCount].choicePoint[i];//choicesArray[0].choies[i].point;
                 //選択のテキストをオブジェにコピー
-                choiceScripts[i].text.text = choicesArray[0].choies[i].str;
+                choiceScripts[i].text.text = ReadCSV.Instance.CsvData[wordsCount].choiceText[i];//choicesArray[0].choies[i].str;
 
                 //選択の座標計算
                 //未実装
@@ -163,7 +162,7 @@ public class ChoiceManager : MonoBehaviour
             isActiveChoices = true;
 
             //ログ
-            Debug.Log("好感度 : " + likeabillity );
+            //Debug.Log("好感度 : " + likeabillity );
         }
     }    
 }

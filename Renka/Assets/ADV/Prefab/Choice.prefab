@@ -87,7 +87,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114000012959954354}
-        m_MethodName: Release
+        m_MethodName: AddPoint
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

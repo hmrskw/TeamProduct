@@ -101,6 +101,8 @@ public class TextManager : MonoBehaviour
     [SerializeField]
     Words[] dialogue;
 
+    [SerializeField]
+    ChoiceManager choiceManager;
     //セリフの数
     IntGage wordsCount = new IntGage(0);
 
@@ -111,12 +113,12 @@ public class TextManager : MonoBehaviour
     //IntGage charCount = new IntGage(0);
     IntGage charIntervalCount = new IntGage(0);
 
-    ReadCSV readCSV;
+    //ReadCSV readCSV;
 
     void Awake()
     {
-        readCSV = new ReadCSV();
-        readCSV.ReadFile();
+        //readCSV = new ReadCSV();
+        //ReadCSV.Instance.ReadFile();
     }
 
     void Start()
@@ -125,8 +127,8 @@ public class TextManager : MonoBehaviour
         text.text = "";
 
         //CSVファイルの最初は読み込まないので-1
-        wordsCount.Reset(/*dialogue.Length - 1*/readCSV.CsvData.Length-2);
-        stringCount.Reset(/*dialogue[0].word.Length*/readCSV.CsvData[0].text.Length);
+        wordsCount.Reset(/*dialogue.Length - 1*/ReadCSV.Instance.CsvData.Count-2);
+        stringCount.Reset(/*dialogue[0].word.Length*/ReadCSV.Instance.CsvData[0].text.Length);
         charIntervalCount.Reset(wait);
 
         StartCoroutine(ADVUpdate());
@@ -141,32 +143,52 @@ public class TextManager : MonoBehaviour
         //float waitFrame = wait / 60f;
         while (true)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (choiceManager.isActiveChoices)
             {
-                //文字送り表示中かどうか
-                //文字送りが終わってるとき
-                if (stringCount.CheckMax())
+                choiceManager.Choice();
+                if (choiceManager.isActiveChoices == false)
                 {
-                    //次の文章が無ければループを抜ける
                     if (wordsCount.CheckMax()) break;
-                     
+
                     wordsCount.Add();
                     Debug.Log("word : " + wordsCount.num);
                     //カウンターのリセット
-                    stringCount.Reset(/*dialogue[wordsCount.num].word.Length*/readCSV.CsvData[wordsCount.num].text.Length);
-                    //text.text = words[wordCount.num].word.Substring(0, stringCount.num);
+                    stringCount.Reset(ReadCSV.Instance.CsvData[wordsCount.num].text.Length);
                 }
-                //文字送り中
-                else
+            }
+            else {
+                if (stringCount.CheckMax())
                 {
-                    stringCount.AddNumMax();
-                    Debug.Log("すべて表示する");
+                    choiceManager.DrawChoice(wordsCount.num);
+                }
 
-                    //キャラクター名を表示
-                    nameText.text = readCSV.CsvData[wordsCount.num].sendCharacter;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    //文字送り表示中かどうか
+                    //文字送りが終わってるとき
+                    if (stringCount.CheckMax())
+                    {
+                        //次の文章が無ければループを抜ける
+                        if (wordsCount.CheckMax()) break;
 
-                    //一文すべてを表示する
-                    text.text = readCSV.CsvData[wordsCount.num].text;
+                        wordsCount.Add();
+                        Debug.Log("word : " + wordsCount.num);
+                        //カウンターのリセット
+                        stringCount.Reset(/*dialogue[wordsCount.num].word.Length*/ReadCSV.Instance.CsvData[wordsCount.num].text.Length);
+                        //text.text = words[wordCount.num].word.Substring(0, stringCount.num);
+                    }
+                    //文字送り中
+                    else
+                    {
+                        stringCount.AddNumMax();
+                        Debug.Log("すべて表示する");
+
+                        //キャラクター名を表示
+                        nameText.text = ReadCSV.Instance.CsvData[wordsCount.num].sendCharacter;
+
+                        //一文すべてを表示する
+                        text.text = ReadCSV.Instance.CsvData[wordsCount.num].text;
+                    }
                 }
             }
 
@@ -188,10 +210,10 @@ public class TextManager : MonoBehaviour
                     charIntervalCount.Reset();
 
                     //キャラクター名を表示
-                    nameText.text = readCSV.CsvData[wordsCount.num].sendCharacter;
+                    nameText.text = ReadCSV.Instance.CsvData[wordsCount.num].sendCharacter;
 
                     //文の文字を足す
-                    text.text = readCSV.CsvData[wordsCount.num].text.Substring(0, stringCount.num);
+                    text.text = ReadCSV.Instance.CsvData[wordsCount.num].text.Substring(0, stringCount.num);
                 }
             }
 
