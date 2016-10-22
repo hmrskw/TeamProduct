@@ -12,15 +12,10 @@ public class Choice : MonoBehaviour
     //テキスト上書きするための参照
     public Text text;
 
-    //ボタンUIから
-    //public Button button;
-
     public int point{ set; get; } 
 
     //ボタンを離したかどうかの変数
     public bool isReleased { get; set; }
-
-    //int pushCount;
 
     /// <summary>
     /// 初期化処理
@@ -34,8 +29,6 @@ public class Choice : MonoBehaviour
 
     public void AddPoint()
     {
-        Debug.Log("aaa");
-        Debug.Log(point);
         DataManager.Instance.likeabillity += point;
         isReleased = true;
     }
@@ -46,7 +39,6 @@ public class Choice : MonoBehaviour
     public void Reset()
     {
         isReleased = false;
-        Debug.Log("ResetChoice");
     }
 
     /// <summary>
@@ -55,7 +47,5 @@ public class Choice : MonoBehaviour
     public void Release()
     {
         isReleased = true;
-        Debug.Log("ReleaseChoice");
     }
-
 }

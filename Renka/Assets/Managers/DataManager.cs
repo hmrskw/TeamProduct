@@ -9,10 +9,9 @@ public class DataManager : MonoBehaviour {
         get { return instance; }
     }
 
-    //好感度ポイント
-    //int likeabillity;
-
     public int likeabillity { set; get; }
+
+    public int endLine { set; get; }
 
     //シーンまたいでもオブジェクトが破棄されなくする
     void Awake()
@@ -29,5 +28,6 @@ public class DataManager : MonoBehaviour {
     public void init()
     {
         likeabillity = 0;
+        endLine = 0;
     }
 }

@@ -10,10 +10,6 @@ public class GraphicManager : MonoBehaviour
     [System.Serializable]
     public struct CharacterVisualVariation_
     {
-        //名前と番号...どちらか消してもよい
-        public string name;
-        public int id;
-
         //体の画像
         public Texture bodyTex;
 
@@ -42,11 +38,9 @@ public class GraphicManager : MonoBehaviour
         //描画される服装の画像の参照先
         public RawImage clothes;
 
-
-        //名前とID番号
-        string name;
-        public int id;
-
+        //描画される体の画像の参照先
+        public int CharacterNumber;
+        
         //表情の番号
         public int faceNumber;
 
@@ -54,26 +48,26 @@ public class GraphicManager : MonoBehaviour
         public int clothesNumber;
 
         //座標データ...zでサイズ指定
-        Vector3 pos;
+        Vector2 pos;
 
         //表情調整用...zでサイズ指定
-        Vector3 faceVec;
+        Vector2 faceVec;
 
         //服装調整用...zでサイズ指定
-        Vector3 clothesVec;
+        Vector2 clothesVec;
 
         /// <summary>
         /// 初期化
         /// </summary>
         public void Setup()
         {
-            name = "名前";
-            id = 0;
+            CharacterNumber = 0;
             faceNumber = 0;
             clothesNumber = 0;
-            pos = new Vector3(0,0,0);
-            faceVec = Vector3.zero;
-            clothesVec = Vector3.zero;
+
+            pos = new Vector2(0,0);
+            faceVec = Vector2.zero;
+            clothesVec = Vector2.zero;
             body = charScript.GetComponent<RawImage>();
             face = charScript.face.GetComponent<RawImage>();
             clothes = charScript.clothes.GetComponent<RawImage>();
@@ -87,13 +81,9 @@ public class GraphicManager : MonoBehaviour
         public void ChangeTexs()
         {
             //RawImaget.textureを変更する
-            //charScript.GetComponent<RawImage>().texture = characterVariationsBuffer[id].bodyTex;
-            //charScript.face.GetComponent<RawImage>().texture = characterVariationsBuffer[id].faceTexs[faceNumber];
-            //charScript.clothes.GetComponent<RawImage>().texture = characterVariationsBuffer[id].clothesTexs[clothesNumber];
-            body.texture = characterVariationsBuffer[id].bodyTex;
-            face.texture = characterVariationsBuffer[id].faceTexs[faceNumber];
-            clothes.texture = characterVariationsBuffer[id].clothesTexs[clothesNumber];
-
+            body.texture = characterVariationsBuffer[CharacterNumber].bodyTex;
+            face.texture = characterVariationsBuffer[CharacterNumber].faceTexs[faceNumber];
+            clothes.texture = characterVariationsBuffer[CharacterNumber].clothesTexs[clothesNumber];
         }
 
         /// <summary>
@@ -101,7 +91,7 @@ public class GraphicManager : MonoBehaviour
         /// </summary>
         public void ChangeFace()
         {
-            face.texture = characterVariationsBuffer[id].faceTexs[faceNumber];
+            face.texture = characterVariationsBuffer[0].faceTexs[faceNumber];
         }
 
         /// <summary>
@@ -109,7 +99,8 @@ public class GraphicManager : MonoBehaviour
         /// </summary>
         public void ChangeClothes()
         {
-            clothes.texture = characterVariationsBuffer[id].clothesTexs[clothesNumber];
+            Debug.Log(clothesNumber);
+            clothes.texture = characterVariationsBuffer[0].clothesTexs[clothesNumber];
         }
 
         //描画フラグ
@@ -148,20 +139,15 @@ public class GraphicManager : MonoBehaviour
     //現在の背景番号
     int backgroundCurrent;
 
-
     void Start ()
     {
-
         //インスペクターで設定したキャラバリエーションを別クラスでアクセスするため
         characterVariationsBuffer = characterVariations;
-
-        //var obj = FindObjectOfType<>();
 
         //描画に必要な数のキャラを生成
         characters = new Character_[characterMax];
         for (int i = 0; i < characterMax; ++i)
         {
-            //charactersObject.transform.Rotate(3,3,3);
             var trans = charactersObject.transform;
             characters[i] = new Character_();
             characters[i].obj = (GameObject)Instantiate(charPrefabObj, trans);
@@ -170,7 +156,7 @@ public class GraphicManager : MonoBehaviour
             characters[i].obj.transform.localScale = Vector3.one;
 
             //座標が原点になるで指定
-            characters[i].obj.transform.localPosition  = new Vector3(0, 0, 0);
+            characters[i].obj.transform.localPosition = new Vector2(0, 0);
             
             //体パーツへの参照スクリプト
             characters[i].charScript = characters[i].obj.GetComponent<Character>();
@@ -178,24 +164,49 @@ public class GraphicManager : MonoBehaviour
             //初期化
             characters[i].Setup();
         }
-
+        DrawCharacter();
     }
 
-	void Update ()
+    void Update ()
     {
         //テスト
         UpdateTest();
     }
 
+    public void DrawCharacter()
+    {
+        //Debug.Log(ReadCSV.Instance.csvData[DataManager.Instance.endLine].drawCharacterNum);
+        for (int i = 0; i < ReadCSV.Instance.csvData[DataManager.Instance.endLine].drawCharacterNum; i++)
+        {
+            characters[i].CharacterNumber = ReadCSV.Instance.csvData[DataManager.Instance.endLine].drawCharacterID[i];
+
+            characters[i].faceNumber = ReadCSV.Instance.csvData[DataManager.Instance.endLine].expression[i];
+            //characters[i].ChangeFace();
+
+            characters[i].clothesNumber = ReadCSV.Instance.csvData[DataManager.Instance.endLine].costume[i];
+            //characters[i].ChangeClothes();
+
+            characters[i].ChangeTexs();
+            characters[i].obj.SetActive(true);
+        }
+    }
+
+    public void Reset()
+    {
+        for (int i = 0; i < characters.Length; i++)
+        {
+            characters[i].obj.SetActive(false);
+        }
+    }
+
     //テスト関数...画像が差し変わる
     void UpdateTest()
     {
-
         //(´・ω・`)
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             ++characters[0].faceNumber;
-            if (characters[0].faceNumber > characterVariationsBuffer[characters[0].id].faceTexs.Length-1) characters[0].faceNumber = 0;
+            if (characters[0].faceNumber > characterVariationsBuffer[0].faceTexs.Length-1) characters[0].faceNumber = 0;
             characters[0].ChangeFace();
         }
 
@@ -203,7 +214,8 @@ public class GraphicManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             ++characters[0].clothesNumber;
-            if (characters[0].clothesNumber > characterVariationsBuffer[characters[0].id].clothesTexs.Length - 1) characters[0].clothesNumber = 0;
+            if (characters[0].clothesNumber > characterVariationsBuffer[0].clothesTexs.Length - 1) characters[0].clothesNumber = 0;
+            Debug.Log(characters[0].clothesNumber);
             characters[0].ChangeClothes();
         }
 
@@ -220,9 +232,5 @@ public class GraphicManager : MonoBehaviour
         {
             background.texture = backgroundTexs[3 - 1];
         }
-
     }
-
-
-
 }

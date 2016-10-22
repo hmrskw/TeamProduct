@@ -202,11 +202,8 @@ public class ReadCSV : MonoBehaviour
                 if (isEventMode == false)
                 {
                     //描画用データの格納            
-                    if (didCommaSeparationData[(int)ElementsName.CHARACTER_NAME] != "")
-                        csvDataTmp.drawCharacterID[csvDataTmp.drawCharacterNum] = CharacterNameToID(didCommaSeparationData[(int)ElementsName.CHARACTER_NAME]);
-
                     if (didCommaSeparationData[(int)ElementsName.EXPRESSION] != "")
-                        csvDataTmp.expression[csvDataTmp.drawCharacterNum] = Convert.ToUInt16(didCommaSeparationData[(int)ElementsName.EXPRESSION]);
+                        csvDataTmp.expression[csvDataTmp.drawCharacterNum] = ExpressionToID(didCommaSeparationData[(int)ElementsName.EXPRESSION]);
 
                     if (didCommaSeparationData[(int)ElementsName.COSTUME] != "")
                         csvDataTmp.costume[csvDataTmp.drawCharacterNum] = Convert.ToUInt16(didCommaSeparationData[(int)ElementsName.COSTUME]);
@@ -219,10 +216,14 @@ public class ReadCSV : MonoBehaviour
 
                     if (didCommaSeparationData[(int)ElementsName.SIZE] != "")
                         csvDataTmp.size[csvDataTmp.drawCharacterNum] = Convert.ToSingle(didCommaSeparationData[(int)ElementsName.SIZE]);
+                    if (didCommaSeparationData[(int)ElementsName.CHARACTER_NAME] != "")
+                    {
+                        csvDataTmp.drawCharacterID[csvDataTmp.drawCharacterNum] = CharacterNameToID(didCommaSeparationData[(int)ElementsName.CHARACTER_NAME]);
+                        csvDataTmp.drawCharacterNum++;
+                    }
 
                     if (csvDataTmp.command == "draw")
                     {
-                        csvDataTmp.drawCharacterNum++;
                         i++;
                     }
                 }
@@ -259,7 +260,7 @@ public class ReadCSV : MonoBehaviour
                 );*/
         }
 
-        foreach (CSVData csv in csvData)
+        /*foreach (CSVData csv in csvData)
         {
             Debug.Log("command:" + csv.command + ",parameter:" + csv.parameter + ",drawCharacterNum:" + csv.drawCharacterNum +
                 "\ndrawCharacterID[0]:" + csv.drawCharacterID[0] + ",expression[0]:" + csv.expression[0] + ",costume[0]:" + csv.costume[0] + ",pos[0]:" + csv.pos[0] + ",size[0]:" + csv.size[0] +
@@ -269,7 +270,7 @@ public class ReadCSV : MonoBehaviour
                 "\nchoicePoint[2]:" + csv.choicePoint[2] + "choiceText[2]:" + csv.choiceText[2] +
                 "\nsendCharacter:" + csv.sendCharacter + ",text:" + csv.text + ",backGroundID:" + csv.backGroundID + "BGMID:" + csv.BGMID
                 );
-        }
+        }*/
     }
 
     ///<summary> ファイルを読み込み、配列に1行ずつ格納 </summary>
@@ -336,7 +337,7 @@ public class ReadCSV : MonoBehaviour
     int ExpressionToID(string expression_)
     {
         int id = 0;
-        if (expression_ == "無")
+        if (expression_ == "通常")
         {
             id = 0;
         }

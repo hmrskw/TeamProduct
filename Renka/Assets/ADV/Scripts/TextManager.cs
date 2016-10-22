@@ -83,6 +83,7 @@ public class TextManager : MonoBehaviour
         public Vector3 pos;
     }
 
+    /*
     //セリフ...words
     [System.Serializable]
     public class Words
@@ -98,40 +99,54 @@ public class TextManager : MonoBehaviour
     }
 
     //対話....Dialogue
-    [SerializeField]
-    Words[] dialogue;
+    //[SerializeField]
+    //Words[] dialogue;
+    */
 
-    [SerializeField]
-    ChoiceManager choiceManager;
-    //セリフの数
-    IntGage wordsCount = new IntGage(0);
+    //[SerializeField]
+    //ChoiceManager choiceManager;
 
     //一つのセリフの文字列の文字
     IntGage stringCount = new IntGage(0);
 
     //文字一つ一つの間隔
-    //IntGage charCount = new IntGage(0);
     IntGage charIntervalCount = new IntGage(0);
-
-    //ReadCSV readCSV;
-
-    void Awake()
-    {
-        //readCSV = new ReadCSV();
-        //ReadCSV.Instance.ReadFile();
-    }
 
     void Start()
     {
         nameText.text = "";
         text.text = "";
 
-        //CSVファイルの最初は読み込まないので-1
-        wordsCount.Reset(/*dialogue.Length - 1*/ReadCSV.Instance.CsvData.Count-2);
-        stringCount.Reset(/*dialogue[0].word.Length*/ReadCSV.Instance.CsvData[0].text.Length);
+        stringCount.Reset(ReadCSV.Instance.CsvData[0].text.Length);
         charIntervalCount.Reset(wait);
 
         StartCoroutine(ADVUpdate());
+    }
+
+    public void ShiftNextText()
+    {
+        if ((ReadCSV.Instance.csvData.Count > DataManager.Instance.endLine))
+        {
+            DataManager.Instance.endLine++;
+            //カウンターのリセット
+            stringCount.Reset(ReadCSV.Instance.CsvData[DataManager.Instance.endLine].text.Length);
+        }
+    }
+
+    public void DrawAllText()
+    {
+        stringCount.AddNumMax();
+
+        //キャラクター名を表示
+        nameText.text = ReadCSV.Instance.CsvData[DataManager.Instance.endLine].sendCharacter;
+
+        //一文すべてを表示する
+        text.text = ReadCSV.Instance.CsvData[DataManager.Instance.endLine].text;
+    }
+
+    public bool IsDrawAllText()
+    {
+        return stringCount.CheckMax();
     }
 
     /// <summary>
@@ -140,58 +155,8 @@ public class TextManager : MonoBehaviour
     /// <returns></returns>
     IEnumerator ADVUpdate()
     {
-        //float waitFrame = wait / 60f;
         while (true)
         {
-            if (choiceManager.isActiveChoices)
-            {
-                choiceManager.Choice();
-                if (choiceManager.isActiveChoices == false)
-                {
-                    if (wordsCount.CheckMax()) break;
-
-                    wordsCount.Add();
-                    Debug.Log("word : " + wordsCount.num);
-                    //カウンターのリセット
-                    stringCount.Reset(ReadCSV.Instance.CsvData[wordsCount.num].text.Length);
-                }
-            }
-            else {
-                if (stringCount.CheckMax())
-                {
-                    choiceManager.DrawChoice(wordsCount.num);
-                }
-
-                if (Input.GetMouseButtonDown(0))
-                {
-                    //文字送り表示中かどうか
-                    //文字送りが終わってるとき
-                    if (stringCount.CheckMax())
-                    {
-                        //次の文章が無ければループを抜ける
-                        if (wordsCount.CheckMax()) break;
-
-                        wordsCount.Add();
-                        Debug.Log("word : " + wordsCount.num);
-                        //カウンターのリセット
-                        stringCount.Reset(/*dialogue[wordsCount.num].word.Length*/ReadCSV.Instance.CsvData[wordsCount.num].text.Length);
-                        //text.text = words[wordCount.num].word.Substring(0, stringCount.num);
-                    }
-                    //文字送り中
-                    else
-                    {
-                        stringCount.AddNumMax();
-                        Debug.Log("すべて表示する");
-
-                        //キャラクター名を表示
-                        nameText.text = ReadCSV.Instance.CsvData[wordsCount.num].sendCharacter;
-
-                        //一文すべてを表示する
-                        text.text = ReadCSV.Instance.CsvData[wordsCount.num].text;
-                    }
-                }
-            }
-
             //文字送り中の時
             if (!stringCount.CheckMax())
             {
@@ -210,67 +175,14 @@ public class TextManager : MonoBehaviour
                     charIntervalCount.Reset();
 
                     //キャラクター名を表示
-                    nameText.text = ReadCSV.Instance.CsvData[wordsCount.num].sendCharacter;
+                    nameText.text = ReadCSV.Instance.CsvData[DataManager.Instance.endLine].sendCharacter;
 
                     //文の文字を足す
-                    text.text = ReadCSV.Instance.CsvData[wordsCount.num].text.Substring(0, stringCount.num);
+                    text.text = ReadCSV.Instance.CsvData[DataManager.Instance.endLine].text.Substring(0, stringCount.num);
                 }
             }
-
-            //スキップがうまくいかないバグが出る
-            //if (!stringCount.CheckMax())
-            //{
-            //    yield return new WaitForSeconds(waitFrame);
-
-            //    stringCount.Add();
-
-            //    text.text = words[wordCount.num].word.Substring(0, stringCount.num);
-            //}
 
             yield return null;
         }
     }
-
-    // Update is called once per frame
-    /*	void Update ()
-        {
-            if (Input.GetMouseButtonDown(0) && !wordCount.CheckMax())
-            {
-                //文字送り表示中かどうか
-                if (stringCount.CheckMax())
-                {
-                    Debug.Log( "word : " + wordCount.num);
-                    wordCount.Add();
-                    //カウンターのリセット
-                    stringCount.Reset(words[wordCount.num].word.Length);
-                    text.text = words[wordCount.num].word.Substring(0, stringCount.num);
-                }
-                else
-                {
-
-                    stringCount.AddMax();
-                    Debug.Log("More");
-                    charCount.Reset();
-                    text.text = words[wordCount.num].word;
-                }          
-            }
-
-
-            if (!stringCount.CheckMax())
-            {
-                if (!charCount.CheckMax())
-                {
-                    charCount.Add();
-                }
-                else
-                {
-                    stringCount.Add();
-
-                    charCount.Reset();
-                    text.text = words[wordCount.num].word.Substring(0, stringCount.num);
-                }
-            }
-
-
-        }*/
 }

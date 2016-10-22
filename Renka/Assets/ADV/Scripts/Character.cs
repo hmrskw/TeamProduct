@@ -8,4 +8,9 @@ public class Character : MonoBehaviour
 
     [SerializeField]
     public GameObject clothes;
+
+    void Awake()
+    {
+        gameObject.SetActive(false);
+    }
 }

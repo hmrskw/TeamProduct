@@ -6,6 +6,8 @@ using System.Collections.Generic;
 //グラフィックマネージャーが整理されるまで一時的に分けておく
 public class ChoiceManager : MonoBehaviour
 {
+
+    /*
     // 選択肢の選択のデータ
     [System.Serializable]
     public struct Choice_
@@ -24,9 +26,8 @@ public class ChoiceManager : MonoBehaviour
         
     }
 
- 
     // 選択肢、選択を格納しておく
-    [System.Serializable]
+    //[System.Serializable]
     public class Choices_
     {
         public Choice_[] choies;
@@ -42,11 +43,10 @@ public class ChoiceManager : MonoBehaviour
         }
 
     }
+    //[SerializeField, Tooltip("すべての選択肢の設定")]
+    //Choices_[] choicesArray;
+    */
 
-    [SerializeField, Tooltip("すべての選択肢の設定")]
-    Choices_[] choicesArray;
-
-    
     [SerializeField, Tooltip("選択肢のプレハブ")]
     GameObject choicePrefabObj;
 
@@ -62,9 +62,6 @@ public class ChoiceManager : MonoBehaviour
 
     //選択肢がでて、ボタンを押せる状態か
     public bool isActiveChoices { get; private set; }
-
-    //選択されたときのボタン番号 押されてないときは -1
-    int selectNumber;
 
     [SerializeField, Tooltip("選択肢の出現座標")]
     Vector3 choicePos;
@@ -98,11 +95,6 @@ public class ChoiceManager : MonoBehaviour
 
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Return)) Debug.Log(DataManager.Instance.likeabillity);
-    }
-
     /// <summary>
     /// 選択肢
     /// </summary>
@@ -134,10 +126,10 @@ public class ChoiceManager : MonoBehaviour
     public void DrawChoice(int wordsCount)
     {
         //0番目の選択を出現させる
-        if (/*Input.GetKeyDown(KeyCode.Return)*/ReadCSV.Instance.CsvData[wordsCount].choiceNum != 0)
+        if (ReadCSV.Instance.CsvData[wordsCount].choiceNum != 0)
         {
             //選択肢から選択の数を取得
-            int num = choicesArray[0].choies.Length;
+            int num = ReadCSV.Instance.CsvData[wordsCount].choiceNum;//choicesArray[0].choies.Length;
             for (int i = 0; i < num; ++i)
             {
                 //選択肢の配列が小さい場合
@@ -158,26 +150,8 @@ public class ChoiceManager : MonoBehaviour
             }
 
             //選択肢をアクティブに
-            selectNumber = -1;
             isActiveChoices = true;
 
-            //ログ
-            //Debug.Log("好感度 : " + likeabillity );
         }
     }    
 }
-
-/*
- 選択肢のオブジェクトは３つしか生成せず
-    構造体でテキストとポイントを格納しておき
-    選択時に参照させる
-
-    ・選択肢の表示
-    ・選択できる
-    ・選択したら好感度を上げる
-
-    座標を計算するもの
-    選択肢の選択の数によって決まる
-
-
-*/
