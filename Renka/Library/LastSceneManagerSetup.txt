@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/ADV/ADV.unity
+- path: Assets/MyPage/MyPage.unity
   isLoaded: 1
   isActive: 1
