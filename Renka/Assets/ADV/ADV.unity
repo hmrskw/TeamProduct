@@ -271,8 +271,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 7.5, y: -125}
-  m_SizeDelta: {x: 735, y: 216}
+  m_AnchoredPosition: {x: 0, y: -145}
+  m_SizeDelta: {x: 650, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &432541946
 MonoBehaviour:
@@ -295,7 +295,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 60
+    m_FontSize: 42
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -305,8 +305,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "\u3053\u3053\u306B\u30C6\u30AD\u30B9\u30C8\u3092\u5165\u308C\u308B\u3088\naaaaabbbbbcccccddddd\n\u5168\u89D212\u6587\u5B57\u3001\u534A\u89D220\u6587\u5B57"
+    m_LineSpacing: 1.5
+  m_Text: "\u3053\u3053\u306B\u30C6\u30AD\u30B9\u30C8\u3092\u5165\u308C\u308B\u3088\u3042\u3042\u3042\u3042\u3001aaaaabbbbbcccccddddd\n\u5168\u89D216\u6587\u5B57\u3001\u534A\u89D220\u6587\u5B57\u3000x\u30003\u884C"
 --- !u!222 &432541947
 CanvasRenderer:
   m_ObjectHideFlags: 0
