@@ -8,7 +8,7 @@ public class ManageCreator : MonoBehaviour {
     private static void CreatorManager()
     {
         //Cursor.visible = false;
-        GameObject ManagerObj = new GameObject("Manager", typeof(DataManager), typeof(ReadCSV));
+        GameObject ManagerObj = new GameObject("Manager", typeof(DataManager));
         DontDestroyOnLoad(ManagerObj);
     }
 }

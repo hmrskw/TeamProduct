@@ -40,7 +40,7 @@ public class GraphicManager : MonoBehaviour
 
         //描画される体の画像の参照先
         public int CharacterNumber;
-        
+
         //表情の番号
         public int faceNumber;
 
@@ -65,7 +65,7 @@ public class GraphicManager : MonoBehaviour
             faceNumber = 0;
             clothesNumber = 0;
 
-            pos = new Vector2(0,0);
+            pos = new Vector2(0, 0);
             faceVec = Vector2.zero;
             clothesVec = Vector2.zero;
             body = charScript.GetComponent<RawImage>();
@@ -110,7 +110,7 @@ public class GraphicManager : MonoBehaviour
     //キャラデータ...要素数 == キャラクターの種類
     [SerializeField, Tooltip("キャラクター、顔、服装の種類すべてを設定する")]
     CharacterVisualVariation_[] characterVariations;
-    
+
     //charcters[]からアクセスする用...上を参照させる
     static CharacterVisualVariation_[] characterVariationsBuffer;
 
@@ -139,7 +139,7 @@ public class GraphicManager : MonoBehaviour
     //現在の背景番号
     int backgroundCurrent;
 
-    void Start ()
+    void Start()
     {
         //インスペクターで設定したキャラバリエーションを別クラスでアクセスするため
         characterVariationsBuffer = characterVariations;
@@ -157,34 +157,29 @@ public class GraphicManager : MonoBehaviour
 
             //座標が原点になるで指定
             characters[i].obj.transform.localPosition = new Vector2(0, 0);
-            
+
             //体パーツへの参照スクリプト
             characters[i].charScript = characters[i].obj.GetComponent<Character>();
-            
+
             //初期化
             characters[i].Setup();
         }
-        DrawCharacter();
+        DrawCharacter(ConvertADVdata.Instance.advData);
     }
 
-    void Update ()
+    /// <summary>
+    /// キャラクターを描画
+    /// </summary>
+    /// <param name="csv_">今読んでいるCSVのデータ</param>
+    public void DrawCharacter(List<ConvertADVdata.ADVData> csv_)
     {
-        //テスト
-        UpdateTest();
-    }
-
-    public void DrawCharacter()
-    {
-        //Debug.Log(ReadCSV.Instance.csvData[DataManager.Instance.endLine].drawCharacterNum);
-        for (int i = 0; i < ReadCSV.Instance.csvData[DataManager.Instance.endLine].drawCharacterNum; i++)
+        for (int i = 0; i < csv_[DataManager.Instance.endLine].drawCharacterNum; i++)
         {
-            characters[i].CharacterNumber = ReadCSV.Instance.csvData[DataManager.Instance.endLine].drawCharacterID[i];
+            characters[i].CharacterNumber = csv_[DataManager.Instance.endLine].drawCharacterID[i];
 
-            characters[i].faceNumber = ReadCSV.Instance.csvData[DataManager.Instance.endLine].expression[i];
-            //characters[i].ChangeFace();
+            characters[i].faceNumber = csv_[DataManager.Instance.endLine].expression[i];
 
-            characters[i].clothesNumber = ReadCSV.Instance.csvData[DataManager.Instance.endLine].costume[i];
-            //characters[i].ChangeClothes();
+            characters[i].clothesNumber = csv_[DataManager.Instance.endLine].costume[i];
 
             characters[i].ChangeTexs();
             characters[i].obj.SetActive(true);
@@ -202,23 +197,6 @@ public class GraphicManager : MonoBehaviour
     //テスト関数...画像が差し変わる
     void UpdateTest()
     {
-        //(´・ω・`)
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            ++characters[0].faceNumber;
-            if (characters[0].faceNumber > characterVariationsBuffer[0].faceTexs.Length-1) characters[0].faceNumber = 0;
-            characters[0].ChangeFace();
-        }
-
-        //服装変える
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            ++characters[0].clothesNumber;
-            if (characters[0].clothesNumber > characterVariationsBuffer[0].clothesTexs.Length - 1) characters[0].clothesNumber = 0;
-            Debug.Log(characters[0].clothesNumber);
-            characters[0].ChangeClothes();
-        }
-
         //1,2,3
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {

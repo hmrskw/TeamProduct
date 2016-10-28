@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class MyPageManager : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class MyPageManager : MonoBehaviour
 
 
 
-	void Start ()
+    void Start()
     {
 
         //キャラクターのセット
@@ -46,14 +47,15 @@ public class MyPageManager : MonoBehaviour
         //0だと配列の０番目と重なるので
         commentPrevLine = -1;
 
-	}
+    }
 
     /// <summary>
     /// Storyボタンが押されたときに呼ばれる
     /// </summary>
     public void OnClickStory()
     {
-        Debug.Log("Click Story");
+        //Debug.Log(DataManager.Instance.endLine);
+        SceneManager.LoadScene("ADV");
     }
 
     /// <summary>
@@ -61,7 +63,8 @@ public class MyPageManager : MonoBehaviour
     /// </summary>
     public void OnClickMiniGame()
     {
-        Debug.Log("Click MiniGame");
+        SceneManager.LoadScene("MiniGame");
+        //Debug.Log("Click MiniGame");
     }
 
     /// <summary>
@@ -91,7 +94,7 @@ public class MyPageManager : MonoBehaviour
         var line = Random.Range(0, comments.Length);
 
         //同じコメントを呼ばない
-        if( comments.Length != 0 && comments.Length != 1)
+        if (comments.Length != 0 && comments.Length != 1)
         {
             while (line == commentPrevLine)
             {

@@ -63,10 +63,10 @@ public class TextManager : MonoBehaviour
         public void AddNumMax() { num = max; }
     }
 
-    [SerializeField,Tooltip("名前を表示するためのテキストボックス")]
+    [SerializeField, Tooltip("名前を表示するためのテキストボックス")]
     Text nameText;
 
-    [SerializeField,Tooltip("本文を表示するためのテキストボックス")]
+    [SerializeField, Tooltip("本文を表示するためのテキストボックス")]
     Text text;
 
     [SerializeField, Range(0, 5), Tooltip("このフレーム分待機する")]
@@ -112,12 +112,17 @@ public class TextManager : MonoBehaviour
     //文字一つ一つの間隔
     IntGage charIntervalCount = new IntGage(0);
 
+    public List<ConvertADVdata.ADVData> nowRead { set; private get; }
+
     void Start()
     {
         nameText.text = "";
         text.text = "";
 
-        stringCount.Reset(ReadCSV.Instance.CsvData[0].text.Length);
+        nowRead = ConvertADVdata.Instance.AdvData;
+
+        //stringCount.Reset(ReadCSV.Instance.CsvData[0].text.Length);
+        stringCount.Reset(nowRead[0].text.Length);
         charIntervalCount.Reset(wait);
 
         StartCoroutine(ADVUpdate());
@@ -125,11 +130,13 @@ public class TextManager : MonoBehaviour
 
     public void ShiftNextText()
     {
-        if ((ReadCSV.Instance.csvData.Count > DataManager.Instance.endLine))
+        if ((/*ReadCSV.Instance.csvData*/nowRead.Count > DataManager.Instance.endLine))
         {
             DataManager.Instance.endLine++;
             //カウンターのリセット
-            stringCount.Reset(ReadCSV.Instance.CsvData[DataManager.Instance.endLine].text.Length);
+            //Debug.Log(DataManager.Instance.endLine);
+            //Debug.Log(nowReadCSV[DataManager.Instance.endLine].text);
+            stringCount.Reset(/*ReadCSV.Instance.CsvData*/nowRead[DataManager.Instance.endLine].text.Length);
         }
     }
 
@@ -138,10 +145,10 @@ public class TextManager : MonoBehaviour
         stringCount.AddNumMax();
 
         //キャラクター名を表示
-        nameText.text = ReadCSV.Instance.CsvData[DataManager.Instance.endLine].sendCharacter;
+        nameText.text = /*ReadCSV.Instance.CsvData*/nowRead[DataManager.Instance.endLine].sendCharacter;
 
         //一文すべてを表示する
-        text.text = ReadCSV.Instance.CsvData[DataManager.Instance.endLine].text;
+        text.text = /*ReadCSV.Instance.CsvData*/nowRead[DataManager.Instance.endLine].text;
     }
 
     public bool IsDrawAllText()
@@ -175,13 +182,12 @@ public class TextManager : MonoBehaviour
                     charIntervalCount.Reset();
 
                     //キャラクター名を表示
-                    nameText.text = ReadCSV.Instance.CsvData[DataManager.Instance.endLine].sendCharacter;
+                    nameText.text = /*ReadCSV.Instance.CsvData*/nowRead[DataManager.Instance.endLine].sendCharacter;
 
                     //文の文字を足す
-                    text.text = ReadCSV.Instance.CsvData[DataManager.Instance.endLine].text.Substring(0, stringCount.num);
+                    text.text = /*ReadCSV.Instance.CsvData*/nowRead[DataManager.Instance.endLine].text.Substring(0, stringCount.num);
                 }
             }
-
             yield return null;
         }
     }

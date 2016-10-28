@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+using UnityEngine.SceneManagement;
+
 public class Player : MonoBehaviour
 {
     [SerializeField]
@@ -15,54 +17,53 @@ public class Player : MonoBehaviour
     private GameObject gameOverText;
 
     private bool is_hit = false;
-    // Use this for initialization
+
     void Start()
     {
         hp = hpImage.Length;
+
     }
 
-    // Update is called once per frame
-    void Update()
+/*    void Update()
     {
-
-        //hpが0になったら
+      //hpが0になったら
       if(hp<=0)
         {
             //ステージスクロールをとめる
             stage.ScrollSpeed = 0.0f;
             gameOverText.SetActive(true);
         }
-
-
-
-
     }
-
+*/
     void OnTriggerEnter(Collider other)
     {
-        
-
         if (other.tag == "Obstacle")
         {
             other.GetComponent<BoxCollider>().enabled = false;
             StartCoroutine(Damage());
-            
         }
-
-        
     }
 
     IEnumerator Damage()
     {
         //ステージの移動を止める
         stage.ScrollSpeed = 0.0f;
-        if(hp>0)
+
+        hp -= 1;
+
+        if (hp>0)
         {
             //HPの表示を1つ減らす
-            hpImage[hp - 1].SetActive(false);
-
+            hpImage[hp].SetActive(false);
         }
-        hp -= 1;
+        else
+        {
+            //ステージスクロールをとめる
+            stage.ScrollSpeed = 0.0f;
+            gameOverText.SetActive(true);
+            yield return new WaitForSeconds(1);
+            SceneManager.LoadScene("MyPage");
+        }
 
         yield return StartCoroutine(DamageEffect());
         

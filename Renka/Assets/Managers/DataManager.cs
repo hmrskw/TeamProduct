@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DataManager : MonoBehaviour {
+public class DataManager : MonoBehaviour
+{
     private static DataManager instance;
 
     public static DataManager Instance
@@ -9,9 +10,20 @@ public class DataManager : MonoBehaviour {
         get { return instance; }
     }
 
+    //誰を攻略中か
+    public int masteringCharacterID;
+
+    //好感度
     public int likeabillity { set; get; }
 
+    //今何話を読んでいるか
+    public int nowReadStoryID;
+
+    //今何行目まで読んだか
     public int endLine { set; get; }
+
+    //今読んでいるのは選択肢後の分岐かどうか
+    public bool isChoiceText;
 
     //シーンまたいでもオブジェクトが破棄されなくする
     void Awake()
@@ -29,5 +41,6 @@ public class DataManager : MonoBehaviour {
     {
         likeabillity = 0;
         endLine = 0;
+        isChoiceText = false;
     }
 }
