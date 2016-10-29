@@ -114,6 +114,13 @@ public class TextManager : MonoBehaviour
 
     public List<ConvertADVdata.ADVData> nowRead { set; private get; }
 
+
+    [SerializeField, Tooltip("一行の文字列幅")]
+    int strLength;
+
+    [SerializeField, Tooltip("禁則文字")]
+    char[] prohibitionCharacters;
+
     void Start()
     {
         nameText.text = "";
@@ -148,7 +155,8 @@ public class TextManager : MonoBehaviour
         nameText.text = /*ReadCSV.Instance.CsvData*/nowRead[DataManager.Instance.endLine].sendCharacter;
 
         //一文すべてを表示する
-        text.text = /*ReadCSV.Instance.CsvData*/nowRead[DataManager.Instance.endLine].text;
+        //text.text = /*ReadCSV.Instance.CsvData*/nowRead[DataManager.Instance.endLine].text;
+        text.text = ConvertJpHyph(nowRead[DataManager.Instance.endLine].text, strLength);
     }
 
     public bool IsDrawAllText()
@@ -185,10 +193,112 @@ public class TextManager : MonoBehaviour
                     nameText.text = /*ReadCSV.Instance.CsvData*/nowRead[DataManager.Instance.endLine].sendCharacter;
 
                     //文の文字を足す
-                    text.text = /*ReadCSV.Instance.CsvData*/nowRead[DataManager.Instance.endLine].text.Substring(0, stringCount.num);
+                    //text.text = /*ReadCSV.Instance.CsvData*/nowRead[DataManager.Instance.endLine].text.Substring(0, stringCount.num);
+                    text.text = ConvertJpHyph(nowRead[DataManager.Instance.endLine].text.Substring(0, stringCount.num) ,strLength );
                 }
             }
             yield return null;
         }
+    }
+
+    /// <summary>
+    /// 禁則文字かどうか
+    /// </summary>
+    /// <param name="c"></param>
+    /// <returns></returns>
+    bool IsProhiChar(char c)
+    {
+        for (int i = 0; i < prohibitionCharacters.Length; i++)
+        {
+            if (c == prohibitionCharacters[i]) return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// 禁則処理(全角のみ)
+    /// </summary>
+    /// <param name="str">変化する文字列</param>
+    /// <param name="length">文字幅</param>
+    /// <returns>禁則処理で変換された文字列</returns>
+    /// ※UIの表示範囲外のlengthをしてすると発狂します
+    string ConvertJpHyph(string str, int length)
+    {
+        Debug.Log("StrLength : " + str.Length);
+        Debug.Log("Length : " + length);
+
+        if (length < 1)
+        {
+            length = 1;
+        }
+
+        string buffer = "";
+        int strCount = 0;
+
+        while (strCount < str.Length)
+        {
+            Debug.Log("str count : " + strCount);
+
+            //改行したかどうか
+            bool endl = false;
+
+            //1.行の長さごとに改行コードないか調べて
+            //2.行の長さを計算する
+            int i = 0;
+            for (i = 0; i < length; ++i)
+            {
+                Debug.Log("i count : " + i);
+                //文字列の長さを超えるか
+                if (strCount + i >= str.Length - 1)
+                {
+                    //残りをバッファに追加する
+                    buffer += str.Substring(strCount, i + 1);
+                    Debug.Log("return 1");
+                    return buffer;
+                }
+
+                //次の先頭文字\nなら改行させるために小ループを抜ける
+                char target = str[strCount + i];
+                if (target == '\n')
+                {
+                    ++i;
+                    endl = true;
+                    Debug.Log("\\n");
+                    break;
+                }
+
+            }
+
+            //計算した長さ文だけの文字列を加える
+            buffer += str.Substring(strCount, i);
+            Debug.Log("buffer += " + str.Substring(strCount, i + 1));
+            Debug.Log("StrCount += " + i);
+            strCount += i;
+
+            //禁則処理
+            if (strCount < str.Length && IsProhiChar(str[strCount]))
+            {
+                Debug.Log("禁則処理");
+                buffer += str[strCount];
+                ++strCount;
+                endl = true;
+
+            }
+            if (endl == false) buffer += '\n';
+        }
+
+        Debug.Log("return 2");
+        return buffer;
+    }
+
+    /// <summary>
+    /// 文字列内の"\n"の文字列を'\n'に文字に変える
+    /// </summary>
+    /// <param name="str"></param>
+    /// <returns></returns>
+    string ConvertNewLineCode(string str)
+    {
+        return str.Replace("\\" + "n", "\n");
     }
 }
