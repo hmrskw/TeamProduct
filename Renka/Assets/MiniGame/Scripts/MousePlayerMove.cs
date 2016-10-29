@@ -20,18 +20,18 @@ public class MousePlayerMove : MonoBehaviour {
 	void Update () {
 
         //クリック押し込みの瞬間
-        if (Input.GetMouseButtonDown(0))
+        if (/*Input.GetMouseButtonDown(0)*/InputManager.Instance.IsTouchBegan())
         {
-            float x = Input.mousePosition.x;
+            float x = InputManager.Instance.GetTouchPosition().x;//Input.mousePosition.x;
             //xの値を画面サイズで割って0~1のサイズに
             prevPos = new Vector3(x / Screen.width, 0, 0);
         }
 
         //クリックしている間
-        if (Input.GetMouseButton(0))
+        if (/*Input.GetMouseButton(0)*/InputManager.Instance.IsTouchBegan())
         {
             //マウスのポジション取得
-            float x = Input.mousePosition.x;
+            float x = InputManager.Instance.GetTouchPosition().x;//Input.mousePosition.x;
             //前フレームとの移動量の差
             moveSpeed = x / Screen.width - prevPos.x;
             //現在の位置を保存しておく

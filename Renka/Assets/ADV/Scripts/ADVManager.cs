@@ -27,6 +27,9 @@ public class ADVManager : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(Input.mousePosition+"\nIM"+InputManager.Instance.GetTouchPosition());
+
+
         if (choiceManager.isActiveChoices)
         {
             key = choiceManager.Choice();
@@ -44,7 +47,7 @@ public class ADVManager : MonoBehaviour
             {
                 choiceManager.DrawChoice(DataManager.Instance.endLine);
             }
-            if (Input.GetMouseButtonDown(0))
+            if (InputManager.Instance.IsTouchBegan())
             {
                 //文字送り表示中かどうか
                 //文字送りが終わってるとき
