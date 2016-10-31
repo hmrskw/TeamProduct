@@ -65,8 +65,11 @@ public class ADVManager : MonoBehaviour
                         else
                         {
                             //Debug.Log("init");
-                            DataManager.Instance.endLine = 0;
-                            SceneManager.LoadScene("MyPage");
+                            //DataManager.Instance.endLine = 0;
+                            //SceneManager.LoadScene("MyPage");
+                            //canvasを消す
+                            //intermissionを表示     
+                            graphicManager.ChangeCanvasNext();
                         }
                     }
                     else

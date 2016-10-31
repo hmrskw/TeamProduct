@@ -145,6 +145,12 @@ public class GraphicManager : MonoBehaviour
     //現在の背景番号
     int backgroundCurrent;
 
+    [SerializeField]
+    GameObject canvas;
+
+    [SerializeField]
+    GameObject intermission;
+
     void Start()
     {
         //インスペクターで設定したキャラバリエーションを別クラスでアクセスするため
@@ -224,5 +230,12 @@ public class GraphicManager : MonoBehaviour
         {
             background.texture = backgroundTexs[3 - 1];
         }
+    }
+
+    public void ChangeCanvasNext()
+    {
+        Debug.Log("ChangeCanvas");
+        canvas.SetActive(false);
+        intermission.SetActive(true);
     }
 }
