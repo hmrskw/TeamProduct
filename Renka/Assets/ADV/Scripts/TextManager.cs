@@ -225,8 +225,8 @@ public class TextManager : MonoBehaviour
     /// ※UIの表示範囲外のlengthをしてすると発狂します
     string ConvertJpHyph(string str, int length)
     {
-        Debug.Log("StrLength : " + str.Length);
-        Debug.Log("Length : " + length);
+        //Debug.Log("StrLength : " + str.Length);
+        //Debug.Log("Length : " + length);
 
         if (length < 1)
         {
@@ -238,7 +238,7 @@ public class TextManager : MonoBehaviour
 
         while (strCount < str.Length)
         {
-            Debug.Log("str count : " + strCount);
+            //Debug.Log("str count : " + strCount);
 
             //改行したかどうか
             bool endl = false;
@@ -248,13 +248,13 @@ public class TextManager : MonoBehaviour
             int i = 0;
             for (i = 0; i < length; ++i)
             {
-                Debug.Log("i count : " + i);
+                //Debug.Log("i count : " + i);
                 //文字列の長さを超えるか
                 if (strCount + i >= str.Length - 1)
                 {
                     //残りをバッファに追加する
                     buffer += str.Substring(strCount, i + 1);
-                    Debug.Log("return 1");
+                    //Debug.Log("return 1");
                     return buffer;
                 }
 
@@ -264,7 +264,7 @@ public class TextManager : MonoBehaviour
                 {
                     ++i;
                     endl = true;
-                    Debug.Log("\\n");
+                    //Debug.Log("\\n");
                     break;
                 }
 
@@ -272,14 +272,14 @@ public class TextManager : MonoBehaviour
 
             //計算した長さ文だけの文字列を加える
             buffer += str.Substring(strCount, i);
-            Debug.Log("buffer += " + str.Substring(strCount, i + 1));
-            Debug.Log("StrCount += " + i);
+            //Debug.Log("buffer += " + str.Substring(strCount, i + 1));
+            //Debug.Log("StrCount += " + i);
             strCount += i;
 
             //禁則処理
             if (strCount < str.Length && IsProhiChar(str[strCount]))
             {
-                Debug.Log("禁則処理");
+                //Debug.Log("禁則処理");
                 buffer += str[strCount];
                 ++strCount;
                 endl = true;
@@ -288,7 +288,7 @@ public class TextManager : MonoBehaviour
             if (endl == false) buffer += '\n';
         }
 
-        Debug.Log("return 2");
+        //Debug.Log("return 2");
         return buffer;
     }
 
