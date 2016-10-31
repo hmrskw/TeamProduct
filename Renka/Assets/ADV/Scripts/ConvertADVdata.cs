@@ -45,7 +45,7 @@ public class ConvertADVdata : MonoBehaviour {
             this.expression[0] = 0;
             this.costume[0] = 0;
             this.pos[0] = Vector2.zero;
-            this.size[0] = 0f;
+            this.size[0] = 1f;
 
             this.choiceNum = 0;
             this.choiceText[0] = "";
@@ -68,7 +68,7 @@ public class ConvertADVdata : MonoBehaviour {
             this.expression[0] = 0;
             this.costume[0] = 0;
             this.pos[0] = Vector2.zero;
-            this.size[0] = 0f;
+            this.size[0] = 1f;
 
             this.choiceNum = 0;
             this.choiceText[0] = "";
@@ -269,7 +269,7 @@ public class ConvertADVdata : MonoBehaviour {
             didCommaSeparationData_[(int)ElementsName.POSITION_Y] != "")
             csv_.pos[csv_.drawCharacterNum] = new Vector2(
                 Convert.ToSingle(didCommaSeparationData_[(int)ElementsName.POSITION_X]),
-                Convert.ToSingle(didCommaSeparationData_[(int)ElementsName.POSITION_X]));
+                Convert.ToSingle(didCommaSeparationData_[(int)ElementsName.POSITION_Y]));
 
         if (didCommaSeparationData_[(int)ElementsName.SIZE] != "")
             csv_.size[csv_.drawCharacterNum] = Convert.ToSingle(didCommaSeparationData_[(int)ElementsName.SIZE]);

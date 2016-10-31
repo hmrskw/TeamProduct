@@ -27,8 +27,7 @@ public class ADVManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(Input.mousePosition+"\nIM"+InputManager.Instance.GetTouchPosition());
-
+        //Debug.Log(Input.mousePosition+"\nIM"+InputManager.Instance.GetTouchPosition());
 
         if (choiceManager.isActiveChoices)
         {

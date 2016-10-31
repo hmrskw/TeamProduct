@@ -26,8 +26,11 @@ public class GraphicManager : MonoBehaviour
         //ゲームオブジェクト
         public GameObject obj;
 
-        //アクセス用の変数?
+        //アクセス用の変数
         public Character charScript;
+
+        //全体の座標
+        public RectTransform rectTrans;
 
         //描画される体の画像の参照先
         public RawImage body;
@@ -48,13 +51,15 @@ public class GraphicManager : MonoBehaviour
         public int clothesNumber;
 
         //座標データ...zでサイズ指定
-        Vector2 pos;
+        public Vector2 pos;
+
+        public float size;
 
         //表情調整用...zでサイズ指定
-        Vector2 faceVec;
+        public Vector2 faceVec;
 
         //服装調整用...zでサイズ指定
-        Vector2 clothesVec;
+        public Vector2 clothesVec;
 
         /// <summary>
         /// 初期化
@@ -68,6 +73,7 @@ public class GraphicManager : MonoBehaviour
             pos = new Vector2(0, 0);
             faceVec = Vector2.zero;
             clothesVec = Vector2.zero;
+            rectTrans = charScript.GetComponent<RectTransform>();
             body = charScript.GetComponent<RawImage>();
             face = charScript.face.GetComponent<RawImage>();
             clothes = charScript.clothes.GetComponent<RawImage>();
@@ -83,7 +89,7 @@ public class GraphicManager : MonoBehaviour
             //RawImaget.textureを変更する
             body.texture = characterVariationsBuffer[CharacterNumber].bodyTex;
             face.texture = characterVariationsBuffer[CharacterNumber].faceTexs[faceNumber];
-            clothes.texture = characterVariationsBuffer[CharacterNumber].clothesTexs[clothesNumber];
+            clothes.texture = characterVariationsBuffer[CharacterNumber].clothesTexs[clothesNumber];            
         }
 
         /// <summary>
@@ -180,6 +186,14 @@ public class GraphicManager : MonoBehaviour
             characters[i].faceNumber = csv_[DataManager.Instance.endLine].expression[i];
 
             characters[i].clothesNumber = csv_[DataManager.Instance.endLine].costume[i];
+            
+            //Debug.Log(csv_[DataManager.Instance.endLine].pos[i]);
+            characters[i].rectTrans.anchoredPosition = csv_[DataManager.Instance.endLine].pos[i];
+
+            var size = csv_[DataManager.Instance.endLine].size[i];
+            Debug.Log(csv_[DataManager.Instance.endLine].size[i]);
+            //characters[i].rectTrans.sizeDelta = new Vector2(size, size);
+            characters[i].rectTrans.localScale = new Vector3(size, size, 1);
 
             characters[i].ChangeTexs();
             characters[i].obj.SetActive(true);
