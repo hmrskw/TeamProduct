@@ -194,6 +194,8 @@ public class TextManager : MonoBehaviour
 
                     //文の文字を足す
                     //text.text = /*ReadCSV.Instance.CsvData*/nowRead[DataManager.Instance.endLine].text.Substring(0, stringCount.num);
+                    Debug.Log( "エンドライン" + DataManager.Instance.endLine );
+                    //Debug.Log( nowRead[DataManager.Instance.endLine].text.Substring(0, stringCount.num) );
                     text.text = ConvertJpHyph(nowRead[DataManager.Instance.endLine].text.Substring(0, stringCount.num) ,strLength );
                 }
             }

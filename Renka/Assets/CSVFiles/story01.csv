@@ -1,7 +1,7 @@
 COMMANDO,PARAMETER,CHARACTER_NAME,EXPRESSION,COSTUME,POSITION_X,POSITION_Y,SIZE,TEXT,BACK_GROUND,BGM
 send,,村人A,通常,3,0,0,1,テキストテキストテキストテキストテキスト,0,
 send,,村人B,通常,2,0,0,1,テキスト2,0,
-send,, ,,,,,,テキスト3,,
+send,,,,,,,,テキスト3,,
 send,,,,,,,,テキスト4,,
 send,,村人A,通常,0,0,0,1,テキスト5,0,
 draw,,村人B,通常,1,0,0,0.8,テキスト6,0,
