@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
 
         if(hp>0)
         {
-            face.sprite = faceIconImages[hp-1];
+            face.sprite = faceIconImages[hp];
 
         }
     }
@@ -67,6 +67,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            face.sprite = faceIconImages[hp];
             hpImage[0].SetActive(false);
             //ステージスクロールをとめる
             stage.ScrollSpeed = 0.0f;
