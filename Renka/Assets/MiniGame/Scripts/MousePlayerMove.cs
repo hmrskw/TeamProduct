@@ -4,12 +4,14 @@ using System.Collections;
 public class MousePlayerMove : MonoBehaviour {
 
     private Vector3 prevPos;
-    private float moveSpeed;
+    private float prevFrameReminder;
 
     [SerializeField, Range(-4f, -1f)]
     float leftLimitPos;
     [SerializeField, Range(1f, 4f)]
     float rightLimitPos;
+    [SerializeField]
+    float moveSpeed;
 
     // Use this for initialization
     void Start () {
@@ -28,12 +30,12 @@ public class MousePlayerMove : MonoBehaviour {
         }
 
         //クリックしている間
-        if (/*Input.GetMouseButton(0)*/InputManager.Instance.IsTouchBegan())
+        if (/*Input.GetMouseButton(0)*/InputManager.Instance.IsTouchMoved())
         {
             //マウスのポジション取得
             float x = InputManager.Instance.GetTouchPosition().x;//Input.mousePosition.x;
             //前フレームとの移動量の差
-            moveSpeed = x / Screen.width - prevPos.x;
+            prevFrameReminder = x / Screen.width - prevPos.x;
             //現在の位置を保存しておく
             prevPos.x = x / Screen.width;
 
@@ -51,7 +53,7 @@ public class MousePlayerMove : MonoBehaviour {
             }
 
             //移動させる 
-            transform.Translate(moveSpeed*4f, 0, 0);
+            transform.Translate(prevFrameReminder*moveSpeed, 0, 0);
         }
         
 
