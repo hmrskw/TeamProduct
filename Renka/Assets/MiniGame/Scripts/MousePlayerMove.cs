@@ -28,7 +28,7 @@ public class MousePlayerMove : MonoBehaviour {
         }
 
         //クリックしている間
-        if (/*Input.GetMouseButton(0)*/InputManager.Instance.IsTouchBegan())
+        if (/*Input.GetMouseButton(0)*/InputManager.Instance.IsTouchMoved())
         {
             //マウスのポジション取得
             float x = InputManager.Instance.GetTouchPosition().x;//Input.mousePosition.x;
