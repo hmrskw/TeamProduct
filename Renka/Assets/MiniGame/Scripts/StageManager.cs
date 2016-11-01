@@ -14,11 +14,17 @@ public class StageManager : MonoBehaviour {
     [SerializeField]
     Goal goal;
 
+    [HideInInspector]
+    public float gagePlayerPos;
+    private float scrollLength;
+
     //定数
     public float roadScrollSpeed;
 
     [HideInInspector]
     public float ScrollSpeed;
+    [SerializeField] [Tooltip("道(パターン)１つの長さ")]
+    float roadLength;
 
 	// Use this for initialization
 	void Start () {
@@ -60,6 +66,12 @@ public class StageManager : MonoBehaviour {
         {
             startGoal[i].transform.Translate(0, 0, ScrollSpeed);
         }
+
+        //ステージがスクロールした長さを取得(進行度ゲージに使う)
+        scrollLength -= ScrollSpeed;
+        //ゲージの進行度合いを0~1の値に
+        gagePlayerPos = scrollLength / (roads.Length * roadLength);
+        //Debug.Log(scrollLength / (roads.Length * roadLength));
 
     }
 
