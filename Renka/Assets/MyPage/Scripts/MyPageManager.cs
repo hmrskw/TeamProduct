@@ -6,6 +6,19 @@ using UnityEngine.SceneManagement;
 public class MyPageManager : MonoBehaviour
 {
 
+    [System.Serializable]
+    public struct CharacterVisualVariation_
+    {
+        //体の画像
+        public Texture bodyTex;
+
+        //表情画像の配列
+        public Texture[] faceTexs;
+
+        //服装画像の配列
+        public Texture[] clothesTexs;
+    }
+
     [SerializeField, Tooltip("コメントを表示させるためのタップ範囲のオブジェ")]
     Image commentArea;
 
@@ -24,19 +37,29 @@ public class MyPageManager : MonoBehaviour
     [SerializeField, Tooltip("キャラクターを描画するイメージの参照")]
     RawImage image;
 
+    [SerializeField, Tooltip("キャラクターの顔を描画するイメージの参照")]
+    RawImage faceImage;
+
+    [SerializeField, Tooltip("キャラクターの服装を描画するイメージの参照")]
+    RawImage clothesImage;
+
+    [SerializeField, Tooltip("表示するキャラのトランスフォーム")]
+    RectTransform rectTrans;
+
     //前のコメントの配列番号
     int commentPrevLine;
 
+    [SerializeField, Tooltip("好感度ゲージ")]
+    Slider gauge;
 
+    [SerializeField, Tooltip("好感度の最大値")]
+    int likeMax;
+
+    [SerializeField, Tooltip("描画するかもしれないキャラのデータ")]
+    CharacterVisualVariation_[] charVariations;
 
     void Start()
     {
-
-        //キャラクターのセット
-        image.texture = texture;
-
-        //キャラクターコメントを読み込む
-        //※後で
 
         //コメントエリアのアルファ値を0して、描画をしなくする
         //ボタン判定は残す
@@ -46,6 +69,32 @@ public class MyPageManager : MonoBehaviour
 
         //0だと配列の０番目と重なるので
         commentPrevLine = -1;
+
+        //好感度の最大値と現在の好感度からゲージの割合を決める
+        Debug.Log( "好感度 : " + DataManager.Instance.likeabillity);
+        gauge.value = (float)DataManager.Instance.likeabillity / (float)likeMax;
+
+        //キャラクターの生成
+        var i = DataManager.Instance.masteringCharacterID;
+        if (i >= 0 && i < 4)
+        {
+            //キャラのセット
+            image.texture = charVariations[i].bodyTex;
+            Debug.Log( charVariations[i].bodyTex );
+            faceImage.texture = charVariations[i].faceTexs[0];
+            clothesImage.texture = charVariations[i].clothesTexs[0];
+            Debug.Log("キャラ生成 : " + i);
+        }
+        else
+        {
+            //シャア
+            image.texture = texture;
+            faceImage.enabled = false;
+            clothesImage.enabled = false;
+            rectTrans.anchoredPosition = new Vector2(0, 200);
+            rectTrans.localScale = new Vector3(0.75f, 0.6f, 1);
+            Debug.Log("シャアが来る");
+        }
 
     }
 
