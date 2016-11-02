@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/MiniGame/Scenes/MiniGame.unity
+- path: Assets/CharacterChoice/CharacterChoice.unity
   isLoaded: 1
   isActive: 1

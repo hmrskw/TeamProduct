@@ -11,6 +11,10 @@ public class DataManager : MonoBehaviour
     }
 
     //誰を攻略中か
+    // 0. 辰巳
+    // 1. 酉助
+    // 2. 卯太郎
+    // 3. 一午
     public int masteringCharacterID;
 
     //好感度
@@ -39,6 +43,7 @@ public class DataManager : MonoBehaviour
 
     public void init()
     {
+        masteringCharacterID = -1;
         likeabillity = 0;
         endLine = 0;
         isChoiceText = false;

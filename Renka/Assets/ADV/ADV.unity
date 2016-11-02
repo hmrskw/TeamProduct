@@ -514,7 +514,7 @@ MonoBehaviour:
   nameText: {fileID: 1394595527}
   text: {fileID: 432541946}
   wait: 5
-  strLength: 3
+  strLength: 16
   prohibitionCharacters: 02300130
 --- !u!114 &581259869
 MonoBehaviour:
