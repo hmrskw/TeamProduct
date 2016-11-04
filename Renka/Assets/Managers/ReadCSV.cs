@@ -14,7 +14,6 @@ public class ReadCSV
     {
         //呼んでくるCSVファイルのパスを生成
         string path = Application.dataPath + "/CSVFiles/" + pathName;
-
         //CSVデータを読み込んで、行に分割
         string[] lines = ReadCsvData(path);
 

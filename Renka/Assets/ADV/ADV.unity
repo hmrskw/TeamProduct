@@ -615,6 +615,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef422aa667ccf94449ebbb89dfd64a6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positionData:
+  - positionX: -200
+    positionName: "\u53F3"
+  - positionX: 0
+    positionName: "\u4E2D\u592E"
+  - positionX: 200
+    positionName: "\u5DE6"
+  sizeData:
+  - size: 1
+    sizeName: "\u819D\u4E0A"
+  - size: 1.5
+    sizeName: "\u8170\u4E0A"
+  prologueCSV: {fileID: 4900000, guid: 80369ad3d6f45ae4fb0cc2fc322122d9, type: 3}
+  csvFile:
+  - StoryText:
+    - {fileID: 4900000, guid: e2da11bc9a5b9e94a8d871be7653b3bb, type: 3}
+    - {fileID: 4900000, guid: 5aeafa308f47a154e82e372bcfae52ec, type: 3}
+  - StoryText:
+    - {fileID: 4900000, guid: b12356cf3bf6ab441bbaab6a5c36951b, type: 3}
+    - {fileID: 4900000, guid: 7900aefd0918ab24e82aec8d37d5cffc, type: 3}
+  - StoryText:
+    - {fileID: 4900000, guid: f7405dd0657fd484b95bf140904da288, type: 3}
+    - {fileID: 4900000, guid: 1d1bbe3bc082ab84d886d958d385c39f, type: 3}
+  - StoryText:
+    - {fileID: 4900000, guid: 6b64a3d98027ac04ea395409b4aa38be, type: 3}
+    - {fileID: 4900000, guid: 9666559269f063143b6b182bb6763de2, type: 3}
 --- !u!1 &696846153
 GameObject:
   m_ObjectHideFlags: 0

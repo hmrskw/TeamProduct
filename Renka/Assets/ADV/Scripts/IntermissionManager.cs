@@ -7,14 +7,13 @@ public class IntermissionManager : MonoBehaviour
 
     public void OnNextClick()
     {
-        Debug.Log("OnNextClick");
+        DataManager.Instance.endLine = 0;
+        SceneManager.LoadScene("ADV");
     }
 
     public void OnMyPageClick()
     {
-        Debug.Log("OnMyPageClick");
         DataManager.Instance.endLine = 0;
-        Debug.Log( DataManager.Instance.endLine );
         SceneManager.LoadScene("MyPage");
     }
 }

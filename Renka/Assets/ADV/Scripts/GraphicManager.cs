@@ -197,7 +197,7 @@ public class GraphicManager : MonoBehaviour
             characters[i].rectTrans.anchoredPosition = csv_[DataManager.Instance.endLine].pos[i];
 
             var size = csv_[DataManager.Instance.endLine].size[i];
-            Debug.Log(csv_[DataManager.Instance.endLine].size[i]);
+            //Debug.Log(csv_[DataManager.Instance.endLine].size[i]);
             //characters[i].rectTrans.sizeDelta = new Vector2(size, size);
             characters[i].rectTrans.localScale = new Vector3(size, size, 1);
 
