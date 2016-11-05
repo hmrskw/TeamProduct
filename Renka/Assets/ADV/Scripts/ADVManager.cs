@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
 using System;
 using System.Collections.Generic;
 
@@ -27,13 +26,14 @@ public class ADVManager : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(Input.mousePosition+"\nIM"+InputManager.Instance.GetTouchPosition());
 
         if (choiceManager.isActiveChoices)
         {
+            //選択肢表示中ならキーを取得
             key = choiceManager.Choice();
-            if (/*choiceManager.isActiveChoices == false*/key != null)
+            if (key != null)
             {
+                //取得したキーから読むADVデータを切り替える
                 nowRead = ConvertADVdata.Instance.choiceADVData[key];
                 textManager.nowRead = nowRead;
                 DataManager.Instance.endLine = -1;
@@ -52,38 +52,48 @@ public class ADVManager : MonoBehaviour
                 //文字送りが終わってるとき
                 if (textManager.IsDrawAllText())
                 {
-                    if (/*ConvertADVdata.Instance.advData*/nowRead.Count - 1 == DataManager.Instance.endLine)
+                    //文章の最後まで表示し終わっているか
+                    if (/*ConvertADVdata.Instance.advData*/nowRead.Count - 1 <= DataManager.Instance.endLine)
                     {
-                        if (DataManager.Instance.isChoiceText)
-                        {
+                        if (DataManager.Instance.isChoiceText){
+                            //選択肢で分岐した後の文章なら共通文章に戻る
                             DataManager.Instance.isChoiceText = false;
                             DataManager.Instance.endLine = Convert.ToInt16(nowRead[DataManager.Instance.endLine].parameter);
                             nowRead = ConvertADVdata.Instance.advData;
                             textManager.nowRead = nowRead;
                             textManager.ShiftNextText();
                         }
-                        else
-                        {
-                            //Debug.Log("init");
+                        else {
+                            //ADVシーンを終了
                             DataManager.Instance.endLine = 0;
                             DataManager.Instance.nowReadStoryID++;
                             if (DataManager.Instance.nowReadStoryID == 0)
                             {
-                                SceneManager.LoadScene("CharacterChoice");
+                                //読んでいたシーンがプロローグなら攻略キャラ選択へ移動
+                                SceneChanger.LoadScene("CharacterChoice");
                             }
                             else
                             {
-                                //canvasを消す
-                                //intermissionを表示
+                                ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
+                                //インターミッションに移動
                                 graphicManager.ChangeCanvasNext();
                             }
                         }
                     }
                     else
                     {
-                        graphicManager.Reset();
-                        textManager.ShiftNextText();
-                        graphicManager.DrawCharacter(nowRead);
+                        if (nowRead[DataManager.Instance.endLine].parameter == "minigame")
+                        {
+                            DataManager.Instance.endLine++;
+                            //パラメータがミニゲームだったらMiniGameシーンへ
+                            SceneChanger.LoadScene("MiniGame", true);
+                        }
+                        else
+                        {
+                            graphicManager.Reset();
+                            textManager.ShiftNextText();
+                            graphicManager.DrawCharacter(nowRead);
+                        }
                     }
                 }
                 else

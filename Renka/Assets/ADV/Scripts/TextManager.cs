@@ -123,13 +123,13 @@ public class TextManager : MonoBehaviour
 
     void Start()
     {
+
         nameText.text = "";
         text.text = "";
 
         nowRead = ConvertADVdata.Instance.AdvData;
 
-        //stringCount.Reset(ReadCSV.Instance.CsvData[0].text.Length);
-        stringCount.Reset(nowRead[0].text.Length);
+        stringCount.Reset(nowRead[DataManager.Instance.endLine].text.Length);
         charIntervalCount.Reset(wait);
 
         StartCoroutine(ADVUpdate());
@@ -194,7 +194,7 @@ public class TextManager : MonoBehaviour
 
                     //文の文字を足す
                     //text.text = /*ReadCSV.Instance.CsvData*/nowRead[DataManager.Instance.endLine].text.Substring(0, stringCount.num);
-                    //Debug.Log( "エンドライン" + DataManager.Instance.endLine );
+                    //Debug.Log( "el" + DataManager.Instance.endLine + "\nstringCount.num" + stringCount.num);
                     //Debug.Log( nowRead[DataManager.Instance.endLine].text.Substring(0, stringCount.num) );
                     text.text = ConvertJpHyph(nowRead[DataManager.Instance.endLine].text.Substring(0, stringCount.num) ,strLength );
                 }

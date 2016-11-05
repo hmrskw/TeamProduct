@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
 public class Goal : MonoBehaviour {
     [SerializeField]
@@ -11,7 +10,8 @@ public class Goal : MonoBehaviour {
     IEnumerator ChangeScene()
     {
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene("MyPage");
+        //SceneChanger.LoadScene("MyPage");
+        SceneChanger.LoadBeforeScene();
         yield return null;
     }
     void OnTriggerEnter(Collider other)

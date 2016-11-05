@@ -298,6 +298,7 @@ MonoBehaviour:
   faceImage: {fileID: 744936381}
   clothesImage: {fileID: 491978322}
   rectTrans: {fileID: 1715653143}
+  storyButton: {fileID: 2013343113}
   gauge: {fileID: 12869597}
   likeMax: 5
   charVariations:

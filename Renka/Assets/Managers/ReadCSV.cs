@@ -12,6 +12,16 @@ public class ReadCSV
     /// </summary>
     public string[] ReadFile(string pathName)
     {
+        /*
+        string pathName;
+
+        if (DataManager.Instance.masteringCharacterID == -1){
+            pathName = prologueCSV.name + ".csv";
+        }
+        else{
+            pathName = csvFile[DataManager.Instance.masteringCharacterID].StoryText[DataManager.Instance.nowReadStoryID].name + ".csv";
+        }
+        */
         //呼んでくるCSVファイルのパスを生成
         string path = Application.dataPath + "/CSVFiles/" + pathName;
         //CSVデータを読み込んで、行に分割

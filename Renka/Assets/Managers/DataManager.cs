@@ -18,13 +18,16 @@ public class DataManager : MonoBehaviour
     public int masteringCharacterID;
 
     //好感度
-    public int likeabillity { set; get; }
+    public int likeabillity;
 
     //今何話を読んでいるか
     public int nowReadStoryID;
 
+    //最終話が何話なのか
+    public int masteringCharacterLastStoryID;
+
     //今何行目まで読んだか
-    public int endLine { set; get; }
+    public int endLine;
 
     //今読んでいるのは選択肢後の分岐かどうか
     public bool isChoiceText;
@@ -48,5 +51,10 @@ public class DataManager : MonoBehaviour
         endLine = 0;
         isChoiceText = false;
         nowReadStoryID = -1;
+    }
+
+    public bool isEndStory()
+    {
+        return masteringCharacterLastStoryID <= nowReadStoryID;
     }
 }

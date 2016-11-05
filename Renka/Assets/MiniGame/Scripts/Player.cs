@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -73,10 +72,11 @@ public class Player : MonoBehaviour
             stage.ScrollSpeed = 0.0f;
             gameOverText.SetActive(true);
             yield return new WaitForSeconds(1);
-            SceneManager.LoadScene("MyPage");
+            //SceneChanger.LoadScene("MyPage");
+            SceneChanger.LoadBeforeScene();
         }
 
-        
+
 
 
         yield return StartCoroutine(DamageEffect());

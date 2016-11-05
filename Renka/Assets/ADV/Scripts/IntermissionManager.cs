@@ -1,19 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class IntermissionManager : MonoBehaviour
 {
+    [SerializeField]
+    Button button;
 
+    void Start()
+    {
+        if (DataManager.Instance.isEndStory())
+        {
+            button.interactable = false;
+        }
+    }
     public void OnNextClick()
     {
         DataManager.Instance.endLine = 0;
-        SceneManager.LoadScene("ADV");
+        SceneChanger.LoadScene("ADV");
     }
 
     public void OnMyPageClick()
     {
         DataManager.Instance.endLine = 0;
-        SceneManager.LoadScene("MyPage");
+        SceneChanger.LoadScene("MyPage");
     }
 }

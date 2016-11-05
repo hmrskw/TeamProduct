@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class CharChoiceManager : MonoBehaviour
@@ -66,7 +65,8 @@ public class CharChoiceManager : MonoBehaviour
         Debug.Log("Click Tatsumi");
         DataManager.Instance.masteringCharacterID = 0;
         Debug.Log("攻略キャラID : " + DataManager.Instance.masteringCharacterID);
-        SceneManager.LoadScene("MyPage");
+        ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
+        SceneChanger.LoadScene("MyPage",false);
     }
 
     public void OnClickYuusuke()
@@ -74,7 +74,8 @@ public class CharChoiceManager : MonoBehaviour
         Debug.Log("Click Yuusuke");
         DataManager.Instance.masteringCharacterID = 1;
         Debug.Log("攻略キャラID : " + DataManager.Instance.masteringCharacterID);
-        SceneManager.LoadScene("MyPage");
+        ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
+        SceneChanger.LoadScene("MyPage",false);
     }
 
     public void OnClickUtarou()
@@ -82,7 +83,8 @@ public class CharChoiceManager : MonoBehaviour
         Debug.Log("Click Utarou");
         DataManager.Instance.masteringCharacterID = 2;
         Debug.Log("攻略キャラID : " + DataManager.Instance.masteringCharacterID);
-        SceneManager.LoadScene("MyPage");
+        ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
+        SceneChanger.LoadScene("MyPage",false);
     }
 
     public void OnClickKazuma()
@@ -90,7 +92,7 @@ public class CharChoiceManager : MonoBehaviour
         Debug.Log("Click Kazuma");
         DataManager.Instance.masteringCharacterID = 3;
         Debug.Log("攻略キャラID : " + DataManager.Instance.masteringCharacterID);
-        SceneManager.LoadScene("MyPage");
+        ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
+        SceneChanger.LoadScene("MyPage",false);
     }
-
 }

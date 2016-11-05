@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
 public class MyPageManager : MonoBehaviour
 {
@@ -46,6 +45,9 @@ public class MyPageManager : MonoBehaviour
     [SerializeField, Tooltip("表示するキャラのトランスフォーム")]
     RectTransform rectTrans;
 
+    [SerializeField]
+    Button storyButton;
+
     //前のコメントの配列番号
     int commentPrevLine;
 
@@ -60,6 +62,12 @@ public class MyPageManager : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(SceneChanger.GetBeforeSceneName());
+
+        if (DataManager.Instance.isEndStory())
+        {
+            storyButton.interactable = false;
+        }
 
         //コメントエリアのアルファ値を0して、描画をしなくする
         //ボタン判定は残す
@@ -71,7 +79,6 @@ public class MyPageManager : MonoBehaviour
         commentPrevLine = -1;
 
         //好感度の最大値と現在の好感度からゲージの割合を決める
-        Debug.Log( "好感度 : " + DataManager.Instance.likeabillity);
         gauge.value = (float)DataManager.Instance.likeabillity / (float)likeMax;
 
         //キャラクターの生成
@@ -80,10 +87,8 @@ public class MyPageManager : MonoBehaviour
         {
             //キャラのセット
             image.texture = charVariations[i].bodyTex;
-            Debug.Log( charVariations[i].bodyTex );
             faceImage.texture = charVariations[i].faceTexs[0];
             clothesImage.texture = charVariations[i].clothesTexs[0];
-            Debug.Log("キャラ生成 : " + i);
         }
         else
         {
@@ -93,7 +98,6 @@ public class MyPageManager : MonoBehaviour
             clothesImage.enabled = false;
             rectTrans.anchoredPosition = new Vector2(0, 200);
             rectTrans.localScale = new Vector3(0.75f, 0.6f, 1);
-            Debug.Log("シャアが来る");
         }
 
     }
@@ -104,7 +108,7 @@ public class MyPageManager : MonoBehaviour
     public void OnClickStory()
     {
         //Debug.Log(DataManager.Instance.endLine);
-        SceneManager.LoadScene("ADV");
+        SceneChanger.LoadScene("ADV");
     }
 
     /// <summary>
@@ -112,8 +116,7 @@ public class MyPageManager : MonoBehaviour
     /// </summary>
     public void OnClickMiniGame()
     {
-        SceneManager.LoadScene("MiniGame");
-        //Debug.Log("Click MiniGame");
+        SceneChanger.LoadScene("MiniGame",true);
     }
 
     /// <summary>
@@ -137,8 +140,6 @@ public class MyPageManager : MonoBehaviour
     /// </summary>
     public void OnClickCommentArea()
     {
-        Debug.Log("Click CommentArea");
-
         //ランダムにコメントを変える
         var line = Random.Range(0, comments.Length);
 
@@ -147,7 +148,6 @@ public class MyPageManager : MonoBehaviour
         {
             while (line == commentPrevLine)
             {
-                Debug.Log("Re: Randam : " + line);
                 line = Random.Range(0, comments.Length);
             }
             commentPrevLine = line;
@@ -155,7 +155,5 @@ public class MyPageManager : MonoBehaviour
 
         //コメントを表示テキストに上書きする
         commentText.text = comments[line];
-        Debug.Log("Randam Comment : " + line);
     }
-
 }

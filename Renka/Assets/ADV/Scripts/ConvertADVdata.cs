@@ -183,16 +183,6 @@ public class ConvertADVdata : MonoBehaviour {
     //サイズの情報
     Dictionary<string, float> sizeDataDictionary = new Dictionary<string, float>();
 
-
-
-    //パスの名前
-    /*private string[,] pathName = 
-    {
-        {
-            "story01.csv" //１話
-        }
-    };*/
-
     void Awake()
     {
         foreach (PositionData data in positionData) {
@@ -260,6 +250,12 @@ public class ConvertADVdata : MonoBehaviour {
                 if (advDataTmp.command == "return")
                     break;
 
+                if (advDataTmp.command == "minigame")
+                {
+                    advDataTmp.parameter = "minigame";
+                    break;
+                }
+
                 if (isEventMode == false)
                     storeDrawData(advDataTmp, didCommaSeparationData);
 
@@ -306,7 +302,11 @@ public class ConvertADVdata : MonoBehaviour {
                 }
             }
         }
+    }
 
+    public void SetMasteringCharacterLastStoryID()
+    {
+        DataManager.Instance.masteringCharacterLastStoryID = csvFile[DataManager.Instance.masteringCharacterID].StoryText.Length;
     }
 
     void storeCommand(ADVData csv_, string[] didCommaSeparationData_)
