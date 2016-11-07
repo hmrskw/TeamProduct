@@ -1010,8 +1010,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canSelectsTatsumi: 1
   canSelectsYuusuke: 1
-  canSelectsUtarou: 1
-  canSelectsKazuma: 1
+  canSelectsUtarou: 0
+  canSelectsKazuma: 0
   tatsumi: {fileID: 872991004}
   yuusuke: {fileID: 74944170}
   utarou: {fileID: 946193953}

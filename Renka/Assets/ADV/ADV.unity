@@ -528,62 +528,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterVariations:
-  - bodyTex: {fileID: 2800000, guid: 5a43498442764ef4da79a2a6d2364270, type: 3}
-    faceTexs:
-    - {fileID: 2800000, guid: 60cb1df2efabf964a8c607711e4c06a1, type: 3}
-    - {fileID: 2800000, guid: 2f3feccbd75f26741a6d278a377a2e7c, type: 3}
-    - {fileID: 2800000, guid: 68ad948ca5542e247b642d7e208b099a, type: 3}
-    - {fileID: 2800000, guid: 8cd2cfe5e215b284aa02ec68850be152, type: 3}
-    - {fileID: 2800000, guid: 7c704fc4da9f50346b59b3a9580cafbc, type: 3}
-    clothesTexs:
-    - {fileID: 2800000, guid: 5781659bc780b7140a00912f8f7b23c3, type: 3}
-    - {fileID: 2800000, guid: 2250dd897263374418cc6087afac0567, type: 3}
-    - {fileID: 2800000, guid: 1e399e5cb40fd7340a1be23da8aca44b, type: 3}
-    - {fileID: 2800000, guid: 52952d7ae5a9dae499864d8fd9d2aec8, type: 3}
-  - bodyTex: {fileID: 2800000, guid: f6d47d5be037b604aa2cefd1b0e0e2b1, type: 3}
-    faceTexs:
-    - {fileID: 2800000, guid: 60cb1df2efabf964a8c607711e4c06a1, type: 3}
-    - {fileID: 2800000, guid: 2f3feccbd75f26741a6d278a377a2e7c, type: 3}
-    - {fileID: 2800000, guid: 68ad948ca5542e247b642d7e208b099a, type: 3}
-    - {fileID: 2800000, guid: 8cd2cfe5e215b284aa02ec68850be152, type: 3}
-    - {fileID: 2800000, guid: 7c704fc4da9f50346b59b3a9580cafbc, type: 3}
-    clothesTexs:
-    - {fileID: 2800000, guid: 5781659bc780b7140a00912f8f7b23c3, type: 3}
-    - {fileID: 2800000, guid: 2250dd897263374418cc6087afac0567, type: 3}
-    - {fileID: 2800000, guid: 1e399e5cb40fd7340a1be23da8aca44b, type: 3}
-    - {fileID: 2800000, guid: 52952d7ae5a9dae499864d8fd9d2aec8, type: 3}
-  - bodyTex: {fileID: 2800000, guid: 9f7d68706cd69ea44ad86014afedfc3a, type: 3}
-    faceTexs:
-    - {fileID: 2800000, guid: 60cb1df2efabf964a8c607711e4c06a1, type: 3}
-    - {fileID: 2800000, guid: 2f3feccbd75f26741a6d278a377a2e7c, type: 3}
-    - {fileID: 2800000, guid: 68ad948ca5542e247b642d7e208b099a, type: 3}
-    - {fileID: 2800000, guid: 8cd2cfe5e215b284aa02ec68850be152, type: 3}
-    - {fileID: 2800000, guid: 7c704fc4da9f50346b59b3a9580cafbc, type: 3}
-    clothesTexs:
-    - {fileID: 2800000, guid: 5781659bc780b7140a00912f8f7b23c3, type: 3}
-    - {fileID: 2800000, guid: 2250dd897263374418cc6087afac0567, type: 3}
-    - {fileID: 2800000, guid: 1e399e5cb40fd7340a1be23da8aca44b, type: 3}
-    - {fileID: 2800000, guid: 52952d7ae5a9dae499864d8fd9d2aec8, type: 3}
-  - bodyTex: {fileID: 2800000, guid: 2a8cee6e686a4d240b09e1dcd5ea7cf8, type: 3}
-    faceTexs:
-    - {fileID: 2800000, guid: 60cb1df2efabf964a8c607711e4c06a1, type: 3}
-    - {fileID: 2800000, guid: 2f3feccbd75f26741a6d278a377a2e7c, type: 3}
-    - {fileID: 2800000, guid: 68ad948ca5542e247b642d7e208b099a, type: 3}
-    - {fileID: 2800000, guid: 8cd2cfe5e215b284aa02ec68850be152, type: 3}
-    - {fileID: 2800000, guid: 7c704fc4da9f50346b59b3a9580cafbc, type: 3}
-    clothesTexs:
-    - {fileID: 2800000, guid: 5781659bc780b7140a00912f8f7b23c3, type: 3}
-    - {fileID: 2800000, guid: 2250dd897263374418cc6087afac0567, type: 3}
-    - {fileID: 2800000, guid: 1e399e5cb40fd7340a1be23da8aca44b, type: 3}
-    - {fileID: 2800000, guid: 52952d7ae5a9dae499864d8fd9d2aec8, type: 3}
+  - faceTexs:
+    - {fileID: 2800000, guid: 96e4f99c438bc8e44a67764fb232984c, type: 3}
+    - {fileID: 2800000, guid: f5515565db959704c87941d03c0b0055, type: 3}
+    - {fileID: 2800000, guid: 7792e42110fc24047b4a20a81395e2b6, type: 3}
+  - faceTexs:
+    - {fileID: 2800000, guid: ea54598dc521ff243adcd30d3403cac4, type: 3}
+    - {fileID: 2800000, guid: ea54598dc521ff243adcd30d3403cac4, type: 3}
+    - {fileID: 2800000, guid: ea54598dc521ff243adcd30d3403cac4, type: 3}
+  - faceTexs:
+    - {fileID: 2800000, guid: 96e4f99c438bc8e44a67764fb232984c, type: 3}
+    - {fileID: 2800000, guid: f5515565db959704c87941d03c0b0055, type: 3}
+    - {fileID: 2800000, guid: 7792e42110fc24047b4a20a81395e2b6, type: 3}
+  - faceTexs:
+    - {fileID: 2800000, guid: 96e4f99c438bc8e44a67764fb232984c, type: 3}
+    - {fileID: 2800000, guid: f5515565db959704c87941d03c0b0055, type: 3}
+    - {fileID: 2800000, guid: 7792e42110fc24047b4a20a81395e2b6, type: 3}
   characterMax: 2
   charactersObject: {fileID: 1767463625}
   charPrefabObj: {fileID: 1000011363813240, guid: 28181ea1b93c55e459288277b5dd199a,
     type: 2}
   backgroundTexs:
+  - {fileID: 2800000, guid: e5d28fc1e1864de4b916bb1920e4c1c1, type: 3}
+  - {fileID: 2800000, guid: f83e5f05f45201145a7e2a31c711c2d5, type: 3}
   - {fileID: 2800000, guid: 6d93cdb350d28584fb4dc5d713b3934c, type: 3}
   - {fileID: 2800000, guid: 01ee81a2db7f36e4b8d0b87a07938395, type: 3}
-  - {fileID: 2800000, guid: 4b8c589a33c00d64baf41adcf7b22806, type: 3}
   background: {fileID: 2083202847}
   canvas: {fileID: 991777587}
   intermission: {fileID: 1386432078}
@@ -623,20 +592,16 @@ MonoBehaviour:
   - positionX: 200
     positionName: "\u5DE6"
   sizeData:
-  - size: 1
+  - size: 2
     sizeName: "\u819D\u4E0A"
-  - size: 1.5
+  - size: 4
     sizeName: "\u8170\u4E0A"
-  prologueCSV: {fileID: 4900000, guid: 80369ad3d6f45ae4fb0cc2fc322122d9, type: 3}
+  prologueCSV: {fileID: 4900000, guid: befb86566c557b847a2bcd7c7a6af1f5, type: 3}
   csvFile:
-  - StoryText:
-    - {fileID: 4900000, guid: e2da11bc9a5b9e94a8d871be7653b3bb, type: 3}
-  - StoryText:
-    - {fileID: 4900000, guid: f7405dd0657fd484b95bf140904da288, type: 3}
-    - {fileID: 4900000, guid: 1d1bbe3bc082ab84d886d958d385c39f, type: 3}
-    - {fileID: 4900000, guid: 6b64a3d98027ac04ea395409b4aa38be, type: 3}
-    - {fileID: 4900000, guid: 9666559269f063143b6b182bb6763de2, type: 3}
-    - {fileID: 4900000, guid: 4ea620320ef437544a2796aa4e6e26aa, type: 3}
+  - StoryText: []
+  - StoryText: []
+  - StoryText: []
+  - StoryText: []
 --- !u!1 &696846153
 GameObject:
   m_ObjectHideFlags: 0

@@ -186,7 +186,6 @@ public class ConvertADVdata : MonoBehaviour {
     void Awake()
     {
         foreach (PositionData data in positionData) {
-            Debug.Log(data.positionName+ data.positionX);
             positionDataDictionary.Add(data.positionName,data.positionX);
         }
 
@@ -359,7 +358,17 @@ public class ConvertADVdata : MonoBehaviour {
             csv_.sendCharacter = Convert.ToString(didCommaSeparationData_[(int)ElementsName.CHARACTER_NAME]);
 
         if (didCommaSeparationData_[(int)ElementsName.TEXT] != "")
-            csv_.text = Convert.ToString(didCommaSeparationData_[(int)ElementsName.TEXT]);
+            csv_.text = ConvertNewLineCode(didCommaSeparationData_[(int)ElementsName.TEXT]);
+    }
+
+    /// <summary>
+    /// 文字列内の"\n"の文字列を'\n'に文字に変える
+    /// </summary>
+    /// <param name="str"></param>
+    /// <returns></returns>
+    string ConvertNewLineCode(string str)
+    {
+        return str.Replace("\\" + "n", "\n");
     }
 
     /// <summary> キャラクター名から各キャラクターに割り振られているIDに変換 </summary>
@@ -368,11 +377,11 @@ public class ConvertADVdata : MonoBehaviour {
     int CharacterNameToID(string characterName_)
     {
         int id = 0;
-        if (characterName_ == "村人A")
+        if (characterName_ == "辰己")
         {
             id = 0;
         }
-        if (characterName_ == "村人B")
+        if (characterName_ == "酉助")
         {
             id = 1;
         }
@@ -448,50 +457,5 @@ public class ConvertADVdata : MonoBehaviour {
             id = 3;
         }
         return id;
-    }
-
-    /// <summary> ポジション名から実際のポジション値に変換 </summary>
-    /// <param name="posX">CSVに書かれているポジション名</param>
-    /// <returns>キャラクターを描画する横位置</returns>
-    float PositionNameToPosition(string posX)
-    {
-        float pos = 0;
-        switch (posX)
-        {
-            case "右":
-                pos = 200f;
-                break;
-            case "中央":
-                pos = 0f;
-                break;
-            case "左":
-                pos = -200f;
-                break;
-            default:
-                pos = 0f;
-                break;
-        }
-        return pos;
-    }
-
-    /// <summary> 文字からそれに対応したサイズの値に変換 </summary>
-    /// <param name="sizeName">サイズを指定する文字</param>
-    /// <returns>キャラクター表示サイズ</returns>
-    float SizeNameToSize(string sizeName)
-    {
-        float size = 0;
-        switch (sizeName)
-        {
-            case "膝上":
-                size = 1f;
-                break;
-            case "腰上":
-                size = 0.5f;
-                break;
-            default:
-                size = 1f;
-                break;
-        }
-        return size;
     }
 }

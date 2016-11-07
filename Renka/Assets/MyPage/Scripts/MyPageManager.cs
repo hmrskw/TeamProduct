@@ -9,13 +9,13 @@ public class MyPageManager : MonoBehaviour
     public struct CharacterVisualVariation_
     {
         //体の画像
-        public Texture bodyTex;
+        //public Texture bodyTex;
 
         //表情画像の配列
         public Texture[] faceTexs;
 
         //服装画像の配列
-        public Texture[] clothesTexs;
+        //public Texture[] clothesTexs;
     }
 
     [SerializeField, Tooltip("コメントを表示させるためのタップ範囲のオブジェ")]
@@ -86,9 +86,11 @@ public class MyPageManager : MonoBehaviour
         if (i >= 0 && i < 4)
         {
             //キャラのセット
-            image.texture = charVariations[i].bodyTex;
-            faceImage.texture = charVariations[i].faceTexs[0];
-            clothesImage.texture = charVariations[i].clothesTexs[0];
+            //image.texture = charVariations[i].bodyTex;
+            //faceImage.texture = charVariations[i].faceTexs[0];
+            //clothesImage.texture = charVariations[i].clothesTexs[0];
+            rectTrans.anchoredPosition = new Vector3(0, -200, 0);
+            image.texture = charVariations[i].faceTexs[0];
         }
         else
         {
@@ -97,7 +99,7 @@ public class MyPageManager : MonoBehaviour
             faceImage.enabled = false;
             clothesImage.enabled = false;
             rectTrans.anchoredPosition = new Vector2(0, 200);
-            rectTrans.localScale = new Vector3(0.75f, 0.6f, 1);
+            rectTrans.localScale = new Vector3(2f, 2f, 1);
         }
 
     }

@@ -302,26 +302,14 @@ MonoBehaviour:
   gauge: {fileID: 12869597}
   likeMax: 5
   charVariations:
-  - bodyTex: {fileID: 2800000, guid: 5a43498442764ef4da79a2a6d2364270, type: 3}
-    faceTexs:
-    - {fileID: 2800000, guid: 60cb1df2efabf964a8c607711e4c06a1, type: 3}
-    clothesTexs:
-    - {fileID: 2800000, guid: 5781659bc780b7140a00912f8f7b23c3, type: 3}
-  - bodyTex: {fileID: 2800000, guid: f6d47d5be037b604aa2cefd1b0e0e2b1, type: 3}
-    faceTexs:
-    - {fileID: 2800000, guid: 60cb1df2efabf964a8c607711e4c06a1, type: 3}
-    clothesTexs:
-    - {fileID: 2800000, guid: 5781659bc780b7140a00912f8f7b23c3, type: 3}
-  - bodyTex: {fileID: 2800000, guid: 9f7d68706cd69ea44ad86014afedfc3a, type: 3}
-    faceTexs:
-    - {fileID: 2800000, guid: 60cb1df2efabf964a8c607711e4c06a1, type: 3}
-    clothesTexs:
-    - {fileID: 2800000, guid: 5781659bc780b7140a00912f8f7b23c3, type: 3}
-  - bodyTex: {fileID: 2800000, guid: 2a8cee6e686a4d240b09e1dcd5ea7cf8, type: 3}
-    faceTexs:
-    - {fileID: 2800000, guid: 60cb1df2efabf964a8c607711e4c06a1, type: 3}
-    clothesTexs:
-    - {fileID: 2800000, guid: 5781659bc780b7140a00912f8f7b23c3, type: 3}
+  - faceTexs:
+    - {fileID: 2800000, guid: 96e4f99c438bc8e44a67764fb232984c, type: 3}
+  - faceTexs:
+    - {fileID: 2800000, guid: ea54598dc521ff243adcd30d3403cac4, type: 3}
+  - faceTexs:
+    - {fileID: 2800000, guid: f5515565db959704c87941d03c0b0055, type: 3}
+  - faceTexs:
+    - {fileID: 2800000, guid: 7792e42110fc24047b4a20a81395e2b6, type: 3}
 --- !u!1 &433804525
 GameObject:
   m_ObjectHideFlags: 0

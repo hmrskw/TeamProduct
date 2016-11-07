@@ -11,13 +11,13 @@ public class GraphicManager : MonoBehaviour
     public struct CharacterVisualVariation_
     {
         //体の画像
-        public Texture bodyTex;
+        //public Texture bodyTex;
 
         //表情画像の配列
         public Texture[] faceTexs;
 
         //服装画像の配列
-        public Texture[] clothesTexs;
+        //public Texture[] clothesTexs;
     }
 
     //描画するための器
@@ -36,10 +36,10 @@ public class GraphicManager : MonoBehaviour
         public RawImage body;
 
         //描画される表情の画像の参照先
-        public RawImage face;
+        //public RawImage face;
 
         //描画される服装の画像の参照先
-        public RawImage clothes;
+        //public RawImage clothes;
 
         //描画される体の画像の参照先
         public int CharacterNumber;
@@ -48,7 +48,7 @@ public class GraphicManager : MonoBehaviour
         public int faceNumber;
 
         //服装の番号
-        public int clothesNumber;
+        //public int clothesNumber;
 
         //座標データ...zでサイズ指定
         public Vector2 pos;
@@ -68,15 +68,15 @@ public class GraphicManager : MonoBehaviour
         {
             CharacterNumber = 0;
             faceNumber = 0;
-            clothesNumber = 0;
+            //clothesNumber = 0;
 
             pos = new Vector2(0, 0);
             faceVec = Vector2.zero;
             clothesVec = Vector2.zero;
             rectTrans = charScript.GetComponent<RectTransform>();
             body = charScript.GetComponent<RawImage>();
-            face = charScript.face.GetComponent<RawImage>();
-            clothes = charScript.clothes.GetComponent<RawImage>();
+            //face = charScript.face.GetComponent<RawImage>();
+            //clothes = charScript.clothes.GetComponent<RawImage>();
 
             ChangeTexs();
         }
@@ -87,9 +87,10 @@ public class GraphicManager : MonoBehaviour
         public void ChangeTexs()
         {
             //RawImaget.textureを変更する
-            body.texture = characterVariationsBuffer[CharacterNumber].bodyTex;
-            face.texture = characterVariationsBuffer[CharacterNumber].faceTexs[faceNumber];
-            clothes.texture = characterVariationsBuffer[CharacterNumber].clothesTexs[clothesNumber];            
+            //body.texture = characterVariationsBuffer[CharacterNumber].bodyTex;
+            body.texture = characterVariationsBuffer[CharacterNumber].faceTexs[faceNumber];
+            //face.texture = characterVariationsBuffer[CharacterNumber].faceTexs[faceNumber];
+            //clothes.texture = characterVariationsBuffer[CharacterNumber].clothesTexs[clothesNumber];            
         }
 
         /// <summary>
@@ -97,17 +98,18 @@ public class GraphicManager : MonoBehaviour
         /// </summary>
         public void ChangeFace()
         {
-            face.texture = characterVariationsBuffer[0].faceTexs[faceNumber];
+            //face
+            body.texture = characterVariationsBuffer[0].faceTexs[faceNumber];
         }
 
         /// <summary>
         /// 服装の画像を上書きされた番号に変える
         /// </summary>
-        public void ChangeClothes()
+        /*public void ChangeClothes()
         {
             Debug.Log(clothesNumber);
             clothes.texture = characterVariationsBuffer[0].clothesTexs[clothesNumber];
-        }
+        }*/
 
         //描画フラグ
         bool isDraws;
@@ -177,6 +179,7 @@ public class GraphicManager : MonoBehaviour
             characters[i].Setup();
         }
         DrawCharacter(ConvertADVdata.Instance.advData);
+        DrawBack(ConvertADVdata.Instance.advData[DataManager.Instance.endLine].backGroundID);
     }
 
     /// <summary>
@@ -191,7 +194,7 @@ public class GraphicManager : MonoBehaviour
 
             characters[i].faceNumber = csv_[DataManager.Instance.endLine].expression[i];
 
-            characters[i].clothesNumber = csv_[DataManager.Instance.endLine].costume[i];
+            //characters[i].clothesNumber = csv_[DataManager.Instance.endLine].costume[i];
             
             //Debug.Log(csv_[DataManager.Instance.endLine].pos[i]);
             characters[i].rectTrans.anchoredPosition = csv_[DataManager.Instance.endLine].pos[i];
@@ -204,6 +207,11 @@ public class GraphicManager : MonoBehaviour
             characters[i].ChangeTexs();
             characters[i].obj.SetActive(true);
         }
+    }
+
+    public void DrawBack(int backGroundID_)
+    {
+        background.texture = backgroundTexs[backGroundID_];
     }
 
     public void Reset()

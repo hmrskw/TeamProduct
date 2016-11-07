@@ -287,13 +287,14 @@ public class TextManager : MonoBehaviour
                 endl = true;
 
             }
-            if (endl == false) buffer += '\n';
+
+            if (endl == false && str[strCount] != '\n') buffer += '\n';
         }
 
         //Debug.Log("return 2");
         return buffer;
     }
-
+    /*
     /// <summary>
     /// 文字列内の"\n"の文字列を'\n'に文字に変える
     /// </summary>
@@ -302,5 +303,5 @@ public class TextManager : MonoBehaviour
     string ConvertNewLineCode(string str)
     {
         return str.Replace("\\" + "n", "\n");
-    }
+    }*/
 }
