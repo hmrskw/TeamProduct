@@ -14,6 +14,8 @@ public class StageManager : MonoBehaviour {
     [SerializeField]
     Goal goal;
 
+    
+
     [HideInInspector]
     public float gagePlayerPos;
     private float scrollLength;
@@ -30,12 +32,16 @@ public class StageManager : MonoBehaviour {
 	void Start () {
         ScrollSpeed = roadScrollSpeed;
         StageShuffle();
-        StartCoroutine(test());
+        StartCoroutine(stageMoveCor());
     }
-    IEnumerator test()
+    IEnumerator stageMoveCor()
     {
+        ScrollSpeed =0.0f;
 
+        //開始前に3秒待つ
         yield return new WaitForSeconds(3.0f);
+
+        ScrollSpeed = roadScrollSpeed;
         //ゴールするまで
         while (!goal.isGoal)
         {
@@ -46,6 +52,8 @@ public class StageManager : MonoBehaviour {
 
         yield return null;
     }
+
+   
 
 	
 	// Update is called once per frame

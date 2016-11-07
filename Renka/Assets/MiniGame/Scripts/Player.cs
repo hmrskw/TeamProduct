@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -18,10 +19,22 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Sprite[] faceIconImages;
 
+    //テクスチャアニメーション//////////////////////////////
+    [SerializeField]
+    private Texture[] characterAnimationImages;
+
+    [SerializeField][Tooltip("キャラクターのテクスチャが切り替わるまでの時間")]
+    float animationChangeTime;
+
+    private float nowTime;
+    private int nowTextureNum;
+    // ///////////////////////////////////////////////////
+
     [SerializeField]
     private GameObject faceIconUi;
 
     private Image face;
+    private Material playerMate;
 
     private bool is_hit = false;
 
@@ -29,6 +42,7 @@ public class Player : MonoBehaviour
     {
         hp = hpImage.Length;
         face = faceIconUi.GetComponent<Image>();
+        playerMate = GetComponent<Renderer>().material;
         
 
     }
@@ -36,11 +50,37 @@ public class Player : MonoBehaviour
    void Update()
     {
 
-        if(hp>0)
+
+        //StartCoroutine(caracterAnimation());
+        TextureAnim();
+        if (hp>0)
         {
             face.sprite = faceIconImages[hp];
 
         }
+    }
+
+    //キャラクターの走るアニメーション
+    void TextureAnim()
+    {
+        if(stage.ScrollSpeed < -0.1f)
+        {
+
+            nowTime += Time.deltaTime;
+        }
+        
+        if (nowTime>animationChangeTime)
+        {
+            
+            nowTime = 0f;
+            nowTextureNum++;
+            if(nowTextureNum>=characterAnimationImages.Length)
+            {
+                
+                nowTextureNum = 0;
+            }
+        }
+        playerMate.mainTexture = characterAnimationImages[nowTextureNum];
     }
 
     void OnTriggerEnter(Collider other)
@@ -72,17 +112,35 @@ public class Player : MonoBehaviour
             stage.ScrollSpeed = 0.0f;
             gameOverText.SetActive(true);
             yield return new WaitForSeconds(1);
-            //SceneChanger.LoadScene("MyPage");
-            SceneChanger.LoadBeforeScene();
+            SceneManager.LoadScene("MyPage");
         }
 
-
+        
 
 
         yield return StartCoroutine(DamageEffect());
         
         //ステージの移動を元に戻す
         stage.ScrollSpeed = stage.roadScrollSpeed;
+    }
+
+
+    //作成中
+    IEnumerator caracterAnimation()
+    {
+        while (stage.ScrollSpeed<-0.1f)
+        {
+            yield return new WaitForSeconds(1);
+            
+            playerMate.mainTexture = characterAnimationImages[1];
+            yield return new WaitForSeconds(1);
+             playerMate.mainTexture = characterAnimationImages[0];
+           
+            yield return null;
+        }
+
+            
+
     }
 
     [SerializeField]
@@ -101,8 +159,8 @@ public class Player : MonoBehaviour
             
             interval += Time.deltaTime;
 
-            //renderer.material.color = new Color(1f, 0, 0, sin);
-            var color = Color.red;
+            
+            var color = Color.white;
             color.a = alpha;
             renderer.material.color = color;
 
@@ -110,6 +168,6 @@ public class Player : MonoBehaviour
           
         }
 
-        renderer.material.color = Color.red;
+        renderer.material.color = Color.white;
     }
 }
