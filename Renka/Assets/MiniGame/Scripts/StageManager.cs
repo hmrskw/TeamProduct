@@ -1,20 +1,24 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-public class StageManager : MonoBehaviour {
+public class StageManager : MonoBehaviour
+{
 
     [SerializeField]
     GameObject[] roads;
     [SerializeField]
-    GameObject[] startGoal =new GameObject [2];
+    GameObject[] startGoal = new GameObject[2];
 
     [SerializeField]
     Goal goal;
+    [SerializeField]
+    Text startCountText;
 
-    
+
 
     [HideInInspector]
     public float gagePlayerPos;
@@ -25,21 +29,45 @@ public class StageManager : MonoBehaviour {
 
     [HideInInspector]
     public float ScrollSpeed;
-    [SerializeField] [Tooltip("道(パターン)１つの長さ")]
+    [SerializeField]
+    [Tooltip("道(パターン)１つの長さ")]
     float roadLength;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         ScrollSpeed = roadScrollSpeed;
         StageShuffle();
         StartCoroutine(stageMoveCor());
     }
+
+    //スタート前のカウント    
+    IEnumerator StartCount()
+    {
+
+        startCountText.text = "参";
+        yield return new WaitForSeconds(1f);
+
+        startCountText.text = "弐";
+        yield return new WaitForSeconds(1f);
+
+        startCountText.text = "壱";
+        yield return new WaitForSeconds(1f);
+
+        startCountText.text = "始め";
+        yield return new WaitForSeconds(1f);
+        startCountText.text = "";
+        yield return null;
+
+    }
+
     IEnumerator stageMoveCor()
     {
-        ScrollSpeed =0.0f;
+        ScrollSpeed = 0.0f;
 
-        //開始前に3秒待つ
-        yield return new WaitForSeconds(3.0f);
+
+        //開始前に4秒待ってカウントダウン表示
+        yield return StartCoroutine(StartCount());
 
         ScrollSpeed = roadScrollSpeed;
         //ゴールするまで
@@ -53,14 +81,15 @@ public class StageManager : MonoBehaviour {
         yield return null;
     }
 
-   
 
-	
-	// Update is called once per frame
-	void Update () {
+
+
+    // Update is called once per frame
+    void Update()
+    {
 
         //StageMove();
-        
+
 
     }
 
@@ -85,8 +114,8 @@ public class StageManager : MonoBehaviour {
 
     void StageShuffle()
     {
-        roads = roads.OrderBy(i=>Guid.NewGuid()).ToArray();
-        for(int i=0;i<roads.Length;i++)
+        roads = roads.OrderBy(i => Guid.NewGuid()).ToArray();
+        for (int i = 0; i < roads.Length; i++)
         {
             roads[i].transform.position = new Vector3(0, 0, i * 30 + 5);
         }
