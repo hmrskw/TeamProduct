@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
     {
 
 
-        //StartCoroutine(caracterAnimation());
+        
         TextureAnim();
         if (hp>0)
         {

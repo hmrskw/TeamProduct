@@ -18,6 +18,9 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     Text startCountText;
 
+    [SerializeField]
+    GameObject waitClickText;
+
 
 
     [HideInInspector]
@@ -61,10 +64,25 @@ public class StageManager : MonoBehaviour
 
     }
 
+    IEnumerator waitClick()
+    {
+        while(true)
+        {
+            if (InputManager.Instance.IsTouchBegan())
+            {
+                waitClickText.SetActive(false);
+                break;
+            }
+            yield return null;
+        }
+    }
+
     IEnumerator stageMoveCor()
     {
         ScrollSpeed = 0.0f;
-
+        
+        //クリックされてから
+        yield return StartCoroutine(waitClick());
 
         //開始前に4秒待ってカウントダウン表示
         yield return StartCoroutine(StartCount());
