@@ -17,12 +17,14 @@ public class IntermissionManager : MonoBehaviour
     public void OnNextClick()
     {
         DataManager.Instance.endLine = 0;
+        DataManager.Instance.nowReadStoryID++;
         SceneChanger.LoadScene("ADV");
     }
 
     public void OnMyPageClick()
     {
         DataManager.Instance.endLine = 0;
+        DataManager.Instance.nowReadStoryID++;
         SceneChanger.LoadScene("MyPage");
     }
 }

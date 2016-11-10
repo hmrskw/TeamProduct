@@ -69,6 +69,9 @@ public class TextManager : MonoBehaviour
     [SerializeField, Tooltip("本文を表示するためのテキストボックス")]
     Text text;
 
+    [SerializeField,Tooltip("インターミッションのテキストボックス")]
+    Text intermissionText;
+
     [SerializeField, Range(0, 5), Tooltip("このフレーム分待機する")]
     int wait;
 
@@ -293,6 +296,11 @@ public class TextManager : MonoBehaviour
 
         //Debug.Log("return 2");
         return buffer;
+    }
+
+    public void IntermissionTextChange()
+    {
+        intermissionText.text = DataManager.Instance.nowReadStoryID+1 + "話　プロット";
     }
     /*
     /// <summary>

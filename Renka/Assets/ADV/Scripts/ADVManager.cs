@@ -30,12 +30,9 @@ public class ADVManager : MonoBehaviour
 
         if (SceneChanger.GetBeforeSceneName(true) == "MiniGame")
         {
-            //ADVシーンを終了
-            DataManager.Instance.endLine = 0;
-            DataManager.Instance.nowReadStoryID++;
-
             ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
             //インターミッションに移動
+            textManager.IntermissionTextChange();
             graphicManager.ChangeCanvasNext();
         }
     }
@@ -118,10 +115,9 @@ public class ADVManager : MonoBehaviour
                 else
                 {
                     //ADVシーンを終了
-                    DataManager.Instance.endLine = 0;
-                    DataManager.Instance.nowReadStoryID++;
                     ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
                     //インターミッションに移動
+                    textManager.IntermissionTextChange();
                     graphicManager.ChangeCanvasNext();
                 }
             }
