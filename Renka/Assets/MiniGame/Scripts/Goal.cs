@@ -11,7 +11,7 @@ public class Goal : MonoBehaviour {
     {
         yield return new WaitForSeconds(1);
         //SceneChanger.LoadScene("MyPage");
-        SceneChanger.LoadBeforeScene();
+        SceneChanger.LoadBeforeScene(true);
         yield return null;
     }
     void OnTriggerEnter(Collider other)

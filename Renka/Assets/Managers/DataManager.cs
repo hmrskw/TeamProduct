@@ -50,7 +50,7 @@ public class DataManager : MonoBehaviour
         likeabillity = 0;
         endLine = 0;
         isChoiceText = false;
-        nowReadStoryID = -1;
+        nowReadStoryID = 0;
     }
 
     public bool isEndStory()

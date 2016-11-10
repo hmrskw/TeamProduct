@@ -112,7 +112,7 @@ public class Player : MonoBehaviour
             stage.ScrollSpeed = 0.0f;
             gameOverText.SetActive(true);
             yield return new WaitForSeconds(1);
-            SceneManager.LoadScene("MyPage");
+            SceneChanger.LoadBeforeScene(true);
         }
 
         
