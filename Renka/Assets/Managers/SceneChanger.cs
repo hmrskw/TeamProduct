@@ -40,13 +40,10 @@ public static class SceneChanger
 
     /// <summary>一つ前のシーン名を取得</summary>
     /// <returns>一つ前のシーン名</returns>
-    public static string GetBeforeSceneName(bool isPopSceneName = false)
+    public static string GetBeforeSceneName()
     {
         if (beforeSceneName.Count > 0) {
-            if (isPopSceneName)
-                return beforeSceneName.Pop();
-            else
-                return beforeSceneName.Peek();
+            return beforeSceneName.Peek();
         }
         else {
             return null;

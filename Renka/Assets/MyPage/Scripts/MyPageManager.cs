@@ -87,7 +87,7 @@ public class MyPageManager : MonoBehaviour
         {
             //キャラのセット
             //image.texture = charVariations[i].bodyTex;
-            faceImage.gameObject.SetActive(false);
+            //faceImage.texture = charVariations[i].faceTexs[0];
             //clothesImage.texture = charVariations[i].clothesTexs[0];
             rectTrans.anchoredPosition = new Vector3(0, -200, 0);
             image.texture = charVariations[i].faceTexs[0];

@@ -24,38 +24,18 @@ public class ReadCSV
         */
         //呼んでくるCSVファイルのパスを生成
         string path = Application.dataPath + "/CSVFiles/" + pathName;
-
-        //ファイル読み込み
-        StreamReader sr = new StreamReader(path);
-        
         //CSVデータを読み込んで、行に分割
-        string[] lines = lineSeparation(sr);
-        
-        //string配列をListに変換
-        List<string> linesList = new List<string>(lines);
-         
-        //文章中の改行で別れてしまった文字列をつなぎなおす
-        for (int i = 0; i < linesList.Count-1; i++)
-        {
-            if ((linesList[i][0] > 'a' || linesList[i][0] < 'z'))
-            {
-                int j = i + 1;
-                while ((linesList[j][0] < 'a' || linesList[j][0] > 'z'))
-                {
-                    linesList[i] += linesList[j];
-                    linesList.RemoveAt(j);
-                }
-            }
-        }
+        string[] lines = ReadCsvData(path);
 
-        //string配列に再変換
-        return linesList.ToArray();
+        return lines;
     }
 
     ///<summary> ファイルを読み込み、配列に1行ずつ格納 </summary>
     ///<param name="path_"> 読み込むCSVデータファイルのパス </param>
-    string[] lineSeparation(StreamReader sr)
+    string[] ReadCsvData(string path_)
     {
+        //ファイル読み込み
+        StreamReader sr = new StreamReader(path_);
         //stringに変換
         string strStream = sr.ReadToEnd();
 

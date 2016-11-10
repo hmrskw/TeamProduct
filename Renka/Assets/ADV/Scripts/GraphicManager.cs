@@ -11,7 +11,7 @@ public class GraphicManager : MonoBehaviour
     public struct CharacterVisualVariation_
     {
         //体の画像
-        public Texture bodyTex;
+        //public Texture bodyTex;
 
         //表情画像の配列
         public Texture[] faceTexs;
@@ -36,7 +36,7 @@ public class GraphicManager : MonoBehaviour
         public RawImage body;
 
         //描画される表情の画像の参照先
-        public RawImage face;
+        //public RawImage face;
 
         //描画される服装の画像の参照先
         //public RawImage clothes;
@@ -75,7 +75,7 @@ public class GraphicManager : MonoBehaviour
             clothesVec = Vector2.zero;
             rectTrans = charScript.GetComponent<RectTransform>();
             body = charScript.GetComponent<RawImage>();
-            face = charScript.face.GetComponent<RawImage>();
+            //face = charScript.face.GetComponent<RawImage>();
             //clothes = charScript.clothes.GetComponent<RawImage>();
 
             ChangeTexs();
@@ -87,9 +87,8 @@ public class GraphicManager : MonoBehaviour
         public void ChangeTexs()
         {
             //RawImaget.textureを変更する
-            body.texture = characterVariationsBuffer[CharacterNumber].bodyTex;
-            Debug.Log(characterVariationsBuffer[CharacterNumber].faceTexs[faceNumber].name);
-            face.texture = characterVariationsBuffer[CharacterNumber].faceTexs[faceNumber];
+            //body.texture = characterVariationsBuffer[CharacterNumber].bodyTex;
+            body.texture = characterVariationsBuffer[CharacterNumber].faceTexs[faceNumber];
             //face.texture = characterVariationsBuffer[CharacterNumber].faceTexs[faceNumber];
             //clothes.texture = characterVariationsBuffer[CharacterNumber].clothesTexs[clothesNumber];            
         }
@@ -100,7 +99,7 @@ public class GraphicManager : MonoBehaviour
         public void ChangeFace()
         {
             //face
-            face.texture = characterVariationsBuffer[0].faceTexs[faceNumber];
+            body.texture = characterVariationsBuffer[0].faceTexs[faceNumber];
         }
 
         /// <summary>

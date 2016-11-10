@@ -272,7 +272,7 @@ public class ConvertADVdata : MonoBehaviour {
             } while (advDataTmp.command != "send");
 
             if (isEventMode == false && didCommaSeparationData[(int)ElementsName.BACK_GROUND] != "")
-                advDataTmp.backGroundID = BackgroundTextureNameToID(didCommaSeparationData[(int)ElementsName.BACK_GROUND]);
+                advDataTmp.backGroundID = BackgroundTextureNameToID(didCommaSeparationData[(int)ElementsName.BACK_GROUND]);//Convert.ToUInt16(didCommaSeparationData[(int)ElementsName.BACK_GROUND]);
 
             //テキスト表示用データの格納
             storeTextData(advDataTmp, didCommaSeparationData);
@@ -299,10 +299,6 @@ public class ConvertADVdata : MonoBehaviour {
                 {
                     choiceData.Add(advDataTmp);
                 }
-                else
-                {
-                    advData.Add(advDataTmp);
-                }
             }
         }
     }
@@ -327,12 +323,6 @@ public class ConvertADVdata : MonoBehaviour {
 
     void storeDrawData(ADVData csv_, string[] didCommaSeparationData_)
     {
-        string drawCharacterName = didCommaSeparationData_[(int)ElementsName.CHARACTER_NAME];
-        if (CharacterNameToID(didCommaSeparationData_[(int)ElementsName.CHARACTER_NAME]) < 0)
-        {
-            drawCharacterName = "";
-        }
-        
         //描画用データの格納            
         if (didCommaSeparationData_[(int)ElementsName.EXPRESSION] != "")
             csv_.expression[csv_.drawCharacterNum] = ExpressionToID(didCommaSeparationData_[(int)ElementsName.EXPRESSION]);
@@ -352,11 +342,11 @@ public class ConvertADVdata : MonoBehaviour {
 
         if (didCommaSeparationData_[(int)ElementsName.SIZE] != "")
             csv_.size[csv_.drawCharacterNum] = sizeDataDictionary[didCommaSeparationData_[(int)ElementsName.SIZE]];
-        //SizeNameToSize(didCommaSeparationData_[(int)ElementsName.SIZE]);
-        //csv_.size[csv_.drawCharacterNum] = Convert.ToSingle(didCommaSeparationData_[(int)ElementsName.SIZE]);
-        if (drawCharacterName != "")
+            //SizeNameToSize(didCommaSeparationData_[(int)ElementsName.SIZE]);
+            //csv_.size[csv_.drawCharacterNum] = Convert.ToSingle(didCommaSeparationData_[(int)ElementsName.SIZE]);
+        if (didCommaSeparationData_[(int)ElementsName.CHARACTER_NAME] != "")
         {
-            csv_.drawCharacterID[csv_.drawCharacterNum] = CharacterNameToID(/*didCommaSeparationData_[(int)ElementsName.CHARACTER_NAME]*/drawCharacterName);
+            csv_.drawCharacterID[csv_.drawCharacterNum] = CharacterNameToID(didCommaSeparationData_[(int)ElementsName.CHARACTER_NAME]);
             csv_.drawCharacterNum++;
         }
     }
@@ -368,11 +358,7 @@ public class ConvertADVdata : MonoBehaviour {
             csv_.sendCharacter = Convert.ToString(didCommaSeparationData_[(int)ElementsName.CHARACTER_NAME]);
 
         if (didCommaSeparationData_[(int)ElementsName.TEXT] != "")
-        {
-            string text = ConvertNewLineCode(didCommaSeparationData_[(int)ElementsName.TEXT]);
-            //文章の前後にあるダブルクオートを消す
-            csv_.text = text.Trim('"');
-        }
+            csv_.text = ConvertNewLineCode(didCommaSeparationData_[(int)ElementsName.TEXT]);
     }
 
     /// <summary>
@@ -390,7 +376,7 @@ public class ConvertADVdata : MonoBehaviour {
     /// <returns>キャラクターID</returns>
     int CharacterNameToID(string characterName_)
     {
-        int id = -1;
+        int id = 0;
         if (characterName_ == "辰己")
         {
             id = 0;
@@ -441,6 +427,10 @@ public class ConvertADVdata : MonoBehaviour {
         {
             id = 0;
         }
+        if (costume_ == "私服")
+        {
+            id = 1;
+        }
         return id;
     }
 
@@ -465,10 +455,6 @@ public class ConvertADVdata : MonoBehaviour {
         if (backgroundTextureName_ == "部屋")
         {
             id = 3;
-        }
-        if (backgroundTextureName_ == "火事")
-        {
-            id = 4;
         }
         return id;
     }
