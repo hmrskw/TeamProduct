@@ -139,6 +139,7 @@ public class ADVManager : MonoBehaviour
                 graphicManager.Reset();
                 textManager.ShiftNextText();
                 graphicManager.DrawCharacter(nowRead);
+                graphicManager.DrawBack(nowRead[DataManager.Instance.endLine].backGroundID);
             }
         }
     }

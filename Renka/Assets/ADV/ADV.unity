@@ -602,10 +602,10 @@ MonoBehaviour:
     sizeName: "\u819D\u4E0A"
   - size: 4
     sizeName: "\u8170\u4E0A"
-  prologueCSV: {fileID: 4900000, guid: befb86566c557b847a2bcd7c7a6af1f5, type: 3}
+  prologueCSV: {fileID: 4900000, guid: f65ec73e99676e44590f6b3bfc8944ed, type: 3}
   csvFile:
   - StoryText:
-    - {fileID: 4900000, guid: 2824b5e049c90204fa811781789cc544, type: 3}
+    - {fileID: 4900000, guid: 8dd0a27bc6db722438619e8490334ce3, type: 3}
     - {fileID: 4900000, guid: 2d9768bf22bf9a34c933531a2bd39ac8, type: 3}
     - {fileID: 4900000, guid: 75932bfde369773439c76d0bd3572a1a, type: 3}
     - {fileID: 4900000, guid: ded8dbb1a6c6bfd4e9b3ca1b0a65d0d9, type: 3}
