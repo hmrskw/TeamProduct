@@ -23,7 +23,7 @@ public class ReadCSV
         }
         */
         //呼んでくるCSVファイルのパスを生成
-        string path = Application.dataPath + "/CSVFiles/" + pathName;
+        string path = Application.streamingAssetsPath + "/CSVFiles/" + pathName;
 
         //ファイル読み込み
         StreamReader sr = new StreamReader(path);
