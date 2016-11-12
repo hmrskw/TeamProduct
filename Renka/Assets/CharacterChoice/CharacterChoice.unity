@@ -963,7 +963,7 @@ Prefab:
     - target: {fileID: 114000011709590088, guid: 941908e76b35538409183664f2acffe7,
         type: 2}
       propertyPath: m_Text
-      value: "\u8FB0\u5DF3\n"
+      value: "\u8FB0\u5DF1"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 941908e76b35538409183664f2acffe7, type: 2}

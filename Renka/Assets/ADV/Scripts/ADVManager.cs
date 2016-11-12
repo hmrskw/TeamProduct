@@ -99,7 +99,7 @@ public class ADVManager : MonoBehaviour
             }
             else
             {
-                if (DataManager.Instance.nowReadStoryID == 0)
+                if (DataManager.Instance.nowReadStoryID == -1)
                 {
                     //ADVシーンを終了
                     DataManager.Instance.endLine = 0;

@@ -53,4 +53,9 @@ public static class SceneChanger
         }
         
     }
+
+    public static void ResetBeforeScene()
+    {
+        beforeSceneName.Clear();
+    }
 }

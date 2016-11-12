@@ -88,7 +88,6 @@ public class GraphicManager : MonoBehaviour
         {
             //RawImaget.textureを変更する
             body.texture = characterVariationsBuffer[CharacterNumber].bodyTex;
-            Debug.Log(characterVariationsBuffer[CharacterNumber].faceTexs[faceNumber].name);
             face.texture = characterVariationsBuffer[CharacterNumber].faceTexs[faceNumber];
             //face.texture = characterVariationsBuffer[CharacterNumber].faceTexs[faceNumber];
             //clothes.texture = characterVariationsBuffer[CharacterNumber].clothesTexs[clothesNumber];            

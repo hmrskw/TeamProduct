@@ -62,7 +62,7 @@ public class MyPageManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(SceneChanger.GetBeforeSceneName());
+        //Debug.Log(SceneChanger.GetBeforeSceneName());
 
         if (DataManager.Instance.isEndStory())
         {
@@ -94,12 +94,10 @@ public class MyPageManager : MonoBehaviour
         }
         else
         {
-            //シャア
-            image.texture = texture;
-            faceImage.enabled = false;
-            clothesImage.enabled = false;
-            rectTrans.anchoredPosition = new Vector2(0, 200);
-            rectTrans.localScale = new Vector3(2f, 2f, 1);
+            //辰己
+            faceImage.gameObject.SetActive(false);
+            rectTrans.anchoredPosition = new Vector3(0, -200, 0);
+            image.texture = charVariations[0].faceTexs[0];
         }
 
     }

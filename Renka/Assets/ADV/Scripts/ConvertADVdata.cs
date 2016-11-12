@@ -207,7 +207,7 @@ public class ConvertADVdata : MonoBehaviour {
             lines = readCsv.ReadFile(prologueCSV.name + ".csv");
         }
         else {
-            lines = readCsv.ReadFile(csvFile[DataManager.Instance.masteringCharacterID].StoryText[DataManager.Instance.nowReadStoryID-1].name + ".csv");
+            lines = readCsv.ReadFile(csvFile[DataManager.Instance.masteringCharacterID].StoryText[DataManager.Instance.nowReadStoryID].name + ".csv");
         }
 
         //csvデータの初期化
