@@ -69,6 +69,8 @@ public class MyPageManager : MonoBehaviour
             storyButton.interactable = false;
         }
 
+        SceneChanger.ResetBeforeScene();
+
         //コメントエリアのアルファ値を0して、描画をしなくする
         //ボタン判定は残す
         var col = commentArea.color;

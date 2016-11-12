@@ -109,11 +109,15 @@ public class ADVManager : MonoBehaviour
                 }
                 else if (nowRead[DataManager.Instance.endLine].parameter == "minigame")
                 {
+                    DataManager.Instance.endLine = 0;
+                    DataManager.Instance.nowReadStoryID++;
                     //パラメータがミニゲームだったらMiniGameシーンへ
                     SceneChanger.LoadScene("MiniGame", true);
                 }
                 else
                 {
+                    DataManager.Instance.endLine = 0;
+                    DataManager.Instance.nowReadStoryID++;
                     //ADVシーンを終了
                     ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
                     //インターミッションに移動
