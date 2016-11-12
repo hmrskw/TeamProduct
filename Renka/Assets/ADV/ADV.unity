@@ -557,8 +557,8 @@ MonoBehaviour:
   backgroundTexs:
   - {fileID: 2800000, guid: e5d28fc1e1864de4b916bb1920e4c1c1, type: 3}
   - {fileID: 2800000, guid: 4b8c589a33c00d64baf41adcf7b22806, type: 3}
-  - {fileID: 2800000, guid: 86141cb695ab88f4da2dd166247f3a39, type: 3}
   - {fileID: 2800000, guid: 3722a807808b31649b5846e468a39b1a, type: 3}
+  - {fileID: 2800000, guid: 86141cb695ab88f4da2dd166247f3a39, type: 3}
   - {fileID: 2800000, guid: be0b006b2edcb55419748db8e8eef4ec, type: 3}
   background: {fileID: 2083202847}
   canvas: {fileID: 991777587}
@@ -592,16 +592,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionData:
-  - positionX: -200
+  - positionX: 350
     positionName: "\u53F3"
   - positionX: 0
     positionName: "\u4E2D\u592E"
-  - positionX: 200
+  - positionX: -250
     positionName: "\u5DE6"
   sizeData:
-  - size: 2
+  - size: 1.5
     sizeName: "\u819D\u4E0A"
-  - size: 4
+  - size: 3
     sizeName: "\u8170\u4E0A"
   prologueCSV: {fileID: 4900000, guid: f65ec73e99676e44590f6b3bfc8944ed, type: 3}
   csvFile:
@@ -609,12 +609,12 @@ MonoBehaviour:
     - {fileID: 4900000, guid: 8dd0a27bc6db722438619e8490334ce3, type: 3}
     - {fileID: 4900000, guid: 2d9768bf22bf9a34c933531a2bd39ac8, type: 3}
     - {fileID: 4900000, guid: 75932bfde369773439c76d0bd3572a1a, type: 3}
-    - {fileID: 4900000, guid: ded8dbb1a6c6bfd4e9b3ca1b0a65d0d9, type: 3}
+    - {fileID: 4900000, guid: e4a2607591772974c89805c744ab6a94, type: 3}
   - StoryText:
     - {fileID: 4900000, guid: 8dd0a27bc6db722438619e8490334ce3, type: 3}
     - {fileID: 4900000, guid: 2d9768bf22bf9a34c933531a2bd39ac8, type: 3}
     - {fileID: 4900000, guid: 75932bfde369773439c76d0bd3572a1a, type: 3}
-    - {fileID: 4900000, guid: ded8dbb1a6c6bfd4e9b3ca1b0a65d0d9, type: 3}
+    - {fileID: 4900000, guid: e4a2607591772974c89805c744ab6a94, type: 3}
 --- !u!1 &696846153
 GameObject:
   m_ObjectHideFlags: 0

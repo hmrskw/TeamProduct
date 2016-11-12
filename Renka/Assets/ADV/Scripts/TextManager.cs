@@ -300,7 +300,7 @@ public class TextManager : MonoBehaviour
 
     public void IntermissionTextChange()
     {
-        intermissionText.text = DataManager.Instance.nowReadStoryID+1 + "話　プロット";
+        intermissionText.text = DataManager.Instance.nowReadStoryID + "話　プロット";
     }
     /*
     /// <summary>

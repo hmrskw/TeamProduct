@@ -102,6 +102,8 @@ public class MyPageManager : MonoBehaviour
             image.texture = charVariations[0].faceTexs[0];
         }
 
+        var line = Random.Range(0, comments.Length);
+        commentText.text = comments[line];
     }
 
     /// <summary>
