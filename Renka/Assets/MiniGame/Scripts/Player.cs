@@ -85,11 +85,11 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Obstacle")
-        {
+        //if (other.name == "Obstacle")
+        //{
             other.GetComponent<BoxCollider>().enabled = false;
             StartCoroutine(Damage());
-        }
+        //}
     }
 
     IEnumerator Damage()
