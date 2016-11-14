@@ -105,7 +105,7 @@ public class MyPageManager : MonoBehaviour
         var line = Random.Range(0, comments.Length);
         commentText.text = comments[line];
     }
-
+    
     /// <summary>
     /// Storyボタンが押されたときに呼ばれる
     /// </summary>

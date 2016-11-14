@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 public class InputManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class InputManager : MonoBehaviour
     {
         get { return instance; }
     }
+
+    private float touchTime = 0f;
 
     //シーンまたいでもオブジェクトが破棄されなくする
     void Awake()
@@ -104,6 +107,18 @@ public class InputManager : MonoBehaviour
     result = GetTouchState(TouchPhase.Ended);
 #endif
         return result;
+    }
+
+    public float TouchTime()
+    {
+        float time = 0;
+        if (IsTouchBegan()) touchTime = 0;
+        if (IsTouchMoved())
+        {
+            touchTime += Time.deltaTime;
+            time = touchTime;
+        }
+        return time;
     }
 
     /// <summary> 端末の戻るボタンが押されたら true を返す </summary>

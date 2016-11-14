@@ -385,6 +385,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010006654720, guid: fb204ebd2c2c8c34a9ce4af6f6f815cd, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb204ebd2c2c8c34a9ce4af6f6f815cd, type: 2}
   m_IsPrefabParent: 0
@@ -3999,7 +4003,7 @@ GameObject:
   - 65: {fileID: 753824248}
   - 23: {fileID: 753824247}
   - 114: {fileID: 753824246}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Goal
   m_TagString: Goal
   m_Icon: {fileID: 0}

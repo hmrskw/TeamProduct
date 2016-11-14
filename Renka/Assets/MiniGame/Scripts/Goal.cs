@@ -14,10 +14,9 @@ public class Goal : MonoBehaviour {
         SceneChanger.LoadBeforeScene(true);
         yield return null;
     }
+
     void OnTriggerEnter(Collider other)
     {
-
-
         if (other.tag == "Player")
         {
             goalPopUp.SetActive(true);
