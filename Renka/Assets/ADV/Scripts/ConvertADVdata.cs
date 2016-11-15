@@ -185,11 +185,6 @@ public class ConvertADVdata : MonoBehaviour {
 
     void Awake()
     {
-        //Application.logMessageReceived += LogCallback;  // ログが書き出された時のコールバック設定
-
-
-
-
         foreach (PositionData data in positionData) {
             positionDataDictionary.Add(data.positionName,data.positionX);
         }

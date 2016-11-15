@@ -23,13 +23,21 @@ public class ReadCSV
         }
         */
         //呼んでくるCSVファイルのパスを生成
-        string path = Application.streamingAssetsPath + "/CSVFiles/" + pathName;
-
+        string path;
+#if UNITY_EDITOR
+        path = "file://"+Application.streamingAssetsPath + "/CSVFiles/" + pathName;
+#elif UNITY_ANDROID
+        path = "jar:file://" + Application.dataPath + "!/assets" + "/CSVFiles/" + pathName;
+#endif
         //ファイル読み込み
-        StreamReader sr = new StreamReader(path);
-        
+        //StreamReader sr = new StreamReader(path);
+        WWW www = new WWW(path);
+        while (!www.isDone) {
+            //ファイルの読み込みが終わるまで待つ
+        }
+
         //CSVデータを読み込んで、行に分割
-        string[] lines = lineSeparation(sr);
+        string[] lines = lineSeparation(www.text);
         
         //string配列をListに変換
         List<string> linesList = new List<string>(lines);
@@ -54,10 +62,10 @@ public class ReadCSV
 
     ///<summary> ファイルを読み込み、配列に1行ずつ格納 </summary>
     ///<param name="path_"> 読み込むCSVデータファイルのパス </param>
-    string[] lineSeparation(StreamReader sr)
+    string[] lineSeparation(string sr)
     {
         //stringに変換
-        string strStream = sr.ReadToEnd();
+        string strStream = sr;
 
         //カンマとカンマの間に何もなかったら格納しないことにする設定
         System.StringSplitOptions option = StringSplitOptions.RemoveEmptyEntries;
