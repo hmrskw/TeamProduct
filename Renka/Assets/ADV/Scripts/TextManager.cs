@@ -124,6 +124,9 @@ public class TextManager : MonoBehaviour
     [SerializeField, Tooltip("禁則文字")]
     char[] prohibitionCharacters;
 
+    [SerializeField]
+    GameObject canvas;
+
     void Start()
     {
 
@@ -302,6 +305,12 @@ public class TextManager : MonoBehaviour
     {
         intermissionText.text = DataManager.Instance.nowReadStoryID + "話　プロット";
     }
+
+    public void ChangeCanvasNext()
+    {
+        canvas.SetActive(false);
+    }
+
     /*
     /// <summary>
     /// 文字列内の"\n"の文字列を'\n'に文字に変える

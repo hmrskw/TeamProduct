@@ -29,7 +29,7 @@ public class Choice : MonoBehaviour
 
     public void AddPoint()
     {
-        DataManager.Instance.likeabillity += point;
+        DataManager.Instance.masteringData.likeabillity += point;
         isReleased = true;
     }
 

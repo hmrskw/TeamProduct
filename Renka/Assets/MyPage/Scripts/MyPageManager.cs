@@ -81,10 +81,10 @@ public class MyPageManager : MonoBehaviour
         commentPrevLine = -1;
 
         //好感度の最大値と現在の好感度からゲージの割合を決める
-        gauge.value = (float)DataManager.Instance.likeabillity / (float)likeMax;
+        gauge.value = (float)DataManager.Instance.masteringData.likeabillity / (float)likeMax;
 
         //キャラクターの生成
-        var i = DataManager.Instance.masteringCharacterID;
+        var i = DataManager.Instance.masteringData.masteringCharacterID;
         if (i >= 0 && i < 4)
         {
             //キャラのセット
@@ -128,7 +128,8 @@ public class MyPageManager : MonoBehaviour
     /// </summary>
     public void OnClickGallery()
     {
-        Debug.Log("Click Gallery");
+        DataManager.Instance.ResetMasteringData();
+        DataManager.Instance.Init();
     }
 
     /// <summary>

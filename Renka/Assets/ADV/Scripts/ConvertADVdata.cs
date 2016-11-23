@@ -32,8 +32,8 @@ public class ConvertADVdata : MonoBehaviour {
         public string sendCharacter;//キャラクターのID
         public string text;//テキスト
 
-        public int backGroundID;//背景のID
-        public int BGMID;//鳴らすBGMのID
+        //public int backGroundID;//背景のID
+        //public int BGMID;//鳴らすBGMのID
 
         public ADVData()
         {
@@ -54,8 +54,8 @@ public class ConvertADVdata : MonoBehaviour {
             this.sendCharacter = "";
             this.text = "";
 
-            this.backGroundID = 0;
-            this.BGMID = 0;
+            //this.backGroundID = 0;
+            //this.BGMID = 0;
         }
 
         public void init()
@@ -77,8 +77,8 @@ public class ConvertADVdata : MonoBehaviour {
             this.sendCharacter = "";
             this.text = "";
 
-            this.backGroundID = 0;
-            this.BGMID = 0;
+            //this.backGroundID = 0;
+            //this.BGMID = 0;
         }
     }
 
@@ -119,9 +119,9 @@ public class ConvertADVdata : MonoBehaviour {
 
         TEXT,//表示するテキスト
 
-        BACK_GROUND,//変更する背景
-        BGM,//鳴らすBGM
-        SE
+        //BACK_GROUND,//変更する背景
+        //BGM,//鳴らすBGM
+        //SE
     }
 
     [Serializable]
@@ -162,7 +162,7 @@ public class ConvertADVdata : MonoBehaviour {
     private CSVFiles[] csvFile;
 
     //csvデータの要素数
-    const int CSVDATA_ELEMENTS = 11;
+    const int CSVDATA_ELEMENTS = 8;
 
     //csvから取り出した情報を入れる配列
     public List<ADVData> advData;
@@ -203,11 +203,11 @@ public class ConvertADVdata : MonoBehaviour {
         readCsv = new ReadCSV();
 
         string[] lines;
-        if (DataManager.Instance.masteringCharacterID == -1) {
+        if (DataManager.Instance.masteringData.masteringCharacterID == -1) {
             lines = readCsv.ReadFile(prologueCSV + ".csv");
         }
         else {
-            lines = readCsv.ReadFile(csvFile[DataManager.Instance.masteringCharacterID].StoryText[DataManager.Instance.nowReadStoryID] + ".csv");
+            lines = readCsv.ReadFile(csvFile[DataManager.Instance.masteringData.masteringCharacterID].StoryText[DataManager.Instance.nowReadStoryID] + ".csv");
         }
 
         //csvデータの初期化
@@ -269,17 +269,20 @@ public class ConvertADVdata : MonoBehaviour {
                     advDataTmp.choiceNum++;
                     i++;
                 }
-            } while (advDataTmp.command != "send");
+            } while (CheckCommand(advDataTmp.command) == false);
 
-            if (isEventMode == false && didCommaSeparationData[(int)ElementsName.BACK_GROUND] != "")
-                advDataTmp.backGroundID = BackgroundTextureNameToID(didCommaSeparationData[(int)ElementsName.BACK_GROUND]);
+            //if (isEventMode == false && didCommaSeparationData[(int)ElementsName.BACK_GROUND] != "")
+                //advDataTmp.backGroundID = BackgroundTextureNameToID(didCommaSeparationData[(int)ElementsName.BACK_GROUND]);
 
-            //テキスト表示用データの格納
-            storeTextData(advDataTmp, didCommaSeparationData);
+            if (advDataTmp.command == "send")
+            {
+                //テキスト表示用データの格納
+                storeTextData(advDataTmp, didCommaSeparationData);
+            }
 
             //音用のデータ格納
-            if (didCommaSeparationData[(int)ElementsName.BGM] != "")
-                advDataTmp.BGMID = Convert.ToUInt16(didCommaSeparationData[(int)ElementsName.BGM]);
+            //if (didCommaSeparationData[(int)ElementsName.BGM] != "")
+                //advDataTmp.BGMID = Convert.ToUInt16(didCommaSeparationData[(int)ElementsName.BGM]);
 
             //コマンドが"sceneEnd"の行以降だったら
             if (isSceneEnd == false)
@@ -305,11 +308,29 @@ public class ConvertADVdata : MonoBehaviour {
                 }
             }
         }
+        /*
+        foreach(ADVData d in advData)
+        {
+            Debug.Log(d.command + d.parameter + d.text);
+        }*/
+    }
+
+    bool CheckCommand(string com)
+    {
+        string[] checkList = {"send","back","fadein","fadeout","fade" };
+        foreach(string checkword in checkList)
+        {
+            if (com == checkword) return true;
+        }
+        return false;
     }
 
     public void SetMasteringCharacterLastStoryID()
     {
-        DataManager.Instance.masteringCharacterLastStoryID = csvFile[DataManager.Instance.masteringCharacterID].StoryText.Length;
+        if (DataManager.Instance.masteringData.masteringCharacterID != -1)
+        {
+            DataManager.Instance.masteringData.masteringCharacterLastStoryID = csvFile[DataManager.Instance.masteringData.masteringCharacterID].StoryText.Length;
+        }
     }
 
     void storeCommand(ADVData csv_, string[] didCommaSeparationData_)

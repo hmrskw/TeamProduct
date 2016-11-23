@@ -14,7 +14,11 @@ public class ManageCreator : MonoBehaviour {
 #endif
 
         //Cursor.visible = false;
-        GameObject ManagerObj = new GameObject("Manager", typeof(DataManager),typeof(InputManager));
+        //Instantiate(this.gameObject);
+        GameObject ManagerObj = Instantiate((GameObject)Resources.Load("Fade/FadeCanvas"));
+        //GameObject ManagerObj = new GameObject("Manager", typeof(DataManager),typeof(InputManager));
+        //ManagerObj.AddComponent(typeof(DataManager)); //= new GameObject("Manager", typeof(DataManager),typeof(InputManager));
+        //ManagerObj.AddComponent(typeof(InputManager));
         DontDestroyOnLoad(ManagerObj);
     }
 }

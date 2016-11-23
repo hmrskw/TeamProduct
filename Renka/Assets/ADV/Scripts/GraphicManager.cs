@@ -116,7 +116,7 @@ public class GraphicManager : MonoBehaviour
     }
 
     //キャラデータ...要素数 == キャラクターの種類
-    [SerializeField, Tooltip("キャラクター、顔、服装の種類すべてを設定する")]
+    [SerializeField, Tooltip("キャラクター、顔、服装の種類すべてを設定する"),Header("キャラクター")]
     CharacterVisualVariation_[] characterVariations;
 
     //charcters[]からアクセスする用...上を参照させる
@@ -135,6 +135,8 @@ public class GraphicManager : MonoBehaviour
     //キャラクターのプレハブ
     [SerializeField, Tooltip("インスタンス化されるキャラクターのオリジン")]
     GameObject charPrefabObj;
+
+    [Space(15), Header("背景")]
 
     //背景データ
     [SerializeField, Tooltip("背景")]
@@ -179,7 +181,7 @@ public class GraphicManager : MonoBehaviour
             characters[i].Setup();
         }
         DrawCharacter(ConvertADVdata.Instance.advData);
-        DrawBack(ConvertADVdata.Instance.advData[DataManager.Instance.endLine].backGroundID);
+        DrawBack("黒");
     }
 
     /// <summary>
@@ -209,9 +211,21 @@ public class GraphicManager : MonoBehaviour
         }
     }
 
-    public void DrawBack(int backGroundID_)
+    IEnumerator ChangeBack(Texture tmp)
     {
-        background.texture = backgroundTexs[backGroundID_];
+        while (Fade.Instance.isFade)
+        {
+            yield return null;
+        }
+        background.texture = tmp;
+    }
+    public void DrawBack(string backGround_)
+    {
+        Texture tmp = backgroundTexs[BackgroundTextureNameToID(backGround_)];
+        if (background.texture != tmp) {
+            StartCoroutine(ChangeBack(tmp));
+            //background.texture = tmp;
+        }
     }
 
     public void Reset()
@@ -222,28 +236,38 @@ public class GraphicManager : MonoBehaviour
         }
     }
 
-    //テスト関数...画像が差し変わる
-    void UpdateTest()
-    {
-        //1,2,3
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            background.texture = backgroundTexs[1 - 1];
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            background.texture = backgroundTexs[2 - 1];
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            background.texture = backgroundTexs[3 - 1];
-        }
-    }
-
     public void ChangeCanvasNext()
     {
-        Debug.Log("ChangeCanvas");
         canvas.SetActive(false);
         intermission.SetActive(true);
+    }
+
+    /// <summary> 背景名から各背景に割り振られているIDに変換 </summary>
+    /// <param name="backgroundTextureName_">背景名</param>
+    /// <returns>背景に割り振られたID</returns>
+    int BackgroundTextureNameToID(string backgroundTextureName_)
+    {
+        int id = 0;
+        if (backgroundTextureName_ == "白")
+        {
+            id = 0;
+        }
+        if (backgroundTextureName_ == "黒")
+        {
+            id = 1;
+        }
+        if (backgroundTextureName_ == "町")
+        {
+            id = 2;
+        }
+        if (backgroundTextureName_ == "部屋")
+        {
+            id = 3;
+        }
+        if (backgroundTextureName_ == "火事")
+        {
+            id = 4;
+        }
+        return id;
     }
 }

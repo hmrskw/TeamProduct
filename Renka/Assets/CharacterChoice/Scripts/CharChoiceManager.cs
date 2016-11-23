@@ -60,10 +60,19 @@ public class CharChoiceManager : MonoBehaviour
     /// ボタンを押したときの処理
     /// 攻略キャラクターの設定とシーンの切り替え
     /// </summary>
+    public void OnClickCharacter(int CharacterID_)
+    {
+        DataManager.Instance.masteringData.masteringCharacterID = CharacterID_;
+        ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
+        DataManager.Instance.SaveMasteringData();
+        SceneChanger.LoadScene("MyPage", false);
+    }
+
+    /*
     public void OnClickTatsumi()
     {
         //Debug.Log("Click Tatsumi");
-        DataManager.Instance.masteringCharacterID = 0;
+        DataManager.Instance.masteringData.masteringCharacterID = 0;
         //Debug.Log("攻略キャラID : " + DataManager.Instance.masteringCharacterID);
         ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
         SceneChanger.LoadScene("MyPage",false);
@@ -72,7 +81,7 @@ public class CharChoiceManager : MonoBehaviour
     public void OnClickYuusuke()
     {
         //Debug.Log("Click Yuusuke");
-        DataManager.Instance.masteringCharacterID = 1;
+        DataManager.Instance.masteringData.masteringCharacterID = 1;
         //Debug.Log("攻略キャラID : " + DataManager.Instance.masteringCharacterID);
         ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
         SceneChanger.LoadScene("MyPage",false);
@@ -81,7 +90,7 @@ public class CharChoiceManager : MonoBehaviour
     public void OnClickUtarou()
     {
         //Debug.Log("Click Utarou");
-        DataManager.Instance.masteringCharacterID = 2;
+        DataManager.Instance.masteringData.masteringCharacterID = 2;
         //Debug.Log("攻略キャラID : " + DataManager.Instance.masteringCharacterID);
         ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
         SceneChanger.LoadScene("MyPage",false);
@@ -90,9 +99,9 @@ public class CharChoiceManager : MonoBehaviour
     public void OnClickKazuma()
     {
         //Debug.Log("Click Kazuma");
-        DataManager.Instance.masteringCharacterID = 3;
+        DataManager.Instance.masteringData.masteringCharacterID = 3;
         //Debug.Log("攻略キャラID : " + DataManager.Instance.masteringCharacterID);
         ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
         SceneChanger.LoadScene("MyPage",false);
-    }
+    }*/
 }

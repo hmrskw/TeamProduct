@@ -9,7 +9,10 @@ public class DebugUI : MonoBehaviour {
     {
         Application.logMessageReceived += LogCallback;  // ログが書き出された時のコールバック設定
 
-        Debug.LogWarning(Application.streamingAssetsPath + "/CSVFiles/pathName");   // テストでワーニングログをコール
+        //Debug.LogWarning(Application.streamingAssetsPath + "/CSVFiles/pathName");   // テストでワーニングログをコール
+        string path = Application.persistentDataPath + "/";
+        string fileName = Application.companyName + "." + Application.productName + ".savedata.json";
+        Debug.LogWarning(path + fileName);   // テストでワーニングログをコール
     }
 
     /// <summary>

@@ -21,24 +21,31 @@ public class ADVManager : MonoBehaviour
 
     float skipTimer = 0;
 
+    bool isIntermission = false;
+
     void Start()
     {
         nowRead = ConvertADVdata.Instance.advData;
         choiceManager = GetComponent<ChoiceManager>();
         textManager = GetComponent<TextManager>();
         graphicManager = GetComponent<GraphicManager>();
+        ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
 
         if (SceneChanger.GetBeforeSceneName(true) == "MiniGame")
         {
             ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
             //インターミッションに移動
+            isIntermission = true;
             textManager.IntermissionTextChange();
             graphicManager.ChangeCanvasNext();
+            textManager.ChangeCanvasNext();
         }
     }
 
     void Update()
     {
+        if (isIntermission == true) return;
+
         if (choiceManager.isActiveChoices)
         {
             //選択肢表示中ならキーを取得
@@ -51,6 +58,24 @@ public class ADVManager : MonoBehaviour
                 DataManager.Instance.endLine = -1;
                 textManager.ShiftNextText();
             }
+        }
+        else if (nowRead[DataManager.Instance.endLine].command == "fadein")
+        {
+            Debug.Log("fadein");
+            Fade.Instance.FadeIn(0.5f, Convert.ToInt16(nowRead[DataManager.Instance.endLine].parameter));
+            DrawNext();
+        }
+        else if (nowRead[DataManager.Instance.endLine].command == "fadeout")
+        {
+            Debug.Log("fadeout");
+            Fade.Instance.FadeOut(0.5f, Convert.ToInt16(nowRead[DataManager.Instance.endLine].parameter));
+            DrawNext();
+        }
+        else if (nowRead[DataManager.Instance.endLine].command == "back")
+        {
+            Debug.Log("back");
+            graphicManager.DrawBack(nowRead[DataManager.Instance.endLine].parameter);
+            DrawNext();
         }
         else
         {
@@ -72,12 +97,27 @@ public class ADVManager : MonoBehaviour
                 }
             }
             skipTimer += Time.deltaTime;
-            if (Input.GetKey(KeyCode.LeftControl)){
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
                 textManager.DrawAllText();
                 if (skipTimer > 0.5f / skipSpeed)
                 {
                     skipTimer = 0;
                     DrawNext();
+                }
+            }
+            //既読スキップ処理
+            if (DataManager.Instance.nowReadStoryID < 4)
+            {
+                if (InputManager.Instance.TouchTime() > 2f)
+                    //Input.GetKey(KeyCode.LeftControl))
+                {
+                    textManager.DrawAllText();
+                    if (skipTimer > 0.5f / skipSpeed)
+                    {
+                        skipTimer = 0;
+                        DrawNext();
+                    }
                 }
             }
         }
@@ -119,10 +159,12 @@ public class ADVManager : MonoBehaviour
                     DataManager.Instance.endLine = 0;
                     DataManager.Instance.nowReadStoryID++;
                     //ADVシーンを終了
-                    ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
+                    //ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
                     //インターミッションに移動
+                    isIntermission = true;
                     textManager.IntermissionTextChange();
                     graphicManager.ChangeCanvasNext();
+                    textManager.ChangeCanvasNext();
                 }
             }
         }
@@ -139,8 +181,9 @@ public class ADVManager : MonoBehaviour
                 graphicManager.Reset();
                 textManager.ShiftNextText();
                 graphicManager.DrawCharacter(nowRead);
-                graphicManager.DrawBack(nowRead[DataManager.Instance.endLine].backGroundID);
+                //graphicManager.DrawBack(nowRead[DataManager.Instance.endLine].backGroundID);
             }
         }
     }
+
 }

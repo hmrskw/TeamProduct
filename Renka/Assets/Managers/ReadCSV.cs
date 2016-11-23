@@ -23,8 +23,8 @@ public class ReadCSV
         }
         */
         //呼んでくるCSVファイルのパスを生成
-        string path;
-#if UNITY_EDITOR
+        string path;// = "file://" + Application.streamingAssetsPath + "/CSVFiles/" + pathName;
+#if UNITY_STANDALONE
         path = "file://"+Application.streamingAssetsPath + "/CSVFiles/" + pathName;
 #elif UNITY_ANDROID
         path = "jar:file://" + Application.dataPath + "!/assets" + "/CSVFiles/" + pathName;

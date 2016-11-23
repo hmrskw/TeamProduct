@@ -7,6 +7,9 @@ public class IntermissionManager : MonoBehaviour
     [SerializeField]
     Button button;
 
+    [SerializeField]
+    bool canSave;
+
     void Start()
     {
         if (DataManager.Instance.isEndStory())
@@ -14,6 +17,15 @@ public class IntermissionManager : MonoBehaviour
             button.interactable = false;
         }
     }
+
+    void OnEnable()
+    {
+        if (canSave)
+        {
+            DataManager.Instance.SaveMasteringData();
+        }
+    }
+
     public void OnNextClick()
     {
         SceneChanger.LoadScene("ADV");

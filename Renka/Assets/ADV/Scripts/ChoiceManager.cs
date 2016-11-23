@@ -64,7 +64,7 @@ public class ChoiceManager : MonoBehaviour
         {
             if (!choiceScripts[i].isReleased) continue;
 
-            Debug.Log("Add好感度 : " + DataManager.Instance.likeabillity);
+            Debug.Log("Add好感度 : " + DataManager.Instance.masteringData.likeabillity);
             string choiceText = choiceScripts[i].text.text;
             DataManager.Instance.isChoiceText = true;
 
