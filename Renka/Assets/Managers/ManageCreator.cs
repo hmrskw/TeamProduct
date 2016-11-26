@@ -15,10 +15,13 @@ public class ManageCreator : MonoBehaviour {
 
         //Cursor.visible = false;
         //Instantiate(this.gameObject);
-        GameObject ManagerObj = Instantiate((GameObject)Resources.Load("Fade/FadeCanvas"));
-        //GameObject ManagerObj = new GameObject("Manager", typeof(DataManager),typeof(InputManager));
+        GameObject FadeManager = Instantiate((GameObject)Resources.Load("Fade/FadeCanvas"));
+        GameObject SoundManager = Instantiate((GameObject)Resources.Load("SoundManager/SoundManager"));
+        GameObject ManagerObj = new GameObject("Manager", typeof(DataManager),typeof(InputManager));
         //ManagerObj.AddComponent(typeof(DataManager)); //= new GameObject("Manager", typeof(DataManager),typeof(InputManager));
         //ManagerObj.AddComponent(typeof(InputManager));
         DontDestroyOnLoad(ManagerObj);
+        DontDestroyOnLoad(FadeManager);
+        DontDestroyOnLoad(SoundManager);
     }
 }

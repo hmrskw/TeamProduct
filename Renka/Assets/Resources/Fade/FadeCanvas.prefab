@@ -12,8 +12,6 @@ GameObject:
   - 222: {fileID: 22291984}
   - 114: {fileID: 11486218}
   - 114: {fileID: 11491604}
-  - 114: {fileID: 114000011946739008}
-  - 114: {fileID: 114000010343343226}
   m_Layer: 5
   m_Name: FadeCanvas
   m_TagString: Untagged
@@ -106,28 +104,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 141186}
   m_IsPrefabParent: 1
---- !u!114 &114000010343343226
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83defb914769a874196775211add997d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nowReadStoryID: 0
-  endLine: 0
-  isChoiceText: 0
---- !u!114 &114000011946739008
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4838a65d6e19254e937056af21b0bff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

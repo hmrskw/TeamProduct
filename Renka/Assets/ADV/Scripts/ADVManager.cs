@@ -46,7 +46,7 @@ public class ADVManager : MonoBehaviour
     {
         if (isIntermission == true) return;
 
-        if (choiceManager.isActiveChoices)
+       if (choiceManager.isActiveChoices)
         {
             //選択肢表示中ならキーを取得
             key = choiceManager.Choice();
@@ -61,19 +61,16 @@ public class ADVManager : MonoBehaviour
         }
         else if (nowRead[DataManager.Instance.endLine].command == "fadein")
         {
-            Debug.Log("fadein");
             Fade.Instance.FadeIn(0.5f, Convert.ToInt16(nowRead[DataManager.Instance.endLine].parameter));
             DrawNext();
         }
         else if (nowRead[DataManager.Instance.endLine].command == "fadeout")
         {
-            Debug.Log("fadeout");
             Fade.Instance.FadeOut(0.5f, Convert.ToInt16(nowRead[DataManager.Instance.endLine].parameter));
             DrawNext();
         }
         else if (nowRead[DataManager.Instance.endLine].command == "back")
         {
-            Debug.Log("back");
             graphicManager.DrawBack(nowRead[DataManager.Instance.endLine].parameter);
             DrawNext();
         }
@@ -121,6 +118,7 @@ public class ADVManager : MonoBehaviour
                 }
             }
         }
+        AudioTest();
     }
 
     void DrawNext()
@@ -186,4 +184,72 @@ public class ADVManager : MonoBehaviour
         }
     }
 
+    void AudioTest()
+    {
+        //Stop
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (Input.GetKey(KeyCode.Space))
+                SoundManager.Instance.StopSE(true);
+            else
+                SoundManager.Instance.StopSE();
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            if (Input.GetKey(KeyCode.Space))
+                SoundManager.Instance.StopBGM(true);
+            else
+                SoundManager.Instance.StopBGM();
+        }
+
+        //Volume
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            SoundManager.Instance.ChangeSEVolume(SoundManager.Instance.GetSEVolume() + 0.1f);
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            SoundManager.Instance.ChangeSEVolume(SoundManager.Instance.GetSEVolume() - 0.1f);
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            SoundManager.Instance.ChangeBGMVolume(SoundManager.Instance.GetBGMVolume() + 0.1f);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            SoundManager.Instance.ChangeBGMVolume(SoundManager.Instance.GetBGMVolume() - 0.1f);
+        }
+
+        //SE
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SoundManager.Instance.PlaySE("fire");
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            SoundManager.Instance.PlaySE("hit");
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SoundManager.Instance.PlaySE("taiko");
+        }
+
+        //BGM
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SoundManager.Instance.PlayBGM("Kasinomai");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SoundManager.Instance.PlayBGM("Sakuya3");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SoundManager.Instance.PlayBGM("Tukiyatyou");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SoundManager.Instance.PlayBGM("DearChildhoodFriend");
+        }
+    }
 }
