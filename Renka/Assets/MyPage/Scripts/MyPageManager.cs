@@ -130,7 +130,8 @@ public class MyPageManager : MonoBehaviour
     {
         DataManager.Instance.ResetMasteringData();
         DataManager.Instance.Init();
-    }
+		SceneChanger.LoadScene("Menu");
+	}
 
     /// <summary>
     /// Configボタンが押されたときに呼ばれる
