@@ -80,11 +80,12 @@ public class Fade : MonoBehaviour
     IEnumerator FadeoutCoroutine (float time, System.Action action)
 	{
         isFade = true;
+        //float endTime = Time.timeSinceLevelLoad + time * (cutoutRange);
         float endTime = Time.timeSinceLevelLoad + time * (cutoutRange);
 
-		var endFrame = new WaitForEndOfFrame ();
+        var endFrame = new WaitForEndOfFrame ();
 
-		while (Time.timeSinceLevelLoad <= endTime) {
+        while (Time.timeSinceLevelLoad <= endTime) {
 			cutoutRange = (endTime - Time.timeSinceLevelLoad) / time;
 			fade.Range = cutoutRange;
 			yield return endFrame;
@@ -119,17 +120,18 @@ public class Fade : MonoBehaviour
         isFade = false;
     }
 
+    /*シーンまたぐとフェードアウトの開始が遅れるから使わない
     IEnumerator FadeInFadeOutCoroutine(float time, System.Action action)
     {
-        yield return StartCoroutine(FadeinCoroutine(time / 2f, action));
-        yield return StartCoroutine(FadeoutCoroutine(time / 2f, null));
+        yield return StartCoroutine(FadeinCoroutine(time, action));
+        yield return StartCoroutine(FadeoutCoroutine(1, null));
     }
 
     public Coroutine FadeInOut(float time, System.Action action)
     {
         StopAllCoroutines();
         return StartCoroutine(FadeInFadeOutCoroutine(time, action));
-    }
+    }*/
 
     public Coroutine FadeOut (float time, System.Action action)
 	{

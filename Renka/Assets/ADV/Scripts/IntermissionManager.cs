@@ -22,7 +22,8 @@ public class IntermissionManager : MonoBehaviour
     {
         if (canSave)
         {
-            DataManager.Instance.SaveMasteringData();
+            SaveData.SaveMasteringData();
+            SaveData.SaveFinishedStoryData(DataManager.Instance.masteringData.masteringCharacterID);
         }
     }
 

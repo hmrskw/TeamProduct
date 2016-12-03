@@ -63,6 +63,7 @@ public class MyPageManager : MonoBehaviour
     void Start()
     {
         //Debug.Log(SceneChanger.GetBeforeSceneName());
+        Fade.Instance.FadeOut(1f, null);
 
         if (DataManager.Instance.isEndStory())
         {
@@ -128,8 +129,8 @@ public class MyPageManager : MonoBehaviour
     /// </summary>
     public void OnClickGallery()
     {
-        DataManager.Instance.ResetMasteringData();
-        DataManager.Instance.Init();
+        //SaveData.ResetMasteringData();
+        //DataManager.Instance.Init();
 		SceneChanger.LoadScene("Menu");
 	}
 

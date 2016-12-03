@@ -64,44 +64,7 @@ public class CharChoiceManager : MonoBehaviour
     {
         DataManager.Instance.masteringData.masteringCharacterID = CharacterID_;
         ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
-        DataManager.Instance.SaveMasteringData();
+        SaveData.SaveMasteringData();
         SceneChanger.LoadScene("MyPage", false);
     }
-
-    /*
-    public void OnClickTatsumi()
-    {
-        //Debug.Log("Click Tatsumi");
-        DataManager.Instance.masteringData.masteringCharacterID = 0;
-        //Debug.Log("攻略キャラID : " + DataManager.Instance.masteringCharacterID);
-        ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
-        SceneChanger.LoadScene("MyPage",false);
-    }
-
-    public void OnClickYuusuke()
-    {
-        //Debug.Log("Click Yuusuke");
-        DataManager.Instance.masteringData.masteringCharacterID = 1;
-        //Debug.Log("攻略キャラID : " + DataManager.Instance.masteringCharacterID);
-        ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
-        SceneChanger.LoadScene("MyPage",false);
-    }
-
-    public void OnClickUtarou()
-    {
-        //Debug.Log("Click Utarou");
-        DataManager.Instance.masteringData.masteringCharacterID = 2;
-        //Debug.Log("攻略キャラID : " + DataManager.Instance.masteringCharacterID);
-        ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
-        SceneChanger.LoadScene("MyPage",false);
-    }
-
-    public void OnClickKazuma()
-    {
-        //Debug.Log("Click Kazuma");
-        DataManager.Instance.masteringData.masteringCharacterID = 3;
-        //Debug.Log("攻略キャラID : " + DataManager.Instance.masteringCharacterID);
-        ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
-        SceneChanger.LoadScene("MyPage",false);
-    }*/
 }

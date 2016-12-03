@@ -12,6 +12,7 @@ public class SoundManager : MonoBehaviour
 
     Dictionary<string, AudioClip> seDict = new Dictionary<string, AudioClip>();
     Dictionary<string, AudioClip> bgmDict = new Dictionary<string, AudioClip>();
+    Dictionary<string, AudioClip> voiceDict = new Dictionary<string, AudioClip>();
 
     [SerializeField]
     AudioSource[] seSource;
@@ -19,18 +20,24 @@ public class SoundManager : MonoBehaviour
     [SerializeField]
     AudioSource bgmSource;
 
-    [System.Serializable]
+    [SerializeField]
+    AudioSource voiceSource;
+
+    /*[System.Serializable]
     public class Clips
     {
         public AudioClip[] seClips;
         public AudioClip[] bgmClips;
-    }
+    }*/
 
     [SerializeField]
     AudioClip[] seClips;
 
     [SerializeField]
     AudioClip[] bgmClips;
+
+    [SerializeField]
+    AudioClip[] voiceClips;
 
     void Awake()
     {
@@ -49,6 +56,10 @@ public class SoundManager : MonoBehaviour
         {
             bgmDict.Add(clip.name, clip);
         }
+        foreach (AudioClip clip in voiceClips)
+        {
+            voiceDict.Add(clip.name, clip);
+        }
     }
 
     /// <summary>
@@ -62,16 +73,8 @@ public class SoundManager : MonoBehaviour
         foreach (AudioSource source in seSource)
         {
             source.volume = volume;
+            DataManager.Instance.configData.se = volume;
         }
-    }
-
-    /// <summary>
-    /// BGMの音量を変更する
-    /// </summary>
-    /// <param name="volume">音量</param>
-    public void ChangeBGMVolume(float volume)
-    {
-        bgmSource.volume = volume;
     }
 
     /// <summary>
@@ -84,15 +87,6 @@ public class SoundManager : MonoBehaviour
     }
 
     /// <summary>
-    /// BGMの音量を取得
-    /// </summary>
-    /// <returns>BGMの音量</returns>
-    public float GetBGMVolume()
-    {
-        return bgmSource.volume;
-    }
-
-    /// <summary>
     /// SEを再生する
     /// </summary>
     /// <param name="seName">再生したいSEのファイル名</param>
@@ -102,7 +96,7 @@ public class SoundManager : MonoBehaviour
         //int i = 0;
 
         //使用していないseSourceを探す
-        for(int i  = 0 ; i < seSource.Length; i++)
+        for (int i = 0; i < seSource.Length; i++)
         {
             if (seSource[i].clip != null && seSource[i].clip.name == seName)
             {
@@ -117,19 +111,6 @@ public class SoundManager : MonoBehaviour
             }
         }
         Debug.LogWarning("同時に再生できる音の数を超えたので鳴らせませんでした。");
-    }
-
-    /// <summary>
-    /// BGMを再生する
-    /// </summary>
-    /// <param name="bgmName">再生したいBGM名</param>
-    public void PlayBGM(string bgmName)
-    {
-        //if (bgmSource.isPlaying) bgmSource.Stop();
-        if(bgmSource.clip != bgmDict[bgmName])
-            bgmSource.clip = bgmDict[bgmName];
-
-        bgmSource.Play();
     }
 
     /// <summary>
@@ -155,6 +136,38 @@ public class SoundManager : MonoBehaviour
     }
 
     /// <summary>
+    /// BGMの音量を変更する
+    /// </summary>
+    /// <param name="volume">音量</param>
+    public void ChangeBGMVolume(float volume)
+    {
+        bgmSource.volume = volume;
+        DataManager.Instance.configData.bgm = volume;
+    }
+
+    /// <summary>
+    /// BGMの音量を取得
+    /// </summary>
+    /// <returns>BGMの音量</returns>
+    public float GetBGMVolume()
+    {
+        return bgmSource.volume;
+    }
+
+    /// <summary>
+    /// BGMを再生する
+    /// </summary>
+    /// <param name="bgmName">再生したいBGM名</param>
+    public void PlayBGM(string bgmName)
+    {
+        //if (bgmSource.isPlaying) bgmSource.Stop();
+        if(bgmSource.clip != bgmDict[bgmName])
+            bgmSource.clip = bgmDict[bgmName];
+
+        bgmSource.Play();
+    }
+
+    /// <summary>
     /// BGMを停止
     /// </summary>
     /// <param name="isPause">一時停止か</param>
@@ -165,6 +178,52 @@ public class SoundManager : MonoBehaviour
         {
             Debug.Log("Pause");
             bgmSource.Pause();
+        }
+    }
+
+    /// <summary>
+    /// ボイスの音量を変更する
+    /// </summary>
+    /// <param name="volume">音量</param>
+    public void ChangeVoiceVolume(float volume)
+    {
+        voiceSource.volume = volume;
+        DataManager.Instance.configData.voice = volume;
+    }
+
+    /// <summary>
+    /// ボイスの音量を取得
+    /// </summary>
+    /// <returns>BGMの音量</returns>
+    public float GetVoiceVolume()
+    {
+        return voiceSource.volume;
+    }
+
+    /// <summary>
+    /// ボイスを再生する
+    /// </summary>
+    /// <param name="bgmName">再生したいBGM名</param>
+    public void PlayVoice(string voiceName)
+    {
+        //if (bgmSource.isPlaying) bgmSource.Stop();
+        if (voiceSource.clip != bgmDict[voiceName])
+            voiceSource.clip = bgmDict[voiceName];
+
+        voiceSource.Play();
+    }
+
+    /// <summary>
+    /// ボイスを停止
+    /// </summary>
+    /// <param name="isPause">一時停止か</param>
+    public void StopVoice(bool isPause = true)
+    {
+        if (isPause == false) voiceSource.Stop();
+        else
+        {
+            Debug.Log("Pause");
+            voiceSource.Pause();
         }
     }
 }

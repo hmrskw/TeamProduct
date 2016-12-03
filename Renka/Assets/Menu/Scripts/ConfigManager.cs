@@ -21,73 +21,13 @@ public class FloatGage
 		get { return val; }
 		set { val = value; if (val > max) val = max; }
 	}
-
-	
-	//Add
-	//ChackMax;
-	//
 }
-
-//[System.Serializable]
-//public class ConfigData
-//{
-//	[SerializeField]
-//	FloatGage bgm;
-
-//	[SerializeField]
-//	FloatGage se;
-
-//	[SerializeField]
-//	FloatGage voice;
-
-//	[SerializeField]
-//	FloatGage textBox;
-
-//	[SerializeField]
-//	FloatGage textSpd;
-
-//	[SerializeField]
-//	bool isSkip;
-//}
-
-/// <summary>
-/// コンフィグデータ
-/// ※データマネージャーに保存しておく
-/// </summary>
-[System.Serializable]
-public class ConfigData
-{
-	[SerializeField, Range(0f, 1f), Tooltip("BGMの大きさ")]
-	float bgm;
-	public float BGM { get { return bgm; } set { bgm = value; } }
-
-	[SerializeField, Range(0f, 1f), Tooltip("SEの大きさ")]
-	float se;
-	public float SE { get { return se; } set { se = value; } }
-
-	[SerializeField, Range(0f, 1f), Tooltip("VOICEの大きさ")]
-	float voice;
-	public float VOICE { get { return voice; } set { voice = value; } }
-
-	[SerializeField, Range(0f, 1f), Tooltip("テキストボックスの透明度")]
-	float textBox;
-	public float TextBox { get { return textBox; } set { textBox = value; } }
-
-	[SerializeField, Range(0f, 1f), Tooltip("テキストスピード")]
-	float textSpd;
-	public float TextSpd { get { return textSpd; } set { textSpd = value; } }
-
-	[SerializeField, Tooltip("既読スキップの有無")]
-	bool isSkip;
-	public bool IsSkip { get { return isSkip; } set { isSkip = value; } }
-}
-
 
 public class ConfigManager : MonoBehaviour
 {
 
-	[SerializeField, Tooltip("設定のデータ")]
-	ConfigData config;
+	//[SerializeField, Tooltip("設定のデータ")]
+	//DataManager.ConfigData config;
 
 	[SerializeField, Tooltip("BGMのスライダーを参照させる")]
 	Slider bgm;
@@ -125,20 +65,18 @@ public class ConfigManager : MonoBehaviour
 	//描画するテキスト
 	string testText = "";
 
-	void Awake()
-	{
-		//Debug.Log("Awake Config");
-		//画面のテキストから描画するテキスト移す
-		testText = text.text;
-	}
+    void Awake()
+    {
+        //Debug.Log("Awake Config");
+        //画面のテキストから描画するテキスト移す
+        testText = text.text;;
+    }
 
-	void Start()
+    void Start()
 	{
-		Debug.Log("Start Config");
-
-		//コンフィグデータを読み込む
-		//※データマネージャーのデータ
-		LoadConfigData(config);
+        //コンフィグデータを読み込む
+        //※データマネージャーのデータ
+        ReflectConfigUI(/*DataManager.Instance.configData*/);
 
 		//テキスストボックスのバーがいじられたときのアルファの変更
 		textBox.onValueChanged.AddListener((float value) =>
@@ -167,57 +105,53 @@ public class ConfigManager : MonoBehaviour
 	/// コンフィグデータを読み込んでUIに反映させる
 	/// </summary>
 	/// <param name="data">コンフィグデータ</param>
-	public void LoadConfigData(ConfigData data)
+	public void ReflectConfigUI()
 	{
-		Debug.Log("LoadConfig");
+        //ConfigData data = DataManager.Instance.configData;
+        Debug.Log("LoadConfig");
+
+        bgm.value = DataManager.Instance.configData.bgm;
+        se.value = DataManager.Instance.configData.se;
+        voice.value = DataManager.Instance.configData.voice;
+        textBox.value = DataManager.Instance.configData.textBox;
+        textSpd.value = DataManager.Instance.configData.textSpd;
+        enableSkip.isOn = DataManager.Instance.configData.isSkip;
+
+        /*
 		bgm.value = data.BGM;
 		se.value = data.SE;
 		voice.value = data.VOICE;
 		textBox.value = data.TextBox;
 		textSpd.value = data.TextSpd;
-		if (data.IsSkip)
-		{
-			enableSkip.isOn = true;
-			//disableSkip.isOn = false;
-		}
-		else
-		{
-			//enableSkip.isOn = false;
-			disableSkip.isOn = true;
-		}
-	}
+        enableSkip.isOn = data.IsSkip;
+        */
+    }
 
-	/// <summary>
-	/// 現在のUIからコンフィグデータを生成する
-	/// </summary>
-	/// <returns>コンフィグデータ</returns>
-	ConfigData CreateConfigData()
+    /// <summary>
+    /// 現在のUIからコンフィグデータを生成する
+    /// </summary>
+    void Update()
 	{
-		var data = new ConfigData();
-		data.BGM = bgm.value;
-		data.SE = se.value;
-		data.VOICE = voice.value;
-		data.TextBox = textBox.value;
-		data.TextSpd = textSpd.value;
-		if (enableSkip.isOn)
-		{
-			data.IsSkip = true;
-		}
-		else
-		{
-			data.IsSkip = false;
-		}
+        SoundManager.Instance.ChangeBGMVolume(bgm.value);
+        SoundManager.Instance.ChangeSEVolume(se.value);
+        SoundManager.Instance.ChangeVoiceVolume(voice.value);
+        DataManager.Instance.configData.textBox = textBox.value;
+        DataManager.Instance.configData.textSpd = textSpd.value;
+        DataManager.Instance.configData.isSkip = enableSkip.isOn;
+    }
 
-		return data;
-	}
-
-	/// <summary>
-	/// データマネージャーにコンフィグ情報を保存する
-	/// </summary>
-	public void SaveConfigData()
-	{
-		Debug.Log("SaveConfigData");
-		//var data = CreateConfigData();
+    /// <summary>
+    /// データマネージャーにコンフィグ情報を保存する
+    /// </summary>
+    public void SaveConfigData()
+    {
+        Debug.Log("SaveConfigData");
+        DataManager.Instance.configData.bgm = bgm.value;
+        DataManager.Instance.configData.se = se.value;
+        DataManager.Instance.configData.voice = voice.value;
+        DataManager.Instance.configData.textBox = textBox.value;
+        DataManager.Instance.configData.textSpd = textSpd.value;
+        SaveData.SaveConfigData();
 	}
 
 

@@ -31,6 +31,7 @@ public class ADVManager : MonoBehaviour
         graphicManager = GetComponent<GraphicManager>();
         ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
 
+        Debug.Log(DataManager.Instance.nowReadStoryID);
         if (SceneChanger.GetBeforeSceneName(true) == "MiniGame")
         {
             ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
@@ -142,6 +143,7 @@ public class ADVManager : MonoBehaviour
                     //ADVシーンを終了
                     DataManager.Instance.endLine = 0;
                     DataManager.Instance.nowReadStoryID++;
+                    Debug.Log(DataManager.Instance.nowReadStoryID);
                     //読んでいたシーンがプロローグなら攻略キャラ選択へ移動
                     SceneChanger.LoadScene("CharacterChoice");
                 }
@@ -149,6 +151,7 @@ public class ADVManager : MonoBehaviour
                 {
                     DataManager.Instance.endLine = 0;
                     DataManager.Instance.nowReadStoryID++;
+                    Debug.Log(DataManager.Instance.nowReadStoryID);
                     //パラメータがミニゲームだったらMiniGameシーンへ
                     SceneChanger.LoadScene("MiniGame", true);
                 }
@@ -156,6 +159,7 @@ public class ADVManager : MonoBehaviour
                 {
                     DataManager.Instance.endLine = 0;
                     DataManager.Instance.nowReadStoryID++;
+                    Debug.Log(DataManager.Instance.nowReadStoryID);
                     //ADVシーンを終了
                     //ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
                     //インターミッションに移動

@@ -72,6 +72,12 @@ public class TextManager : MonoBehaviour
     [SerializeField,Tooltip("インターミッションのテキストボックス")]
     Text intermissionText;
 
+    [SerializeField]
+    Image textArea;
+
+    [SerializeField]
+    Image characterNameArea;
+
     [SerializeField, Range(0, 5), Tooltip("このフレーム分待機する")]
     int wait;
 
@@ -134,8 +140,12 @@ public class TextManager : MonoBehaviour
         text.text = "";
 
         nowRead = ConvertADVdata.Instance.AdvData;
-
+        wait = (int)(DataManager.Instance.configData.textSpd * 5f);
         stringCount.Reset(nowRead[DataManager.Instance.endLine].text.Length);
+
+        textArea.color = new Color(1,1,1,DataManager.Instance.configData.textBox);
+        characterNameArea.color = new Color(1, 1, 1, DataManager.Instance.configData.textBox);
+
         charIntervalCount.Reset(wait);
 
         StartCoroutine(ADVUpdate());

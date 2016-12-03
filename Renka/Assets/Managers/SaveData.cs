@@ -163,6 +163,163 @@ public class SaveData
         return Savedatabase.GetFloat(key, _default);
     }
 
+
+    /// <summary>
+    /// 攻略情報のロード
+    /// </summary>
+    public static void LoadMasteringData()
+    {
+        if (ContainsKey("masteringData"))
+        {
+            DataManager.Instance.masteringData = GetClass<DataManager.MasteringData>("masteringData", new DataManager.MasteringData());
+            Debug.Log(DataManager.Instance.masteringData.masteringCharacterID);
+        }
+        else
+        {
+            Debug.Log("攻略データが見つかりませんでした。");
+        }
+    }
+
+    /// <summary>
+    /// 攻略情報のセーブ
+    /// </summary>
+    public static void SaveMasteringData()
+    {
+        SaveData.SetClass<DataManager.MasteringData>("masteringData", DataManager.Instance.masteringData);
+        SaveData.Save();
+    }
+
+    /// <summary>
+    /// 攻略情報の削除
+    /// </summary>
+    public static void ResetMasteringData()
+    {
+        if (SaveData.ContainsKey("masteringData"))
+        {
+            SaveData.Remove("masteringData");
+            Debug.Log("セーブデータを削除しました");
+        }
+        else
+        {
+            Debug.Log("セーブデータが見つかりませんでした。");
+        }
+    }
+
+    /// <summary>
+    /// 各キャラクターの進捗情報のロード
+    /// </summary>
+    public static void LoadFinishedStoryData()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (SaveData.ContainsKey("FinishedStoryData" + i.ToString()))
+            {
+                DataManager.Instance.finishedStoryData[i] = SaveData.GetClass<DataManager.FinishedStoryData>("FinishedStoryData" + i.ToString(), new DataManager.FinishedStoryData());
+            }
+            else
+            {
+                Debug.Log("各キャラクターの進捗データが見つかりませんでした。");
+                SaveFinishedStoryData(i);
+            }
+        }
+        if (DataManager.Instance.masteringData.masteringCharacterID != -1)
+        {
+            DataManager.Instance.nowReadStoryID = DataManager.Instance.finishedStoryData[DataManager.Instance.masteringData.masteringCharacterID].finishedReadStoryID;
+
+            Debug.Log(DataManager.Instance.nowReadStoryID);
+        }
+    }
+
+    /// <summary>
+    /// 全キャラクターの進捗情報のセーブ
+    /// </summary>
+    public static void SaveFinishedStoryData()
+    {
+        DataManager.Instance.finishedStoryData[DataManager.Instance.masteringData.masteringCharacterID].finishedReadStoryID = DataManager.Instance.nowReadStoryID;
+        for (int i = 0; i < 4; i++)
+        {
+            SaveData.SetClass<DataManager.FinishedStoryData>("FinishedStoryData" + i.ToString(), DataManager.Instance.finishedStoryData[i]);
+        }
+        SaveData.Save();
+    }
+
+    /// <summary>
+    /// 特定キャラクターの進捗情報のセーブ
+    /// </summary>
+    /// <param name="characterID"></param>
+    public static void SaveFinishedStoryData(int characterID)
+    {
+        DataManager.Instance.finishedStoryData[characterID].finishedReadStoryID = DataManager.Instance.nowReadStoryID;
+        SaveData.SetClass<DataManager.FinishedStoryData>("FinishedStoryData" + characterID.ToString(), DataManager.Instance.finishedStoryData[characterID]);
+        SaveData.Save();
+    }
+
+    /// <summary>
+    /// 各キャラクターの進捗情報の削除
+    /// </summary>
+    public static void ResetFinishedStoryData()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (SaveData.ContainsKey("FinishedStoryData" + i.ToString()))
+            {
+                SaveData.Remove("FinishedStoryData" + i.ToString());
+                Debug.Log("セーブデータを削除しました");
+            }
+            else
+            {
+                Debug.Log("セーブデータが見つかりませんでした。");
+            }
+        }
+    }
+
+    /// <summary>
+    /// 設定情報のロード
+    /// </summary>
+    public static void LoadConfigData()
+    {
+        if (ContainsKey("configData"))
+        {
+            DataManager.Instance.configData = GetClass<DataManager.ConfigData>("configData", new DataManager.ConfigData());
+        }
+        else
+        {
+            Debug.Log("設定データが見つかりませんでした。");
+            DataManager.Instance.configData.bgm = SoundManager.Instance.GetBGMVolume();
+            DataManager.Instance.configData.se = SoundManager.Instance.GetSEVolume();
+            DataManager.Instance.configData.voice = SoundManager.Instance.GetVoiceVolume();
+            DataManager.Instance.configData.textBox = 0.5f;
+            DataManager.Instance.configData.textSpd = 0.5f;
+
+            SaveData.SaveConfigData();
+        }
+    }
+
+    /// <summary>
+    /// 設定情報のセーブ
+    /// </summary>
+    public static void SaveConfigData()
+    {
+        SaveData.SetClass<DataManager.ConfigData>("configData", DataManager.Instance.configData);
+        SaveData.Save();
+    }
+
+    /// <summary>
+    /// 設定情報の削除
+    /// </summary>
+    public static void ResetConfigData()
+    {
+        if (SaveData.ContainsKey("configData"))
+        {
+            SaveData.Remove("configData");
+            Debug.Log("セーブデータを削除しました");
+        }
+        else
+        {
+            Debug.Log("セーブデータが見つかりませんでした。");
+        }
+    }
+
     /// <summary>
     /// セーブデータからすべてのキーと値を削除します。
     /// </summary>

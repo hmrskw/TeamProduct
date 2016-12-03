@@ -506,6 +506,8 @@ MonoBehaviour:
   nameText: {fileID: 625388194}
   text: {fileID: 2114878279}
   intermissionText: {fileID: 1689122899}
+  textArea: {fileID: 813578101}
+  characterNameArea: {fileID: 110611286}
   wait: 5
   strLength: 16
   prohibitionCharacters: 02300130
