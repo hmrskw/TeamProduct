@@ -37,6 +37,15 @@ public class EpisodeData
 	//リンク先
 	public string path;
 
+    //キャラクター番号
+    public int charID;
+
+    //章の番号
+    public int chapID;
+
+    //話の番号
+    public int epiID;
+
 	//獲得してるかどうか
 	public bool isHave;
 
@@ -164,9 +173,26 @@ public class RecordManager : MonoBehaviour
 	/// </summary>
 	void SetupRecordContents()
 	{
+        //記録帖を生成する前にデータに
+        //キャラ、章、話のIDを振り分ける
+        for (var i = 0; i < records.Length; i++)
+        {
+            for (var j = 0; j < records[i].chapters.Length; j++)
+            {
+                for (var k = 0; k < records[i].chapters[j].episodes.Length; k++)
+                {
+					Debug.Log("ijk"+ i+ " : " + j + " : " + k);
+                    records[i].chapters[j].episodes[k].charID = i;
+                    records[i].chapters[j].episodes[k].chapID = j;
+                    records[i].chapters[j].episodes[k].epiID  = k;
+                }
+            }
+        }
+
 		//Debug.Log("SetupRecordContents");
 		Debug.Log("length : " + recordObjects.Length);
 
+		//記録帖の動的オブジェクトを生成
 		for (var i = 0; i < recordObjects.Length; ++i)
 		{
 			if (recordObjects[i].recordScript.enabled)

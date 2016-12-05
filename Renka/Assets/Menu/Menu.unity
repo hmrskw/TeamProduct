@@ -2130,69 +2130,117 @@ MonoBehaviour:
       episodes:
       - name: "\u30D7\u30ED\u30ED\u30FC\u30B0"
         path: 
-        isHave: 1
+        charID: 0
+        chapID: 0
+        epiID: 0
+        isHave: 0
     - name: "\u4E8C\u7AE0"
       episodes:
       - name: "\u58F1\u8A71"
         path: 
-        isHave: 1
+        charID: 0
+        chapID: 0
+        epiID: 0
+        isHave: 0
       - name: "\u5F10\u8A71"
         path: 
-        isHave: 1
+        charID: 0
+        chapID: 0
+        epiID: 0
+        isHave: 0
       - name: "\u53C2\u8A71 A"
         path: 
+        charID: 0
+        chapID: 0
+        epiID: 0
         isHave: 0
       - name: "\u53C2\u8A71 B"
         path: 
-        isHave: 1
+        charID: 0
+        chapID: 0
+        epiID: 0
+        isHave: 0
     - name: "\u4E09\u7AE0"
       episodes:
       - name: "\u58F1\u8A71"
         path: 
-        isHave: 1
+        charID: 0
+        chapID: 0
+        epiID: 0
+        isHave: 0
       - name: "\u5F10\u8A71"
         path: 
-        isHave: 1
+        charID: 0
+        chapID: 0
+        epiID: 0
+        isHave: 0
     - name: "\u7D42\u7AE0"
       episodes:
       - name: "\u30A8\u30D4\u30ED\u30FC\u30B0"
         path: 
-        isHave: 1
+        charID: 0
+        chapID: 0
+        epiID: 0
+        isHave: 0
     - name: "\u304A\u307E\u3051"
       episodes:
       - name: "3\u5E74\u5F8C"
         path: 
-        isHave: 1
+        charID: 0
+        chapID: 0
+        epiID: 0
+        isHave: 0
   - name: "\u9149\u52A9"
     chapters:
     - name: "\u5E8F\u7AE0"
       episodes:
       - name: "\u98A8"
         path: 
-        isHave: 1
+        charID: 0
+        chapID: 0
+        epiID: 0
+        isHave: 0
     - name: "\u4E8C\u7AE0"
       episodes:
       - name: "\u58F1\u8A71\u3000"
         path: 
+        charID: 0
+        chapID: 0
+        epiID: 0
         isHave: 0
       - name: "\u5F10\u8A71\u3000"
         path: 
+        charID: 0
+        chapID: 0
+        epiID: 0
         isHave: 0
       - name: "\u53C2\u8A71\u3000"
         path: 
+        charID: 0
+        chapID: 0
+        epiID: 0
         isHave: 0
       - name: "\u56DB\u8A71\u3000"
         path: 
+        charID: 0
+        chapID: 0
+        epiID: 0
         isHave: 0
     - name: "\u4E09\u7AE0 "
       episodes:
       - name: "\u3042\u3042\u3042\u3042"
         path: 
+        charID: 0
+        chapID: 0
+        epiID: 0
         isHave: 0
     - name: "\u7D42\u7AE0"
       episodes:
       - name: "\u306C"
         path: 
+        charID: 0
+        chapID: 0
+        epiID: 0
         isHave: 0
   - name: "Z\u30AC\u30F3\u30C0\u30E0"
     chapters:
@@ -2200,21 +2248,39 @@ MonoBehaviour:
       episodes:
       - name: "\u9ED2\u3044\u30AC\u30F3\u30C0\u30E0"
         path: 
-        isHave: 1
+        charID: 0
+        chapID: 0
+        epiID: 0
+        isHave: 0
       - name: "\u65C5\u7ACB\u3061"
         path: 
-        isHave: 1
+        charID: 0
+        chapID: 0
+        epiID: 0
+        isHave: 0
       - name: "\u30AB\u30D7\u30BB\u30EB\u306E\u4E2D"
         path: 
-        isHave: 1
+        charID: 0
+        chapID: 0
+        epiID: 0
+        isHave: 0
       - name: "\u30A8\u30DE\u8131\u8D70"
         path: 
-        isHave: 1
+        charID: 0
+        chapID: 0
+        epiID: 0
+        isHave: 0
       - name: "\u7236\u3068\u5B50\u3068\u30FB\u30FB\u30FB"
         path: 
-        isHave: 1
+        charID: 0
+        chapID: 0
+        epiID: 0
+        isHave: 0
       - name: "\u5730\u7403\u570F\u3078"
         path: 
+        charID: 0
+        chapID: 0
+        epiID: 0
         isHave: 0
     - name: "\u30B5\u30D6\u30A8\u30D4\u30BD\u30FC\u30C9\uFF12"
       episodes: []
@@ -2222,7 +2288,10 @@ MonoBehaviour:
       episodes:
       - name: "\u6B7B\u95D8\u306E\u679C\u3066\u306B"
         path: 
-        isHave: 1
+        charID: 0
+        chapID: 0
+        epiID: 0
+        isHave: 0
   recordObjects:
   - name: "\u8FB0\u5DF1"
     bookmark: {fileID: 1405010139}
@@ -2926,30 +2995,48 @@ MonoBehaviour:
     - name: "\u3044"
       tex: {fileID: 2800000, guid: 98af34c490500524e9d354bdd7d069bc, type: 3}
       tex2: {fileID: 2800000, guid: a96ad8aac5002834194e01e3e75f6638, type: 3}
-      isHave: 1
+      GetCharID: 0
+      GetChapID: 0
+      GetEpiID: 0
+      isHave: 0
     - name: "\u308D"
       tex: {fileID: 2800000, guid: 8e3dac82f46163c489727895c5eb61cf, type: 3}
       tex2: {fileID: 2800000, guid: a96ad8aac5002834194e01e3e75f6638, type: 3}
-      isHave: 1
+      GetCharID: 0
+      GetChapID: 0
+      GetEpiID: 1
+      isHave: 0
     - name: "\u306F"
       tex: {fileID: 2800000, guid: 8e3dac82f46163c489727895c5eb61cf, type: 3}
       tex2: {fileID: 2800000, guid: a96ad8aac5002834194e01e3e75f6638, type: 3}
+      GetCharID: 0
+      GetChapID: 1
+      GetEpiID: 1
       isHave: 0
   - name: "\u9149\u52A9"
     stills:
     - name: "\u306B"
       tex: {fileID: 2800000, guid: a9171312b5646b240ae950af909469f4, type: 3}
       tex2: {fileID: 2800000, guid: a96ad8aac5002834194e01e3e75f6638, type: 3}
-      isHave: 1
+      GetCharID: 1
+      GetChapID: 0
+      GetEpiID: 0
+      isHave: 0
   - name: "\u4ED6"
     stills:
     - name: "\u307B"
       tex: {fileID: 2800000, guid: 257d14a1f2c6a0f4eab2e7b0eeb6ab8b, type: 3}
       tex2: {fileID: 2800000, guid: a96ad8aac5002834194e01e3e75f6638, type: 3}
-      isHave: 1
+      GetCharID: 2
+      GetChapID: 0
+      GetEpiID: 0
+      isHave: 0
     - name: "\u3078"
       tex: {fileID: 2800000, guid: 257d14a1f2c6a0f4eab2e7b0eeb6ab8b, type: 3}
       tex2: {fileID: 2800000, guid: a96ad8aac5002834194e01e3e75f6638, type: 3}
+      GetCharID: 2
+      GetChapID: 2
+      GetEpiID: 0
       isHave: 0
   disableStillColor: {r: 0.002, g: 0, b: 0, a: 1}
   disableStillMaterial: {fileID: 2100000, guid: 69163d48b2d586a409e2b90dd6ecbf30,
@@ -7465,13 +7552,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9085bf4c11f77fa45ad6c4f053816f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config:
-    bgm: 0.283
-    se: 0.456
-    voice: 0.446
-    textBox: 0.218
-    textSpd: 0.892
-    isSkip: 0
   bgm: {fileID: 805263207}
   se: {fileID: 235331456}
   voice: {fileID: 602281100}
@@ -13059,25 +13139,43 @@ MonoBehaviour:
       episodes:
       - name: "\u30D7\u30ED\u30ED\u30FC\u30B0"
         path: 
+        charID: 0
+        chapID: 0
+        epiID: 0
         isHave: 0
     - name: "\u4E8C\u7AE0"
       episodes:
       - name: "\u58F1\u8A71"
         path: 
+        charID: 0
+        chapID: 0
+        epiID: 0
         isHave: 0
       - name: "\u5F10\u8A71"
         path: 
+        charID: 0
+        chapID: 0
+        epiID: 0
         isHave: 0
       - name: "\u53C2\u8A71"
         path: 
+        charID: 0
+        chapID: 0
+        epiID: 0
         isHave: 0
     - name: "\u4E09\u7AE0"
       episodes:
       - name: "\u58F1\u8A71"
         path: 
+        charID: 0
+        chapID: 0
+        epiID: 0
         isHave: 0
       - name: "\u5F10\u8A71"
         path: 
+        charID: 0
+        chapID: 0
+        epiID: 0
         isHave: 0
   chapterNodePrefab: {fileID: 1000013034714156, guid: 2d35e7940a90bc74f8ea35a4d172b68f,
     type: 2}
@@ -14164,9 +14262,15 @@ MonoBehaviour:
     episodes:
     - name: "\u30D7\u30ED\u30ED"
       path: 
+      charID: 0
+      chapID: 0
+      epiID: 0
       isHave: 0
     - name: "\u30D7\u30ED\u30ED"
       path: 
+      charID: 0
+      chapID: 0
+      epiID: 0
       isHave: 0
   rectTrans: {fileID: 2089952239}
   layout: {fileID: 0}

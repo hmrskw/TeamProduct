@@ -41,7 +41,7 @@ public class ChapterNode : MonoBehaviour
 		//var size = data.episodes.Length;
 		//var name(Cha) = data.name;
 		//var name(Epi) = data.episodes[0].name;
-		Debug.Log(" data  name :" + data.name);
+		Debug.Log(" Data Name :" + data.name);
 		//Debug.Log(" data  name :" + data.episodes[0].name);
 
 		chapterName.text = data.name;
