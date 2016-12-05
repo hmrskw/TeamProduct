@@ -159,6 +159,33 @@ public class Still
 		private set { tex2 = value; }
 	}
 
+	//入手できる話(キャラ-章-話)
+	public int GetCharID;
+	public int GetChapID;
+	public int GetEpiID;
+
+	//攻略データから
+	public void SetIsHaveFromCaptureData(DataManager.FinishedStoryData[] data)
+	{
+		if (GetCharID > data[GetCharID].finishedReadChapterID)
+		{//この章まで攻略されてない
+			isHave = false;
+		}
+		else if (GetCharID < data[GetCharID].finishedReadChapterID)
+		{//この章は攻略し終えた
+			isHave = true;
+		}
+		//☆セーブの仕様がわからんからスチル獲得が不明
+		else if (GetEpiID > data[GetCharID].finishedReadStoryID)
+		{//この章のこの話まで攻略されてない
+			isHave = false;
+		}
+		else
+		{
+			isHave = true;
+		}
+	}
+
 	/// <summary>
 	///獲得して見れるかどうか
 	/// </summary>
@@ -215,6 +242,21 @@ public class MemoryManager : MonoBehaviour
 	void Start()
 	{
 
+		//スチルの獲得情報を攻略データから入力
+		//DataManager.Instance.finishedStoryData[0]
+		//var a = DataManager.Instance.finishedStoryData;
+		//pages
+		for(var i = 0; i < pages.Length; i++)
+		{
+			for(var j = 0; j < pages[i].Stills.Length; j++)
+			{
+				pages[i].Stills[j].SetIsHaveFromCaptureData( DataManager.Instance.finishedStoryData );
+			}
+
+		}
+
+
+
 		//キャラページごとに初期化
 		for (var i = 0; i < charaPages.Length; ++i)
 		{
@@ -222,7 +264,7 @@ public class MemoryManager : MonoBehaviour
 			if (pages.Length <= i) break;
 
 			//初期化
-			charaPages[i].Setup(pages[i], disableStillColor );
+			charaPages[i].Setup(pages[i], disableStillColor);
 
 		}
 
