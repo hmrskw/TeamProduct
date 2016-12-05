@@ -31,7 +31,7 @@ public class ADVManager : MonoBehaviour
         graphicManager = GetComponent<GraphicManager>();
         ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
 
-        Debug.Log(DataManager.Instance.nowReadStoryID);
+        //Debug.Log(DataManager.Instance.nowReadStoryID);
         if (SceneChanger.GetBeforeSceneName(true) == "MiniGame")
         {
             ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
@@ -46,8 +46,9 @@ public class ADVManager : MonoBehaviour
     void Update()
     {
         if (isIntermission == true) return;
+        if (Fade.Instance.isFade == true) return;
 
-       if (choiceManager.isActiveChoices)
+        if (choiceManager.isActiveChoices)
         {
             //選択肢表示中ならキーを取得
             key = choiceManager.Choice();
@@ -119,13 +120,12 @@ public class ADVManager : MonoBehaviour
                 }
             }
         }
-        AudioTest();
     }
 
     void DrawNext()
     {
         //文章の最後まで表示し終わっているか
-        if (nowRead.Count - 1 <= DataManager.Instance.endLine)
+        if (nowRead.Count - 1 <= DataManager.Instance.endLine && Fade.Instance.isFade != true)
         {
             if (DataManager.Instance.isChoiceText)
             {
@@ -145,7 +145,9 @@ public class ADVManager : MonoBehaviour
                     DataManager.Instance.nowReadStoryID++;
                     Debug.Log(DataManager.Instance.nowReadStoryID);
                     //読んでいたシーンがプロローグなら攻略キャラ選択へ移動
-                    SceneChanger.LoadScene("CharacterChoice");
+                    Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("CharacterChoice"); });
+
+                    //SceneChanger.LoadScene("CharacterChoice");
                 }
                 else if (nowRead[DataManager.Instance.endLine].parameter == "minigame")
                 {
@@ -153,7 +155,8 @@ public class ADVManager : MonoBehaviour
                     DataManager.Instance.nowReadStoryID++;
                     Debug.Log(DataManager.Instance.nowReadStoryID);
                     //パラメータがミニゲームだったらMiniGameシーンへ
-                    SceneChanger.LoadScene("MiniGame", true);
+                    Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("MiniGame", true); });
+                    //SceneChanger.LoadScene("MiniGame", true);
                 }
                 else
                 {
@@ -176,7 +179,8 @@ public class ADVManager : MonoBehaviour
             {
                 DataManager.Instance.endLine++;
                 //パラメータがミニゲームだったらMiniGameシーンへ
-                SceneChanger.LoadScene("MiniGame", true);
+                Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("MiniGame", true); });
+                //SceneChanger.LoadScene("MiniGame", true);
             }
             else
             {
@@ -185,75 +189,6 @@ public class ADVManager : MonoBehaviour
                 graphicManager.DrawCharacter(nowRead);
                 //graphicManager.DrawBack(nowRead[DataManager.Instance.endLine].backGroundID);
             }
-        }
-    }
-
-    void AudioTest()
-    {
-        //Stop
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            if (Input.GetKey(KeyCode.Space))
-                SoundManager.Instance.StopSE(true);
-            else
-                SoundManager.Instance.StopSE();
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            if (Input.GetKey(KeyCode.Space))
-                SoundManager.Instance.StopBGM(true);
-            else
-                SoundManager.Instance.StopBGM();
-        }
-
-        //Volume
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            SoundManager.Instance.ChangeSEVolume(SoundManager.Instance.GetSEVolume() + 0.1f);
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            SoundManager.Instance.ChangeSEVolume(SoundManager.Instance.GetSEVolume() - 0.1f);
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            SoundManager.Instance.ChangeBGMVolume(SoundManager.Instance.GetBGMVolume() + 0.1f);
-        }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            SoundManager.Instance.ChangeBGMVolume(SoundManager.Instance.GetBGMVolume() - 0.1f);
-        }
-
-        //SE
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            SoundManager.Instance.PlaySE("fire");
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            SoundManager.Instance.PlaySE("hit");
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            SoundManager.Instance.PlaySE("taiko");
-        }
-
-        //BGM
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SoundManager.Instance.PlayBGM("Kasinomai");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SoundManager.Instance.PlayBGM("Sakuya3");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            SoundManager.Instance.PlayBGM("Tukiyatyou");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            SoundManager.Instance.PlayBGM("DearChildhoodFriend");
         }
     }
 }

@@ -150,9 +150,20 @@ public class ConvertADVdata : MonoBehaviour {
     [Serializable]
     public class CSVFiles
     {
+        public Chapters[] chapters;
+
+        /*public CSVFiles(string[] storyText)
+        {
+            StoryText = storyText;
+        }*/
+    }
+
+    [Serializable]
+    public class Chapters
+    {
         public string[] StoryText;
 
-        public CSVFiles(string[] storyText)
+        public Chapters(string[] storyText)
         {
             StoryText = storyText;
         }
@@ -207,7 +218,7 @@ public class ConvertADVdata : MonoBehaviour {
             lines = readCsv.ReadFile(prologueCSV + ".csv");
         }
         else {
-            lines = readCsv.ReadFile(csvFile[DataManager.Instance.masteringData.masteringCharacterID].StoryText[DataManager.Instance.nowReadStoryID] + ".csv");
+            lines = readCsv.ReadFile(csvFile[DataManager.Instance.masteringData.masteringCharacterID].chapters[DataManager.Instance.nowReadChapterID].StoryText[DataManager.Instance.nowReadStoryID] + ".csv");
         }
 
         //csvデータの初期化
@@ -329,7 +340,8 @@ public class ConvertADVdata : MonoBehaviour {
     {
         if (DataManager.Instance.masteringData.masteringCharacterID != -1)
         {
-            DataManager.Instance.masteringData.masteringCharacterLastStoryID = csvFile[DataManager.Instance.masteringData.masteringCharacterID].StoryText.Length;
+            DataManager.Instance.masteringData.masteringCharacterLastChapterID = csvFile[DataManager.Instance.masteringData.masteringCharacterID].chapters.Length;
+            DataManager.Instance.masteringData.masteringCharacterLastStoryID = csvFile[DataManager.Instance.masteringData.masteringCharacterID].chapters[DataManager.Instance.nowReadChapterID].StoryText.Length;
         }
     }
 

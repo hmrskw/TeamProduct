@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+
         hp = hpImage.Length;
         face = faceIconUi.GetComponent<Image>();
         playerMate = GetComponent<Renderer>().material;

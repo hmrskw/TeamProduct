@@ -12,6 +12,8 @@ public class IntermissionManager : MonoBehaviour
 
     void Start()
     {
+        Fade.Instance.FadeOut(1f, null);
+
         if (DataManager.Instance.isEndStory())
         {
             button.interactable = false;
@@ -29,11 +31,20 @@ public class IntermissionManager : MonoBehaviour
 
     public void OnNextClick()
     {
-        SceneChanger.LoadScene("ADV");
+        if (Fade.Instance.isFade == false)
+        {
+            Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("ADV"); });
+        }
+        //SceneChanger.LoadScene("ADV");
     }
 
     public void OnMyPageClick()
     {
-        SceneChanger.LoadScene("MyPage");
+        if (Fade.Instance.isFade == false)
+        {
+            Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("MyPage"); });
+        }
+
+        //SceneChanger.LoadScene("MyPage");
     }
 }

@@ -599,16 +599,21 @@ MonoBehaviour:
     sizeName: "\u8170\u4E0A"
   prologueCSV: prologue
   csvFile:
-  - StoryText:
-    - story01
-    - story02
-    - story03
-    - story04
-  - StoryText:
-    - story01
-    - story02
-    - story03
-    - story04
+  - chapters:
+    - StoryText:
+      - story01
+      - story02
+      - story03
+      - story04
+  - chapters:
+    - StoryText:
+      - story01
+    - StoryText:
+      - story02
+    - StoryText:
+      - story03
+    - StoryText:
+      - story04
 --- !u!114 &581259872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1981,7 +1986,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &2136358174
 RectTransform:

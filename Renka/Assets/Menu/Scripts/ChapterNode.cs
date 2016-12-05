@@ -41,17 +41,17 @@ public class ChapterNode : MonoBehaviour
 		//var size = data.episodes.Length;
 		//var name(Cha) = data.name;
 		//var name(Epi) = data.episodes[0].name;
-		Debug.Log(" Data Name :" + data.name);
+		//Debug.Log(" Data Name :" + data.name);
 		//Debug.Log(" data  name :" + data.episodes[0].name);
 
 		chapterName.text = data.name;
 
 		//話の生成
 		episodes = new Episode[data.episodes.Length];
-		Debug.Log(" epsodes create[]");
+		//Debug.Log(" epsodes create[]");
 		for (var i = 0; i < data.episodes.Length; ++i)
 		{
-			Debug.Log("Create Epsode " + i);
+			//Debug.Log("Create Epsode " + i);
 			var obj = (GameObject)Instantiate(episodePrefab, transform);
 
 			//参照の中心となるスクリプトを取得

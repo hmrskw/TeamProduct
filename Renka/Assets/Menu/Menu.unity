@@ -2128,7 +2128,25 @@ MonoBehaviour:
     chapters:
     - name: "\u5E8F\u7AE0"
       episodes:
-      - name: "\u30D7\u30ED\u30ED\u30FC\u30B0"
+      - name: "\u30D7\u30ED\u30ED\u30FC\u30B01"
+        path: 
+        charID: 0
+        chapID: 0
+        epiID: 0
+        isHave: 0
+      - name: "\u30D7\u30ED\u30ED\u30FC\u30B02"
+        path: 
+        charID: 0
+        chapID: 0
+        epiID: 0
+        isHave: 0
+      - name: "\u30D7\u30ED\u30ED\u30FC\u30B03"
+        path: 
+        charID: 0
+        chapID: 0
+        epiID: 0
+        isHave: 0
+      - name: "\u30D7\u30ED\u30ED\u30FC\u30B04"
         path: 
         charID: 0
         chapID: 0

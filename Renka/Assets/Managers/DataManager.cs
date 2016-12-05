@@ -24,9 +24,13 @@ public class DataManager : MonoBehaviour
 
         //そのキャラクターのストーリーが何話まであるか
         public int masteringCharacterLastStoryID;
-        
+
+        //そのキャラクターのストーリーが何章まであるか
+        public int masteringCharacterLastChapterID;
+
         public MasteringData() {
             masteringCharacterLastStoryID = 0;
+            masteringCharacterLastChapterID = 0;
             likeabillity = 0;
             masteringCharacterID = -1;
         }
@@ -78,6 +82,9 @@ public class DataManager : MonoBehaviour
     public FinishedStoryData[] finishedStoryData;// = new FinishedStoryData[4];
     public ConfigData configData;
 
+    //今何章を読んでいるか
+    public int nowReadChapterID;
+
     //今何話を読んでいるか
     public int nowReadStoryID;
 
@@ -107,19 +114,104 @@ public class DataManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             Debug.Log(
-                "bgm" + DataManager.Instance.configData.bgm +
-                "\nse" + DataManager.Instance.configData.se +
-                "\nvoice" + DataManager.Instance.configData.voice +
-                "\ntextBox" + DataManager.Instance.configData.textBox +
-                "\ntextSpd" + DataManager.Instance.configData.textSpd +
-                "\nenableSkip" + DataManager.Instance.configData.isSkip
+                "bgm" + configData.bgm +
+                "\nse" + configData.se +
+                "\nvoice" + configData.voice +
+                "\ntextBox" + configData.textBox +
+                "\ntextSpd" + configData.textSpd +
+                "\nenableSkip" + configData.isSkip
             );
 
         }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            Debug.Log("Chapter" + finishedStoryData[0].finishedReadChapterID + "\nStory" + finishedStoryData[0].finishedReadStoryID);
+            Debug.Log("Chapter" + finishedStoryData[1].finishedReadChapterID + "\nStory" + finishedStoryData[1].finishedReadStoryID);
+            Debug.Log("Chapter" + finishedStoryData[2].finishedReadChapterID + "\nStory" + finishedStoryData[2].finishedReadStoryID);
+            Debug.Log("Chapter" + finishedStoryData[3].finishedReadChapterID + "\nStory" + finishedStoryData[3].finishedReadStoryID);
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Debug.Log("Likeabillity" + masteringData.likeabillity + "\nMasteringCharacterID");
+        }
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            Debug.Log("NowReadStory" + nowReadStoryID + "NowReadChapter" + nowReadChapterID);
+        }
+
+        //Stop
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (Input.GetKey(KeyCode.Space))
+                SoundManager.Instance.StopSE(true);
+            else
+                SoundManager.Instance.StopSE();
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            if (Input.GetKey(KeyCode.Space))
+                SoundManager.Instance.StopBGM(true);
+            else
+                SoundManager.Instance.StopBGM();
+        }
+
+        //Volume
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            SoundManager.Instance.ChangeSEVolume(SoundManager.Instance.GetSEVolume() + 0.1f);
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            SoundManager.Instance.ChangeSEVolume(SoundManager.Instance.GetSEVolume() - 0.1f);
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            SoundManager.Instance.ChangeBGMVolume(SoundManager.Instance.GetBGMVolume() + 0.1f);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            SoundManager.Instance.ChangeBGMVolume(SoundManager.Instance.GetBGMVolume() - 0.1f);
+        }
+
+        //SE
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SoundManager.Instance.PlaySE("fire");
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            SoundManager.Instance.PlaySE("hit");
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SoundManager.Instance.PlaySE("taiko");
+        }
+
+        //BGM
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SoundManager.Instance.PlayBGM("Kasinomai");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SoundManager.Instance.PlayBGM("Sakuya3");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SoundManager.Instance.PlayBGM("Tukiyatyou");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SoundManager.Instance.PlayBGM("DearChildhoodFriend");
+        }
     }
+
     public void Init()
     {
         masteringData = new MasteringData();
@@ -137,5 +229,10 @@ public class DataManager : MonoBehaviour
     public bool isEndStory()
     {
         return masteringData.masteringCharacterLastStoryID <= nowReadStoryID;
+    }
+
+    public bool isEndChapter()
+    {
+        return masteringData.masteringCharacterLastChapterID <= nowReadChapterID;
     }
 }

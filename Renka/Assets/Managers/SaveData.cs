@@ -224,9 +224,8 @@ public class SaveData
         }
         if (DataManager.Instance.masteringData.masteringCharacterID != -1)
         {
+            DataManager.Instance.nowReadChapterID = DataManager.Instance.finishedStoryData[DataManager.Instance.masteringData.masteringCharacterID].finishedReadChapterID;
             DataManager.Instance.nowReadStoryID = DataManager.Instance.finishedStoryData[DataManager.Instance.masteringData.masteringCharacterID].finishedReadStoryID;
-
-            Debug.Log(DataManager.Instance.nowReadStoryID);
         }
     }
 
@@ -235,7 +234,8 @@ public class SaveData
     /// </summary>
     public static void SaveFinishedStoryData()
     {
-        DataManager.Instance.finishedStoryData[DataManager.Instance.masteringData.masteringCharacterID].finishedReadStoryID = DataManager.Instance.nowReadStoryID;
+        DataManager.Instance.finishedStoryData[DataManager.Instance.masteringData.masteringCharacterID].finishedReadStoryID = Mathf.Max(DataManager.Instance.nowReadStoryID,0);
+        DataManager.Instance.finishedStoryData[DataManager.Instance.masteringData.masteringCharacterLastChapterID].finishedReadChapterID = Mathf.Max(DataManager.Instance.nowReadChapterID, 0);
         for (int i = 0; i < 4; i++)
         {
             SaveData.SetClass<DataManager.FinishedStoryData>("FinishedStoryData" + i.ToString(), DataManager.Instance.finishedStoryData[i]);
@@ -249,7 +249,8 @@ public class SaveData
     /// <param name="characterID"></param>
     public static void SaveFinishedStoryData(int characterID)
     {
-        DataManager.Instance.finishedStoryData[characterID].finishedReadStoryID = DataManager.Instance.nowReadStoryID;
+        DataManager.Instance.finishedStoryData[characterID].finishedReadStoryID = Mathf.Max(DataManager.Instance.nowReadStoryID,0);
+        DataManager.Instance.finishedStoryData[characterID].finishedReadChapterID = Mathf.Max(DataManager.Instance.nowReadChapterID, 0);
         SaveData.SetClass<DataManager.FinishedStoryData>("FinishedStoryData" + characterID.ToString(), DataManager.Instance.finishedStoryData[characterID]);
         SaveData.Save();
     }

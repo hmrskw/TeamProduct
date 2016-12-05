@@ -81,8 +81,9 @@ public class MenuManager : MonoBehaviour
 
 	void Start()
 	{
-		//Debug.Log("actives setup");
-		Init();
+        Fade.Instance.FadeOut(1f, null);
+        //Debug.Log("actives setup");
+        Init();
 	}
 
 	void Init()

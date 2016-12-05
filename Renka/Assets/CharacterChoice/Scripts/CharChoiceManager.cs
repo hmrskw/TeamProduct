@@ -31,6 +31,8 @@ public class CharChoiceManager : MonoBehaviour
 
     void Start()
     {
+        Fade.Instance.FadeOut(1f, null);
+        
         //選べないキャラを選択できなくする
         if (canSelectsTatsumi == false)
         {
@@ -62,9 +64,14 @@ public class CharChoiceManager : MonoBehaviour
     /// </summary>
     public void OnClickCharacter(int CharacterID_)
     {
+        if (Fade.Instance.isFade == true) return;
+
         DataManager.Instance.masteringData.masteringCharacterID = CharacterID_;
         ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
         SaveData.SaveMasteringData();
-        SceneChanger.LoadScene("MyPage", false);
+
+        Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("MyPage"); });
+
+        //SceneChanger.LoadScene("MyPage", false);
     }
 }

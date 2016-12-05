@@ -92,7 +92,7 @@ public class Episode : MonoBehaviour
         {
             isHave = false;
         }
-        else if (EpiID > finData.finishedReadStoryID)
+        else if (EpiID >= finData.finishedReadStoryID)
         {
             isHave = false;
         }

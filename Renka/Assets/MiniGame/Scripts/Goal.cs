@@ -11,7 +11,8 @@ public class Goal : MonoBehaviour {
     {
         yield return new WaitForSeconds(1);
         //SceneChanger.LoadScene("MyPage");
-        SceneChanger.LoadBeforeScene(true);
+        Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadBeforeScene(true); });
+        
         yield return null;
     }
 

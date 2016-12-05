@@ -167,16 +167,16 @@ public class Still
 	//攻略データから
 	public void SetIsHaveFromCaptureData(DataManager.FinishedStoryData[] data)
 	{
-		if (GetCharID > data[GetCharID].finishedReadChapterID)
+		if (GetChapID > data[GetCharID].finishedReadChapterID)
 		{//この章まで攻略されてない
 			isHave = false;
 		}
-		else if (GetCharID < data[GetCharID].finishedReadChapterID)
+		else if (GetChapID < data[GetCharID].finishedReadChapterID)
 		{//この章は攻略し終えた
 			isHave = true;
 		}
 		//☆セーブの仕様がわからんからスチル獲得が不明
-		else if (GetEpiID > data[GetCharID].finishedReadStoryID)
+		else if (GetEpiID >= data[GetCharID].finishedReadStoryID)
 		{//この章のこの話まで攻略されてない
 			isHave = false;
 		}

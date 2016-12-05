@@ -39,6 +39,8 @@ public class StageManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Fade.Instance.FadeOut(1f, null);
+
         ScrollSpeed = roadScrollSpeed;
         StageShuffle();
         StartCoroutine(stageMoveCor());
@@ -68,10 +70,14 @@ public class StageManager : MonoBehaviour
     {
         while(true)
         {
-            if (InputManager.Instance.IsTouchBegan())
+            if (Fade.Instance.isFade == false)
             {
-                waitClickText.SetActive(false);
-                break;
+
+                if (InputManager.Instance.IsTouchBegan())
+                {
+                    waitClickText.SetActive(false);
+                    break;
+                }
             }
             yield return null;
         }

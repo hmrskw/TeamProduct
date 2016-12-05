@@ -21,7 +21,12 @@ public class ContentsManager : MonoBehaviour
     public void OnClickMyPage()
     {
         Debug.Log("マイページ");
-		SceneChanger.LoadScene("MyPage");
+        if (Fade.Instance.isFade == false)
+        {
+
+            Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("MyPage"); });
+        }
+        //SceneChanger.LoadScene("MyPage");
 
 	}
 
