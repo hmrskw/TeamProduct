@@ -61,7 +61,7 @@ public class ResetManager : MonoBehaviour
             DataManager.Instance.finishedStoryData[i] = new DataManager.FinishedStoryData();
         }
         DataManager.Instance.nowReadStoryID = -1;
-        DataManager.Instance.nowReadChapterID = -1;
+        DataManager.Instance.nowReadChapterID = 0;
 
         //三つ目の画面へ
         window2.SetActive(false);
