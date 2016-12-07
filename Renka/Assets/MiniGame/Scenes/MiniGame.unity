@@ -2955,11 +2955,10 @@ GameObject:
   - 4: {fileID: 540191523}
   - 33: {fileID: 540191522}
   - 23: {fileID: 540191520}
-  - 114: {fileID: 540191519}
   - 65: {fileID: 540191524}
-  - 114: {fileID: 540191521}
   - 54: {fileID: 540191525}
   - 114: {fileID: 540191526}
+  - 114: {fileID: 540191521}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -2967,21 +2966,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &540191519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 540191518}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fa516fdc8150f8448f391f5ea51ffca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerMoveSpeed: 0.1
-  leftLimitPos: -1.5
-  rightLimitPos: 1.5
-  player: {fileID: 540191521}
 --- !u!23 &540191520
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3034,9 +3018,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 668860531c5ff31489ebb65ba1ff5cfa, type: 3}
   - {fileID: 21300000, guid: 58c592b232d71f34294277e72a0c19b1, type: 3}
   - {fileID: 21300000, guid: ed61b82cd4d82e047b2c3eabdd3b4645, type: 3}
-  characterAnimationImages:
+  tatsumiAnimationImages:
   - {fileID: 2800000, guid: a1999b24802a10e4a8abe60412e24779, type: 3}
   - {fileID: 2800000, guid: 8d826331c80e5484eaf51a5d55824dfa, type: 3}
+  yusukeAnimationImages:
+  - {fileID: 2800000, guid: c5012d77fcbe6ca44a0f5810b18fd365, type: 3}
+  - {fileID: 2800000, guid: a2377a91eca4f4b40901ba4c970ad989, type: 3}
   animationChangeTime: 0.3
   faceIconUi: {fileID: 1478344759}
   _alphaRound: 0
@@ -4022,6 +4009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goalPopUp: {fileID: 1163878271}
+  stageManager: {fileID: 1305008170}
   isGoal: 0
 --- !u!23 &753824247
 MeshRenderer:

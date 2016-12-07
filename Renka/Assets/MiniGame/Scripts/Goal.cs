@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Goal : MonoBehaviour {
+public class Goal : MonoBehaviour
+{
     [SerializeField]
     GameObject goalPopUp;
 
-    public bool isGoal=false;
+    [SerializeField]
+    StageManager stageManager;
+
+    public bool isGoal = false;
 
     IEnumerator ChangeScene()
     {
         yield return new WaitForSeconds(1);
         //SceneChanger.LoadScene("MyPage");
-        Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadBeforeScene(true); });
-        
+        SceneChanger.LoadBeforeScene(true);
         yield return null;
     }
 
@@ -20,6 +23,8 @@ public class Goal : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
+            stageManager.ScrollSpeed = 0.0f;
+
             goalPopUp.SetActive(true);
             isGoal = true;
             StartCoroutine(ChangeScene());

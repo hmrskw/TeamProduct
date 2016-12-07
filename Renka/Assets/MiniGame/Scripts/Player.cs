@@ -21,9 +21,15 @@ public class Player : MonoBehaviour
 
     //テクスチャアニメーション//////////////////////////////
     [SerializeField]
-    private Texture[] characterAnimationImages;
+    private Texture[] tatsumiAnimationImages;
 
-    [SerializeField][Tooltip("キャラクターのテクスチャが切り替わるまでの時間")]
+    [SerializeField]
+    private Texture[] yusukeAnimationImages;
+
+
+
+    [SerializeField]
+    [Tooltip("キャラクターのテクスチャが切り替わるまでの時間")]
     float animationChangeTime;
 
     private float nowTime;
@@ -38,23 +44,41 @@ public class Player : MonoBehaviour
 
     private bool is_hit = false;
 
+    //誰を攻略中か
+    // 0. 辰巳
+    // 1. 酉助
+    // 2. 卯太郎
+    // 3. 一午
+    private int nowCharacterID = DataManager.Instance.masteringData.masteringCharacterID;
+
     void Start()
     {
-
         hp = hpImage.Length;
         face = faceIconUi.GetComponent<Image>();
         playerMate = GetComponent<Renderer>().material;
-        
+        //タツミ
+        if (nowCharacterID == 0)
+        {
+            playerMate.mainTexture = tatsumiAnimationImages[0];
+        }
+        //ユウスケ
+        if (nowCharacterID == 1)
+        {
+            if (nowCharacterID == 1)
+            {
+                playerMate.mainTexture = yusukeAnimationImages[0];
+            }
+        }
 
     }
 
-   void Update()
+    void Update()
     {
 
 
-        
+
         TextureAnim();
-        if (hp>0)
+        if (hp > 0)
         {
             face.sprite = faceIconImages[hp];
 
@@ -64,24 +88,51 @@ public class Player : MonoBehaviour
     //キャラクターの走るアニメーション
     void TextureAnim()
     {
-        if(stage.ScrollSpeed < -0.1f)
+        if (stage.ScrollSpeed < -0.1f)
         {
 
             nowTime += Time.deltaTime;
         }
-        
-        if (nowTime>animationChangeTime)
+
+        if (nowTime > animationChangeTime)
         {
-            
+
             nowTime = 0f;
             nowTextureNum++;
-            if(nowTextureNum>=characterAnimationImages.Length)
+            //タツミ
+            if (nowCharacterID == 0)
             {
-                
-                nowTextureNum = 0;
+                if (nowTextureNum >= tatsumiAnimationImages.Length)
+                {
+
+                    nowTextureNum = 0;
+                }
+
             }
+
+            //ユウスケ
+            if (nowCharacterID == 1)
+            {
+                if (nowTextureNum >= yusukeAnimationImages.Length)
+                {
+
+                    nowTextureNum = 0;
+                }
+
+            }
+
         }
-        playerMate.mainTexture = characterAnimationImages[nowTextureNum];
+
+        if (nowCharacterID == 0)
+        {
+            playerMate.mainTexture = tatsumiAnimationImages[nowTextureNum];
+        }
+
+        if (nowCharacterID == 1)
+        {
+            playerMate.mainTexture = yusukeAnimationImages[nowTextureNum];
+        }
+
     }
 
     void OnTriggerEnter(Collider other)
@@ -100,7 +151,7 @@ public class Player : MonoBehaviour
 
 
         hp -= 1;
-        if (hp>0)
+        if (hp > 0)
         {
             //HPの表示を1つ減らす
             hpImage[hp].SetActive(false);
@@ -116,33 +167,17 @@ public class Player : MonoBehaviour
             SceneChanger.LoadBeforeScene(true);
         }
 
-        
+
 
 
         yield return StartCoroutine(DamageEffect());
-        
+
         //ステージの移動を元に戻す
         stage.ScrollSpeed = stage.roadScrollSpeed;
     }
 
 
-    //作成中
-    IEnumerator caracterAnimation()
-    {
-        while (stage.ScrollSpeed<-0.1f)
-        {
-            yield return new WaitForSeconds(1);
-            
-            playerMate.mainTexture = characterAnimationImages[1];
-            yield return new WaitForSeconds(1);
-             playerMate.mainTexture = characterAnimationImages[0];
-           
-            yield return null;
-        }
 
-            
-
-    }
 
     [SerializeField]
     bool _alphaRound = false;
@@ -157,16 +192,16 @@ public class Player : MonoBehaviour
             var angle = interval * Mathf.PI * 4f;
             var alpha = (Mathf.Sin(angle) * 0.5f) + 0.5f;
             if (_alphaRound) { alpha = Mathf.RoundToInt(alpha); }
-            
+
             interval += Time.deltaTime;
 
-            
+
             var color = Color.white;
             color.a = alpha;
             renderer.material.color = color;
 
             yield return null;
-          
+
         }
 
         renderer.material.color = Color.white;
