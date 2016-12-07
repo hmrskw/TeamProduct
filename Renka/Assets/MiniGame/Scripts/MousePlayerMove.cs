@@ -39,21 +39,25 @@ public class MousePlayerMove : MonoBehaviour {
             //現在の位置を保存しておく
             prevPos.x = x / Screen.width;
 
-            
+
             if (transform.position.x <= leftLimitPos)
             {
-                transform.position = new Vector3(leftLimitPos,-2f, -0.3f);
+                transform.position = new Vector3(leftLimitPos, -2, 0);
+                //もし移動量がプラスの値の時だけ移動
+                transform.Translate(Mathf.Max(prevFrameReminder * moveSpeed, 0), 0, 0);
 
             }
 
-            if (transform.position.x >= rightLimitPos)
+            else if (transform.position.x >= rightLimitPos)
             {
-                transform.position = new Vector3(rightLimitPos, -2, -0.3f);
+                transform.position = new Vector3(rightLimitPos, -2, 0);
+                //もし移動量がマイナスの値の時だけ移動
+                transform.Translate(Mathf.Min(prevFrameReminder * moveSpeed, 0), 0, 0);
 
             }
 
             //移動させる 
-            transform.Translate(prevFrameReminder*moveSpeed, 0, 0);
+            else transform.Translate(prevFrameReminder*moveSpeed, 0, 0);
         }
         
 
