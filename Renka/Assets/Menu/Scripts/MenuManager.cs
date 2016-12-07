@@ -24,6 +24,8 @@ public class MenuManager : MonoBehaviour
 
 	//現在の状態
 	MenuPage menu;
+	public MenuPage Menu
+	{ get { return menu; } }
 
 	//ひとつ前の状態
 	MenuPage prevMenu;
@@ -90,19 +92,13 @@ public class MenuManager : MonoBehaviour
 	{
 		//メニューのオブジェクトそれぞれ管理する
 		actives = new Active[(int)MenuPage.NUM];
-		//actives[(int)MenuPage.CONTENTS] = new Active(this.ActiveContents);
-		//actives[(int)MenuPage.MEMORY]	= new Active(this.ActiveMemory);
-		//actives[(int)MenuPage.RECORD]	= new Active(this.ActiveRecord);
-		//actives[(int)MenuPage.PROFILE]	= new Active(this.ActiveProfile);
-		//actives[(int)MenuPage.CONFIG]	= new Active(this.ActiveConfig);
-		//actives[(int)MenuPage.RESET]	= new Active(this.ActiveReset);
-		//actives[(int)MenuPage.STAFF]	= new Active(this.ActiveStaff);
-
-		//actives[1] = () => memory.gameObject.SetActive(true);
 
 		//各ページのオンオフ制御
 		//初期化が必要なものは処理を追加する
-		actives[(int)MenuPage.CONTENTS] = (bool f) => contents.gameObject.SetActive(f);
+		actives[(int)MenuPage.CONTENTS] = (bool f) => 
+		{
+			contents.gameObject.SetActive(f);
+		};
 		actives[(int)MenuPage.MEMORY] = (bool f) => memory.gameObject.SetActive(f);
 		actives[(int)MenuPage.RECORD] = (bool f) => record.gameObject.SetActive(f);
 		actives[(int)MenuPage.PROFILE] = (bool f) =>

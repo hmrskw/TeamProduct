@@ -177,7 +177,16 @@ public class ConfigManager : MonoBehaviour
 		//var speed = ScaleFig(testTextSpeed, 0f, 100f, 0, 1);
 		//Debug.Log("SpeedF : " + speed);
 
-		StartCoroutine(PlayTextCoroutine2(testText, 0, testTextIntervalSpeed));
+		StartCoroutine(UntilFadeEnd(PlayTextCoroutine2(testText, 0, testTextIntervalSpeed)));
+	}
+
+	public IEnumerator UntilFadeEnd(IEnumerator crou)
+	{
+		Debug.Log("until start");
+		//yield return new WaitUntil( ()=> Fade.Instance.isFade == false );
+		yield return new WaitForSeconds(1.5f);
+		Debug.Log("until end");
+		StartCoroutine(crou);
 	}
 
 	/// <summary>
@@ -239,13 +248,10 @@ public class ConfigManager : MonoBehaviour
 			if (strCnt >= strMax)
 			{
 				strCnt = 0;
-				//yield return new WaitForSeconds(intervalSpeed);
 				yield return new WaitForSeconds(testTextIntervalSpeed);
 			}
 			else
 			{
-				//yield return new WaitForSeconds(textSpeed);
-				//yield return new WaitForSeconds( 1f - textSpd.value );
 				yield return new WaitForSeconds(ScaleNormalized(1 - textSpd.value, 1f, 0.1f));
 			}
 

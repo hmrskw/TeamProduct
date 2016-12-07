@@ -48,6 +48,7 @@ public class ProfileManager : MonoBehaviour
 	/// </summary>
 	public void ResetProfiles()
 	{
+		Debug.Log("reset Profile");
 		//全てアクティブをfalseにして非表示にしておく
 		for (int i = 0; i < profileObjects.Length; i++)
 		{
@@ -59,12 +60,13 @@ public class ProfileManager : MonoBehaviour
 	}
 
 	/// <summary>
-	/// プロファイル選択からプロファイルに映る
+	/// プロファイル選択からプロファイルに移る
 	/// </summary>
 	/// <param name="name"></param>
 	void ActiveProfile( ProfileName name)
 	{
 		Debug.Log("ActiveProfile");
+
 		//false
 		Select.gameObject.SetActive(false);
 
@@ -84,7 +86,7 @@ public class ProfileManager : MonoBehaviour
 	{
 		Debug.Log("Shift Select");
 		if (isSelect) return false;
-
+		
 		ResetProfiles();
 
 		return true;
@@ -117,12 +119,19 @@ public class ProfileManager : MonoBehaviour
 
 		if (Select.IsHold) return;
 
-		//セレクトをオフに
-		Select.gameObject.SetActive(false);
+		if (Fade.Instance.isFade == false)
+		{
+			Fade.Instance.FadeIn(1f, () =>
+			{
+			//セレクトをオフに
+			Select.gameObject.SetActive(false);
 
-		//プロファイルをオンに
-		ActiveProfile((ProfileName)id);
+			//プロファイルをオンに
+			ActiveProfile((ProfileName)id);
 
+				Fade.Instance.FadeOut(1f, null);
+			});
+		}
 	}
 
 }
