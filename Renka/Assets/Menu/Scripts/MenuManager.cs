@@ -24,6 +24,8 @@ public class MenuManager : MonoBehaviour
 
 	//現在の状態
 	MenuPage menu;
+	public MenuPage Menu
+	{ get { return menu; } }
 
 	//ひとつ前の状態
 	MenuPage prevMenu;
@@ -32,7 +34,7 @@ public class MenuManager : MonoBehaviour
 	Stack<MenuPage> pageStacks = new Stack<MenuPage>();
 
 	[SerializeField, Tooltip("このシーンに移った時最初に表示されるページ")]
-    MenuPage initialPage;
+	MenuPage initialPage;
 
 	[SerializeField, Tooltip("コンテンツページ")]
 	ContentsManager contents;
@@ -76,33 +78,27 @@ public class MenuManager : MonoBehaviour
 		{
 			Destroy(this);
 		}
-		
+
 	}
 
 	void Start()
 	{
-        Fade.Instance.FadeOut(1f, null);
-        //Debug.Log("actives setup");
-        Init();
+		Fade.Instance.FadeOut(1f, null);
+		//Debug.Log("actives setup");
+		Init();
 	}
 
 	void Init()
 	{
 		//メニューのオブジェクトそれぞれ管理する
 		actives = new Active[(int)MenuPage.NUM];
-		//actives[(int)MenuPage.CONTENTS] = new Active(this.ActiveContents);
-		//actives[(int)MenuPage.MEMORY]	= new Active(this.ActiveMemory);
-		//actives[(int)MenuPage.RECORD]	= new Active(this.ActiveRecord);
-		//actives[(int)MenuPage.PROFILE]	= new Active(this.ActiveProfile);
-		//actives[(int)MenuPage.CONFIG]	= new Active(this.ActiveConfig);
-		//actives[(int)MenuPage.RESET]	= new Active(this.ActiveReset);
-		//actives[(int)MenuPage.STAFF]	= new Active(this.ActiveStaff);
-
-		//actives[1] = () => memory.gameObject.SetActive(true);
 
 		//各ページのオンオフ制御
 		//初期化が必要なものは処理を追加する
-		actives[(int)MenuPage.CONTENTS] = (bool f) => contents.gameObject.SetActive(f);
+		actives[(int)MenuPage.CONTENTS] = (bool f) =>
+		{
+			contents.gameObject.SetActive(f);
+		};
 		actives[(int)MenuPage.MEMORY] = (bool f) => memory.gameObject.SetActive(f);
 		actives[(int)MenuPage.RECORD] = (bool f) => record.gameObject.SetActive(f);
 		actives[(int)MenuPage.PROFILE] = (bool f) =>
@@ -169,7 +165,7 @@ public class MenuManager : MonoBehaviour
 	/// <param name="next"></param>
 	public void ShiftPage(MenuPage next)
 	{
-		Debug.Log("ShiftPage : " + next.ToString() );
+		Debug.Log("ShiftPage : " + next.ToString());
 
 		//今のページのゲームオブジェをオフにする
 		actives[(int)menu](false);
@@ -224,7 +220,7 @@ public class MenuManager : MonoBehaviour
 	/// 初期化(シーン開始時にはこれを呼ぶ)
 	/// </summary>
 	/// <param name="page"></param>
-	public void Reset( MenuPage page )
+	public void Reset(MenuPage page)
 	{
 		//Awakeの初期化を行わせる
 		memory.gameObject.SetActive(true);
@@ -243,13 +239,13 @@ public class MenuManager : MonoBehaviour
 		staff.gameObject.SetActive(false);
 		contents.gameObject.SetActive(false);
 
-		if (page == MenuPage.CONTENTS)		contents.gameObject.SetActive(true);
-		else if (page == MenuPage.MEMORY)	memory.gameObject.SetActive(true);
-		else if (page == MenuPage.RECORD)	record.gameObject.SetActive(true);
-		else if (page == MenuPage.PROFILE)	profile.gameObject.SetActive(true);
-		else if (page == MenuPage.CONFIG)	config.gameObject.SetActive(true);
-		else if (page == MenuPage.RESET)	reset.gameObject.SetActive(true);
-		else if (page == MenuPage.STAFF)	staff.gameObject.SetActive(true);
+		if (page == MenuPage.CONTENTS) contents.gameObject.SetActive(true);
+		else if (page == MenuPage.MEMORY) memory.gameObject.SetActive(true);
+		else if (page == MenuPage.RECORD) record.gameObject.SetActive(true);
+		else if (page == MenuPage.PROFILE) profile.gameObject.SetActive(true);
+		else if (page == MenuPage.CONFIG) config.gameObject.SetActive(true);
+		else if (page == MenuPage.RESET) reset.gameObject.SetActive(true);
+		else if (page == MenuPage.STAFF) staff.gameObject.SetActive(true);
 
 		pageStacks.Push(MenuPage.CONTENTS);
 

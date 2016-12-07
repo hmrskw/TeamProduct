@@ -65,26 +65,26 @@ public class ConfigManager : MonoBehaviour
 	//描画するテキスト
 	string testText = "";
 
-    void Awake()
-    {
-        //Debug.Log("Awake Config");
-        //画面のテキストから描画するテキスト移す
-        testText = text.text;;
-    }
-
-    void Start()
+	void Awake()
 	{
-        //コンフィグデータを読み込む
-        //※データマネージャーのデータ
-        ReflectConfigUI(/*DataManager.Instance.configData*/);
+		//Debug.Log("Awake Config");
+		//画面のテキストから描画するテキスト移す
+		testText = text.text; ;
+	}
+
+	void Start()
+	{
+		//コンフィグデータを読み込む
+		//※データマネージャーのデータ
+		ReflectConfigUI(/*DataManager.Instance.configData*/);
 
 		//テキスストボックスのバーがいじられたときのアルファの変更
 		textBox.onValueChanged.AddListener((float value) =>
-	   {
-		   var a = textAreaImage.color;
-		   a.a = value;
-		   textAreaImage.color = a;
-	   });
+		{
+			var a = textAreaImage.color;
+			a.a = value;
+			textAreaImage.color = a;
+		});
 		//textBox.onValueChanged.AddListener(OnSlide);
 	}
 
@@ -107,17 +107,17 @@ public class ConfigManager : MonoBehaviour
 	/// <param name="data">コンフィグデータ</param>
 	public void ReflectConfigUI()
 	{
-        //ConfigData data = DataManager.Instance.configData;
-        Debug.Log("LoadConfig");
+		//ConfigData data = DataManager.Instance.configData;
+		Debug.Log("LoadConfig");
 
-        bgm.value = DataManager.Instance.configData.bgm;
-        se.value = DataManager.Instance.configData.se;
-        voice.value = DataManager.Instance.configData.voice;
-        textBox.value = DataManager.Instance.configData.textBox;
-        textSpd.value = DataManager.Instance.configData.textSpd;
-        enableSkip.isOn = DataManager.Instance.configData.isSkip;
+		bgm.value = DataManager.Instance.configData.bgm;
+		se.value = DataManager.Instance.configData.se;
+		voice.value = DataManager.Instance.configData.voice;
+		textBox.value = DataManager.Instance.configData.textBox;
+		textSpd.value = DataManager.Instance.configData.textSpd;
+		enableSkip.isOn = DataManager.Instance.configData.isSkip;
 
-        /*
+		/*
 		bgm.value = data.BGM;
 		se.value = data.SE;
 		voice.value = data.VOICE;
@@ -125,33 +125,33 @@ public class ConfigManager : MonoBehaviour
 		textSpd.value = data.TextSpd;
         enableSkip.isOn = data.IsSkip;
         */
-    }
+	}
 
-    /// <summary>
-    /// 現在のUIからコンフィグデータを生成する
-    /// </summary>
-    void Update()
+	/// <summary>
+	/// 現在のUIからコンフィグデータを生成する
+	/// </summary>
+	void Update()
 	{
-        SoundManager.Instance.ChangeBGMVolume(bgm.value);
-        SoundManager.Instance.ChangeSEVolume(se.value);
-        SoundManager.Instance.ChangeVoiceVolume(voice.value);
-        DataManager.Instance.configData.textBox = textBox.value;
-        DataManager.Instance.configData.textSpd = textSpd.value;
-        DataManager.Instance.configData.isSkip = enableSkip.isOn;
-    }
+		SoundManager.Instance.ChangeBGMVolume(bgm.value);
+		SoundManager.Instance.ChangeSEVolume(se.value);
+		SoundManager.Instance.ChangeVoiceVolume(voice.value);
+		DataManager.Instance.configData.textBox = textBox.value;
+		DataManager.Instance.configData.textSpd = textSpd.value;
+		DataManager.Instance.configData.isSkip = enableSkip.isOn;
+	}
 
-    /// <summary>
-    /// データマネージャーにコンフィグ情報を保存する
-    /// </summary>
-    public void SaveConfigData()
-    {
-        Debug.Log("SaveConfigData");
-        DataManager.Instance.configData.bgm = bgm.value;
-        DataManager.Instance.configData.se = se.value;
-        DataManager.Instance.configData.voice = voice.value;
-        DataManager.Instance.configData.textBox = textBox.value;
-        DataManager.Instance.configData.textSpd = textSpd.value;
-        SaveData.SaveConfigData();
+	/// <summary>
+	/// データマネージャーにコンフィグ情報を保存する
+	/// </summary>
+	public void SaveConfigData()
+	{
+		Debug.Log("SaveConfigData");
+		DataManager.Instance.configData.bgm = bgm.value;
+		DataManager.Instance.configData.se = se.value;
+		DataManager.Instance.configData.voice = voice.value;
+		DataManager.Instance.configData.textBox = textBox.value;
+		DataManager.Instance.configData.textSpd = textSpd.value;
+		SaveData.SaveConfigData();
 	}
 
 
@@ -177,7 +177,16 @@ public class ConfigManager : MonoBehaviour
 		//var speed = ScaleFig(testTextSpeed, 0f, 100f, 0, 1);
 		//Debug.Log("SpeedF : " + speed);
 
-		StartCoroutine(PlayTextCoroutine2(testText, 0, testTextIntervalSpeed));
+		StartCoroutine(UntilFadeEnd(PlayTextCoroutine2(testText, 0, testTextIntervalSpeed)));
+	}
+
+	public IEnumerator UntilFadeEnd(IEnumerator crou)
+	{
+		Debug.Log("until start");
+		//yield return new WaitUntil( ()=> Fade.Instance.isFade == false );
+		yield return new WaitForSeconds(1.5f);
+		Debug.Log("until end");
+		StartCoroutine(crou);
 	}
 
 	/// <summary>
@@ -239,13 +248,10 @@ public class ConfigManager : MonoBehaviour
 			if (strCnt >= strMax)
 			{
 				strCnt = 0;
-				//yield return new WaitForSeconds(intervalSpeed);
 				yield return new WaitForSeconds(testTextIntervalSpeed);
 			}
 			else
 			{
-				//yield return new WaitForSeconds(textSpeed);
-				//yield return new WaitForSeconds( 1f - textSpd.value );
 				yield return new WaitForSeconds(ScaleNormalized(1 - textSpd.value, 1f, 0.1f));
 			}
 
@@ -261,7 +267,7 @@ public class ConfigManager : MonoBehaviour
 
 	public void StopText()
 	{
-		StopCoroutine(PlayTextCoroutine2("end",0f,0f));
+		StopCoroutine(PlayTextCoroutine2("end", 0f, 0f));
 		IsStopText = false;
 	}
 

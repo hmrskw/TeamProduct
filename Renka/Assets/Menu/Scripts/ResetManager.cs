@@ -52,19 +52,19 @@ public class ResetManager : MonoBehaviour
 	{
 		Debug.Log("ウィンドウ②　Yes");
 
-        //削除
-        SaveData.ResetMasteringData();
-        SaveData.ResetFinishedStoryData();
-        DataManager.Instance.masteringData = new DataManager.MasteringData();
-        for (int i = 0; i < 4; i++)
-        {
-            DataManager.Instance.finishedStoryData[i] = new DataManager.FinishedStoryData();
-        }
-        DataManager.Instance.nowReadStoryID = -1;
-        DataManager.Instance.nowReadChapterID = 0;
+		//削除
+		SaveData.ResetMasteringData();
+		SaveData.ResetFinishedStoryData();
+		DataManager.Instance.masteringData = new DataManager.MasteringData();
+		for (int i = 0; i < 4; i++)
+		{
+			DataManager.Instance.finishedStoryData[i] = new DataManager.FinishedStoryData();
+		}
+		DataManager.Instance.nowReadStoryID = -1;
+		DataManager.Instance.nowReadChapterID = 0;
 
-        //三つ目の画面へ
-        window2.SetActive(false);
+		//三つ目の画面へ
+		window2.SetActive(false);
 		window3.SetActive(true);
 	}
 
