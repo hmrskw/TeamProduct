@@ -29,8 +29,10 @@ public class ADVManager : MonoBehaviour
         choiceManager = GetComponent<ChoiceManager>();
         textManager = GetComponent<TextManager>();
         graphicManager = GetComponent<GraphicManager>();
-        ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
-
+        if (SceneChanger.GetBeforeSceneName(true) != "Menu")
+        {
+            ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
+        }
         //Debug.Log(DataManager.Instance.nowReadStoryID);
         if (SceneChanger.GetBeforeSceneName(true) == "MiniGame")
         {
@@ -138,7 +140,13 @@ public class ADVManager : MonoBehaviour
             }
             else
             {
-                if (DataManager.Instance.nowReadStoryID == -1)
+                if (DataManager.Instance.nowReadCharcterID != -1)
+                {
+                    DataManager.Instance.nowReadCharcterID = -1;
+                    DataManager.Instance.endLine = 0;
+                    Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("Menu",true); });
+                }
+                else if (DataManager.Instance.nowReadStoryID == -1)
                 {
                     //ADVシーンを終了
                     DataManager.Instance.endLine = 0;

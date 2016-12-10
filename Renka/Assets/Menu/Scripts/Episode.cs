@@ -36,7 +36,13 @@ public class Episode : MonoBehaviour
 
         //Button button = this.GetComponent<Button>();
         //button.onClick.AddListener(() => { Debug.Log("Clicked." + text.text); });
-        button.onClick.AddListener(() => { Debug.Log("OnClick " + "キャラ " + CharID + ", " + ChapID + "章, " + EpiID + "話"); });
+        button.onClick.AddListener(() => {
+            Debug.Log("OnClick " + "キャ;ラ " + CharID + ", " + ChapID + "章, " + EpiID + "話");
+            DataManager.Instance.nowReadCharcterID = CharID;
+            DataManager.Instance.nowReadStoryID = EpiID;
+            DataManager.Instance.nowReadChapterID = ChapID;
+            Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("ADV", true); });
+        });
         //string str = "キャラ " + CharID +", " + ChapID + "章, "+ EpiID + "話";
 
 

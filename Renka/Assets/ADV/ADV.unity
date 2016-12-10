@@ -603,7 +603,7 @@ MonoBehaviour:
     - StoryText:
       - story01
       - story02
-      - story03
+      - story04
       - story04
   - chapters:
     - StoryText:

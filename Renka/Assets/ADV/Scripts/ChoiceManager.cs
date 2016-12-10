@@ -107,7 +107,10 @@ public class ChoiceManager : MonoBehaviour
                 //未実装
 
                 //選択のオブジェをアクティブする
-                choiceScripts[i].gameObject.SetActive(true);
+                if (ConvertADVdata.Instance.AdvData[wordsCount].choiceTermsParameter[i] > DataManager.Instance.masteringData.likeabillity)
+                {
+                    choiceScripts[i].gameObject.SetActive(true);
+                }
 
                 choiceScripts[i].Reset();
             }

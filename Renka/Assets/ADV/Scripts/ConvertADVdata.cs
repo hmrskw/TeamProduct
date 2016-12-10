@@ -28,6 +28,7 @@ public class ConvertADVdata : MonoBehaviour {
         public int choiceNum;//表示する選択肢の数
         public string[] choiceText = new string[3];//各選択肢の文章
         public int[] choicePoint = new int[3];//各選択肢のポイント
+        public int[] choiceTermsParameter = new int[3];//各選択肢のポイント
 
         public string sendCharacter;//キャラクターのID
         public string text;//テキスト
@@ -37,22 +38,7 @@ public class ConvertADVdata : MonoBehaviour {
 
         public ADVData()
         {
-            this.command = "";
-            this.parameter = "";
-
-            this.drawCharacterNum = 0;
-            this.drawCharacterID[0] = 0;
-            this.expression[0] = 0;
-            this.costume[0] = 0;
-            this.pos[0] = Vector2.zero;
-            this.size[0] = 1f;
-
-            this.choiceNum = 0;
-            this.choiceText[0] = "";
-            this.choicePoint[0] = 0;
-
-            this.sendCharacter = "";
-            this.text = "";
+            init();
 
             //this.backGroundID = 0;
             //this.BGMID = 0;
@@ -71,8 +57,12 @@ public class ConvertADVdata : MonoBehaviour {
             this.size[0] = 1f;
 
             this.choiceNum = 0;
-            this.choiceText[0] = "";
-            this.choicePoint[0] = 0;
+            for (int i = 0; i < 3; i++)
+            {
+                this.choiceText[i] = "";
+                this.choicePoint[i] = 0;
+                this.choiceTermsParameter[i] = 0;
+            }
 
             this.sendCharacter = "";
             this.text = "";
@@ -214,11 +204,23 @@ public class ConvertADVdata : MonoBehaviour {
         readCsv = new ReadCSV();
 
         string[] lines;
-        if (DataManager.Instance.masteringData.masteringCharacterID == -1) {
+        if (DataManager.Instance.masteringData.masteringCharacterID == -1)
+        {
             lines = readCsv.ReadFile(prologueCSV + ".csv");
         }
-        else {
-            lines = readCsv.ReadFile(csvFile[DataManager.Instance.masteringData.masteringCharacterID].chapters[DataManager.Instance.nowReadChapterID].StoryText[DataManager.Instance.nowReadStoryID] + ".csv");
+        else if (SceneChanger.GetBeforeSceneName(true) == "Menu")
+        {
+            lines = readCsv.ReadFile(
+                csvFile[DataManager.Instance.nowReadCharcterID].
+                chapters[DataManager.Instance.nowReadChapterID].
+                StoryText[DataManager.Instance.nowReadStoryID] + ".csv");
+        }
+        else
+        {
+            lines = readCsv.ReadFile(
+                csvFile[DataManager.Instance.masteringData.masteringCharacterID].
+                chapters[DataManager.Instance.nowReadChapterID].
+                StoryText[DataManager.Instance.nowReadStoryID] + ".csv");
         }
 
         //csvデータの初期化
@@ -276,6 +278,7 @@ public class ConvertADVdata : MonoBehaviour {
                 {
                     advDataTmp.choiceText[advDataTmp.choiceNum] = Convert.ToString(didCommaSeparationData[(int)ElementsName.TEXT]);
                     advDataTmp.choicePoint[advDataTmp.choiceNum] = Convert.ToInt16(didCommaSeparationData[(int)ElementsName.PARAMETER]);
+                    advDataTmp.choiceTermsParameter[advDataTmp.choiceNum] = Convert.ToInt16(didCommaSeparationData[(int)ElementsName.CHARACTER_NAME]);
                     choiceTiming.Add(advDataTmp.choiceText[advDataTmp.choiceNum], advData.Count);
                     advDataTmp.choiceNum++;
                     i++;

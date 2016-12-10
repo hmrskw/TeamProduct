@@ -87,6 +87,9 @@ public class DataManager : MonoBehaviour
 
     //今何話を読んでいるか
     public int nowReadStoryID;
+    
+    //回想用:選択されたキャラクター
+    public int nowReadCharcterID;
 
     //今何行目まで読んだか
     public int endLine;
@@ -114,6 +117,10 @@ public class DataManager : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Debug.Log(SceneChanger.GetBeforeSceneName());
+        }
         if (Input.GetKeyDown(KeyCode.P))
         {
             Debug.Log(
@@ -221,6 +228,7 @@ public class DataManager : MonoBehaviour
         {
             finishedStoryData[i] = new FinishedStoryData();
         }
+        nowReadCharcterID = -1;
         nowReadStoryID = -1;
         endLine = 0;
         isChoiceText = false;
