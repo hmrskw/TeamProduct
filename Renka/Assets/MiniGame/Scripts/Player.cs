@@ -137,7 +137,9 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.name != "Goal")
+
+        string layerName = LayerMask.LayerToName(other.gameObject.layer);
+        if (layerName=="Obstacle")
         {
             other.GetComponent<BoxCollider>().enabled = false;
             StartCoroutine(Damage());
