@@ -46,6 +46,7 @@ public class MousePlayerMove : MonoBehaviour {
 
         if (layerName == "Ground")
         {
+            Debug.Log("aaa");
             canJump = false;
         }
 
@@ -56,7 +57,7 @@ public class MousePlayerMove : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-
+        //Debug.Log(canJump);
         
         if (prevFrameReminderY>=0.3)
         {
@@ -109,7 +110,7 @@ public class MousePlayerMove : MonoBehaviour {
 
             if (transform.position.x <= leftLimitPos)
             {
-                transform.position = new Vector3(leftLimitPos, -2, 0);
+                transform.position = new Vector3(leftLimitPos, transform.position.y, 0);
                 //もし移動量がプラスの値の時だけ移動
                 transform.Translate(Mathf.Max(prevFrameReminder * moveSpeed, 0), 0, 0);
 
@@ -117,7 +118,7 @@ public class MousePlayerMove : MonoBehaviour {
 
             else if (transform.position.x >= rightLimitPos)
             {
-                transform.position = new Vector3(rightLimitPos, -2, 0);
+                transform.position = new Vector3(rightLimitPos, transform.position.y, 0);
                 //もし移動量がマイナスの値の時だけ移動
                 transform.Translate(Mathf.Min(prevFrameReminder * moveSpeed, 0), 0, 0);
 
