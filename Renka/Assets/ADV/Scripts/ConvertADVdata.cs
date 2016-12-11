@@ -208,8 +208,9 @@ public class ConvertADVdata : MonoBehaviour {
         {
             lines = readCsv.ReadFile(prologueCSV + ".csv");
         }
-        else if (SceneChanger.GetBeforeSceneName(true) == "Menu")
+        else if (SceneChanger.GetBeforeSceneName() == "Menu")
         {
+            SceneChanger.GetBeforeSceneName(true);
             lines = readCsv.ReadFile(
                 csvFile[DataManager.Instance.nowReadCharcterID].
                 chapters[DataManager.Instance.nowReadChapterID].
@@ -217,6 +218,9 @@ public class ConvertADVdata : MonoBehaviour {
         }
         else
         {
+            Debug.Log(DataManager.Instance.masteringData.masteringCharacterID);
+            Debug.Log(DataManager.Instance.nowReadChapterID);
+            Debug.Log(DataManager.Instance.nowReadStoryID);
             lines = readCsv.ReadFile(
                 csvFile[DataManager.Instance.masteringData.masteringCharacterID].
                 chapters[DataManager.Instance.nowReadChapterID].
@@ -343,8 +347,8 @@ public class ConvertADVdata : MonoBehaviour {
     {
         if (DataManager.Instance.masteringData.masteringCharacterID != -1)
         {
-            DataManager.Instance.masteringData.masteringCharacterLastChapterID = csvFile[DataManager.Instance.masteringData.masteringCharacterID].chapters.Length;
-            DataManager.Instance.masteringData.masteringCharacterLastStoryID = csvFile[DataManager.Instance.masteringData.masteringCharacterID].chapters[DataManager.Instance.nowReadChapterID].StoryText.Length;
+            DataManager.Instance.masteringData.masteringCharacterLastChapterID = csvFile[DataManager.Instance.masteringData.masteringCharacterID].chapters.Length - 1;
+            DataManager.Instance.masteringData.masteringCharacterLastStoryID = csvFile[DataManager.Instance.masteringData.masteringCharacterID].chapters[DataManager.Instance.nowReadChapterID].StoryText.Length - 1;
         }
     }
 

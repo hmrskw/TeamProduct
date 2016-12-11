@@ -9,6 +9,9 @@ public class Choice : MonoBehaviour
     [SerializeField]
     public GameObject TextObj;
 
+    //[SerializeField]
+    public Button button;
+
     //テキスト上書きするための参照
     public Text text;
 
@@ -24,6 +27,7 @@ public class Choice : MonoBehaviour
     public void Setup()
     {
         isReleased = false;
+        button = GetComponent<Button>();
         text = TextObj.GetComponent<Text>();
     }
 
@@ -39,6 +43,11 @@ public class Choice : MonoBehaviour
     public void Reset()
     {
         isReleased = false;
+    }
+
+    public void SetCanPush(bool canPush)
+    {
+        button.interactable = canPush;
     }
 
     /// <summary>

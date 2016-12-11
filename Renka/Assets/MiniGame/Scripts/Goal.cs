@@ -15,7 +15,8 @@ public class Goal : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         //SceneChanger.LoadScene("MyPage");
-        SceneChanger.LoadBeforeScene(true);
+        SceneChanger.LoadScene("Result");
+        //SceneChanger.LoadBeforeScene(true);
         yield return null;
     }
 

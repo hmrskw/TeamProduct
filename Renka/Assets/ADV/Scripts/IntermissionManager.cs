@@ -13,15 +13,27 @@ public class IntermissionManager : MonoBehaviour
     void Start()
     {
         Fade.Instance.FadeOut(1f, null);
-
-        if (DataManager.Instance.isEndStory())
+        DataManager.Instance.endLine = 0;
+        if (DataManager.Instance.isEndChapter() && DataManager.Instance.isEndStory())
         {
             button.interactable = false;
         }
-    }
-
-    void OnEnable()
-    {
+        if (DataManager.Instance.isEndStory())
+        {
+            if (DataManager.Instance.masteringData.masteringCharacterLastChapterID - 2 == DataManager.Instance.nowReadChapterID)
+            {
+                if (DataManager.Instance.baseline <= DataManager.Instance.masteringData.likeabillity)
+                {
+                    DataManager.Instance.nowReadChapterID++;
+                }
+            }
+            DataManager.Instance.nowReadChapterID++;
+            DataManager.Instance.nowReadStoryID = 0;
+        }
+        else
+        {
+            DataManager.Instance.nowReadStoryID++;
+        }
         if (canSave)
         {
             SaveData.SaveMasteringData();

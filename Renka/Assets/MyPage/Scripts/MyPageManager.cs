@@ -65,7 +65,7 @@ public class MyPageManager : MonoBehaviour
         //Debug.Log(SceneChanger.GetBeforeSceneName());
         Fade.Instance.FadeOut(1f, null);
 
-        if (DataManager.Instance.isEndStory())
+        if (DataManager.Instance.isEndChapter() && DataManager.Instance.isEndStory())
         {
             storyButton.interactable = false;
         }

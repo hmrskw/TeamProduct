@@ -52,7 +52,6 @@ public class Record : MonoBehaviour
 			//大きさの初期化
 			script.transform.localScale = Vector3.one;
 		}
-
 	}
 
 	//transform.parent

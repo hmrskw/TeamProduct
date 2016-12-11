@@ -94,17 +94,18 @@ public class Episode : MonoBehaviour
         //データマネージャーの攻略情報から
         //この話を取得しているかを判別する
         var finData = DataManager.Instance.finishedStoryData[CharID];
-        if (ChapID > finData.finishedReadChapterID)
+        Debug.Log("char" + CharID + "finData" + finData.finishedReadChapterID+ ":"+ finData.finishedReadStoryID);
+        if (ChapID < finData.finishedReadChapterID)
         {
-            isHave = false;
+            isHave = true;
         }
-        else if (EpiID >= finData.finishedReadStoryID)
+        else if (ChapID == finData.finishedReadChapterID && EpiID < finData.finishedReadStoryID)
         {
-            isHave = false;
+            isHave = true;
         }
         else
         {
-            isHave = true;
+            isHave = false;
         }
 
         //isHave = data.isHave;

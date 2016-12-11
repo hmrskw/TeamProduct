@@ -29,20 +29,24 @@ public class ADVManager : MonoBehaviour
         choiceManager = GetComponent<ChoiceManager>();
         textManager = GetComponent<TextManager>();
         graphicManager = GetComponent<GraphicManager>();
-        if (SceneChanger.GetBeforeSceneName(true) != "Menu")
+        if (SceneChanger.GetBeforeSceneName() == "Result")
         {
-            ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
-        }
-        //Debug.Log(DataManager.Instance.nowReadStoryID);
-        if (SceneChanger.GetBeforeSceneName(true) == "MiniGame")
-        {
-            ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
+            SceneChanger.GetBeforeSceneName(true);
+            //DataManager.Instance.endLine = 0;
+            //DataManager.Instance.nowReadChapterID++;
+            //ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
             //インターミッションに移動
             isIntermission = true;
             textManager.IntermissionTextChange();
             graphicManager.ChangeCanvasNext();
             textManager.ChangeCanvasNext();
         }
+        else if (SceneChanger.GetBeforeSceneName() != "Menu")
+        {
+            SceneChanger.GetBeforeSceneName(true);
+            ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
+        }
+        //Debug.Log(DataManager.Instance.nowReadStoryID);
     }
 
     void Update()
@@ -108,7 +112,7 @@ public class ADVManager : MonoBehaviour
                 }
             }
             //既読スキップ処理
-            if (DataManager.Instance.nowReadStoryID < 4)
+            if (DataManager.Instance.nowReadStoryID < DataManager.Instance.masteringData.masteringCharacterLastStoryID)
             {
                 if (InputManager.Instance.TouchTime() > 2f)
                     //Input.GetKey(KeyCode.LeftControl))
@@ -151,6 +155,7 @@ public class ADVManager : MonoBehaviour
                     //ADVシーンを終了
                     DataManager.Instance.endLine = 0;
                     DataManager.Instance.nowReadStoryID++;
+                    DataManager.Instance.nowReadChapterID++; 
                     Debug.Log(DataManager.Instance.nowReadStoryID);
                     //読んでいたシーンがプロローグなら攻略キャラ選択へ移動
                     Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("CharacterChoice"); });
@@ -159,18 +164,21 @@ public class ADVManager : MonoBehaviour
                 }
                 else if (nowRead[DataManager.Instance.endLine].parameter == "minigame")
                 {
-                    DataManager.Instance.endLine = 0;
-                    DataManager.Instance.nowReadStoryID++;
-                    Debug.Log(DataManager.Instance.nowReadStoryID);
+                    //DataManager.Instance.nowReadStoryID++;
+                    //if (!DataManager.Instance.isEndStory())
+                    //{
+                    //    DataManager.Instance.nowReadStoryID++;
+                    //    //DataManager.Instance.nowReadStoryID = 0;
+                    //    DataManager.Instance.nowReadChapterID++;
+                    //}
                     //パラメータがミニゲームだったらMiniGameシーンへ
                     Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("MiniGame", true); });
                     //SceneChanger.LoadScene("MiniGame", true);
                 }
                 else
                 {
-                    DataManager.Instance.endLine = 0;
-                    DataManager.Instance.nowReadStoryID++;
-                    Debug.Log(DataManager.Instance.nowReadStoryID);
+                    //DataManager.Instance.endLine = 0;
+                    //DataManager.Instance.nowReadStoryID++;
                     //ADVシーンを終了
                     //ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
                     //インターミッションに移動

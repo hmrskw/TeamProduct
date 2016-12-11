@@ -89,18 +89,13 @@ public class ReadCSV
 
         //リターン値。カンマ分けしたデータを一行分格納する。
         string[] CommaSeparationData = new string[trialNumber_];
-        Debug.Log(CommaSeparationData.Length);
         for (int i = 0; i < trialNumber_; i++)
         {
             //１行にあるCsvDataの要素数分準備する
             string[] readStrData = new string[trialNumber_];
-            Debug.Log(readStrData.Length);
             //CsvDataを引数の文字で区切って1つずつ格納
             readStrData = lines_.Split(spliter_, option);
             //readStrDataをリターン値に格納
-            Debug.Log(i);
-            Debug.Log(CommaSeparationData[i]);
-            Debug.Log(readStrData[i]);
             CommaSeparationData[i] = 
                 readStrData[i];
         }
