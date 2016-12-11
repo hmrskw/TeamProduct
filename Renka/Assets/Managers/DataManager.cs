@@ -130,6 +130,7 @@ public class DataManager : MonoBehaviour
         SaveData.LoadConfigData();
     }
 
+    //全部PCでのデバッグ用
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))

@@ -388,7 +388,7 @@ public class ConvertADVdata : MonoBehaviour {
                 //PositionNameToPosition(didCommaSeparationData_[(int)ElementsName.POSITION_X]),
                 //Convert.ToSingle(didCommaSeparationData_[(int)ElementsName.POSITION_X]),
                 //Convert.ToSingle(didCommaSeparationData_[(int)ElementsName.POSITION_Y])
-                (sizeDataDictionary[didCommaSeparationData_[(int)ElementsName.SIZE]]-1)*-600);
+                (sizeDataDictionary[didCommaSeparationData_[(int)ElementsName.SIZE]]-0.5f)*-600);
 
         if (didCommaSeparationData_[(int)ElementsName.SIZE] != "")
             csv_.size[csv_.drawCharacterNum] = sizeDataDictionary[didCommaSeparationData_[(int)ElementsName.SIZE]];

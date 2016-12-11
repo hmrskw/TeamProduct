@@ -27,7 +27,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000011363813240
 GameObject:
   m_ObjectHideFlags: 0
@@ -38,7 +38,7 @@ GameObject:
   - 224: {fileID: 224000012713248130}
   - 222: {fileID: 222000013395577304}
   - 114: {fileID: 114000010801188624}
-  - 114: {fileID: 114000014292127046}
+  - 114: {fileID: 114000010139676272}
   m_Layer: 5
   m_Name: Character
   m_TagString: Untagged
@@ -63,6 +63,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &114000010139676272
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011363813240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 285a8b1f0de18314c81cf7fafc5dfd21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  face: {fileID: 1000010866562384}
+  clothes: {fileID: 1000012374870904}
 --- !u!114 &114000010682203334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -82,7 +95,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 03399f514f083574494cd224b609cc0d, type: 3}
+  m_Texture: {fileID: 2800000, guid: 5781659bc780b7140a00912f8f7b23c3, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -108,7 +121,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 03399f514f083574494cd224b609cc0d, type: 3}
+  m_Texture: {fileID: 2800000, guid: 96e4f99c438bc8e44a67764fb232984c, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -134,26 +147,13 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 03399f514f083574494cd224b609cc0d, type: 3}
+  m_Texture: {fileID: 2800000, guid: 60cb1df2efabf964a8c607711e4c06a1, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
     y: 0
     width: 1
     height: 1
---- !u!114 &114000014292127046
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011363813240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 285a8b1f0de18314c81cf7fafc5dfd21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  face: {fileID: 1000010866562384}
-  clothes: {fileID: 1000012374870904}
 --- !u!222 &222000010268214730
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -188,7 +188,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -0.000076293945}
-  m_SizeDelta: {x: 810, y: 1440}
+  m_SizeDelta: {x: 1080, y: 1920}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224000012713248130
 RectTransform:
@@ -196,7 +196,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011363813240}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -207,8 +207,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 810, y: 1440}
+  m_AnchoredPosition: {x: 0, y: -200}
+  m_SizeDelta: {x: 1080, y: 1920}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224000014077986784
 RectTransform:
@@ -225,6 +225,6 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 450}
   m_SizeDelta: {x: 810, y: 1440}
   m_Pivot: {x: 0.5, y: 0.5}

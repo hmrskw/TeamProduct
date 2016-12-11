@@ -3505,16 +3505,16 @@ MonoBehaviour:
   - {fileID: 796127569}
   gameOverText: {fileID: 740806775}
   faceIconImages:
-  - {fileID: 21300000, guid: fd1a914c3cac9c2458f6d7fe3b31986b, type: 3}
-  - {fileID: 21300000, guid: 668860531c5ff31489ebb65ba1ff5cfa, type: 3}
-  - {fileID: 21300000, guid: 58c592b232d71f34294277e72a0c19b1, type: 3}
-  - {fileID: 21300000, guid: ed61b82cd4d82e047b2c3eabdd3b4645, type: 3}
+  - {fileID: 21300000, guid: 01c4429e2cb58ea4db61a52b3014bc63, type: 3}
+  - {fileID: 21300000, guid: d2946cde324a8de4281f0b10d6110b8f, type: 3}
+  - {fileID: 21300000, guid: 01c4429e2cb58ea4db61a52b3014bc63, type: 3}
+  - {fileID: 21300000, guid: d2946cde324a8de4281f0b10d6110b8f, type: 3}
   tatsumiAnimationImages:
-  - {fileID: 2800000, guid: a1999b24802a10e4a8abe60412e24779, type: 3}
-  - {fileID: 2800000, guid: 8d826331c80e5484eaf51a5d55824dfa, type: 3}
+  - {fileID: 2800000, guid: d151156ed0540ed44bdde6c36c627846, type: 3}
+  - {fileID: 2800000, guid: 99e4fcb07ceb63a4f89edc207997b6f4, type: 3}
   yusukeAnimationImages:
-  - {fileID: 2800000, guid: c5012d77fcbe6ca44a0f5810b18fd365, type: 3}
-  - {fileID: 2800000, guid: a2377a91eca4f4b40901ba4c970ad989, type: 3}
+  - {fileID: 2800000, guid: d5c7c94428b429548b6f86980673eb28, type: 3}
+  - {fileID: 2800000, guid: 5f8fcae0bc4ce5b478844c1660371e38, type: 3}
   animationChangeTime: 0.3
   faceIconUi: {fileID: 1478344759}
   _alphaRound: 0
@@ -3533,7 +3533,7 @@ Transform:
   m_GameObject: {fileID: 540191518}
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
   m_LocalPosition: {x: 0.34, y: -2, z: 0}
-  m_LocalScale: {x: 3.5, y: 3, z: 1}
+  m_LocalScale: {x: 2.5, y: 3, z: 1}
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4056,7 +4056,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: f7d23a28832aa10469a3560f0f05f9c1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5076,7 +5076,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: f7d23a28832aa10469a3560f0f05f9c1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7534,7 +7534,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: f7d23a28832aa10469a3560f0f05f9c1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8434,8 +8434,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -499, y: -100}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -550, y: -100}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1478344761
 MonoBehaviour:
@@ -8456,7 +8456,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: d2946cde324a8de4281f0b10d6110b8f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

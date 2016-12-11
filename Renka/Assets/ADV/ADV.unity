@@ -552,8 +552,17 @@ MonoBehaviour:
   - {fileID: 2800000, guid: e5d28fc1e1864de4b916bb1920e4c1c1, type: 3}
   - {fileID: 2800000, guid: 4b8c589a33c00d64baf41adcf7b22806, type: 3}
   - {fileID: 2800000, guid: 3722a807808b31649b5846e468a39b1a, type: 3}
-  - {fileID: 2800000, guid: 86141cb695ab88f4da2dd166247f3a39, type: 3}
-  - {fileID: 2800000, guid: be0b006b2edcb55419748db8e8eef4ec, type: 3}
+  - {fileID: 2800000, guid: c23c43e02744da244ae69ec94d7d842c, type: 3}
+  - {fileID: 2800000, guid: 4ee48a2489ecde843ad1cf05f49906fd, type: 3}
+  - {fileID: 2800000, guid: efd5ee948f05f044b90cc3ff1d6ae5c8, type: 3}
+  - {fileID: 2800000, guid: 6b4a9ec1109144d47a303c0ca9a3804b, type: 3}
+  - {fileID: 2800000, guid: 7bf98610d073585419a02ebf05ee74ee, type: 3}
+  - {fileID: 2800000, guid: 38e16817354178247b6a38272e87529c, type: 3}
+  - {fileID: 2800000, guid: dd49ff356dcfc2b48939fe89ba9750ee, type: 3}
+  - {fileID: 2800000, guid: 5f796d2bb343d1c40b0d0606bb2dd1d6, type: 3}
+  - {fileID: 2800000, guid: 0dbb67461fb3b9e42abf219829f09b8e, type: 3}
+  - {fileID: 2800000, guid: 36d1a0639160e3344a35364a8c7c7c15, type: 3}
+  - {fileID: 2800000, guid: 63cc96a998d7e804a8a36a4d64f09e32, type: 3}
   background: {fileID: 2083202847}
   canvas: {fileID: 991777587}
   intermission: {fileID: 1386432078}
@@ -593,9 +602,9 @@ MonoBehaviour:
   - positionX: -250
     positionName: "\u5DE6"
   sizeData:
-  - size: 1.5
+  - size: 1
     sizeName: "\u819D\u4E0A"
-  - size: 3
+  - size: 2.5
     sizeName: "\u8170\u4E0A"
   prologueCSV: prologue
   csvFile:

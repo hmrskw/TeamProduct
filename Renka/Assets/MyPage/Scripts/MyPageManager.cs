@@ -60,6 +60,17 @@ public class MyPageManager : MonoBehaviour
     [SerializeField, Tooltip("描画するかもしれないキャラのデータ")]
     CharacterVisualVariation_[] charVariations;
 
+    [SerializeField, Tooltip("キャラクターの後ろの背景")]
+    RawImage back;
+
+    [SerializeField, Tooltip("使う背景の一覧")]
+    Texture[] backs;
+    [SerializeField]
+    GameObject[] testCanvas;
+
+    int texID = 0;
+    int canvasID = 0;
+
     void Start()
     {
         //Debug.Log(SceneChanger.GetBeforeSceneName());
@@ -92,14 +103,14 @@ public class MyPageManager : MonoBehaviour
             //image.texture = charVariations[i].bodyTex;
             faceImage.gameObject.SetActive(false);
             //clothesImage.texture = charVariations[i].clothesTexs[0];
-            rectTrans.anchoredPosition = new Vector3(0, -200, 0);
+            rectTrans.anchoredPosition = new Vector3(0, -900, 0);
             image.texture = charVariations[i].faceTexs[0];
         }
         else
         {
             //辰己
             faceImage.gameObject.SetActive(false);
-            rectTrans.anchoredPosition = new Vector3(0, -200, 0);
+            rectTrans.anchoredPosition = new Vector3(0, -900, 0);
             image.texture = charVariations[0].faceTexs[0];
         }
 
@@ -107,6 +118,22 @@ public class MyPageManager : MonoBehaviour
         commentText.text = comments[line];
     }
     
+    //全部デバッグ用
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            testCanvas[0].SetActive(!testCanvas[0].activeInHierarchy);
+            testCanvas[1].SetActive(!testCanvas[1].activeInHierarchy);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            texID++;
+            if(texID >= backs.Length) { texID = 0;}
+            back.texture = backs[texID];
+        }
+    }
+
     /// <summary>
     /// Storyボタンが押されたときに呼ばれる
     /// </summary>
