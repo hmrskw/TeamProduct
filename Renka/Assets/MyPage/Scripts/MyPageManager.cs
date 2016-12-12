@@ -60,12 +60,23 @@ public class MyPageManager : MonoBehaviour
     [SerializeField, Tooltip("描画するかもしれないキャラのデータ")]
     CharacterVisualVariation_[] charVariations;
 
+    [SerializeField, Tooltip("キャラクターの後ろの背景")]
+    RawImage back;
+
+    [SerializeField, Tooltip("使う背景の一覧")]
+    Texture[] backs;
+    [SerializeField]
+    GameObject[] testCanvas;
+
+    int texID = 0;
+    int canvasID = 0;
+
     void Start()
     {
         //Debug.Log(SceneChanger.GetBeforeSceneName());
-        Fade.Instance.FadeOut(1f, null);
+        Fade.Instance.FadeOut(0.5f, null);
 
-        if (DataManager.Instance.isEndStory())
+        if (DataManager.Instance.isEndChapter() && DataManager.Instance.isEndStory())
         {
             storyButton.interactable = false;
         }
@@ -92,14 +103,14 @@ public class MyPageManager : MonoBehaviour
             //image.texture = charVariations[i].bodyTex;
             faceImage.gameObject.SetActive(false);
             //clothesImage.texture = charVariations[i].clothesTexs[0];
-            rectTrans.anchoredPosition = new Vector3(0, -200, 0);
+            rectTrans.anchoredPosition = new Vector3(0, -900, 0);
             image.texture = charVariations[i].faceTexs[0];
         }
         else
         {
             //辰己
             faceImage.gameObject.SetActive(false);
-            rectTrans.anchoredPosition = new Vector3(0, -200, 0);
+            rectTrans.anchoredPosition = new Vector3(0, -900, 0);
             image.texture = charVariations[0].faceTexs[0];
         }
 
@@ -107,13 +118,29 @@ public class MyPageManager : MonoBehaviour
         commentText.text = comments[line];
     }
     
+    //全部デバッグ用
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            testCanvas[0].SetActive(!testCanvas[0].activeInHierarchy);
+            testCanvas[1].SetActive(!testCanvas[1].activeInHierarchy);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            texID++;
+            if(texID >= backs.Length) { texID = 0;}
+            back.texture = backs[texID];
+        }
+    }
+
     /// <summary>
     /// Storyボタンが押されたときに呼ばれる
     /// </summary>
     public void OnClickStory()
     {
         //Debug.Log(DataManager.Instance.endLine);
-        Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("ADV"); });
+        Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("ADV"); });
 
         //SceneChanger.LoadScene("ADV");
     }
@@ -123,7 +150,7 @@ public class MyPageManager : MonoBehaviour
     /// </summary>
     public void OnClickMiniGame()
     {
-        Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("MiniGame", true); });
+        Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("MiniGame", true); });
 
         //SceneChanger.LoadScene("MiniGame",true);
     }
@@ -135,7 +162,7 @@ public class MyPageManager : MonoBehaviour
     {
         //SaveData.ResetMasteringData();
         //DataManager.Instance.Init();
-        Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("Menu"); });
+        Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("Menu"); });
         //SceneChanger.LoadScene("Menu");
 	}
 

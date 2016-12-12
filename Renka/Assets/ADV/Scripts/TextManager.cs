@@ -313,7 +313,18 @@ public class TextManager : MonoBehaviour
 
     public void IntermissionTextChange()
     {
-        intermissionText.text = DataManager.Instance.nowReadChapterID + "章" + DataManager.Instance.nowReadStoryID + "話　プロット";
+        if (DataManager.Instance.nowReadChapterID == DataManager.Instance.masteringData.masteringCharacterLastChapterID)
+        {
+            intermissionText.text = "恋情ルート" + (DataManager.Instance.nowReadStoryID + 1) + "話";
+        }
+        else if (DataManager.Instance.nowReadChapterID == DataManager.Instance.masteringData.masteringCharacterLastChapterID - 1)
+        {
+            intermissionText.text = "人情ルート" + (DataManager.Instance.nowReadStoryID + 1) + "話";
+        }
+        else
+        {
+            intermissionText.text = (DataManager.Instance.nowReadChapterID + 1) + "章" + (DataManager.Instance.nowReadStoryID + 1) + "話";
+        }
     }
 
     public void ChangeCanvasNext()

@@ -39,7 +39,7 @@ public class StageManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Fade.Instance.FadeOut(1f, null);
+        Fade.Instance.FadeOut(0.5f, null);
 
         ScrollSpeed = roadScrollSpeed;
         StageShuffle();

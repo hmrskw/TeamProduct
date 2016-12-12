@@ -13,7 +13,7 @@ public class ContentsManager : MonoBehaviour
 
 		//MenuManager.Instance.ShiftBack();
 		if (Fade.Instance.isFade == false && MenuManager.Instance.Menu != MenuManager.MenuPage.CONTENTS)
-			Fade.Instance.FadeIn(1f, () => { MenuManager.Instance.ShiftBack(); Fade.Instance.FadeOut(1f, null); });
+			Fade.Instance.FadeIn(0.5f, () => { MenuManager.Instance.ShiftBack(); Fade.Instance.FadeOut(0.5f, null); });
 
 	}
 
@@ -26,7 +26,7 @@ public class ContentsManager : MonoBehaviour
 		if (Fade.Instance.isFade == false)
 		{
 
-			Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("MyPage"); Fade.Instance.FadeOut(1f, null); });
+			Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("MyPage"); Fade.Instance.FadeOut(0.5f, null); });
 		}
 		//SceneChanger.LoadScene("MyPage");
 
@@ -39,7 +39,7 @@ public class ContentsManager : MonoBehaviour
 	{
 		//Debug.Log("思い出");
 		if (Fade.Instance.isFade == false)
-			Fade.Instance.FadeIn(1f, () => { MenuManager.Instance.ShiftPage(MenuManager.MenuPage.MEMORY); Fade.Instance.FadeOut(1f, null); });
+			Fade.Instance.FadeIn(0.5f, () => { MenuManager.Instance.ShiftPage(MenuManager.MenuPage.MEMORY); Fade.Instance.FadeOut(0.5f, null); });
 
 	}
 
@@ -50,7 +50,7 @@ public class ContentsManager : MonoBehaviour
 	{
 		//Debug.Log("記録帖");
 		if (Fade.Instance.isFade == false)
-			Fade.Instance.FadeIn(1f, () => { MenuManager.Instance.ShiftPage(MenuManager.MenuPage.RECORD); Fade.Instance.FadeOut(1f, null); });
+			Fade.Instance.FadeIn(0.5f, () => { MenuManager.Instance.ShiftPage(MenuManager.MenuPage.RECORD); Fade.Instance.FadeOut(0.5f, null); });
 	}
 
 	/// <summary>
@@ -61,7 +61,7 @@ public class ContentsManager : MonoBehaviour
 		//Debug.Log("人物紹介");
 		//MenuManager.Instance.ShiftPage(MenuManager.MenuPage.PROFILE);
 		if (Fade.Instance.isFade == false)
-			Fade.Instance.FadeIn(1f, () => { MenuManager.Instance.ShiftPage(MenuManager.MenuPage.PROFILE); Fade.Instance.FadeOut(1f, null); });
+			Fade.Instance.FadeIn(0.5f, () => { MenuManager.Instance.ShiftPage(MenuManager.MenuPage.PROFILE); Fade.Instance.FadeOut(0.5f, null); });
 	}
 
 	/// <summary>
@@ -72,7 +72,7 @@ public class ContentsManager : MonoBehaviour
 		//Debug.Log("設定");
 		//MenuManager.Instance.ShiftPage(MenuManager.MenuPage.CONFIG);
 		if (Fade.Instance.isFade == false)
-			Fade.Instance.FadeIn(1f, () => { MenuManager.Instance.ShiftPage(MenuManager.MenuPage.CONFIG); Fade.Instance.FadeOut(1f, null); });
+			Fade.Instance.FadeIn(0.5f, () => { MenuManager.Instance.ShiftPage(MenuManager.MenuPage.CONFIG); Fade.Instance.FadeOut(0.5f, null); });
 	}
 
 	/// <summary>
@@ -83,7 +83,7 @@ public class ContentsManager : MonoBehaviour
 		//Debug.Log("リセット");
 		//MenuManager.Instance.ShiftPage(MenuManager.MenuPage.RESET);
 		if (Fade.Instance.isFade == false)
-			Fade.Instance.FadeIn(1f, () => { MenuManager.Instance.ShiftPage(MenuManager.MenuPage.RESET); Fade.Instance.FadeOut(1f, null); });
+			Fade.Instance.FadeIn(0.5f, () => { MenuManager.Instance.ShiftPage(MenuManager.MenuPage.RESET); Fade.Instance.FadeOut(0.5f, null); });
 	}
 
 	/// <summary>
@@ -94,6 +94,6 @@ public class ContentsManager : MonoBehaviour
 		//Debug.Log("スタッフ");
 		//MenuManager.Instance.ShiftPage(MenuManager.MenuPage.STAFF);
 		if (Fade.Instance.isFade == false)
-			Fade.Instance.FadeIn(1f, () => { MenuManager.Instance.ShiftPage(MenuManager.MenuPage.STAFF); Fade.Instance.FadeOut(1f, null); });
+			Fade.Instance.FadeIn(0.5f, () => { MenuManager.Instance.ShiftPage(MenuManager.MenuPage.STAFF); Fade.Instance.FadeOut(0.5f, null); });
 	}
 }

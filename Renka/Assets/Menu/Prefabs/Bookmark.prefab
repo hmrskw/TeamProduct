@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: "\u3057\u304A\u308A"
-  image: {fileID: 114000012133648308}
+  image: {fileID: 0}
   button: {fileID: 114000013919890528}
   imageName: {fileID: 114000010685518922}
 --- !u!114 &114000012133648308
@@ -194,7 +194,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -350, y: 30}
+  m_AnchoredPosition: {x: -350, y: -420}
   m_SizeDelta: {x: 150, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224000012693030406

@@ -41,7 +41,7 @@ public class Episode : MonoBehaviour
             DataManager.Instance.nowReadCharcterID = CharID;
             DataManager.Instance.nowReadStoryID = EpiID;
             DataManager.Instance.nowReadChapterID = ChapID;
-            Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("ADV", true); });
+            Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("ADV", true); });
         });
         //string str = "キャラ " + CharID +", " + ChapID + "章, "+ EpiID + "話";
 
@@ -94,17 +94,18 @@ public class Episode : MonoBehaviour
         //データマネージャーの攻略情報から
         //この話を取得しているかを判別する
         var finData = DataManager.Instance.finishedStoryData[CharID];
-        if (ChapID > finData.finishedReadChapterID)
+        Debug.Log("char" + CharID + "finData" + finData.finishedReadChapterID+ ":"+ finData.finishedReadStoryID);
+        if (ChapID < finData.finishedReadChapterID)
         {
-            isHave = false;
+            isHave = true;
         }
-        else if (EpiID >= finData.finishedReadStoryID)
+        else if (ChapID == finData.finishedReadChapterID && EpiID < finData.finishedReadStoryID)
         {
-            isHave = false;
+            isHave = true;
         }
         else
         {
-            isHave = true;
+            isHave = false;
         }
 
         //isHave = data.isHave;

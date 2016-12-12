@@ -83,7 +83,7 @@ public class MenuManager : MonoBehaviour
 
 	void Start()
 	{
-		Fade.Instance.FadeOut(1f, null);
+		Fade.Instance.FadeOut(0.5f, null);
 		//Debug.Log("actives setup");
 		Init();
 	}

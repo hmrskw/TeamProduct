@@ -26,9 +26,10 @@ public static class SceneChanger
             if (beforeSceneName != null)
             {
                 string sceneNameTmp = SceneManager.GetActiveScene().name;
-                SceneManager.LoadScene(beforeSceneName.Pop());
+                string beforeTmp = beforeSceneName.Pop();
                 if (isPushSceneName)
                     beforeSceneName.Push(sceneNameTmp);
+                SceneManager.LoadScene(beforeTmp);
             }
             else
             {
@@ -56,6 +57,7 @@ public static class SceneChanger
 
     public static void ResetBeforeScene()
     {
+        Debug.Log("clear");
         beforeSceneName.Clear();
     }
 }

@@ -17,3 +17,5 @@ EditorBuildSettings:
     path: Assets/CharacterChoice/CharacterChoice.unity
   - enabled: 1
     path: Assets/Menu/Menu.unity
+  - enabled: 1
+    path: Assets/Result/Result.unity

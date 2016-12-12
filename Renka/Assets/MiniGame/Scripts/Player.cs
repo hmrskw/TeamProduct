@@ -54,6 +54,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         hp = hpImage.Length;
+        DataManager.Instance.minigameHp = hp;
+
         face = faceIconUi.GetComponent<Image>();
         playerMate = GetComponent<Renderer>().material;
         //タツミ
@@ -153,6 +155,7 @@ public class Player : MonoBehaviour
 
 
         hp -= 1;
+        DataManager.Instance.minigameHp = hp;
         if (hp > 0)
         {
             //HPの表示を1つ減らす
@@ -166,7 +169,8 @@ public class Player : MonoBehaviour
             stage.ScrollSpeed = 0.0f;
             gameOverText.SetActive(true);
             yield return new WaitForSeconds(1);
-            SceneChanger.LoadBeforeScene(true);
+            SceneChanger.LoadScene("Result");
+            //SceneChanger.LoadBeforeScene(true);
         }
 
 

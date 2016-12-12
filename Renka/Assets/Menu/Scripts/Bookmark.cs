@@ -11,7 +11,7 @@ public class Bookmark : MonoBehaviour
 	string name;
 
 	[SerializeField, Tooltip("栞の名前")]
-	public RawImage image;
+	public Image image;
 
 	[SerializeField, Tooltip("栞のボタンスクリプト")]
 	public Button button;

@@ -82,6 +82,9 @@ public class DataManager : MonoBehaviour
     public FinishedStoryData[] finishedStoryData;// = new FinishedStoryData[4];
     public ConfigData configData;
 
+    /// <summary>
+    /// ADVに使うデータ
+    /// </summary>
     //今何章を読んでいるか
     public int nowReadChapterID;
 
@@ -96,6 +99,18 @@ public class DataManager : MonoBehaviour
 
     //今読んでいるのは選択肢後の分岐かどうか
     public bool isChoiceText;
+
+    /// <summary>
+    /// この値より大きくなると恋情ルートに行ける
+    /// </summary>
+    public int baseline = 5;
+    /// <summary>
+    /// ミニゲームに使うデータ
+    /// </summary>
+    //ミニゲーム終了時の残り体力
+    public int minigameHp;
+
+    public bool[] item = new bool[3];
 
     //シーンまたいでもオブジェクトが破棄されなくする
     void Awake()
@@ -115,6 +130,7 @@ public class DataManager : MonoBehaviour
         SaveData.LoadConfigData();
     }
 
+    //全部PCでのデバッグ用
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))
@@ -144,7 +160,7 @@ public class DataManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I))
         {
-            Debug.Log("Likeabillity" + masteringData.likeabillity + "\nMasteringCharacterID");
+            Debug.Log("Likeabillity" + masteringData.likeabillity + "\nMasteringCharacterID" + masteringData.masteringCharacterID);
         }
 
         if (Input.GetKeyDown(KeyCode.U))
@@ -230,8 +246,11 @@ public class DataManager : MonoBehaviour
         }
         nowReadCharcterID = -1;
         nowReadStoryID = -1;
+        nowReadChapterID = -1;
         endLine = 0;
         isChoiceText = false;
+
+        minigameHp = 3;
     }
 
     public bool isEndStory()
@@ -241,6 +260,6 @@ public class DataManager : MonoBehaviour
 
     public bool isEndChapter()
     {
-        return masteringData.masteringCharacterLastChapterID <= nowReadChapterID;
+        return masteringData.masteringCharacterLastChapterID <= nowReadChapterID + 1;
     }
 }
