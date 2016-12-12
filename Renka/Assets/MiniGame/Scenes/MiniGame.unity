@@ -5316,10 +5316,10 @@ MonoBehaviour:
   - {fileID: 796127569}
   gameOverText: {fileID: 740806775}
   faceIconImages:
-  - {fileID: 21300000, guid: fd1a914c3cac9c2458f6d7fe3b31986b, type: 3}
-  - {fileID: 21300000, guid: 668860531c5ff31489ebb65ba1ff5cfa, type: 3}
-  - {fileID: 21300000, guid: 58c592b232d71f34294277e72a0c19b1, type: 3}
-  - {fileID: 21300000, guid: ed61b82cd4d82e047b2c3eabdd3b4645, type: 3}
+  - {fileID: 21300000, guid: d2946cde324a8de4281f0b10d6110b8f, type: 3}
+  - {fileID: 21300000, guid: 01c4429e2cb58ea4db61a52b3014bc63, type: 3}
+  - {fileID: 21300000, guid: d2946cde324a8de4281f0b10d6110b8f, type: 3}
+  - {fileID: 21300000, guid: 01c4429e2cb58ea4db61a52b3014bc63, type: 3}
   tatsumiAnimationImages:
   - {fileID: 2800000, guid: a1999b24802a10e4a8abe60412e24779, type: 3}
   - {fileID: 2800000, guid: 8d826331c80e5484eaf51a5d55824dfa, type: 3}
@@ -6187,7 +6187,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: f7d23a28832aa10469a3560f0f05f9c1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7512,7 +7512,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: f7d23a28832aa10469a3560f0f05f9c1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10899,7 +10899,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: f7d23a28832aa10469a3560f0f05f9c1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
