@@ -15,6 +15,9 @@ public class MousePlayerMove : MonoBehaviour {
     [SerializeField]
     float moveSpeed;
 
+    [SerializeField]
+    float jumpPower;
+
     private Rigidbody rb;
 
     private bool canJump = true;
@@ -46,7 +49,7 @@ public class MousePlayerMove : MonoBehaviour {
 
         if (layerName == "Ground")
         {
-            Debug.Log("aaa");
+
             canJump = false;
         }
 
@@ -58,18 +61,31 @@ public class MousePlayerMove : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         //Debug.Log(canJump);
-        
-        if (prevFrameReminderY>=0.3)
+
+        if (prevFrameReminderY >= 0.06)
         {
-          // rb.AddForce(Vector3.up * 300);
+
+            if (canJump == true)
+            {
+                rb.AddForce(Vector3.up * jumpPower);
+               // Debug.Log("jump");
+                canJump = false;
+            }
         }
-        
+
+        if (canJump == false)
+        {
+           prevFrameReminderY = 0;
+            
+        }
+
+
         //テスト
         if (Input.GetKeyDown(KeyCode.Space))
             {
             if(canJump==true)
             {
-                rb.AddForce(Vector3.up * 250);
+                //rb.AddForce(Vector3.up * 250);
 
             }
 
@@ -103,7 +119,7 @@ public class MousePlayerMove : MonoBehaviour {
             
             //現在の位置を保存しておく
             prevPos.x = x / Screen.width;
-           // Debug.Log(prevFrameReminder);
+            //Debug.Log(prevFrameReminderY);
             //Debug.Log("mae"+prevPos.x);
 
 
@@ -125,7 +141,13 @@ public class MousePlayerMove : MonoBehaviour {
             }
 
             //移動させる 
-            else transform.Translate(prevFrameReminder*moveSpeed, 0, 0);
+
+            else
+                if(canJump==true)
+            {
+                transform.Translate(prevFrameReminder*moveSpeed, 0, 0);
+
+            }
 
 
             //ジャンプ処理
