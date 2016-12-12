@@ -41,7 +41,7 @@ public class Episode : MonoBehaviour
             DataManager.Instance.nowReadCharcterID = CharID;
             DataManager.Instance.nowReadStoryID = EpiID;
             DataManager.Instance.nowReadChapterID = ChapID;
-            Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("ADV", true); });
+            Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("ADV", true); });
         });
         //string str = "キャラ " + CharID +", " + ChapID + "章, "+ EpiID + "話";
 

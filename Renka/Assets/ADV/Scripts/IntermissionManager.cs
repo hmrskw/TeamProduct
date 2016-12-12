@@ -12,7 +12,7 @@ public class IntermissionManager : MonoBehaviour
 
     void Start()
     {
-        Fade.Instance.FadeOut(1f, null);
+        Fade.Instance.FadeOut(0.5f, null);
         DataManager.Instance.endLine = 0;
         if (DataManager.Instance.isEndChapter() && DataManager.Instance.isEndStory())
         {
@@ -45,7 +45,7 @@ public class IntermissionManager : MonoBehaviour
     {
         if (Fade.Instance.isFade == false)
         {
-            Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("ADV"); });
+            Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("ADV"); });
         }
         //SceneChanger.LoadScene("ADV");
     }
@@ -54,7 +54,7 @@ public class IntermissionManager : MonoBehaviour
     {
         if (Fade.Instance.isFade == false)
         {
-            Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("MyPage"); });
+            Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("MyPage"); });
         }
 
         //SceneChanger.LoadScene("MyPage");

@@ -1053,7 +1053,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &138398659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1880,7 +1880,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000014133488700, guid: 74272e3ab9bef6a449041137a16f16fd, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114000013853067462, guid: 74272e3ab9bef6a449041137a16f16fd,
         type: 2}
@@ -3190,31 +3190,31 @@ MonoBehaviour:
   - name: "\u8FB0\u5DF1"
     stills:
     - name: "\u3044"
-      tex: {fileID: 2800000, guid: 98af34c490500524e9d354bdd7d069bc, type: 3}
-      tex2: {fileID: 2800000, guid: a96ad8aac5002834194e01e3e75f6638, type: 3}
+      tex: {fileID: 2800000, guid: 4ee48a2489ecde843ad1cf05f49906fd, type: 3}
+      tex2: {fileID: 2800000, guid: efd5ee948f05f044b90cc3ff1d6ae5c8, type: 3}
       GetCharID: 0
       GetChapID: 0
       GetEpiID: 0
       isHave: 0
     - name: "\u308D"
-      tex: {fileID: 2800000, guid: 8e3dac82f46163c489727895c5eb61cf, type: 3}
-      tex2: {fileID: 2800000, guid: a96ad8aac5002834194e01e3e75f6638, type: 3}
+      tex: {fileID: 2800000, guid: 6b4a9ec1109144d47a303c0ca9a3804b, type: 3}
+      tex2: {fileID: 2800000, guid: 7bf98610d073585419a02ebf05ee74ee, type: 3}
       GetCharID: 0
       GetChapID: 0
       GetEpiID: 1
       isHave: 0
     - name: "\u306F"
-      tex: {fileID: 2800000, guid: 8e3dac82f46163c489727895c5eb61cf, type: 3}
-      tex2: {fileID: 2800000, guid: a96ad8aac5002834194e01e3e75f6638, type: 3}
+      tex: {fileID: 2800000, guid: 0dbb67461fb3b9e42abf219829f09b8e, type: 3}
+      tex2: {fileID: 2800000, guid: 36d1a0639160e3344a35364a8c7c7c15, type: 3}
       GetCharID: 0
-      GetChapID: 1
-      GetEpiID: 1
+      GetChapID: 2
+      GetEpiID: 0
       isHave: 0
   - name: "\u9149\u52A9"
     stills:
     - name: "\u306B"
-      tex: {fileID: 2800000, guid: a9171312b5646b240ae950af909469f4, type: 3}
-      tex2: {fileID: 2800000, guid: a96ad8aac5002834194e01e3e75f6638, type: 3}
+      tex: {fileID: 2800000, guid: dd49ff356dcfc2b48939fe89ba9750ee, type: 3}
+      tex2: {fileID: 2800000, guid: 63cc96a998d7e804a8a36a4d64f09e32, type: 3}
       GetCharID: 1
       GetChapID: 0
       GetEpiID: 0
@@ -3259,7 +3259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &434238669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11663,7 +11663,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1702386234
 RectTransform:
   m_ObjectHideFlags: 0

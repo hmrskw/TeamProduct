@@ -316,10 +316,10 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 38e16817354178247b6a38272e87529c, type: 3}
   - {fileID: 2800000, guid: dd49ff356dcfc2b48939fe89ba9750ee, type: 3}
   - {fileID: 2800000, guid: 5f796d2bb343d1c40b0d0606bb2dd1d6, type: 3}
-  - {fileID: 2800000, guid: 0dbb67461fb3b9e42abf219829f09b8e, type: 3}
   - {fileID: 2800000, guid: c23c43e02744da244ae69ec94d7d842c, type: 3}
   - {fileID: 2800000, guid: 3722a807808b31649b5846e468a39b1a, type: 3}
   - {fileID: 2800000, guid: 63cc96a998d7e804a8a36a4d64f09e32, type: 3}
+  - {fileID: 2800000, guid: 0dbb67461fb3b9e42abf219829f09b8e, type: 3}
   - {fileID: 2800000, guid: 36d1a0639160e3344a35364a8c7c7c15, type: 3}
   testCanvas:
   - {fileID: 602658078}
@@ -1071,7 +1071,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u753B\u5ECA"
+  m_Text: "\u76EE\u9332"
 --- !u!222 &994696714
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1725,7 +1725,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 91ee1b9fce6c41a4ba6d384d4acfa83e, type: 3}
     m_FontSize: 54
     m_FontStyle: 0
     m_BestFit: 0
@@ -2259,7 +2259,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1669475114}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -2655,7 +2655,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2013343111}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -2777,7 +2777,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2035951082}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 

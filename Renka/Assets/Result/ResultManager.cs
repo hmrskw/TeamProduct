@@ -17,7 +17,7 @@ public class ResultManager : MonoBehaviour {
             life[i].SetActive(true);
         }
         SetResultText();
-        Fade.Instance.FadeOut(1f, null);
+        Fade.Instance.FadeOut(0.5f, null);
 
     }
 

@@ -74,7 +74,7 @@ public class MyPageManager : MonoBehaviour
     void Start()
     {
         //Debug.Log(SceneChanger.GetBeforeSceneName());
-        Fade.Instance.FadeOut(1f, null);
+        Fade.Instance.FadeOut(0.5f, null);
 
         if (DataManager.Instance.isEndChapter() && DataManager.Instance.isEndStory())
         {
@@ -140,7 +140,7 @@ public class MyPageManager : MonoBehaviour
     public void OnClickStory()
     {
         //Debug.Log(DataManager.Instance.endLine);
-        Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("ADV"); });
+        Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("ADV"); });
 
         //SceneChanger.LoadScene("ADV");
     }
@@ -150,7 +150,7 @@ public class MyPageManager : MonoBehaviour
     /// </summary>
     public void OnClickMiniGame()
     {
-        Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("MiniGame", true); });
+        Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("MiniGame", true); });
 
         //SceneChanger.LoadScene("MiniGame",true);
     }
@@ -162,7 +162,7 @@ public class MyPageManager : MonoBehaviour
     {
         //SaveData.ResetMasteringData();
         //DataManager.Instance.Init();
-        Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("Menu"); });
+        Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("Menu"); });
         //SceneChanger.LoadScene("Menu");
 	}
 

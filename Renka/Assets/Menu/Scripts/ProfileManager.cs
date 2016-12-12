@@ -121,7 +121,7 @@ public class ProfileManager : MonoBehaviour
 
 		if (Fade.Instance.isFade == false)
 		{
-			Fade.Instance.FadeIn(1f, () =>
+			Fade.Instance.FadeIn(0.5f, () =>
 			{
 				//セレクトをオフに
 				Select.gameObject.SetActive(false);
@@ -129,7 +129,7 @@ public class ProfileManager : MonoBehaviour
 				//プロファイルをオンに
 				ActiveProfile((ProfileName)id);
 
-				Fade.Instance.FadeOut(1f, null);
+				Fade.Instance.FadeOut(0.5f, null);
 			});
 		}
 	}

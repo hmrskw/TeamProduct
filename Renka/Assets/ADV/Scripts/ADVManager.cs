@@ -148,7 +148,7 @@ public class ADVManager : MonoBehaviour
                 {
                     DataManager.Instance.nowReadCharcterID = -1;
                     DataManager.Instance.endLine = 0;
-                    Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("Menu",true); });
+                    Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("Menu",true); });
                 }
                 else if (DataManager.Instance.nowReadStoryID == -1)
                 {
@@ -158,7 +158,7 @@ public class ADVManager : MonoBehaviour
                     DataManager.Instance.nowReadChapterID++; 
                     Debug.Log(DataManager.Instance.nowReadStoryID);
                     //読んでいたシーンがプロローグなら攻略キャラ選択へ移動
-                    Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("CharacterChoice"); });
+                    Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("CharacterChoice"); });
 
                     //SceneChanger.LoadScene("CharacterChoice");
                 }
@@ -172,7 +172,7 @@ public class ADVManager : MonoBehaviour
                     //    DataManager.Instance.nowReadChapterID++;
                     //}
                     //パラメータがミニゲームだったらMiniGameシーンへ
-                    Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("MiniGame", true); });
+                    Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("MiniGame", true); });
                     //SceneChanger.LoadScene("MiniGame", true);
                 }
                 else
@@ -195,7 +195,7 @@ public class ADVManager : MonoBehaviour
             {
                 DataManager.Instance.endLine++;
                 //パラメータがミニゲームだったらMiniGameシーンへ
-                Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("MiniGame", true); });
+                Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("MiniGame", true); });
                 //SceneChanger.LoadScene("MiniGame", true);
             }
             else

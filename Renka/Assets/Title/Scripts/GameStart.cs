@@ -18,8 +18,8 @@ public class GameStart : MonoBehaviour {
         }
 
         if (DataManager.Instance.masteringData.masteringCharacterID == -1)
-            Fade.Instance.FadeIn(2f, () => { SceneChanger.LoadScene("ADV"); });
+            Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("ADV"); });
         else
-            Fade.Instance.FadeIn(2f, () => { SceneChanger.LoadScene("MyPage"); });
+            Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("MyPage"); });
 	}
 }
