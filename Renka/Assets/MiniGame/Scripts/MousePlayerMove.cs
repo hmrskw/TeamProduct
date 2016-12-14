@@ -18,6 +18,9 @@ public class MousePlayerMove : MonoBehaviour {
     [SerializeField]
     float jumpPower;
 
+    [SerializeField]
+    float jumpFlickValue;
+
     private Rigidbody rb;
 
     private bool canJump = true;
@@ -62,7 +65,7 @@ public class MousePlayerMove : MonoBehaviour {
     void Update () {
         //Debug.Log(canJump);
 
-        if (prevFrameReminderY >= 0.06)
+        if (prevFrameReminderY >= jumpFlickValue)
         {
 
             if (canJump == true)
@@ -81,17 +84,17 @@ public class MousePlayerMove : MonoBehaviour {
 
 
         //テスト
-        if (Input.GetKeyDown(KeyCode.Space))
-            {
-            if(canJump==true)
-            {
-                //rb.AddForce(Vector3.up * 250);
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //    {
+        //    if(canJump==true)
+        //    {
+        //        //rb.AddForce(Vector3.up * 250);
 
-            }
+        //    }
 
             
 
-        }
+        //}
 
        
         //クリック押し込みの瞬間

@@ -58,19 +58,47 @@ public class Player : MonoBehaviour
 
         face = faceIconUi.GetComponent<Image>();
         playerMate = GetComponent<Renderer>().material;
-        //タツミ
-        if (nowCharacterID == 0)
+
+        //前のシーンがマイページなら
+        if (SceneChanger.GetBeforeSceneName() == "MyPage")
         {
-            playerMate.mainTexture = tatsumiAnimationImages[0];
+            Debug.Log("mypage");
+
+            //タツミ
+            if (nowCharacterID/*セレクトされたキャラクターID*/ == 0)
+            {
+                playerMate.mainTexture = tatsumiAnimationImages[0];
+            }
+            //ユウスケ
+            if (nowCharacterID/*セレクトされたキャラクターID*/ == 1)
+            {
+
+                playerMate.mainTexture = yusukeAnimationImages[0];
+
+            }
+
         }
-        //ユウスケ
-        if (nowCharacterID == 1)
+
+        //前のシーンがマイページ以外なら
+        else
         {
+            //タツミ
+            if (nowCharacterID == 0)
+            {
+                playerMate.mainTexture = tatsumiAnimationImages[0];
+            }
+            //ユウスケ
             if (nowCharacterID == 1)
             {
+
                 playerMate.mainTexture = yusukeAnimationImages[0];
+
             }
+
         }
+
+
+
 
     }
 
@@ -101,39 +129,96 @@ public class Player : MonoBehaviour
 
             nowTime = 0f;
             nowTextureNum++;
-            //タツミ
+
+
+            if (SceneChanger.GetBeforeSceneName() == "MyPage")
+            {
+                //タツミ
+                if (nowCharacterID == 0)
+                {
+                    if (nowTextureNum >= tatsumiAnimationImages.Length)
+                    {
+
+                        nowTextureNum = 0;
+                    }
+
+                }
+
+                //ユウスケ
+                if (nowCharacterID == 1)
+                {
+                    if (nowTextureNum >= yusukeAnimationImages.Length)
+                    {
+
+                        nowTextureNum = 0;
+                    }
+
+                }
+
+            }
+            //マイページシーン以外なら/////////////////////////////////
+            else
+            {
+                //タツミ
+                if (nowCharacterID == 0)
+                {
+                    if (nowTextureNum >= tatsumiAnimationImages.Length)
+                    {
+
+                        nowTextureNum = 0;
+                    }
+
+                }
+
+                //ユウスケ
+                if (nowCharacterID == 1)
+                {
+                    if (nowTextureNum >= yusukeAnimationImages.Length)
+                    {
+
+                        nowTextureNum = 0;
+                    }
+
+                }
+
+            }
+
+
+
+
+        }
+
+        if (SceneChanger.GetBeforeSceneName() == "MyPage")
+        {
             if (nowCharacterID == 0)
             {
-                if (nowTextureNum >= tatsumiAnimationImages.Length)
-                {
-
-                    nowTextureNum = 0;
-                }
-
+                playerMate.mainTexture = tatsumiAnimationImages[nowTextureNum];
             }
 
-            //ユウスケ
             if (nowCharacterID == 1)
             {
-                if (nowTextureNum >= yusukeAnimationImages.Length)
-                {
-
-                    nowTextureNum = 0;
-                }
-
+                playerMate.mainTexture = yusukeAnimationImages[nowTextureNum];
             }
 
+
         }
 
-        if (nowCharacterID == 0)
+        else
         {
-            playerMate.mainTexture = tatsumiAnimationImages[nowTextureNum];
+            if (nowCharacterID == 0)
+            {
+                playerMate.mainTexture = tatsumiAnimationImages[nowTextureNum];
+            }
+
+            if (nowCharacterID == 1)
+            {
+                playerMate.mainTexture = yusukeAnimationImages[nowTextureNum];
+            }
+
+
         }
 
-        if (nowCharacterID == 1)
-        {
-            playerMate.mainTexture = yusukeAnimationImages[nowTextureNum];
-        }
+       
 
     }
 
@@ -141,7 +226,7 @@ public class Player : MonoBehaviour
     {
 
         string layerName = LayerMask.LayerToName(other.gameObject.layer);
-        if (layerName=="Obstacle")
+        if (layerName == "Obstacle")
         {
             other.GetComponent<BoxCollider>().enabled = false;
             StartCoroutine(Damage());

@@ -11,6 +11,14 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     GameObject[] roads;
     [SerializeField]
+    GameObject[] easyRoads;
+    [SerializeField]
+    GameObject[] normalRoads;
+    [SerializeField]
+    GameObject[] hardRoads;
+
+
+    [SerializeField]
     GameObject[] startGoal = new GameObject[2];
 
     [SerializeField]
