@@ -121,7 +121,7 @@ public class TextManager : MonoBehaviour
     //文字一つ一つの間隔
     IntGage charIntervalCount = new IntGage(0);
 
-    public List<ConvertADVdata.ADVData> nowRead { set; private get; }
+    public List<ConvertADVData.ADVData> nowRead { set; private get; }
 
 
     [SerializeField, Tooltip("一行の文字列幅")]
@@ -139,7 +139,7 @@ public class TextManager : MonoBehaviour
         nameText.text = "";
         text.text = "";
 
-        nowRead = ConvertADVdata.Instance.AdvData;
+        nowRead = ConvertADVData.Instance.AdvData;
         wait = (int)(DataManager.Instance.configData.textSpd * 5f);
         stringCount.Reset(nowRead[DataManager.Instance.endLine].text.Length);
 
@@ -330,6 +330,12 @@ public class TextManager : MonoBehaviour
     public void ChangeCanvasNext()
     {
         canvas.SetActive(false);
+    }
+
+    public void SetTextAreaColor()
+    {
+        textArea.color = new Color(1, 1, 1, DataManager.Instance.configData.textBox);
+        characterNameArea.color = new Color(1, 1, 1, DataManager.Instance.configData.textBox);
     }
 
     /*

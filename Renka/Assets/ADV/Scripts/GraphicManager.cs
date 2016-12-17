@@ -180,7 +180,7 @@ public class GraphicManager : MonoBehaviour
             //初期化
             characters[i].Setup();
         }
-        DrawCharacter(ConvertADVdata.Instance.advData);
+        DrawCharacter(ConvertADVData.Instance.advData);
         DrawBack("黒");
     }
 
@@ -188,7 +188,7 @@ public class GraphicManager : MonoBehaviour
     /// キャラクターを描画
     /// </summary>
     /// <param name="csv_">今読んでいるCSVのデータ</param>
-    public void DrawCharacter(List<ConvertADVdata.ADVData> csv_)
+    public void DrawCharacter(List<ConvertADVData.ADVData> csv_)
     {
         for (int i = 0; i < csv_[DataManager.Instance.endLine].drawCharacterNum; i++)
         {

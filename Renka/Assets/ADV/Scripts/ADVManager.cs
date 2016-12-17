@@ -14,10 +14,16 @@ public class ADVManager : MonoBehaviour
 
     string key;
 
-    List<ConvertADVdata.ADVData> nowRead;
+    List<ConvertADVData.ADVData> nowRead;
 
     [SerializeField,Range(1,5)]
     int skipSpeed;
+
+    [SerializeField]
+    GameObject popup;
+
+    [SerializeField]
+    GameObject configPopup;
 
     float skipTimer = 0;
 
@@ -25,7 +31,7 @@ public class ADVManager : MonoBehaviour
 
     void Start()
     {
-        nowRead = ConvertADVdata.Instance.advData;
+        nowRead = ConvertADVData.Instance.advData;
         choiceManager = GetComponent<ChoiceManager>();
         textManager = GetComponent<TextManager>();
         graphicManager = GetComponent<GraphicManager>();
@@ -44,7 +50,7 @@ public class ADVManager : MonoBehaviour
         else if (SceneChanger.GetBeforeSceneName() != "Menu")
         {
             SceneChanger.GetBeforeSceneName(true);
-            ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
+            ConvertADVData.Instance.SetMasteringCharacterLastStoryID();
         }
         //Debug.Log(DataManager.Instance.nowReadStoryID);
     }
@@ -53,6 +59,8 @@ public class ADVManager : MonoBehaviour
     {
         if (isIntermission == true) return;
         if (Fade.Instance.isFade == true) return;
+        if (popup.activeInHierarchy == true) return;
+        if (configPopup.activeInHierarchy == true) return;
 
         if (choiceManager.isActiveChoices)
         {
@@ -61,7 +69,7 @@ public class ADVManager : MonoBehaviour
             if (key != null)
             {
                 //取得したキーから読むADVデータを切り替える
-                nowRead = ConvertADVdata.Instance.choiceADVData[key];
+                nowRead = ConvertADVData.Instance.choiceADVData[key];
                 textManager.nowRead = nowRead;
                 DataManager.Instance.endLine = -1;
                 textManager.ShiftNextText();
@@ -82,6 +90,28 @@ public class ADVManager : MonoBehaviour
             graphicManager.DrawBack(nowRead[DataManager.Instance.endLine].parameter);
             DrawNext();
         }
+        /////////////////////////////////////////////////////////////////////////////////////////////////
+        else if(nowRead[DataManager.Instance.endLine].command == "BGMPlay")
+        {
+            SoundManager.Instance.PlayBGM(nowRead[DataManager.Instance.endLine].text);
+            DrawNext();
+        }
+        else if (nowRead[DataManager.Instance.endLine].command == "BGMStop")
+        {
+            SoundManager.Instance.StopBGM();
+            DrawNext();
+        }
+        else if (nowRead[DataManager.Instance.endLine].command == "SEPlay")
+        {
+            SoundManager.Instance.PlaySE(nowRead[DataManager.Instance.endLine].text);
+            DrawNext();
+        }
+        else if (nowRead[DataManager.Instance.endLine].command == "SEStop")
+        {
+            SoundManager.Instance.StopSE();
+            DrawNext();
+        }
+        /////////////////////////////////////////////////////////////////////////////////////////////////
         else
         {
             if (textManager.IsDrawAllText())
@@ -138,7 +168,7 @@ public class ADVManager : MonoBehaviour
                 //選択肢で分岐した後の文章なら共通文章に戻る
                 DataManager.Instance.isChoiceText = false;
                 DataManager.Instance.endLine = Convert.ToInt16(nowRead[DataManager.Instance.endLine].parameter);
-                nowRead = ConvertADVdata.Instance.advData;
+                nowRead = ConvertADVData.Instance.advData;
                 textManager.nowRead = nowRead;
                 textManager.ShiftNextText();
             }
@@ -206,5 +236,10 @@ public class ADVManager : MonoBehaviour
                 //graphicManager.DrawBack(nowRead[DataManager.Instance.endLine].backGroundID);
             }
         }
+    }
+
+    public void OpenMenu()
+    {
+        popup.SetActive(true);
     }
 }

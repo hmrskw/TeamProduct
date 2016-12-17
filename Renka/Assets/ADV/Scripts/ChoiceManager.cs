@@ -89,25 +89,25 @@ public class ChoiceManager : MonoBehaviour
     public void DrawChoice(int wordsCount)
     {
         //0番目の選択を出現させる
-        if (ConvertADVdata.Instance.AdvData[wordsCount].choiceNum != 0)
+        if (ConvertADVData.Instance.AdvData[wordsCount].choiceNum != 0)
         {
             //選択肢から選択の数を取得
-            int num = ConvertADVdata.Instance.AdvData[wordsCount].choiceNum;//choicesArray[0].choies.Length;
+            int num = ConvertADVData.Instance.AdvData[wordsCount].choiceNum;//choicesArray[0].choies.Length;
             for (int i = 0; i < num; ++i)
             {
                 //選択肢の配列が小さい場合
                 if (i > choiceScripts.Length - 1) break;
 
                 //選択肢が選ばれたときに入るポイントをコピー
-                choiceScripts[i].point = ConvertADVdata.Instance.AdvData[wordsCount].choicePoint[i];//choicesArray[0].choies[i].point;
+                choiceScripts[i].point = ConvertADVData.Instance.AdvData[wordsCount].choicePoint[i];//choicesArray[0].choies[i].point;
                 //選択のテキストをオブジェにコピー
-                choiceScripts[i].text.text = ConvertADVdata.Instance.AdvData[wordsCount].choiceText[i];//choicesArray[0].choies[i].str;
+                choiceScripts[i].text.text = ConvertADVData.Instance.AdvData[wordsCount].choiceText[i];//choicesArray[0].choies[i].str;
 
                 //選択の座標計算
                 //未実装
 
                 //選択のオブジェをアクティブする
-                if (ConvertADVdata.Instance.AdvData[wordsCount].choiceTermsParameter[i] > DataManager.Instance.masteringData.likeabillity)
+                if (ConvertADVData.Instance.AdvData[wordsCount].choiceTermsParameter[i] > DataManager.Instance.masteringData.likeabillity)
                 {
                     choiceScripts[i].SetCanPush(false);
                 }

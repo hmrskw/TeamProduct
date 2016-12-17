@@ -4,10 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System; 
 
-public class ConvertADVdata : MonoBehaviour {
-    private static ConvertADVdata instance;
+public class ConvertADVData : MonoBehaviour {
+    private static ConvertADVData instance;
 
-    public static ConvertADVdata Instance
+    public static ConvertADVData Instance
     {
         get { return instance; }
     }
@@ -218,9 +218,9 @@ public class ConvertADVdata : MonoBehaviour {
         }
         else
         {
-            Debug.Log(DataManager.Instance.masteringData.masteringCharacterID);
-            Debug.Log(DataManager.Instance.nowReadChapterID);
-            Debug.Log(DataManager.Instance.nowReadStoryID);
+            //Debug.Log(DataManager.Instance.masteringData.masteringCharacterID);
+            //Debug.Log(DataManager.Instance.nowReadChapterID);
+            //Debug.Log(DataManager.Instance.nowReadStoryID);
             lines = readCsv.ReadFile(
                 csvFile[DataManager.Instance.masteringData.masteringCharacterID].
                 chapters[DataManager.Instance.nowReadChapterID].
@@ -335,7 +335,7 @@ public class ConvertADVdata : MonoBehaviour {
 
     bool CheckCommand(string com)
     {
-        string[] checkList = {"send","back","fadein","fadeout","fade" };
+        string[] checkList = {"send","back","fadein","fadeout","fade","BGMPlay","BGMStop","SEPlay","SEStop" };
         foreach(string checkword in checkList)
         {
             if (com == checkword) return true;

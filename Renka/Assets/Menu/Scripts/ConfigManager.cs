@@ -85,8 +85,9 @@ public class ConfigManager : MonoBehaviour
 			a.a = value;
 			textAreaImage.color = a;
 		});
-		//textBox.onValueChanged.AddListener(OnSlide);
-	}
+        textAreaImage.color = new Color(1,1,1,DataManager.Instance.configData.textBox);
+        //textBox.onValueChanged.AddListener(OnSlide);
+    }
 
 	/// <summary>
 	/// テキストボックスのスライダーを動かした時の処理.

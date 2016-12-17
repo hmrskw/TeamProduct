@@ -67,7 +67,7 @@ public class CharChoiceManager : MonoBehaviour
         if (Fade.Instance.isFade == true) return;
 
         DataManager.Instance.masteringData.masteringCharacterID = CharacterID_;
-        ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
+        ConvertADVData.Instance.SetMasteringCharacterLastStoryID();
         SaveData.SaveMasteringData();
 
         Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("MyPage"); });

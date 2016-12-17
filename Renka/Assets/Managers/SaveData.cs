@@ -172,7 +172,7 @@ public class SaveData
         if (ContainsKey("masteringData"))
         {
             DataManager.Instance.masteringData = GetClass<DataManager.MasteringData>("masteringData", new DataManager.MasteringData());
-            Debug.Log(DataManager.Instance.masteringData.masteringCharacterID);
+            //Debug.Log(DataManager.Instance.masteringData.masteringCharacterID);
         }
         else
         {
