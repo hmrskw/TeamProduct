@@ -50,8 +50,29 @@ public class StageManager : MonoBehaviour
         Fade.Instance.FadeOut(0.5f, null);
 
         ScrollSpeed = roadScrollSpeed;
-        StageShuffle();
         StartCoroutine(stageMoveCor());
+
+        //難易度EASY
+        if(DataManager.Instance.difficulty==0)
+        {
+            Debug.Log("easy");
+            roads = easyRoads;
+        }
+
+        //難易度NORMAL
+        if (DataManager.Instance.difficulty == 1)
+        {
+            Debug.Log("normal");
+            roads = normalRoads;
+        }
+
+        //難易度HARD
+        if (DataManager.Instance.difficulty == 2)
+        {
+            Debug.Log("hard");
+            roads = hardRoads;
+        }
+        StageShuffle();
     }
 
     //スタート前のカウント    

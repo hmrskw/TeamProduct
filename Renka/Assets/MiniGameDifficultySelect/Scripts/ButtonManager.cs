@@ -7,7 +7,7 @@ public class ButtonManager : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-
+        Fade.Instance.FadeOut(0.5f, null);
     }
 
     // Update is called once per frame
@@ -20,11 +20,13 @@ public class ButtonManager : MonoBehaviour {
     {
         if (str == "tatsumi")
         {
+            DataManager.Instance.nowReadCharcterID = 0;
             Debug.Log(str);
         }
 
         if (str == "yusuke")
         {
+            DataManager.Instance.nowReadCharcterID = 1;
             Debug.Log(str);
         }
     }
@@ -33,27 +35,33 @@ public class ButtonManager : MonoBehaviour {
     {
         if (str == "easy")
         {
+            DataManager.Instance.difficulty = 0;
             Debug.Log(str);
         }
 
         if (str == "normal")
         {
+            DataManager.Instance.difficulty = 1;
             Debug.Log(str);
         }
 
         if (str == "hard")
         {
+            DataManager.Instance.difficulty = 2;
             Debug.Log(str);
         }
     }
 
     public void EnterButton()
     {
-        Debug.Log("Enter");
+        Debug.Log(DataManager.Instance.difficulty);
+        Debug.Log(DataManager.Instance.nowReadCharcterID);
+        SceneChanger.LoadScene("MiniGame");
     }
 
     public void BackButton()
     {
+        SceneChanger.LoadScene("MyPage");
         Debug.Log("Back");
     }
 
