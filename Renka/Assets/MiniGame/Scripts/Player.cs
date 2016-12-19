@@ -53,6 +53,9 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+
+        
+
         hp = hpImage.Length;
         DataManager.Instance.minigameHp = hp;
 
@@ -65,12 +68,12 @@ public class Player : MonoBehaviour
             Debug.Log("mypage");
 
             //タツミ
-            if (nowCharacterID/*セレクトされたキャラクターID*/ == 0)
+            if (DataManager.Instance.nowReadCharcterID/*セレクトされたキャラクターID*/ == 0)
             {
                 playerMate.mainTexture = tatsumiAnimationImages[0];
             }
             //ユウスケ
-            if (nowCharacterID/*セレクトされたキャラクターID*/ == 1)
+            if (DataManager.Instance.nowReadCharcterID/*セレクトされたキャラクターID*/ == 1)
             {
 
                 playerMate.mainTexture = yusukeAnimationImages[0];
@@ -134,7 +137,7 @@ public class Player : MonoBehaviour
             if (SceneChanger.GetBeforeSceneName() == "MyPage")
             {
                 //タツミ
-                if (nowCharacterID == 0)
+                if (DataManager.Instance.nowReadCharcterID == 0)
                 {
                     if (nowTextureNum >= tatsumiAnimationImages.Length)
                     {
@@ -145,7 +148,7 @@ public class Player : MonoBehaviour
                 }
 
                 //ユウスケ
-                if (nowCharacterID == 1)
+                if (DataManager.Instance.nowReadCharcterID == 1)
                 {
                     if (nowTextureNum >= yusukeAnimationImages.Length)
                     {
@@ -190,12 +193,12 @@ public class Player : MonoBehaviour
 
         if (SceneChanger.GetBeforeSceneName() == "MyPage")
         {
-            if (nowCharacterID == 0)
+            if (DataManager.Instance.nowReadCharcterID == 0)
             {
                 playerMate.mainTexture = tatsumiAnimationImages[nowTextureNum];
             }
 
-            if (nowCharacterID == 1)
+            if (DataManager.Instance.nowReadCharcterID == 1)
             {
                 playerMate.mainTexture = yusukeAnimationImages[nowTextureNum];
             }

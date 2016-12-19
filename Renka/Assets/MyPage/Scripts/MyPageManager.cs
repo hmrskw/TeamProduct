@@ -150,7 +150,7 @@ public class MyPageManager : MonoBehaviour
     /// </summary>
     public void OnClickMiniGame()
     {
-        Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("MiniGame", true); });
+        Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("MiniGameDifficultySelect", true); });
 
         //SceneChanger.LoadScene("MiniGame",true);
     }

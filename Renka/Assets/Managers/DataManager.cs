@@ -108,6 +108,8 @@ public class DataManager : MonoBehaviour
     /// ミニゲームに使うデータ
     /// </summary>
     //ミニゲーム終了時の残り体力
+    public int difficulty;
+
     public int minigameHp;
 
     public bool[] item = new bool[3];
@@ -250,6 +252,7 @@ public class DataManager : MonoBehaviour
         endLine = 0;
         isChoiceText = false;
 
+        difficulty = 0;
         minigameHp = 3;
     }
 
