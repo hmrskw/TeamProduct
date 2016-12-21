@@ -29,7 +29,7 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     GameObject waitClickText;
 
-
+   
 
     [HideInInspector]
     public float gagePlayerPos;
@@ -44,10 +44,31 @@ public class StageManager : MonoBehaviour
     [Tooltip("道(パターン)１つの長さ")]
     float roadLength;
 
+    [SerializeField]
+    Makimono makimono;
+
+    [SerializeField]
+    Button BackButton;
+    [SerializeField]
+    Button StartButton;
+    [SerializeField]
+    Button StartButton2;
+
+    private bool isStart=false;
+
     // Use this for initialization
     void Start()
     {
         Fade.Instance.FadeOut(0.5f, null);
+
+        if(SceneChanger.GetBeforeSceneName()!="MyPage")
+        {
+            StartButton.gameObject.SetActive(false);
+            BackButton.gameObject.SetActive(false);
+            StartButton2.gameObject.SetActive(true);
+        }
+
+
 
         ScrollSpeed = roadScrollSpeed;
         StartCoroutine(stageMoveCor());
@@ -95,6 +116,8 @@ public class StageManager : MonoBehaviour
 
     }
 
+
+    //使ってない
     IEnumerator waitClick()
     {
         while(true)
@@ -112,12 +135,30 @@ public class StageManager : MonoBehaviour
         }
     }
 
+
+    public void WaitStartButtonClick()
+    {
+        BackButton.gameObject.SetActive(false);
+        makimono.gameObject.SetActive(false);
+        isStart = true;
+        StartButton.gameObject.SetActive(false);
+        StartButton2.gameObject.SetActive(false);
+
+    }
+
     IEnumerator stageMoveCor()
     {
         ScrollSpeed = 0.0f;
+        yield return StartCoroutine(makimono.MakimonoScroll());
         
+        //開始ボタンが押されたら
+        while(isStart!=true)
+        {
+            yield return null;
+        }
+       
         //クリックされてから
-        yield return StartCoroutine(waitClick());
+       // yield return StartCoroutine(waitClick());
 
         //開始前に4秒待ってカウントダウン表示
         yield return StartCoroutine(StartCount());
@@ -133,6 +174,8 @@ public class StageManager : MonoBehaviour
 
         yield return null;
     }
+
+  
 
 
 
