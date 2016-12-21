@@ -52,7 +52,6 @@ public class ADVManager : MonoBehaviour
             SceneChanger.GetBeforeSceneName(true);
             ConvertADVData.Instance.SetMasteringCharacterLastStoryID();
         }
-        //Debug.Log(DataManager.Instance.nowReadStoryID);
     }
 
     void Update()
@@ -60,7 +59,7 @@ public class ADVManager : MonoBehaviour
         if (isIntermission == true) return;
         if (Fade.Instance.isFade == true) return;
         if (popup.activeInHierarchy == true) return;
-        if (configPopup.activeInHierarchy == true) return;
+        //if (configPopup.activeInHierarchy == true) return;
 
         if (choiceManager.isActiveChoices)
         {
@@ -112,7 +111,7 @@ public class ADVManager : MonoBehaviour
             DrawNext();
         }
         /////////////////////////////////////////////////////////////////////////////////////////////////
-        else
+        else 
         {
             if (textManager.IsDrawAllText())
             {
@@ -202,6 +201,7 @@ public class ADVManager : MonoBehaviour
                     //    DataManager.Instance.nowReadChapterID++;
                     //}
                     //パラメータがミニゲームだったらMiniGameシーンへ
+                    DataManager.Instance.difficulty = 0;
                     Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("MiniGame", true); });
                     //SceneChanger.LoadScene("MiniGame", true);
                 }

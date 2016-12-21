@@ -181,7 +181,7 @@ public class GraphicManager : MonoBehaviour
             characters[i].Setup();
         }
         DrawCharacter(ConvertADVData.Instance.advData);
-        DrawBack("黒");
+        //DrawBack("黒");
     }
 
     /// <summary>
@@ -219,6 +219,7 @@ public class GraphicManager : MonoBehaviour
         }
         background.texture = tmp;
     }
+
     public void DrawBack(string backGround_)
     {
         Texture tmp = backgroundTexs[BackgroundTextureNameToID(backGround_)];

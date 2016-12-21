@@ -133,6 +133,9 @@ public class TextManager : MonoBehaviour
     [SerializeField]
     GameObject canvas;
 
+    [SerializeField]
+    GameObject popup;
+
     void Start()
     {
 
@@ -189,7 +192,7 @@ public class TextManager : MonoBehaviour
         while (true)
         {
             //文字送り中の時
-            if (!stringCount.CheckMax())
+            if (!stringCount.CheckMax()&& popup.activeInHierarchy == false)
             {
                 //文字の表示間隔カウントが最大でないとき
                 if (!charIntervalCount.CheckMax())
