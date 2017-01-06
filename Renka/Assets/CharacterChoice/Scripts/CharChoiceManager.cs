@@ -11,23 +11,11 @@ public class CharChoiceManager : MonoBehaviour
     [SerializeField, Tooltip("酉助を選択できるか")]
     bool canSelectsYuusuke;
 
-    [SerializeField, Tooltip("卯太郎を選択できるか")]
-    bool canSelectsUtarou;
-
-    [SerializeField, Tooltip("一午を選択できるか")]
-    bool canSelectsKazuma;
-
     [SerializeField, Tooltip("辰巳のボタンスクリプト")]
     Button tatsumi;
 
     [SerializeField, Tooltip("酉助のボタンスクリプト")]
     Button yuusuke;
-
-    [SerializeField, Tooltip("卯太郎のボタンスクリプト")]
-    Button utarou;
-
-    [SerializeField, Tooltip("一午のボタンスクリプト")]
-    Button kazuma;
 
     void Start()
     {
@@ -45,17 +33,6 @@ public class CharChoiceManager : MonoBehaviour
         {
             yuusuke.interactable = false;
         }
-
-        if (canSelectsUtarou == false)
-        {
-            utarou.interactable = false;
-        }
-
-        if (canSelectsKazuma == false)
-        {
-            kazuma.interactable = false;
-        }
-
     }
 
     /// <summary>

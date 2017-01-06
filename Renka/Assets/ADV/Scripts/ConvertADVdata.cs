@@ -335,7 +335,7 @@ public class ConvertADVData : MonoBehaviour {
 
     bool CheckCommand(string com)
     {
-        string[] checkList = {"send","back","fadein","fadeout","fade","BGMPlay","BGMStop","SEPlay","SEStop" };
+        string[] checkList = {"send","back","fadein","fadeout","fade","bgmplay","bgmstop","seplay","sestop" };
         foreach(string checkword in checkList)
         {
             if (com == checkword) return true;
@@ -439,6 +439,22 @@ public class ConvertADVData : MonoBehaviour {
         {
             id = 1;
         }
+        if (characterName_ == "卯太郎")
+        {
+            id = 2;
+        }
+        if (characterName_ == "一午")
+        {
+            id = 3;
+        }
+        if (characterName_ == "源七")
+        {
+            id = 4;
+        }
+        if (characterName_ == "丙治")
+        {
+            id = 5;
+        }
         return id;
     }
 
@@ -460,13 +476,25 @@ public class ConvertADVData : MonoBehaviour {
         {
             id = 2;
         }
-        if (expression_ == "哀")
+        if (expression_ == "呆")
         {
             id = 3;
         }
-        if (expression_ == "楽")
+        if (expression_ == "哀")
         {
             id = 4;
+        }
+        if (expression_ == "汗")
+        {
+            id = 5;
+        }
+        if (expression_ == "照")
+        {
+            id = 6;
+        }
+        if (expression_ == "驚")
+        {
+            id = 7;
         }
         return id;
     }
@@ -477,38 +505,13 @@ public class ConvertADVData : MonoBehaviour {
     int CostumeToID(string costume_)
     {
         int id = 0;
-        if (costume_ == "制服")
+        if (costume_ == "パターン1")
         {
             id = 0;
         }
-        return id;
-    }
-
-    /// <summary> 背景名から各背景に割り振られているIDに変換 </summary>
-    /// <param name="backgroundTextureName_">背景名</param>
-    /// <returns>背景に割り振られたID</returns>
-    int BackgroundTextureNameToID(string backgroundTextureName_)
-    {
-        int id = 0;
-        if (backgroundTextureName_ == "白")
+        if (costume_ == "パターン2")
         {
             id = 0;
-        }
-        if (backgroundTextureName_ == "黒")
-        {
-            id = 1;
-        }
-        if (backgroundTextureName_ == "町")
-        {
-            id = 2;
-        }
-        if (backgroundTextureName_ == "部屋")
-        {
-            id = 3;
-        }
-        if (backgroundTextureName_ == "火事")
-        {
-            id = 4;
         }
         return id;
     }

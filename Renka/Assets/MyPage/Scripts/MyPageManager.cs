@@ -68,6 +68,9 @@ public class MyPageManager : MonoBehaviour
     [SerializeField]
     GameObject[] testCanvas;
 
+    [SerializeField, Tooltip("BGM")]
+    AudioClip bgm;
+
     int texID = 0;
     int canvasID = 0;
 
@@ -116,6 +119,9 @@ public class MyPageManager : MonoBehaviour
 
         var line = Random.Range(0, comments.Length);
         commentText.text = comments[line];
+
+        //if(SoundManager.Instance.GetNowPlayBGMName() != bgm.name)
+        SoundManager.Instance.PlayBGM(bgm.name);
     }
     
     //全部デバッグ用
@@ -140,6 +146,7 @@ public class MyPageManager : MonoBehaviour
     public void OnClickStory()
     {
         //Debug.Log(DataManager.Instance.endLine);
+        SoundManager.Instance.PlaySE("main botan");
         Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("ADV"); });
 
         //SceneChanger.LoadScene("ADV");
@@ -150,6 +157,7 @@ public class MyPageManager : MonoBehaviour
     /// </summary>
     public void OnClickMiniGame()
     {
+        SoundManager.Instance.PlaySE("main botan");
         Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("MiniGameDifficultySelect", true); });
 
         //SceneChanger.LoadScene("MiniGame",true);
@@ -162,6 +170,7 @@ public class MyPageManager : MonoBehaviour
     {
         //SaveData.ResetMasteringData();
         //DataManager.Instance.Init();
+        SoundManager.Instance.PlaySE("main botan");
         Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("Menu"); });
         //SceneChanger.LoadScene("Menu");
 	}

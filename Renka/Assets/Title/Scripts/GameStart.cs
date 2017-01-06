@@ -5,6 +5,7 @@ public class GameStart : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        SoundManager.Instance.PlayBGM("title");
         StartCoroutine(PlayGame());
 	}
 	

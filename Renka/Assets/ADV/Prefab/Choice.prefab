@@ -87,7 +87,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114000012959954354}
-        m_MethodName: AddPoint
+        m_MethodName: DrawChoiceCheck
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TextObj: {fileID: 1000013334146452}
+  button: {fileID: 0}
   text: {fileID: 0}
 --- !u!222 &222000010262518868
 CanvasRenderer:

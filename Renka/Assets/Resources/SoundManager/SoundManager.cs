@@ -62,6 +62,12 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        ChangeSEVolume(DataManager.Instance.configData.se);
+        ChangeBGMVolume(DataManager.Instance.configData.bgm);
+    }
+
     /// <summary>
     /// SEの音量を変更する
     /// </summary>
@@ -141,7 +147,7 @@ public class SoundManager : MonoBehaviour
     /// <param name="volume">音量</param>
     public void ChangeBGMVolume(float volume)
     {
-        bgmSource.volume = volume;
+        bgmSource.volume = volume/2f;
         DataManager.Instance.configData.bgm = volume;
     }
 
@@ -225,5 +231,14 @@ public class SoundManager : MonoBehaviour
             Debug.Log("Pause");
             voiceSource.Pause();
         }
+    }
+
+    public string GetNowPlayBGMName()
+    {
+        AudioClip nowPlayBGM = bgmSource.clip;
+        if (nowPlayBGM == null)
+            return null;
+        else
+            return nowPlayBGM.name;
     }
 }

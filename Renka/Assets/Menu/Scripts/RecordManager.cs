@@ -209,7 +209,8 @@ public class RecordManager : MonoBehaviour
 	public void OnClickBookmark(int id)
 	{
 		Debug.Log("しおり id : " + id);
-		ChangePage(id);
+        SoundManager.Instance.PlaySE("kirokuchou");
+        ChangePage(id);
 	}
 
 	public void OnClickEpsode( int charaID, int chatID, int epiID)

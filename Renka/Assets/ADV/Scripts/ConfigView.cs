@@ -15,6 +15,7 @@ public class ConfigView : MonoBehaviour {
     {
         configManager = GetComponent<ConfigManager>();
     }
+
     public void Back()
     {
         gameObject.SetActive(false);

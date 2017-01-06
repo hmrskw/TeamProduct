@@ -202,7 +202,7 @@ public class GraphicManager : MonoBehaviour
             characters[i].rectTrans.anchoredPosition = csv_[DataManager.Instance.endLine].pos[i];
 
             var size = csv_[DataManager.Instance.endLine].size[i];
-            Debug.Log(csv_[DataManager.Instance.endLine].size[i]);
+            //Debug.Log(csv_[DataManager.Instance.endLine].size[i]);
             //characters[i].rectTrans.sizeDelta = new Vector2(size, size);
             characters[i].rectTrans.localScale = new Vector3(size, size, 1);
 
@@ -268,6 +268,58 @@ public class GraphicManager : MonoBehaviour
         if (backgroundTextureName_ == "火事")
         {
             id = 4;
+        }
+        if (backgroundTextureName_ == "焼け跡")
+        {
+            id = 5;
+        }
+        if (backgroundTextureName_ == "夜火事")
+        {
+            id = 6;
+        }
+        if (backgroundTextureName_ == "夜焼け跡")
+        {
+            id = 7;
+        }
+        if (backgroundTextureName_ == "庭")
+        {
+            id = 8;
+        }
+        if (backgroundTextureName_ == "夜庭")
+        {
+            id = 9;
+        }
+        if (backgroundTextureName_ == "広間")
+        {
+            id = 10;
+        }
+        if (backgroundTextureName_ == "夜広間")
+        {
+            id = 11;
+        }
+        if (backgroundTextureName_ == "丘")
+        {
+            id = 12;
+        }
+        if (backgroundTextureName_ == "台所")
+        {
+            id = 13;
+        }
+        if (backgroundTextureName_ == "玄関（め組）")
+        {
+            id = 14;
+        }
+        if (backgroundTextureName_ == "玄関（や組）")
+        {
+            id = 15;
+        }
+        if (backgroundTextureName_ == "川")
+        {
+            id = 16;
+        }
+        if (backgroundTextureName_ == "空き家")
+        {
+            id = 17;
         }
         return id;
     }

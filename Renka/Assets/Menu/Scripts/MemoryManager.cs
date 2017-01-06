@@ -331,7 +331,8 @@ public class MemoryManager : MonoBehaviour
 			}
 
 		}
-	}
+        SoundManager.Instance.PlaySE("kirokuchou");
+    }
 
 
 	/// <summary>

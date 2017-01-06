@@ -10,9 +10,25 @@ public class IntermissionManager : MonoBehaviour
     [SerializeField]
     bool canSave;
 
+    [SerializeField]
+    Slider likeabillityGage;
+
+    public float BeforeLikeabillity { get; set; }
+
     void Start()
     {
-        Fade.Instance.FadeOut(0.5f, null);
+        Fade.Instance.FadeOut(0.5f, 
+            () => {
+                StartCoroutine(
+                    SliderValueChanger(
+                        likeabillityGage,
+                        BeforeLikeabillity / 10f,
+                        DataManager.Instance.masteringData.likeabillity / 10f
+                    )
+                );
+            }
+        );
+        likeabillityGage.value = BeforeLikeabillity / 10f;
         DataManager.Instance.endLine = 0;
         if (DataManager.Instance.isEndChapter() && DataManager.Instance.isEndStory())
         {
@@ -58,5 +74,23 @@ public class IntermissionManager : MonoBehaviour
         }
 
         //SceneChanger.LoadScene("MyPage");
+    }
+
+    public IEnumerator SliderValueChanger(Slider slider, float startValue, float endValue)
+    {
+        float wipeTime = 1;
+        float startTime = Time.timeSinceLevelLoad;
+        float diff = 0f;
+
+        while (diff < wipeTime)
+        {
+            diff = Time.timeSinceLevelLoad - startTime;
+
+            float rate = diff / wipeTime;
+            float a = (endValue - startValue) * rate;
+            slider.value = startValue + a;
+
+            yield return null;
+        }
     }
 }

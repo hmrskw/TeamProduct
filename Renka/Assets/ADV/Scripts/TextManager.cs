@@ -124,6 +124,20 @@ public class TextManager : MonoBehaviour
     public List<ConvertADVData.ADVData> nowRead { set; private get; }
 
 
+
+    public class LogData
+    {
+        public string name;
+        public string text;
+        public LogData(string name_, string text_)
+        {
+            name = name_;
+            text = text_;
+        }
+    }
+    //ログ
+    public List<LogData> logArray;
+
     [SerializeField, Tooltip("一行の文字列幅")]
     int strLength;
 
@@ -134,15 +148,16 @@ public class TextManager : MonoBehaviour
     GameObject canvas;
 
     [SerializeField]
-    GameObject popup;
+    PopManager popup;
 
     void Start()
     {
-
         nameText.text = "";
         text.text = "";
 
         nowRead = ConvertADVData.Instance.AdvData;
+        logArray = new List<LogData>();
+
         wait = (int)(DataManager.Instance.configData.textSpd * 5f);
         stringCount.Reset(nowRead[DataManager.Instance.endLine].text.Length);
 
@@ -154,6 +169,16 @@ public class TextManager : MonoBehaviour
         StartCoroutine(ADVUpdate());
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            foreach(LogData log in logArray)
+            {
+                Debug.Log(log.name +":"+log.text);
+            }
+        }
+    }
     public void ShiftNextText()
     {
         if ((/*ReadCSV.Instance.csvData*/nowRead.Count > DataManager.Instance.endLine))
@@ -161,7 +186,6 @@ public class TextManager : MonoBehaviour
             DataManager.Instance.endLine++;
             //カウンターのリセット
             //Debug.Log(DataManager.Instance.endLine);
-            //Debug.Log(nowReadCSV[DataManager.Instance.endLine].text);
             stringCount.Reset(/*ReadCSV.Instance.CsvData*/nowRead[DataManager.Instance.endLine].text.Length);
         }
     }
@@ -192,7 +216,7 @@ public class TextManager : MonoBehaviour
         while (true)
         {
             //文字送り中の時
-            if (!stringCount.CheckMax()&& popup.activeInHierarchy == false)
+            if (!stringCount.CheckMax()&& popup.isDrawpopup == false)
             {
                 //文字の表示間隔カウントが最大でないとき
                 if (!charIntervalCount.CheckMax())

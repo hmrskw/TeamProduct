@@ -28,6 +28,12 @@ public class ChoiceManager : MonoBehaviour
     [SerializeField, Tooltip("選択ごとの幅")]
     float choiceWidth;
 
+    [SerializeField]
+    GameObject checkPopup;
+
+    [SerializeField]
+    ChoiceCheck choiceCheck;
+
     void Start()
     {
         //参照用スクリプトを生成
@@ -59,27 +65,29 @@ public class ChoiceManager : MonoBehaviour
     /// </summary>
     public string Choice()
     {
+        if (choiceCheck.isPassingCheck == false) return null;
         //選択肢を押したあと離した時
-        for (int i = 0; i < choiceScripts.Length; ++i)
+        //for (int i = 0; i < choiceScripts.Length; ++i)
         {
-            if (!choiceScripts[i].isReleased) continue;
+            //if (choiceScripts[i].isReleased == false) continue;
 
+            DataManager.Instance.masteringData.likeabillity += choiceCheck.Point;
             Debug.Log("Add好感度 : " + DataManager.Instance.masteringData.likeabillity);
-            string choiceText = choiceScripts[i].text.text;
+            string choiceText = choiceCheck.Text;
             DataManager.Instance.isChoiceText = true;
 
             //選択肢を消す
             for (int k = 0; k < choiceScripts.Length; ++k)
             {
                 choiceScripts[k].gameObject.SetActive(false);
-                choiceScripts[k].Reset();
+                //choiceScripts[k].Reset();
             }
 
             isActiveChoices = false;
+            choiceCheck.isPassingCheck = false;
             return choiceText;
             //break;
         }
-        return null;
     }
 
     /// <summary>
@@ -102,6 +110,8 @@ public class ChoiceManager : MonoBehaviour
                 choiceScripts[i].point = ConvertADVData.Instance.AdvData[wordsCount].choicePoint[i];//choicesArray[0].choies[i].point;
                 //選択のテキストをオブジェにコピー
                 choiceScripts[i].text.text = ConvertADVData.Instance.AdvData[wordsCount].choiceText[i];//choicesArray[0].choies[i].str;
+                //選択肢を選んだ後に表示されるポップアップの参照をコピー
+                choiceScripts[i].checkPopup = checkPopup;
 
                 //選択の座標計算
                 //未実装
@@ -114,7 +124,7 @@ public class ChoiceManager : MonoBehaviour
 
                 choiceScripts[i].gameObject.SetActive(true);
 
-                choiceScripts[i].Reset();
+                //choiceScripts[i].Reset();
             }
 
             //選択肢をアクティブに

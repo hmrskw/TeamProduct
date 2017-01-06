@@ -18,23 +18,28 @@ public class Choice : MonoBehaviour
     public int point{ set; get; } 
 
     //ボタンを離したかどうかの変数
-    public bool isReleased { get; set; }
+    //public bool isReleased { get; set; }
 
+    public GameObject checkPopup { get; set; }
     /// <summary>
     /// 初期化処理
     /// Startメソッドが呼ばれないので
     /// </summary>
     public void Setup()
     {
-        isReleased = false;
+        //isReleased = false;
         button = GetComponent<Button>();
         text = TextObj.GetComponent<Text>();
     }
 
-    public void AddPoint()
+    public void DrawChoiceCheck()
     {
-        DataManager.Instance.masteringData.likeabillity += point;
-        isReleased = true;
+        checkPopup.SetActive(true);
+        ChoiceCheck choiceCheck = checkPopup.GetComponent<ChoiceCheck>();
+        choiceCheck.Text = text.text;
+        choiceCheck.Point = point;
+        //DataManager.Instance.masteringData.likeabillity += point;
+        //isReleased = true;
     }
 
     /// <summary>
@@ -42,7 +47,7 @@ public class Choice : MonoBehaviour
     /// </summary>
     public void Reset()
     {
-        isReleased = false;
+        //isReleased = false;
     }
 
     public void SetCanPush(bool canPush)
@@ -55,6 +60,6 @@ public class Choice : MonoBehaviour
     /// </summary>
     public void Release()
     {
-        isReleased = true;
+        //isReleased = true;
     }
 }
