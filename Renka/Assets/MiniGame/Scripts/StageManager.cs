@@ -59,6 +59,7 @@ public class StageManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        SoundManager.Instance.PlayBGM("mini BGM");
         Fade.Instance.FadeOut(0.5f, null);
 
         if(SceneChanger.GetBeforeSceneName()!="MyPage")
@@ -110,6 +111,7 @@ public class StageManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         startCountText.text = "始め";
+        SoundManager.Instance.PlaySE("taiko start");
         yield return new WaitForSeconds(1f);
         startCountText.text = "";
         yield return null;
