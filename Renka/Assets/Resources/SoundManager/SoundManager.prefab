@@ -476,6 +476,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f86f276e04739084991ba84cfa8e5c17, type: 3}
   - {fileID: 8300000, guid: 0f5292e5aa548034a93bbdfd79e13473, type: 3}
   - {fileID: 8300000, guid: 8b629bc9ffa22b24eb9f07fe3800ed30, type: 3}
+  - {fileID: 8300000, guid: 19d1aa5d218e8864a8a9a2009326d660, type: 3}
+  - {fileID: 8300000, guid: 0a59be3c2b1c5d1449eb104a48d7d4e7, type: 3}
+  - {fileID: 8300000, guid: 8e6e8eebfe55e17498e381d8d6086e35, type: 3}
+  - {fileID: 8300000, guid: 2b35fa67a78663d43a90c252c57b8e79, type: 3}
   bgmClips:
   - {fileID: 8300000, guid: 6a3f86dd75e8dc34c9d53e5a0fe44ed6, type: 3}
   - {fileID: 8300000, guid: 123608d5991801347a073a0320b9b68d, type: 3}
@@ -488,4 +492,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1fcc14391b621134d846fd7cf2791fde, type: 3}
   - {fileID: 8300000, guid: ebb6e2ad99c2a654fb2a95a302da5f02, type: 3}
   - {fileID: 8300000, guid: 1023d012ae47fe649b17b0771218efd4, type: 3}
+  - {fileID: 8300000, guid: 6f11adc2b847d7c4184074a580cac2bb, type: 3}
   voiceClips: []
