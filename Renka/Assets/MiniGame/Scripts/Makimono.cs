@@ -24,17 +24,6 @@ public class Makimono : MonoBehaviour {
         }
         yield return null;
     }
-    public IEnumerator resultMakimonoScroll()
-    {
-
-        while (transform.localPosition.y >= makimonoLimitPosY)
-        {
-            transform.Translate(0, scrollSpeed, 0);
-            yield return null;
-        }
-        yield return null;
-    }
-
 
     // Use this for initialization
     void Start () {

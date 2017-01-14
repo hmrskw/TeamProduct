@@ -18,7 +18,7 @@ public class CheckRange : MonoBehaviour {
     void OnTriggerEnter(Collider col)
     {
 
-        SoundManager.Instance.PlaySE("neko");
+        Debug.Log("atatta");
         string layerName = LayerMask.LayerToName(col.gameObject.layer);
         if (layerName == "Player")
         {

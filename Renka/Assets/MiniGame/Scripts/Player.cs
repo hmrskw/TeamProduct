@@ -17,10 +17,7 @@ public class Player : MonoBehaviour
     private GameObject gameOverText;
 
     [SerializeField]
-    private Sprite[] tatsumiFaceIconImages;
-
-    [SerializeField]
-    private Sprite[] yusukeFaceIconImages;
+    private Sprite[] faceIconImages;
 
     //テクスチャアニメーション//////////////////////////////
     [SerializeField]
@@ -116,36 +113,7 @@ public class Player : MonoBehaviour
         TextureAnim();
         if (hp > 0)
         {
-            if (SceneChanger.GetBeforeSceneName() == "MyPage")
-            {
-                if (DataManager.Instance.nowReadCharcterID/*セレクトされたキャラクターID*/ == 0)
-                {
-                    face.sprite = tatsumiFaceIconImages[hp];
-                }
-
-                if (DataManager.Instance.nowReadCharcterID/*セレクトされたキャラクターID*/ == 1)
-                {
-                    face.sprite = yusukeFaceIconImages[hp];
-                }
-            }
-
-            else
-            {
-                //タツミ
-                if (nowCharacterID == 0)
-                {
-                    face.sprite = tatsumiFaceIconImages[hp];
-                }
-                //ユウスケ
-                if (nowCharacterID == 1)
-                {
-
-                    face.sprite = yusukeFaceIconImages[hp];
-
-                }
-
-            }
-
+            face.sprite = faceIconImages[hp];
 
         }
     }
@@ -263,7 +231,6 @@ public class Player : MonoBehaviour
         string layerName = LayerMask.LayerToName(other.gameObject.layer);
         if (layerName == "Obstacle")
         {
-            SoundManager.Instance.PlaySE("hit");
             other.GetComponent<BoxCollider>().enabled = false;
             StartCoroutine(Damage());
         }
@@ -282,38 +249,9 @@ public class Player : MonoBehaviour
             //HPの表示を1つ減らす
             hpImage[hp].SetActive(false);
         }
-        //HPが0以下
         else
         {
-            if (SceneChanger.GetBeforeSceneName() == "MyPage")
-            {
-                if (DataManager.Instance.nowReadCharcterID/*セレクトされたキャラクターID*/ == 0)
-                {
-                    face.sprite = tatsumiFaceIconImages[hp];
-                }
-
-                if (DataManager.Instance.nowReadCharcterID/*セレクトされたキャラクターID*/ == 1)
-                {
-                    face.sprite = yusukeFaceIconImages[hp];
-                }
-            }
-
-            else
-            {
-                //タツミ
-                if (nowCharacterID == 0)
-                {
-                    face.sprite = tatsumiFaceIconImages[hp];
-                }
-                //ユウスケ
-                if (nowCharacterID == 1)
-                {
-
-                    face.sprite = yusukeFaceIconImages[hp];
-
-                }
-
-            }
+            face.sprite = faceIconImages[hp];
             hpImage[0].SetActive(false);
             //ステージスクロールをとめる
             stage.ScrollSpeed = 0.0f;
