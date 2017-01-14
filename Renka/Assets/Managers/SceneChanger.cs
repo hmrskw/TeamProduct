@@ -57,7 +57,7 @@ public static class SceneChanger
 
     public static void ResetBeforeScene()
     {
-        Debug.Log("clear");
+        //Debug.Log("clear");
         beforeSceneName.Clear();
     }
 }

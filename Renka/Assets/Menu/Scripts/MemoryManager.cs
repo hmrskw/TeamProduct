@@ -228,6 +228,9 @@ public class MemoryManager : MonoBehaviour
 	[SerializeField, Tooltip("そのページが表示される")]
 	int select;
 
+    [SerializeField, Tooltip("栞をどのくらい上げるか")]
+    float bookmarkUp;
+
 	[SerializeField, Tooltip("栞をどのくらい下げて隠すか")]
 	float bookmarkDown;
 
@@ -291,7 +294,7 @@ public class MemoryManager : MonoBehaviour
 			//item.BookmarkButton.gameObject.SetActive(false);
 			var t = item.BookmarkButton.gameObject.GetComponent<RectTransform>();
 			var pos = t.anchoredPosition;
-			t.anchoredPosition = new Vector2(pos.x, -bookmarkDown);
+            t.anchoredPosition = new Vector2(pos.x, bookmarkUp - bookmarkDown);
 		}
 
 		//選択されたしおりのページのみ表示
@@ -299,7 +302,7 @@ public class MemoryManager : MonoBehaviour
 		//charaPages[select].BookmarkButton.transform.Translate(0, 150,0);
 		var rt_ = charaPages[select].BookmarkButton.gameObject.GetComponent<RectTransform>();
 		var pos_ = rt_.anchoredPosition;
-		rt_.anchoredPosition = new Vector2(pos_.x, 0f);
+		rt_.anchoredPosition = new Vector2(pos_.x, bookmarkUp);
 
 	}
 
@@ -320,14 +323,14 @@ public class MemoryManager : MonoBehaviour
 				charaPages[i].MemoryScript.gameObject.SetActive(true);
 				var t = charaPages[i].BookmarkButton.gameObject.GetComponent<RectTransform>();
 				var pos = t.anchoredPosition;
-				t.anchoredPosition = new Vector2(pos.x, 0f);
+				t.anchoredPosition = new Vector2(pos.x, bookmarkUp);
 			}
 			else
 			{
 				charaPages[i].MemoryScript.gameObject.SetActive(false);
 				var t = charaPages[i].BookmarkButton.gameObject.GetComponent<RectTransform>();
 				var pos = t.anchoredPosition;
-				t.anchoredPosition = new Vector2(pos.x, -bookmarkDown);
+				t.anchoredPosition = new Vector2(pos.x, bookmarkUp - bookmarkDown);
 			}
 
 		}
