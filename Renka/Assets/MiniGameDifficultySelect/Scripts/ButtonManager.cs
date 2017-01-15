@@ -8,6 +8,8 @@ public class ButtonManager : MonoBehaviour {
     void Start()
     {
         Fade.Instance.FadeOut(0.5f, null);
+        DataManager.Instance.nowReadCharcterID = 0;
+        DataManager.Instance.difficulty = 0;
     }
 
     // Update is called once per frame

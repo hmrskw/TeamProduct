@@ -24,8 +24,15 @@ public class MyPageManager : MonoBehaviour
     [SerializeField, Tooltip("上のアルファ値")]
     float commentAreaAlpha;
 
+    [System.Serializable]
+    public struct characterComments
+    {
+        //表情画像の配列
+        public string[] comment;
+    }
+
     [SerializeField, Tooltip("キャラクターのコメント")]
-    string[] comments;
+    characterComments[] comments;
 
     [SerializeField, Tooltip("コメントを表示するText")]
     Text commentText;
@@ -117,8 +124,11 @@ public class MyPageManager : MonoBehaviour
             image.texture = charVariations[0].faceTexs[0];
         }
 
-        var line = Random.Range(0, comments.Length);
-        commentText.text = comments[line];
+        if (i>=0 && comments.Length >= i)
+        {
+            var line = Random.Range(0, comments[i].comment.Length);
+            commentText.text = comments[i].comment[line];
+        }
 
         //if(SoundManager.Instance.GetNowPlayBGMName() != bgm.name)
         SoundManager.Instance.PlayBGM(bgm.name);
@@ -188,20 +198,28 @@ public class MyPageManager : MonoBehaviour
     /// </summary>
     public void OnClickCommentArea()
     {
-        //ランダムにコメントを変える
-        var line = Random.Range(0, comments.Length);
+        var i = DataManager.Instance.masteringData.masteringCharacterID;
 
-        //同じコメントを呼ばない
-        if (comments.Length != 0 && comments.Length != 1)
+        if (i >= 0 && comments.Length >= i)
         {
-            while (line == commentPrevLine)
-            {
-                line = Random.Range(0, comments.Length);
-            }
-            commentPrevLine = line;
-        }
 
-        //コメントを表示テキストに上書きする
-        commentText.text = comments[line];
+            //ランダムにコメントを変える
+            var line = Random.Range(0, comments[i].comment.Length);
+            //var line = Random.Range(0, comments.Length);
+
+            //同じコメントを呼ばない
+            if (comments[i].comment.Length != 0 && comments[i].comment.Length != 1)
+            {
+                while (line == commentPrevLine)
+                {
+                    line = Random.Range(0, comments[i].comment.Length);
+                }
+                commentPrevLine = line;
+            }
+
+            //コメントを表示テキストに上書きする
+            commentText.text = comments[i].comment[line];
+        }
+        //commentText.text = comments[line];
     }
 }

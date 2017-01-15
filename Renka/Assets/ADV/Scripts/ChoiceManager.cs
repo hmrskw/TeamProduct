@@ -117,10 +117,10 @@ public class ChoiceManager : MonoBehaviour
                 //未実装
 
                 //選択のオブジェをアクティブする
-                if (ConvertADVData.Instance.AdvData[wordsCount].choiceTermsParameter[i] > DataManager.Instance.masteringData.likeabillity)
-                {
-                    choiceScripts[i].SetCanPush(false);
-                }
+                //if (ConvertADVData.Instance.AdvData[wordsCount].choiceTermsParameter[i] > DataManager.Instance.masteringData.likeabillity)
+                //{
+                    //choiceScripts[i].SetCanPush(false);
+                //}
 
                 choiceScripts[i].gameObject.SetActive(true);
 

@@ -50,7 +50,7 @@ public class ReadCSV
                 int j = i + 1;
                 while ((linesList[j][0] < 'a' || linesList[j][0] > 'z'))
                 {
-                    linesList[i] += linesList[j];
+                    linesList[i] += "\n"+linesList[j];
                     linesList.RemoveAt(j);
                 }
             }

@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
     void Start()
     {
 
-        
+        nowCharacterID = DataManager.Instance.masteringData.masteringCharacterID;
 
         hp = hpImage.Length;
         DataManager.Instance.minigameHp = hp;

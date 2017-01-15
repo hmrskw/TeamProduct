@@ -257,35 +257,35 @@ public class GraphicManager : MonoBehaviour
         {
             id = 1;
         }
-        if (backgroundTextureName_ == "町")
+        if (backgroundTextureName_ == "町並み"|| backgroundTextureName_ == "町")
         {
             id = 2;
         }
-        if (backgroundTextureName_ == "部屋")
+        if (backgroundTextureName_ == "主人公の部屋"|| backgroundTextureName_ == "部屋")
         {
             id = 3;
         }
-        if (backgroundTextureName_ == "火事")
+        if (backgroundTextureName_ == "火事（昼）" || backgroundTextureName_ == "火事")
         {
             id = 4;
         }
-        if (backgroundTextureName_ == "焼け跡")
+        if (backgroundTextureName_ == "焼け跡（昼）")
         {
             id = 5;
         }
-        if (backgroundTextureName_ == "夜火事")
+        if (backgroundTextureName_ == "火事（夜）")
         {
             id = 6;
         }
-        if (backgroundTextureName_ == "夜焼け跡")
+        if (backgroundTextureName_ == "焼け跡（夜）")
         {
             id = 7;
         }
-        if (backgroundTextureName_ == "庭")
+        if (backgroundTextureName_ == "庭（昼）")
         {
             id = 8;
         }
-        if (backgroundTextureName_ == "夜庭")
+        if (backgroundTextureName_ == "庭（夜）")
         {
             id = 9;
         }
@@ -293,7 +293,7 @@ public class GraphicManager : MonoBehaviour
         {
             id = 10;
         }
-        if (backgroundTextureName_ == "夜広間")
+        if (backgroundTextureName_ == "広間（夜）")
         {
             id = 11;
         }
@@ -321,6 +321,15 @@ public class GraphicManager : MonoBehaviour
         {
             id = 17;
         }
+        if (backgroundTextureName_ == "主人公の部屋（夜）")
+        {
+            id = 3;
+        }
+        if (backgroundTextureName_ == "川（夜）")
+        {
+            id = 16;
+        }
+
         return id;
     }
 }

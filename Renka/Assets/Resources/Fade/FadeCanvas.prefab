@@ -47,9 +47,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaskTexture:
-  - {fileID: 2800000, guid: 2a2fafc68e4820449bfad5e19a1dbd84, type: 3}
-  - {fileID: 2800000, guid: 8c927d582dfc0cd40a3177b16025d285, type: 3}
-  - {fileID: 2800000, guid: 44848b3ab799da047b38a3dd76c6c456, type: 3}
+  - {fileID: 2800000, guid: a4434f8ec9ae3b54da6dbd2ad52be3b0, type: 3}
+  - {fileID: 2800000, guid: 37559554234397244a1fab3261f259d6, type: 3}
+  - {fileID: 2800000, guid: ccc2158d8f97a7742a282eee971fcd32, type: 3}
+  - {fileID: 2800000, guid: 2efb93ecdd913f4438ceca415883e924, type: 3}
+  - {fileID: 2800000, guid: 2fa26879722441e469df34b9e63dd6a7, type: 3}
+  - {fileID: 2800000, guid: cf739412df2f44c4c9d8780f0e01e658, type: 3}
+  - {fileID: 2800000, guid: 40271a763d4c06c4780caa50450dd461, type: 3}
+  - {fileID: 2800000, guid: 1737da8bbd26a164290ab5aabe78ed2f, type: 3}
+  - {fileID: 2800000, guid: 199a586d293430c4897faed854f3bcd5, type: 3}
+  - {fileID: 2800000, guid: 1f4f1b97d49607844b2f97e9bb012a06, type: 3}
 --- !u!222 &22291984
 CanvasRenderer:
   m_ObjectHideFlags: 1

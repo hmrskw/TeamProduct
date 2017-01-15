@@ -145,6 +145,11 @@ public class TextManager : MonoBehaviour
     char[] prohibitionCharacters;
 
     [SerializeField]
+    Image waitIcon;
+    [SerializeField]
+    Sprite[] waitSprites;
+
+    [SerializeField]
     GameObject canvas;
 
     [SerializeField]
@@ -163,6 +168,8 @@ public class TextManager : MonoBehaviour
 
         textArea.color = new Color(1,1,1,DataManager.Instance.configData.textBox);
         characterNameArea.color = new Color(1, 1, 1, DataManager.Instance.configData.textBox);
+
+        waitIcon.enabled = false;
 
         charIntervalCount.Reset(wait);
 
@@ -213,11 +220,14 @@ public class TextManager : MonoBehaviour
     /// <returns></returns>
     IEnumerator ADVUpdate()
     {
+        int waitIconID = 0;
         while (true)
         {
             //文字送り中の時
             if (!stringCount.CheckMax()&& popup.isDrawpopup == false)
             {
+                waitIcon.enabled = false;
+
                 //文字の表示間隔カウントが最大でないとき
                 if (!charIntervalCount.CheckMax())
                 {
@@ -241,8 +251,18 @@ public class TextManager : MonoBehaviour
                     //Debug.Log( nowRead[DataManager.Instance.endLine].text.Substring(0, stringCount.num) );
                     text.text = ConvertJpHyph(nowRead[DataManager.Instance.endLine].text.Substring(0, stringCount.num) ,strLength );
                 }
+                yield return null;
+
             }
-            yield return null;
+            else if (popup.isDrawpopup == false)
+            {
+                waitIcon.enabled = true;
+
+                waitIcon.sprite = waitSprites[waitIconID];
+                yield return new WaitForSeconds(0.5f);
+                waitIconID = (waitIconID + 1) % waitSprites.Length;
+            }
+            else yield return null;
         }
     }
 

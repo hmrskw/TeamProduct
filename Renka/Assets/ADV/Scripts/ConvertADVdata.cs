@@ -28,7 +28,7 @@ public class ConvertADVData : MonoBehaviour {
         public int choiceNum;//表示する選択肢の数
         public string[] choiceText = new string[3];//各選択肢の文章
         public int[] choicePoint = new int[3];//各選択肢のポイント
-        public int[] choiceTermsParameter = new int[3];//各選択肢のポイント
+        //public int[] choiceTermsParameter = new int[3];//各選択肢のポイント
 
         public string sendCharacter;//キャラクターのID
         public string text;//テキスト
@@ -61,7 +61,7 @@ public class ConvertADVData : MonoBehaviour {
             {
                 this.choiceText[i] = "";
                 this.choicePoint[i] = 0;
-                this.choiceTermsParameter[i] = 0;
+                //this.choiceTermsParameter[i] = 0;
             }
 
             this.sendCharacter = "";
@@ -211,6 +211,10 @@ public class ConvertADVData : MonoBehaviour {
         else if (SceneChanger.GetBeforeSceneName() == "Menu")
         {
             SceneChanger.GetBeforeSceneName(true);
+            Debug.Log(csvFile[DataManager.Instance.nowReadCharcterID].
+            chapters[DataManager.Instance.nowReadChapterID].
+            StoryText[DataManager.Instance.nowReadStoryID] + ".csv");
+
             lines = readCsv.ReadFile(
                 csvFile[DataManager.Instance.nowReadCharcterID].
                 chapters[DataManager.Instance.nowReadChapterID].
@@ -218,9 +222,11 @@ public class ConvertADVData : MonoBehaviour {
         }
         else
         {
-            //Debug.Log(DataManager.Instance.masteringData.masteringCharacterID);
-            //Debug.Log(DataManager.Instance.nowReadChapterID);
-            //Debug.Log(DataManager.Instance.nowReadStoryID);
+            Debug.Log(DataManager.Instance.masteringData.masteringCharacterID+":"+DataManager.Instance.nowReadChapterID + ":" +DataManager.Instance.nowReadStoryID);
+
+            Debug.Log(csvFile[DataManager.Instance.masteringData.masteringCharacterID].
+                chapters[DataManager.Instance.nowReadChapterID].
+                StoryText[DataManager.Instance.nowReadStoryID] + ".csv");
             lines = readCsv.ReadFile(
                 csvFile[DataManager.Instance.masteringData.masteringCharacterID].
                 chapters[DataManager.Instance.nowReadChapterID].
@@ -282,7 +288,7 @@ public class ConvertADVData : MonoBehaviour {
                 {
                     advDataTmp.choiceText[advDataTmp.choiceNum] = Convert.ToString(didCommaSeparationData[(int)ElementsName.TEXT]);
                     advDataTmp.choicePoint[advDataTmp.choiceNum] = Convert.ToInt16(didCommaSeparationData[(int)ElementsName.PARAMETER]);
-                    advDataTmp.choiceTermsParameter[advDataTmp.choiceNum] = Convert.ToInt16(didCommaSeparationData[(int)ElementsName.CHARACTER_NAME]);
+                    //advDataTmp.choiceTermsParameter[advDataTmp.choiceNum] = Convert.ToInt16(didCommaSeparationData[(int)ElementsName.CHARACTER_NAME]);
                     choiceTiming.Add(advDataTmp.choiceText[advDataTmp.choiceNum], advData.Count);
                     advDataTmp.choiceNum++;
                     i++;
@@ -312,6 +318,7 @@ public class ConvertADVData : MonoBehaviour {
                 if (advDataTmp.command == "return")
                 {
                     string key = choiceData[0].parameter;
+                    Debug.Log(key);
                     choiceData[choiceData.Count - 1].parameter = (choiceTiming[key]).ToString();
                     choiceADVData.Add(key, choiceData);
                     choiceData = new List<ADVData>();
@@ -388,7 +395,7 @@ public class ConvertADVData : MonoBehaviour {
                 //PositionNameToPosition(didCommaSeparationData_[(int)ElementsName.POSITION_X]),
                 //Convert.ToSingle(didCommaSeparationData_[(int)ElementsName.POSITION_X]),
                 //Convert.ToSingle(didCommaSeparationData_[(int)ElementsName.POSITION_Y])
-                (sizeDataDictionary[didCommaSeparationData_[(int)ElementsName.SIZE]]-0.5f)*-600);
+                (sizeDataDictionary[didCommaSeparationData_[(int)ElementsName.SIZE]]-0.5f)*-800);
 
         if (didCommaSeparationData_[(int)ElementsName.SIZE] != "")
             csv_.size[csv_.drawCharacterNum] = sizeDataDictionary[didCommaSeparationData_[(int)ElementsName.SIZE]];
@@ -409,6 +416,7 @@ public class ConvertADVData : MonoBehaviour {
 
         if (didCommaSeparationData_[(int)ElementsName.TEXT] != "")
         {
+            Debug.Log(didCommaSeparationData_[(int)ElementsName.TEXT]);
             string text = ConvertNewLineCode(didCommaSeparationData_[(int)ElementsName.TEXT]);
             //文章の前後にあるダブルクオートを消す
             csv_.text = text.Trim('"');
