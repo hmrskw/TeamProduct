@@ -2120,7 +2120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &317571181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7305,7 +7305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1101192012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7400,6 +7400,7 @@ MonoBehaviour:
   enableSkip: {fileID: 304335116}
   disableSkip: {fileID: 1901952885}
   textAreaImage: {fileID: 2141536349}
+  textAreaImageMask: {fileID: 0}
   text: {fileID: 1721719637}
   testTextIntervalSpeed: 0.5
 --- !u!1001 &1103084870
@@ -8198,6 +8199,30 @@ Prefab:
       propertyPath: m_Text
       value: "\u30C6\u30AD\u30B9\u30C8\u901F\u5EA6"
       objectReference: {fileID: 0}
+    - target: {fileID: 114000013129549270, guid: 128259b7bdb73b2429290a44b10d2049,
+        type: 2}
+      propertyPath: m_IsOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013910295250, guid: 128259b7bdb73b2429290a44b10d2049, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013693950190, guid: 128259b7bdb73b2429290a44b10d2049,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011212406120, guid: 128259b7bdb73b2429290a44b10d2049,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaySE
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011212406120, guid: 128259b7bdb73b2429290a44b10d2049,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 128259b7bdb73b2429290a44b10d2049, type: 2}
   m_IsPrefabParent: 0
@@ -8514,7 +8539,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1161398136
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12776,7 +12801,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u4F01\u753B\n\t\u3042\u3042\u3042\u3042\u3042\u3042\n\u30B7\u30CA\u30EA\u30AA\n\t\u3042\u3042\u3042\u3042\u3042\u3042\u3000\u3000\u3042\u3042\u3042\u3042\u3042\u3042\n\u30D7\u30ED\u30B0\u30E9\u30DE\n\t\u3042\u3042\u3042\u3042\u3042\u3042\u3000\u3000\u3042\u3042\u3042\u3042\u3042\u3042\n\t\u3042\u3042\u3042\u3042\u3042\u3042\u3000\u3000\u3042\u3042\u3042\u3042\u3042\u3042\n\u30D7\u30E9\u30F3\u30CA\u30FC\n\t\u3042\u3042\u3042\u3042\u3042\u3042\n\t\u3042\u3042\u3042\u3042\u3042\u3042\u3000\u3000\u3042\u3042\u3042\u3042\u3042\u3042\n\t\u3042\u3042\u3042\u3042\u3042\u3042\u3000\u3000\u3042\u3042\u3042\u3042\u3042\u3042\n\u30B0\u30E9\u30D5\u30A3\u30C3\u30AB\u30FC\n\t\u3042\u3042\u3042\u3042\u3042\u3042\u3000\u3000\u3042\u3042\u3042\u3042\u3042\u3042\n\t\u3042\u3042\u3042\u3042\u3042\u3042"
+  m_Text: "\u4F01\u753B\n\t\u52A0\u85E4\u8A13\u5B50\n\u30B7\u30CA\u30EA\u30AA\n\t\u9AD8\u6728\u52A0\u5948\u3000\u52A0\u85E4\u8A13\u5B50\n\u30D7\u30ED\u30B0\u30E9\u30DE\u30FC\n\t\u4E09\u6FA4\u88D5\u6A39\u3000\u5927\u6A4B\r\u77E5\u4E5F\n\t\u4E0A\u6751\u6709\u751F\u3000\u66FD\u5C4B\u5927\u8F1D\n\u30D7\u30E9\u30F3\u30CA\u30FC\n\t\u52A0\u85E4\u8A13\u5B50\u3000\u9AD8\u6728\u52A0\u5948\r\n\t\u7C82\u7530\u548C\u54C9\u3000\u7530\u6751\u6643\u8F1D\r\n\t\u5C71\u7530\u4E00\u8F1D\n\u30B0\u30E9\u30D5\u30A3\u30C3\u30AB\u30FC\n\t\u771F\u5D0E\u96DB\u4E43\u3000\u4E38\u7530\u73B2\u5948\r\n\t\u5897\u7530\u3086\u308A\u5B50"
 --- !u!222 &1813770348
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13298,7 +13323,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 38
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -13309,7 +13334,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042"
+  m_Text: "\u3081\u7D44\u306E\u982D\u9818\u3002\n\n\u706B\u6D88\u3068\u3057\u3066\u306E\u5B9F\u529B\u3082\u9AD8\u304F\u3001\n\u5468\u308A\u304B\u3089\u4FE1\u983C\u3055\u308C\u3066\u3044\u308B\u3002"
 --- !u!222 &1857247580
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14777,7 +14802,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 600}
-  m_SizeDelta: {x: 800, y: 0}
+  m_SizeDelta: {x: 800, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2084045658
 MonoBehaviour:
@@ -15071,7 +15096,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 38
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -15082,7 +15107,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042"
+  m_Text: "\u5143\u3081\u7D44\u306E\u4E00\u54E1\u3002\n\n\u6709\u80FD\u306A\u706B\u6D88\u3068\u3057\u3066\u6B21\u671F\u982D\u9818\u5019\u88DC\u3068\u3057\u3066\u671F\u5F85\u3055\u308C\u3066\u3044\u305F\u304C\u3001\n\u706B\u4E8B\u3067\u59BB\u5B50\u3092\u4EA1\u304F\u3057\u3066\u304B\u3089\u706B\u6D88\u3092\u3084\u3081\u305F\u3002"
 --- !u!222 &2117584124
 CanvasRenderer:
   m_ObjectHideFlags: 0

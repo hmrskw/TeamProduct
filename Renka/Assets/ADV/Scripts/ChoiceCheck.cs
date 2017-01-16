@@ -15,12 +15,14 @@ public class ChoiceCheck : MonoBehaviour {
 
     public void Determination()
     {
+        SoundManager.Instance.PlaySE("botan");
         gameObject.SetActive(false);
         isPassingCheck = true;
     }
 
     public void BackToChoice()
     {
+        SoundManager.Instance.PlaySE("botan");
         gameObject.SetActive(false);
     }
 }

@@ -76,6 +76,9 @@ public class TextManager : MonoBehaviour
     Image textArea;
 
     [SerializeField]
+    Image textAreaMask;
+
+    [SerializeField]
     Image characterNameArea;
 
     [SerializeField, Range(0, 5), Tooltip("このフレーム分待機する")]
@@ -163,10 +166,10 @@ public class TextManager : MonoBehaviour
         nowRead = ConvertADVData.Instance.AdvData;
         logArray = new List<LogData>();
 
-        wait = (int)(DataManager.Instance.configData.textSpd * 5f);
+        wait = (int)((1-DataManager.Instance.configData.textSpd) * 5f);
         stringCount.Reset(nowRead[DataManager.Instance.endLine].text.Length);
-
         textArea.color = new Color(1,1,1,DataManager.Instance.configData.textBox);
+        textAreaMask.color = new Color(1, 1, 1, DataManager.Instance.configData.textBox/2);
         characterNameArea.color = new Color(1, 1, 1, DataManager.Instance.configData.textBox);
 
         waitIcon.enabled = false;
@@ -382,9 +385,15 @@ public class TextManager : MonoBehaviour
     public void SetTextAreaColor()
     {
         textArea.color = new Color(1, 1, 1, DataManager.Instance.configData.textBox);
+        textAreaMask.color = new Color(1, 1, 1, DataManager.Instance.configData.textBox / 2);
         characterNameArea.color = new Color(1, 1, 1, DataManager.Instance.configData.textBox);
     }
 
+    public void SetWeitSpeed()
+    {
+        wait = (int)((1 - DataManager.Instance.configData.textSpd) * 5f);
+        charIntervalCount.Reset(wait);
+    }
     /*
     /// <summary>
     /// 文字列内の"\n"の文字列を'\n'に文字に変える

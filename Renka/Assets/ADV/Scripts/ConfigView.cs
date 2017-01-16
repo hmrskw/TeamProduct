@@ -21,6 +21,12 @@ public class ConfigView : MonoBehaviour {
         gameObject.SetActive(false);
         configManager.SaveConfigData();
         textManager.SetTextAreaColor();
+        textManager.SetWeitSpeed();
         popup.SetActive(true);
+    }
+
+    public void PlaySE()
+    {
+        SoundManager.Instance.PlaySE("botan");
     }
 }

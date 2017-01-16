@@ -22,13 +22,13 @@ public class IntermissionManager : MonoBehaviour
                 StartCoroutine(
                     SliderValueChanger(
                         likeabillityGage,
-                        BeforeLikeabillity / 10f,
-                        DataManager.Instance.masteringData.likeabillity / 10f
+                        BeforeLikeabillity / 50f,
+                        DataManager.Instance.masteringData.likeabillity / 50f
                     )
                 );
             }
         );
-        likeabillityGage.value = BeforeLikeabillity / 10f;
+        likeabillityGage.value = BeforeLikeabillity / 50f;
         DataManager.Instance.endLine = 0;
         if (DataManager.Instance.isEndChapter() && DataManager.Instance.isEndStory())
         {

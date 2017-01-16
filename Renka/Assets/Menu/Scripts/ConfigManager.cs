@@ -52,8 +52,10 @@ public class ConfigManager : MonoBehaviour
 
 	[SerializeField, Tooltip("テキストエリアの画像を参照させる")]
 	Image textAreaImage;
+    [SerializeField]
+    Image textAreaImageMask;
 
-	[SerializeField, Tooltip("確認テキストを参照させる")]
+    [SerializeField, Tooltip("確認テキストを参照させる")]
 	Text text;
 
 	//[SerializeField, Range(0.5f, 0f), Tooltip("テキスト速さ")]
@@ -81,10 +83,13 @@ public class ConfigManager : MonoBehaviour
 		//テキスストボックスのバーがいじられたときのアルファの変更
 		textBox.onValueChanged.AddListener((float value) =>
 		{
-			var a = textAreaImage.color;
-			a.a = value;
-			textAreaImage.color = a;
-		});
+			var textAreaImageColor = textAreaImage.color;
+            var textAreaImageMaskColor = textAreaImageMask.color;
+            textAreaImageColor.a = value;
+            textAreaImageMaskColor.a = value / 2f;
+            textAreaImage.color = textAreaImageColor;
+            textAreaImageMask.color = textAreaImageMaskColor;
+        });
         textAreaImage.color = new Color(1,1,1,DataManager.Instance.configData.textBox);
         //textBox.onValueChanged.AddListener(OnSlide);
     }
@@ -95,18 +100,21 @@ public class ConfigManager : MonoBehaviour
 	/// <param name="value"></param>
 	public void OnSlide(float value)
 	{
-		//Debug.Log("OnSlide : " + value);
-		var a = textAreaImage.color;
-		a.a = value;
-		textAreaImage.color = a;
-		//Debug.Log("Color : " + textAreaImage.color);
-	}
+        //Debug.Log("OnSlide : " + value);
+        var textAreaImageColor = textAreaImage.color;
+        var textAreaImageMaskColor = textAreaImageMask.color;
+        textAreaImageColor.a = value;
+        textAreaImageMaskColor.a = value / 2f;
+        textAreaImage.color = textAreaImageColor;
+        textAreaImageMask.color = textAreaImageMaskColor;
+        //Debug.Log("Color : " + textAreaImage.color);
+    }
 
-	/// <summary>
-	/// コンフィグデータを読み込んでUIに反映させる
-	/// </summary>
-	/// <param name="data">コンフィグデータ</param>
-	public void ReflectConfigUI()
+    /// <summary>
+    /// コンフィグデータを読み込んでUIに反映させる
+    /// </summary>
+    /// <param name="data">コンフィグデータ</param>
+    public void ReflectConfigUI()
 	{
 		//ConfigData data = DataManager.Instance.configData;
 		Debug.Log("LoadConfig");
@@ -159,9 +167,10 @@ public class ConfigManager : MonoBehaviour
 	/// <summary>
 	/// 再生の確認
 	/// </summary>
-	public void PlayText(int id)
+	public void PlaySE()
 	{
-		Debug.Log("PlayText : " + id);
+        SoundManager.Instance.PlaySE("botan");
+        Debug.Log("Playse");
 	}
 
 	bool IsStopText;

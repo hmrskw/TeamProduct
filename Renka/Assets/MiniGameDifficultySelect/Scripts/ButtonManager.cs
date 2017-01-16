@@ -20,6 +20,7 @@ public class ButtonManager : MonoBehaviour {
 
     public void ChalacterSelectButton(string str)
     {
+        SoundManager.Instance.PlaySE("botan");
         if (str == "tatsumi")
         {
             DataManager.Instance.nowReadCharcterID = 0;
@@ -35,6 +36,7 @@ public class ButtonManager : MonoBehaviour {
 
     public void DifficultySelectButton(string str)
     {
+        SoundManager.Instance.PlaySE("botan");
         if (str == "easy")
         {
             DataManager.Instance.difficulty = 0;
@@ -56,6 +58,7 @@ public class ButtonManager : MonoBehaviour {
 
     public void EnterButton()
     {
+        SoundManager.Instance.PlaySE("botan");
         Debug.Log(DataManager.Instance.difficulty);
         Debug.Log(DataManager.Instance.nowReadCharcterID);
         SceneChanger.LoadScene("MiniGame");
@@ -63,6 +66,7 @@ public class ButtonManager : MonoBehaviour {
 
     public void BackButton()
     {
+        SoundManager.Instance.PlaySE("botan");
         SceneChanger.LoadScene("MyPage");
         Debug.Log("Back");
     }

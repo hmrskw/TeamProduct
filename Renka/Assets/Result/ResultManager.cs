@@ -26,11 +26,12 @@ public class ResultManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        for(int i = 0; i < DataManager.Instance.minigameHp; i++)
+        int minigameHp = DataManager.Instance.minigameHp;
+
+        for (int i = 0; i < minigameHp; i++)
         {
             life[i].SetActive(true);
         }
-        int minigameHp = DataManager.Instance.minigameHp;
         SetResultText(minigameHp);
         SetResultComment(minigameHp);
         Fade.Instance.FadeOut(0.5f, null);
