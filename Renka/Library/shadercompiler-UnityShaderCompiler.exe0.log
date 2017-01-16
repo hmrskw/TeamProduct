@@ -1,2 +1,42 @@
-Base path: C:/Program Files/Unity5.4.1/Editor/Data
+Base path: C:/unity5.4.1/Editor/Data
 Cmd: getPlatforms
+Cmd: preprocess
+  insize=1415 outsize=646 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=1075 outsize=622 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=1075 outsize=422 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: preprocess
+  insize=1335 outsize=654 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=986 outsize=622 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=986 outsize=374 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: preprocess
+  insize=3386 outsize=2170 ok=1
+Cmd: preprocess
+  insize=1876 outsize=661 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=1521 outsize=886 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=1521 outsize=730 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: preprocess
+  insize=1422 outsize=637 ok=1
+Cmd: preprocess
+  insize=1409 outsize=656 ok=1
+Cmd: preprocess
+  insize=1881 outsize=658 ok=1
+Cmd: preprocess
+  insize=1894 outsize=640 ok=1
+Cmd: preprocess
+  insize=1925 outsize=588 ok=1
+Cmd: preprocess
+  insize=2704 outsize=1722 ok=1
+Cmd: preprocess
+  insize=2779 outsize=1719 ok=1
+Cmd: preprocess
+  insize=1956 outsize=652 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=1610 outsize=886 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=1610 outsize=758 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
