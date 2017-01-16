@@ -14,10 +14,10 @@ public class GameStart : MonoBehaviour {
         while (true)
         {
             if (InputManager.Instance.IsTouchEnded()) break;
-            //Debug.Log(DataManager.Instance.masteringData.masteringCharacterID);
             yield return null;
         }
 
+        SoundManager.Instance.PlaySE("botan");
         if (DataManager.Instance.masteringData.masteringCharacterID == -1)
             Fade.Instance.FadeIn(1f, () => { SceneChanger.LoadScene("ADV"); });
         else
