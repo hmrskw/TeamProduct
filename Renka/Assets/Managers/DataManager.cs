@@ -28,11 +28,15 @@ public class DataManager : MonoBehaviour
         //そのキャラクターのストーリーが何章まであるか
         public int masteringCharacterLastChapterID;
 
+        //木札を何個持っているか
+        public int itemNum;
+
         public MasteringData() {
             masteringCharacterLastStoryID = 0;
             masteringCharacterLastChapterID = 0;
             likeabillity = 0;
             masteringCharacterID = -1;
+            itemNum = 0;
         }
     }
 
@@ -93,6 +97,12 @@ public class DataManager : MonoBehaviour
     
     //回想用:選択されたキャラクター
     public int nowReadCharcterID;
+
+    //回想用:選択された章
+    public int nowReadRecordChapterID;
+
+    //回想用:選択された話
+    public int nowReadRecordStoryID;
 
     //今何行目まで読んだか
     public int endLine;

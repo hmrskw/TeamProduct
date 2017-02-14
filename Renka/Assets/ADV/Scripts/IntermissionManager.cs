@@ -13,6 +13,9 @@ public class IntermissionManager : MonoBehaviour
     [SerializeField]
     Slider likeabillityGage;
 
+    [SerializeField]
+    Image[] items;
+
     public float BeforeLikeabillity { get; set; }
 
     void Start()
@@ -28,8 +31,22 @@ public class IntermissionManager : MonoBehaviour
                 );
             }
         );
+
         likeabillityGage.value = BeforeLikeabillity / 50f;
         DataManager.Instance.endLine = 0;
+
+        for (int i = 0;i<items.Length ; i++)
+        {
+            if(i < DataManager.Instance.masteringData.itemNum)
+            {
+                items[i].color = Color.white;
+            }
+            else
+            {
+                items[i].color = Color.black;
+            }
+        }
+
         if (DataManager.Instance.isEndChapter() && DataManager.Instance.isEndStory())
         {
             button.interactable = false;

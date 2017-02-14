@@ -210,15 +210,15 @@ public class ConvertADVData : MonoBehaviour {
         }
         else if (SceneChanger.GetBeforeSceneName() == "Menu")
         {
-            SceneChanger.GetBeforeSceneName(true);
+            //SceneChanger.GetBeforeSceneName(true);
             Debug.Log(csvFile[DataManager.Instance.nowReadCharcterID].
-            chapters[DataManager.Instance.nowReadChapterID].
-            StoryText[DataManager.Instance.nowReadStoryID] + ".csv");
+            chapters[DataManager.Instance.nowReadRecordChapterID].
+            StoryText[DataManager.Instance.nowReadRecordStoryID] + ".csv");
 
             lines = readCsv.ReadFile(
                 csvFile[DataManager.Instance.nowReadCharcterID].
-                chapters[DataManager.Instance.nowReadChapterID].
-                StoryText[DataManager.Instance.nowReadStoryID] + ".csv");
+                chapters[DataManager.Instance.nowReadRecordChapterID].
+                StoryText[DataManager.Instance.nowReadRecordStoryID] + ".csv");
         }
         else
         {

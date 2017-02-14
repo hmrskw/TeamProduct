@@ -17,6 +17,9 @@ public class CharChoiceManager : MonoBehaviour
     [SerializeField, Tooltip("酉助のボタンスクリプト")]
     Button yuusuke;
 
+    [SerializeField]
+    Button back;
+
     void Start()
     {
         Fade.Instance.FadeOut(0.5f, null);
@@ -32,6 +35,11 @@ public class CharChoiceManager : MonoBehaviour
         if (canSelectsYuusuke == false)
         {
             yuusuke.interactable = false;
+        }
+
+        if(SceneChanger.GetBeforeSceneName() == null)
+        {
+            back.interactable = false;
         }
     }
 
@@ -50,5 +58,10 @@ public class CharChoiceManager : MonoBehaviour
         Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("MyPage"); });
 
         //SceneChanger.LoadScene("MyPage", false);
+    }
+
+    public void OnClickBack()
+    {
+        Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("MyPage"); });
     }
 }

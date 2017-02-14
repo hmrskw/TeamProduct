@@ -18,10 +18,10 @@ public class ContentsManager : MonoBehaviour
 
 	}
 
-	/// <summary>
-	/// もどるボタンが押されたとき
-	/// </summary>
-	public void OnClickMyPage()
+    /// <summary>
+    /// マイページボタンが押されたとき
+    /// </summary>
+    public void OnClickMyPage()
 	{
 		Debug.Log("マイページ");
         SoundManager.Instance.PlaySE("botan");

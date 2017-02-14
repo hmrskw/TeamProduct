@@ -70,8 +70,10 @@ public class ChoiceManager : MonoBehaviour
         //for (int i = 0; i < choiceScripts.Length; ++i)
         {
             //if (choiceScripts[i].isReleased == false) continue;
-
-            DataManager.Instance.masteringData.likeabillity += choiceCheck.Point;
+            if (SceneChanger.GetBeforeSceneName() != "Menu")
+            {
+                DataManager.Instance.masteringData.likeabillity += choiceCheck.Point;
+            }
             Debug.Log("Add好感度 : " + DataManager.Instance.masteringData.likeabillity);
             string choiceText = choiceCheck.Text;
             DataManager.Instance.isChoiceText = true;

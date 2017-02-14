@@ -35,6 +35,7 @@ public class ADVManager : MonoBehaviour
 
     bool isIntermission = false;
 
+
     void Start()
     {
         nowRead = ConvertADVData.Instance.advData;
@@ -46,7 +47,7 @@ public class ADVManager : MonoBehaviour
 
         if (SceneChanger.GetBeforeSceneName() == "Result")
         {
-            SceneChanger.GetBeforeSceneName(true);
+            //SceneChanger.GetBeforeSceneName(true);
             //DataManager.Instance.endLine = 0;
             //DataManager.Instance.nowReadChapterID++;
             //ConvertADVdata.Instance.SetMasteringCharacterLastStoryID();
@@ -59,7 +60,7 @@ public class ADVManager : MonoBehaviour
         }
         else if (SceneChanger.GetBeforeSceneName() != "Menu")
         {
-            SceneChanger.GetBeforeSceneName(true);
+            //SceneChanger.GetBeforeSceneName(true);
             ConvertADVData.Instance.SetMasteringCharacterLastStoryID();
         }
     }
@@ -192,8 +193,9 @@ public class ADVManager : MonoBehaviour
             }
             else
             {
-                if (DataManager.Instance.nowReadCharcterID != -1)
+                if (SceneChanger.GetBeforeSceneName(true) == "Menu")
                 {
+                    //SaveData.LoadMasteringData();
                     DataManager.Instance.nowReadCharcterID = -1;
                     DataManager.Instance.endLine = 0;
                     Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("Menu",true); });

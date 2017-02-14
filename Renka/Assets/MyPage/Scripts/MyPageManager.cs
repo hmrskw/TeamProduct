@@ -60,6 +60,8 @@ public class MyPageManager : MonoBehaviour
 
     [SerializeField, Tooltip("好感度ゲージ")]
     Slider gauge;
+    [SerializeField, Tooltip("現在の好感度")]
+    Text likeNum;
 
     [SerializeField, Tooltip("好感度の最大値")]
     int likeMax;
@@ -104,6 +106,8 @@ public class MyPageManager : MonoBehaviour
 
         //好感度の最大値と現在の好感度からゲージの割合を決める
         gauge.value = (float)DataManager.Instance.masteringData.likeabillity / (float)likeMax;
+
+        likeNum.text = DataManager.Instance.masteringData.likeabillity.ToString();
 
         //キャラクターの生成
         var i = DataManager.Instance.masteringData.masteringCharacterID;
