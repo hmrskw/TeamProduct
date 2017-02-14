@@ -13,6 +13,12 @@ public class ResetManager : MonoBehaviour
 	[SerializeField, Tooltip("リセットを終えたウィンドウ")]
 	GameObject window3;
 
+	[SerializeField, Tooltip("キャラ選択ウィンドウ")]
+	GameObject window4;
+
+	[SerializeField, Tooltip("キャラ選択確認ウィンドウ")]
+	GameObject window5;
+
 	void Start()
 	{
 
@@ -24,9 +30,13 @@ public class ResetManager : MonoBehaviour
 	public void Reset()
 	{
 		//各ウィンドウの初期状態
-		window1.SetActive(true);
+		window1.SetActive(false);
 		window2.SetActive(false);
 		window3.SetActive(false);
+		window4.SetActive(true);
+		window5.SetActive(false);
+
+		characterIDBuffer = -1;
 	}
 
 
@@ -77,6 +87,52 @@ public class ResetManager : MonoBehaviour
 		window1.SetActive(true);
 
 
+	}
+
+	//変更したいキャラのIDを一時的に覚えておく
+	int characterIDBuffer;
+
+	//キャラクター選択
+	public void OnClickCharacter(int CharacterID_)
+	{
+		characterIDBuffer = CharacterID_;
+
+		//キャラ変更確認画面へ
+		window4.SetActive(false);
+		window5.SetActive(true);
+
+	}
+
+	//キャラ変更する
+	public void OnClickChangeCharacterYes()
+	{
+		Debug.Log("ウィンドウ⑤　Yes");
+
+		if (Fade.Instance.isFade == true) return;
+
+		DataManager.Instance.masteringData.masteringCharacterID = characterIDBuffer;
+		//ConvertADVData.Instance.SetMasteringCharacterLastStoryID();
+		//DataManager.Instance.masteringData.masteringCharacterLastStoryID = 1;
+		//DataManager.Instance.masteringData.masteringCharacterLastChapterID = 0;
+		DataManager.Instance.nowReadStoryID = 0;
+		DataManager.Instance.nowReadChapterID = 0;
+		DataManager.Instance.endLine = 1;
+		DataManager.Instance.masteringData.likeabillity = 0;
+
+		Debug.Log("キャラクターデータの変更完了");
+
+		SaveData.SaveMasteringData();
+
+		Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("MyPage"); });
+	}
+
+	//キャラ変更しない
+	public void OnClickChangeCharacterNo()
+	{
+		Debug.Log("ウィンドウ⑤　No");
+
+		//コンテンツ画面に戻る？
+		MenuManager.Instance.ShiftBack();
 	}
 
 
