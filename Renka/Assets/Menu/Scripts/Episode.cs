@@ -100,7 +100,11 @@ public class Episode : MonoBehaviour
         {
             isHave = true;
         }
-        else if (ChapID == finData.finishedReadChapterID && EpiID < finData.finishedReadStoryID)
+        else if (ChapID == finData.finishedReadChapterID && EpiID <= finData.finishedReadStoryID)
+        {
+            isHave = true;
+        }
+        else if(finData.finishedReadChapterID == 13)
         {
             isHave = true;
         }

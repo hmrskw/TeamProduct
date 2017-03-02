@@ -365,9 +365,13 @@ public class TextManager : MonoBehaviour
     {
         if (DataManager.Instance.nowReadChapterID == DataManager.Instance.masteringData.masteringCharacterLastChapterID)
         {
-            intermissionText.text = "恋情ルート" + (DataManager.Instance.nowReadStoryID + 1) + "話";
+            intermissionText.text = "おまけシナリオ";
         }
         else if (DataManager.Instance.nowReadChapterID == DataManager.Instance.masteringData.masteringCharacterLastChapterID - 1)
+        {
+            intermissionText.text = "恋情ルート" + (DataManager.Instance.nowReadStoryID + 1) + "話";
+        }
+        else if (DataManager.Instance.nowReadChapterID == DataManager.Instance.masteringData.masteringCharacterLastChapterID - 2)
         {
             intermissionText.text = "人情ルート" + (DataManager.Instance.nowReadStoryID + 1) + "話";
         }

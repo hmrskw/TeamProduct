@@ -213,9 +213,8 @@ public class SoundManager : MonoBehaviour
     public void PlayVoice(string voiceName)
     {
         //if (bgmSource.isPlaying) bgmSource.Stop();
-        if (voiceSource.clip != bgmDict[voiceName])
-            voiceSource.clip = bgmDict[voiceName];
-
+        if (voiceSource.clip != voiceDict[voiceName])
+            voiceSource.clip = voiceDict[voiceName];
         voiceSource.Play();
     }
 
@@ -231,6 +230,15 @@ public class SoundManager : MonoBehaviour
             Debug.Log("Pause");
             voiceSource.Pause();
         }
+    }
+
+    /// <summary>
+    /// ボイスを再生中か
+    /// </summary>
+    /// <returns></returns>
+    public bool isPlayVoice()
+    {
+        return voiceSource.isPlaying;
     }
 
     public string GetNowPlayBGMName()

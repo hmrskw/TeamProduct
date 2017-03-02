@@ -101,22 +101,22 @@ public class ADVManager : MonoBehaviour
             DrawNext();
         }
         /////////////////////////////////////////////////////////////////////////////////////////////////
-        else if(nowRead[DataManager.Instance.endLine].command == "bgmplay")
+        else if(nowRead[DataManager.Instance.endLine].command == "bgmplay" || nowRead[DataManager.Instance.endLine].command == "bgmPlay")
         {
             SoundManager.Instance.PlayBGM(nowRead[DataManager.Instance.endLine].parameter);
             DrawNext();
         }
-        else if (nowRead[DataManager.Instance.endLine].command == "bgmstop")
+        else if (nowRead[DataManager.Instance.endLine].command == "bgmstop" || nowRead[DataManager.Instance.endLine].command == "bgmStop")
         {
             SoundManager.Instance.StopBGM();
             DrawNext();
         }
-        else if (nowRead[DataManager.Instance.endLine].command == "seplay")
+        else if (nowRead[DataManager.Instance.endLine].command == "seplay" || nowRead[DataManager.Instance.endLine].command == "sePlay")
         {
             SoundManager.Instance.PlaySE(nowRead[DataManager.Instance.endLine].parameter);
             DrawNext();
         }
-        else if (nowRead[DataManager.Instance.endLine].command == "sestop")
+        else if (nowRead[DataManager.Instance.endLine].command == "sestop" || nowRead[DataManager.Instance.endLine].command == "seStop")
         {
             SoundManager.Instance.StopSE();
             DrawNext();
@@ -258,6 +258,10 @@ public class ADVManager : MonoBehaviour
                 graphicManager.Reset();
                 textManager.ShiftNextText();
                 graphicManager.DrawCharacter(nowRead);
+                if (nowRead[DataManager.Instance.endLine].command == "voice")
+                {
+                    SoundManager.Instance.PlayVoice(nowRead[DataManager.Instance.endLine].parameter);
+                }
                 //graphicManager.DrawBack(nowRead[DataManager.Instance.endLine].backGroundID);
             }
         }

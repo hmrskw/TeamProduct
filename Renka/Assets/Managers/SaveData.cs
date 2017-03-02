@@ -178,6 +178,12 @@ public class SaveData
         {
             Debug.Log("攻略データが見つかりませんでした。");
         }
+        if (DataManager.Instance.masteringData.masteringCharacterID != -1)
+        {
+            DataManager.Instance.nowReadChapterID = DataManager.Instance.masteringData.readChapterID;
+            DataManager.Instance.nowReadStoryID = DataManager.Instance.masteringData.readStoryID;
+        }
+
     }
 
     /// <summary>
@@ -185,6 +191,8 @@ public class SaveData
     /// </summary>
     public static void SaveMasteringData()
     {
+        DataManager.Instance.masteringData.readChapterID = DataManager.Instance.nowReadChapterID;
+        DataManager.Instance.masteringData.readStoryID = DataManager.Instance.nowReadStoryID;
         SaveData.SetClass<DataManager.MasteringData>("masteringData", DataManager.Instance.masteringData);
         SaveData.Save();
     }
@@ -221,12 +229,12 @@ public class SaveData
                 Debug.Log("各キャラクターの進捗データが見つかりませんでした。");
                 SaveFinishedStoryData(i);
             }
-        }
+        }/*
         if (DataManager.Instance.masteringData.masteringCharacterID != -1)
         {
             DataManager.Instance.nowReadChapterID = DataManager.Instance.finishedStoryData[DataManager.Instance.masteringData.masteringCharacterID].finishedReadChapterID;
             DataManager.Instance.nowReadStoryID = DataManager.Instance.finishedStoryData[DataManager.Instance.masteringData.masteringCharacterID].finishedReadStoryID;
-        }
+        }*/
     }
 
     /// <summary>
@@ -249,8 +257,13 @@ public class SaveData
     /// <param name="characterID"></param>
     public static void SaveFinishedStoryData(int characterID)
     {
-        DataManager.Instance.finishedStoryData[characterID].finishedReadStoryID = Mathf.Max(DataManager.Instance.nowReadStoryID,0);
-        DataManager.Instance.finishedStoryData[characterID].finishedReadChapterID = Mathf.Max(DataManager.Instance.nowReadChapterID, 0);
+        if (DataManager.Instance.finishedStoryData[characterID].finishedReadStoryID < DataManager.Instance.nowReadStoryID)
+        {
+            DataManager.Instance.finishedStoryData[characterID].finishedReadStoryID = Mathf.Max(DataManager.Instance.nowReadStoryID, 0);
+        }
+        if (DataManager.Instance.finishedStoryData[characterID].finishedReadChapterID < DataManager.Instance.nowReadChapterID){
+            DataManager.Instance.finishedStoryData[characterID].finishedReadChapterID = Mathf.Max(DataManager.Instance.nowReadChapterID, 0);
+        }
         SaveData.SetClass<DataManager.FinishedStoryData>("FinishedStoryData" + characterID.ToString(), DataManager.Instance.finishedStoryData[characterID]);
         SaveData.Save();
     }

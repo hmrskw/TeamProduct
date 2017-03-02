@@ -3,9 +3,20 @@ using System.Collections;
 
 public class GameStart : MonoBehaviour {
 
+    bool canStart;
+
 	// Use this for initialization
 	void Start () {
         SoundManager.Instance.PlayBGM("title");
+        int characterID = Random.Range(0, 2);
+        if (characterID == 0)
+        {
+            SoundManager.Instance.PlayVoice("tatsumi_1");
+        }
+        else
+        {
+            SoundManager.Instance.PlayVoice("yusuke_1");
+        }
         StartCoroutine(PlayGame());
 	}
 	
@@ -13,7 +24,7 @@ public class GameStart : MonoBehaviour {
 	IEnumerator PlayGame () {
         while (true)
         {
-            if (InputManager.Instance.IsTouchEnded()) break;
+            if (SoundManager.Instance.isPlayVoice() == false && InputManager.Instance.IsTouchEnded()) break;
             yield return null;
         }
 

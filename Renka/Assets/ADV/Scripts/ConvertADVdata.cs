@@ -298,7 +298,7 @@ public class ConvertADVData : MonoBehaviour {
             //if (isEventMode == false && didCommaSeparationData[(int)ElementsName.BACK_GROUND] != "")
                 //advDataTmp.backGroundID = BackgroundTextureNameToID(didCommaSeparationData[(int)ElementsName.BACK_GROUND]);
 
-            if (advDataTmp.command == "send")
+            if (advDataTmp.command == "send" || advDataTmp.command == "voice")
             {
                 //テキスト表示用データの格納
                 storeTextData(advDataTmp, didCommaSeparationData);
@@ -342,7 +342,7 @@ public class ConvertADVData : MonoBehaviour {
 
     bool CheckCommand(string com)
     {
-        string[] checkList = {"send","back","fadein","fadeout","fade","bgmplay","bgmstop","seplay","sestop" };
+        string[] checkList = {"send","voice","back","fadein","fadeout","fade","bgmplay","bgmstop","seplay","sestop", "bgmPlay", "bgmStop", "sePlay", "seStop" };
         foreach(string checkword in checkList)
         {
             if (com == checkword) return true;

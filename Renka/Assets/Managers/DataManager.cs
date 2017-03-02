@@ -22,6 +22,9 @@ public class DataManager : MonoBehaviour
         //好感度
         public int likeabillity;
 
+        public int readChapterID;
+
+        public int readStoryID;
         //そのキャラクターのストーリーが何話まであるか
         public int masteringCharacterLastStoryID;
 
@@ -35,6 +38,8 @@ public class DataManager : MonoBehaviour
             masteringCharacterLastStoryID = 0;
             masteringCharacterLastChapterID = 0;
             likeabillity = 0;
+            readChapterID = 0;
+            readStoryID = 0;
             masteringCharacterID = -1;
             itemNum = 0;
         }
@@ -113,7 +118,7 @@ public class DataManager : MonoBehaviour
     /// <summary>
     /// この値より大きくなると恋情ルートに行ける
     /// </summary>
-    public int baseline = 5;
+    public int baseline = 40;
     /// <summary>
     /// ミニゲームに使うデータ
     /// </summary>
@@ -178,6 +183,17 @@ public class DataManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.U))
         {
             Debug.Log("NowReadStory" + nowReadStoryID + "NowReadChapter" + nowReadChapterID);
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            masteringData.itemNum++;
+            Debug.Log(masteringData.itemNum);
+        }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            masteringData.itemNum--;
+            Debug.Log(masteringData.itemNum);
         }
 
         //Stop
@@ -273,6 +289,7 @@ public class DataManager : MonoBehaviour
 
     public bool isEndChapter()
     {
-        return masteringData.masteringCharacterLastChapterID <= nowReadChapterID + 1;
+        Debug.Log(masteringData.masteringCharacterLastChapterID +"<="+ (nowReadChapterID + 2));
+        return masteringData.masteringCharacterLastChapterID <= nowReadChapterID + 2;
     }
 }

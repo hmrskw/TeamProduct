@@ -53,15 +53,26 @@ public class IntermissionManager : MonoBehaviour
         }
         if (DataManager.Instance.isEndStory())
         {
-            if (DataManager.Instance.masteringData.masteringCharacterLastChapterID - 2 == DataManager.Instance.nowReadChapterID)
+            if (DataManager.Instance.masteringData.masteringCharacterLastChapterID - 3 == DataManager.Instance.nowReadChapterID)
             {
                 if (DataManager.Instance.baseline <= DataManager.Instance.masteringData.likeabillity)
                 {
                     DataManager.Instance.nowReadChapterID++;
                 }
+                DataManager.Instance.nowReadChapterID++;
+                DataManager.Instance.nowReadStoryID = 0;
             }
-            DataManager.Instance.nowReadChapterID++;
-            DataManager.Instance.nowReadStoryID = 0;
+            else if(DataManager.Instance.isEndChapter() == false)
+            {
+                DataManager.Instance.nowReadChapterID++;
+                DataManager.Instance.nowReadStoryID = 0;
+            }
+            else if(DataManager.Instance.masteringData.itemNum >= 3 && DataManager.Instance.nowReadChapterID == DataManager.Instance.masteringData.masteringCharacterLastChapterID - 1)
+            {
+                button.interactable = true;
+                DataManager.Instance.nowReadChapterID = DataManager.Instance.masteringData.masteringCharacterLastChapterID;
+                DataManager.Instance.nowReadStoryID = 0;
+            }
         }
         else
         {

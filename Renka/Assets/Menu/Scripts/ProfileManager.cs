@@ -134,4 +134,8 @@ public class ProfileManager : MonoBehaviour
 		}
 	}
 
+    public void PlaySampleVoice(string voiceName)
+    {
+        SoundManager.Instance.PlayVoice(voiceName);
+    }
 }

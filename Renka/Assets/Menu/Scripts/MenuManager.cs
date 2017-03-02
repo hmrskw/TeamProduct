@@ -315,8 +315,19 @@ public class MenuManager : MonoBehaviour
 
 	}
 
-	//ラムダ式にしたので未使用////////////////////////////////////////////////////////////////////////
-	public void ActiveContents(bool isActive_)
+    public void ButtonVoice(int voiceID)
+    {
+        if(DataManager.Instance.masteringData.masteringCharacterID == 0)
+        {
+            SoundManager.Instance.PlayVoice("tatsumi_" + (voiceID+1).ToString());
+        }
+        if (DataManager.Instance.masteringData.masteringCharacterID == 1)
+        {
+            SoundManager.Instance.PlayVoice("yusuke_" + voiceID.ToString());
+        }
+    }
+    //ラムダ式にしたので未使用////////////////////////////////////////////////////////////////////////
+    public void ActiveContents(bool isActive_)
 	{
 		contents.gameObject.SetActive(isActive_);
 	}

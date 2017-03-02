@@ -1811,6 +1811,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 36d1a0639160e3344a35364a8c7c7c15, type: 3}
   - {fileID: 2800000, guid: 0e06f22872b76bd4bb4e77639d4f2287, type: 3}
   - {fileID: 2800000, guid: 63cc96a998d7e804a8a36a4d64f09e32, type: 3}
+  - {fileID: 2800000, guid: 47356ab0fd780824b89ee2d28c4341dc, type: 3}
   background: {fileID: 2083202847}
   canvas: {fileID: 991777587}
   intermission: {fileID: 1386432078}
@@ -1866,25 +1867,38 @@ MonoBehaviour:
       - Tatumi2-1
       - Tatumi2-2
     - StoryText:
-      - Tatumi3-0
+      - Tatumi3-1
+      - Tatumi3-2
     - StoryText:
-      - Tatumi5-0
+      - Tatumi4-1
+      - Tatumi4-2
     - StoryText:
-      - Tatumi5-0
+      - Tatumi5-1
+      - Tatumi5-2
     - StoryText:
-      - Tatumi6-0
+      - Tatumi6-1
+      - Tatumi6-2
     - StoryText:
-      - Tatumi7-0
+      - Tatumi7-1
+      - Tatumi7-2
     - StoryText:
-      - Tatumi8-0
+      - Tatumi8-1
+      - Tatumi8-2
     - StoryText:
-      - Tatumi9-0
+      - Tatumi9-1
+      - Tatumi9-2
+      - Tatumi9-3
     - StoryText:
-      - Tatumi10-0
+      - Tatumi10-1
+      - Tatumi10-2
     - StoryText:
-      - Tatumi1-1
+      - Tatumi-Ninjou-1
+      - Tatumi-Ninjou-2
     - StoryText:
-      - Tatumi1-2
+      - Tatumi-Renjou-1
+      - Tatumi-Renjou-2
+    - StoryText:
+      - Tatumi-Gohoubi
   - chapters:
     - StoryText:
       - Tatumi1-1

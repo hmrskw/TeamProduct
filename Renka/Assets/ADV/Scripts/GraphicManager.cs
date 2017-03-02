@@ -190,6 +190,10 @@ public class GraphicManager : MonoBehaviour
     /// <param name="csv_">今読んでいるCSVのデータ</param>
     public void DrawCharacter(List<ConvertADVData.ADVData> csv_)
     {
+        if (background.texture != null)
+        {
+            if (background.texture.name == "TatumiEvent") return;
+        }
         for (int i = 0; i < csv_[DataManager.Instance.endLine].drawCharacterNum; i++)
         {
             characters[i].CharacterNumber = csv_[DataManager.Instance.endLine].drawCharacterID[i];
@@ -329,7 +333,10 @@ public class GraphicManager : MonoBehaviour
         {
             id = 16;
         }
-
+        if (backgroundTextureName_ == "辰己スチル")
+        {
+            id = 18;
+        }
         return id;
     }
 }

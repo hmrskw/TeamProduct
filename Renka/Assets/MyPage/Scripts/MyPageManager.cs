@@ -28,7 +28,15 @@ public class MyPageManager : MonoBehaviour
     public struct characterComments
     {
         //表情画像の配列
+        public likeComments[] likeComment;
+    }
+
+    [System.Serializable]
+    public struct likeComments
+    {
+        //表情画像の配列
         public string[] comment;
+        public string[] voiceName;
     }
 
     [SerializeField, Tooltip("キャラクターのコメント")]
@@ -82,6 +90,7 @@ public class MyPageManager : MonoBehaviour
 
     int texID = 0;
     int canvasID = 0;
+    int likeID = 0;
 
     void Start()
     {
@@ -109,6 +118,8 @@ public class MyPageManager : MonoBehaviour
 
         likeNum.text = DataManager.Instance.masteringData.likeabillity.ToString();
 
+        likeID = DataManager.Instance.masteringData.likeabillity / 20;
+
         //キャラクターの生成
         var i = DataManager.Instance.masteringData.masteringCharacterID;
         if (i >= 0 && i < 4)
@@ -130,8 +141,8 @@ public class MyPageManager : MonoBehaviour
 
         if (i>=0 && comments.Length >= i)
         {
-            var line = Random.Range(0, comments[i].comment.Length);
-            commentText.text = comments[i].comment[line];
+            var line = Random.Range(0, comments[i].likeComment[likeID].comment.Length);
+            commentText.text = comments[i].likeComment[likeID].comment[line];
         }
 
         //if(SoundManager.Instance.GetNowPlayBGMName() != bgm.name)
@@ -161,6 +172,14 @@ public class MyPageManager : MonoBehaviour
     {
         //Debug.Log(DataManager.Instance.endLine);
         SoundManager.Instance.PlaySE("main botan");
+        if (DataManager.Instance.masteringData.masteringCharacterID == 0)
+        {
+            SoundManager.Instance.PlayVoice("tatsumi_2");
+        }
+        if (DataManager.Instance.masteringData.masteringCharacterID == 1)
+        {
+            SoundManager.Instance.PlayVoice("yusuke_2");
+        }
         Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("ADV"); });
 
         //SceneChanger.LoadScene("ADV");
@@ -172,6 +191,14 @@ public class MyPageManager : MonoBehaviour
     public void OnClickMiniGame()
     {
         SoundManager.Instance.PlaySE("main botan");
+        if (DataManager.Instance.masteringData.masteringCharacterID == 0)
+        {
+            SoundManager.Instance.PlayVoice("tatsumi_3");
+        }
+        if (DataManager.Instance.masteringData.masteringCharacterID == 1)
+        {
+            SoundManager.Instance.PlayVoice("yusuke_3");
+        }
         Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("MiniGameDifficultySelect", true); });
 
         //SceneChanger.LoadScene("MiniGame",true);
@@ -185,6 +212,14 @@ public class MyPageManager : MonoBehaviour
         //SaveData.ResetMasteringData();
         //DataManager.Instance.Init();
         SoundManager.Instance.PlaySE("main botan");
+        if (DataManager.Instance.masteringData.masteringCharacterID == 0)
+        {
+            SoundManager.Instance.PlayVoice("tatsumi_" + 5);
+        }
+        if (DataManager.Instance.masteringData.masteringCharacterID == 1)
+        {
+            SoundManager.Instance.PlayVoice("yusuke_" + 4);
+        }
         Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("Menu"); });
         //SceneChanger.LoadScene("Menu");
 	}
@@ -208,21 +243,22 @@ public class MyPageManager : MonoBehaviour
         {
 
             //ランダムにコメントを変える
-            var line = Random.Range(0, comments[i].comment.Length);
+            var line = Random.Range(0, comments[i].likeComment[likeID].comment.Length);
             //var line = Random.Range(0, comments.Length);
 
             //同じコメントを呼ばない
-            if (comments[i].comment.Length != 0 && comments[i].comment.Length != 1)
+            if (comments[i].likeComment[likeID].comment.Length != 0 && comments[i].likeComment[likeID].comment.Length != 1)
             {
                 while (line == commentPrevLine)
                 {
-                    line = Random.Range(0, comments[i].comment.Length);
+                    line = Random.Range(0, comments[i].likeComment[likeID].comment.Length);
                 }
                 commentPrevLine = line;
             }
 
             //コメントを表示テキストに上書きする
-            commentText.text = comments[i].comment[line];
+            commentText.text = comments[i].likeComment[likeID].comment[line];
+            SoundManager.Instance.PlayVoice(comments[i].likeComment[likeID].voiceName[line]);
         }
         //commentText.text = comments[line];
     }
