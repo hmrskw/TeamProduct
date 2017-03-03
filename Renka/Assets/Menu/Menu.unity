@@ -5748,7 +5748,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &574539430
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6158,15 +6158,15 @@ RectTransform:
   m_GameObject: {fileID: 629487795}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.6, y: 2.6, z: 2.6}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 550917301}
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -171, y: -813}
-  m_SizeDelta: {x: 1350, y: 2400}
+  m_AnchoredPosition: {x: -103, y: -652}
+  m_SizeDelta: {x: 768, y: 1024}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &629487797
 MonoBehaviour:
@@ -6175,7 +6175,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 629487795}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -98529514, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -6188,7 +6188,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 11ee6e24f599922438b98145f230a8b9, type: 3}
+  m_Texture: {fileID: 2800000, guid: e9c097c068dd11a49822bee3dc9fa356, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -8724,7 +8724,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1010534691
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12571,7 +12571,7 @@ Prefab:
     - target: {fileID: 114000010577766728, guid: 74272e3ab9bef6a449041137a16f16fd,
         type: 2}
       propertyPath: m_Text
-      value: "\u5E74\u9F62\uFF1A\uFF12\uFF12\u6B73\r\n\u5F79\u8077\uFF1A\u68AF\u5B50\u6301\u3061\r\n\n\u3081\u7D44\u306E\u6B21\u671F\u7D44\u982D\u5019\u88DC\u3002\r\n\n\u4E3B\u4EBA\u516C\u3092\u4F55\u304B\u3068\u6C17\u306B\u304B\u3051\u308B\u512A\u3057\u3044\u304A\u5144\u3055\u3093\n\u7684\u5B58\u5728\u3002\r\n\n\u5409\u539F\u306E\u82B1\u9B41\u3092\u6BCD\u306B\u6301\u3061\u3001\u4E2D\u6027\u7684\u306A\u5BB9\u59FF\u3068\n\u8272\u6C17\u3067\u753A\u3092\u6B69\u304F\u5EA6\u306B\u5973\u6027\u306B\u56F2\u307E\u308C\u308B\u3002"
+      value: "\u5E74\u9F62\uFF1A24\u6B73\r\n\u5F79\u8077\uFF1A\u68AF\u5B50\u6301\u3061\r\n\n\u3081\u7D44\u306E\u6B21\u671F\u7D44\u982D\u5019\u88DC\u3002\r\n\n\u4E3B\u4EBA\u516C\u3092\u4F55\u304B\u3068\u6C17\u306B\u304B\u3051\u308B\u512A\u3057\u3044\u304A\u5144\u3055\u3093\n\u7684\u5B58\u5728\u3002\r\n\n\u5409\u539F\u306E\u82B1\u9B41\u3092\u6BCD\u306B\u6301\u3061\u3001\u4E2D\u6027\u7684\u306A\u5BB9\u59FF\u3068\n\u8272\u6C17\u3067\u753A\u3092\u6B69\u304F\u5EA6\u306B\u5973\u6027\u306B\u56F2\u307E\u308C\u308B\u3002"
       objectReference: {fileID: 0}
     - target: {fileID: 224000010154552302, guid: 74272e3ab9bef6a449041137a16f16fd,
         type: 2}

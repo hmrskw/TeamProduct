@@ -4,18 +4,31 @@ using UnityEngine.UI;
 using System;
 
 public class ResultManager : MonoBehaviour {
+    //[SerializeField]
+    //Text resultText;
 
     [SerializeField]
-    Text resultText;
+    Image resultImage;
 
     [SerializeField]
     Text commentText;
+
+    [SerializeField]
+    Sprite[] resultSprits;
+
 
     [System.Serializable]
     public struct characterComments
     {
         //表情画像の配列
-        public string[] comment;
+        public Comments[] comments;
+    }
+
+    [System.Serializable]
+    public struct Comments
+    {
+        public string comment;
+        public string voiceName;
     }
 
     [SerializeField, Tooltip("キャラクターのコメント")]
@@ -58,15 +71,18 @@ public class ResultManager : MonoBehaviour {
 
         if (minigameHp_ == 3)
         {
-            word = comments[charID].comment[0];
+            word = comments[charID].comments[0].comment;
+            SoundManager.Instance.PlayVoice(comments[charID].comments[0].voiceName);
         }
         else if (minigameHp_ <= 0)
         {
-            word = comments[charID].comment[2];
+            word = comments[charID].comments[2].comment;
+            SoundManager.Instance.PlayVoice(comments[charID].comments[2].voiceName);
         }
         else
         {
-            word = comments[charID].comment[1];
+            word = comments[charID].comments[1].comment;
+            SoundManager.Instance.PlayVoice(comments[charID].comments[1].voiceName);
         }
 
         commentText.text = word;
@@ -89,6 +105,7 @@ public class ResultManager : MonoBehaviour {
 
     void SetResultText(int minigameHp_)
     {
+        /*
         string word = "成功";
         if(minigameHp_ == 3)
         {
@@ -99,5 +116,17 @@ public class ResultManager : MonoBehaviour {
             word = "失敗";
         }
         resultText.text = word;
+        */
+        int id = 1;
+        if (minigameHp_ == 3)
+        {
+            id = 0;
+        }
+        else if (minigameHp_ <= 0)
+        {
+            id = 2;
+        }
+        resultImage.sprite = resultSprits[id];
+
     }
 }
