@@ -134,7 +134,7 @@ public class ProfileSelect : MonoBehaviour
 		}
 		/////////////////////////////////////////////////////////////////////////////
 		/////////////////////////////////////////////////////////////////////////////
-		var num_ = 5;
+		var num_ = 6;
 		var startIndex_ = -2;
 		var CurIndexs_ = new int[num_];
 		for (int i = 0; i < num_; i++)
@@ -204,7 +204,7 @@ public class ProfileSelect : MonoBehaviour
 			
 		}
 
-		var num = 5;
+		var num = 6;
 		var startIndex = -2;
 		var CurIndexs = new int[num];
 		for (int i = 0; i < num; i++)
@@ -507,7 +507,7 @@ public class ProfileSelect : MonoBehaviour
 			//左のやつ　nearIdx - 1
 			//右のやつ　nearIdx + 1
 
-			var num = 5;
+			var num = 6;
 			var startIndex = -2;
 			var CurIndexs = new int[num];
 			for (int i = 0; i < num; i++)
@@ -551,7 +551,7 @@ public class ProfileSelect : MonoBehaviour
 		}
 
 		//最終座標に移動
-		var num_ = 5;
+		var num_ = 6;
 		var startIndex_ = -2;
 		var CurIndexs_ = new int[num_];
 		for (int i = 0; i < num_; i++)
@@ -723,7 +723,7 @@ public class ProfileSelect : MonoBehaviour
 		}
 		/////////////////////////////////////////////////////////////////////////////
 		/////////////////////////////////////////////////////////////////////////////
-		var num_ = 5;
+		var num_ = 6;
 		var startIndex_ = -2;
 		var CurIndexs_ = new int[num_];
 		for (int i = 0; i < num_; i++)
