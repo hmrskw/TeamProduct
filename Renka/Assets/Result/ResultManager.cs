@@ -72,6 +72,7 @@ public class ResultManager : MonoBehaviour {
         if (minigameHp_ == 3)
         {
             word = comments[charID].comments[0].comment;
+            DataManager.Instance.masteringData.itemNum++;
             SoundManager.Instance.PlayVoice(comments[charID].comments[0].voiceName);
         }
         else if (minigameHp_ <= 0)

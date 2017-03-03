@@ -223,7 +223,22 @@ public class ADVManager : MonoBehaviour
                     //    DataManager.Instance.nowReadChapterID++;
                     //}
                     //パラメータがミニゲームだったらMiniGameシーンへ
-                    DataManager.Instance.difficulty = 0;
+                    if (DataManager.Instance.masteringData.readChapterID == 2) {
+                        DataManager.Instance.difficulty = 0;
+                    }
+                    else if(DataManager.Instance.masteringData.readChapterID == 6)
+                    {
+                        DataManager.Instance.difficulty = 1;
+                    }
+                    else if (DataManager.Instance.masteringData.readChapterID == 8)
+                    {
+                        DataManager.Instance.difficulty = 2;
+                    }
+                    else
+                    {
+                        DataManager.Instance.difficulty = 0;
+                    }
+
                     textManager.logArray.Clear();
                     Fade.Instance.FadeIn(0.5f, () => { SceneChanger.LoadScene("MiniGame", true); });
                     //SceneChanger.LoadScene("MiniGame", true);

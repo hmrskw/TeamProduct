@@ -10682,7 +10682,7 @@ Prefab:
     - target: {fileID: 114000012210191790, guid: 128259b7bdb73b2429290a44b10d2049,
         type: 2}
       propertyPath: m_Text
-      value: "\u6587\u5B57\u306E\u8868\u793A\u901F\u5EA6\u3092\u5909\u3048\u3089\u308C\u307E\u3059\u3002\n\u304A\u597D\u304D\u306A\u901F\u3055\u3067\u3069\u3046\u305E"
+      value: "\u6587\u5B57\u306E\u8868\u793A\u901F\u5EA6\u3092\u5909\u3048\u3089\u308C\u307E\u3059\u3002\n\u304A\u597D\u304D\u306A\u901F\u3055\u3067\u3069\u3046\u305E\u3002"
       objectReference: {fileID: 0}
     - target: {fileID: 114000012210191790, guid: 128259b7bdb73b2429290a44b10d2049,
         type: 2}
