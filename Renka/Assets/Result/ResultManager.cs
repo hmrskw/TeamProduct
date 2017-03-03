@@ -100,7 +100,16 @@ public class ResultManager : MonoBehaviour {
 
     public void ButtonSceneChange()
     {
+        SoundManager.Instance.StopVoice(false);
+        SoundManager.Instance.PlaySE("botan");
         SceneChanger.LoadBeforeScene(true);
+    }
+
+    public void ReTryButton()
+    {
+        SoundManager.Instance.StopVoice(false);
+        SoundManager.Instance.PlaySE("botan");
+        SceneChanger.LoadScene("Minigame");
     }
 
     void SetResultText(int minigameHp_)
