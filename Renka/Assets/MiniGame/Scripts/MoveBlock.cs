@@ -42,8 +42,6 @@ public class MoveBlock : MonoBehaviour
     void Update()
     {
 
-
-        
         
         if (isInRange == true)
         {

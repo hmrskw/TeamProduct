@@ -24,6 +24,8 @@ public class Makimono : MonoBehaviour {
         }
         yield return null;
     }
+
+    /*使ってない
     public IEnumerator resultMakimonoScroll()
     {
 
@@ -34,7 +36,7 @@ public class Makimono : MonoBehaviour {
         }
         yield return null;
     }
-
+    */
 
     // Use this for initialization
     void Start () {
