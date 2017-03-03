@@ -23,6 +23,9 @@ public class ChouchinMove : MonoBehaviour {
     ChouchinRotate chouchinRotate;
     [HideInInspector]
     public float totalMove=0f;
+
+    [SerializeField]
+    GameObject chouchinLight;
     // Use this for initialization
     void Start () {
 	
@@ -35,6 +38,7 @@ public class ChouchinMove : MonoBehaviour {
             //地面まで落ちる
             if (nowPhase == 0)
             {
+                chouchinLight.SetActive(false);
                 if (transform.position.y >= GroundPos)
                 {
                     transform.Translate(0, -0.15f, 0);
