@@ -45,7 +45,7 @@ public class ADVManager : MonoBehaviour
 
         intermissionManager.BeforeLikeabillity = DataManager.Instance.masteringData.likeabillity;
 
-        if (SceneChanger.GetBeforeSceneName() == "Result")
+        if (SceneChanger.GetBeforeSceneName(true) == "Result")
         {
             //SceneChanger.GetBeforeSceneName(true);
             //DataManager.Instance.endLine = 0;

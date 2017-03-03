@@ -273,23 +273,23 @@ public class GraphicManager : MonoBehaviour
         {
             id = 4;
         }
-        if (backgroundTextureName_ == "焼け跡（昼）")
+        if (backgroundTextureName_ == "焼け跡（昼）" || backgroundTextureName_ == "焼け跡(昼)")
         {
             id = 5;
         }
-        if (backgroundTextureName_ == "火事（夜）")
+        if (backgroundTextureName_ == "火事（夜）" || backgroundTextureName_ == "火事(夜)")
         {
             id = 6;
         }
-        if (backgroundTextureName_ == "焼け跡（夜）")
+        if (backgroundTextureName_ == "焼け跡（夜）"|| backgroundTextureName_ == "焼け跡(夜)")
         {
             id = 7;
         }
-        if (backgroundTextureName_ == "庭（昼）")
+        if (backgroundTextureName_ == "庭（昼）" || backgroundTextureName_ == "庭(昼)")
         {
             id = 8;
         }
-        if (backgroundTextureName_ == "庭（夜）")
+        if (backgroundTextureName_ == "庭（夜）" || backgroundTextureName_ == "庭(夜)")
         {
             id = 9;
         }
@@ -297,7 +297,7 @@ public class GraphicManager : MonoBehaviour
         {
             id = 10;
         }
-        if (backgroundTextureName_ == "広間（夜）")
+        if (backgroundTextureName_ == "広間（夜）" || backgroundTextureName_ == "広間(夜)")
         {
             id = 11;
         }
@@ -309,11 +309,11 @@ public class GraphicManager : MonoBehaviour
         {
             id = 13;
         }
-        if (backgroundTextureName_ == "玄関（め組）")
+        if (backgroundTextureName_ == "玄関（め組）"|| backgroundTextureName_ == "玄関(め組)")
         {
             id = 14;
         }
-        if (backgroundTextureName_ == "玄関（や組）")
+        if (backgroundTextureName_ == "玄関（や組）"|| backgroundTextureName_ == "玄関(や組)")
         {
             id = 15;
         }
@@ -325,11 +325,11 @@ public class GraphicManager : MonoBehaviour
         {
             id = 17;
         }
-        if (backgroundTextureName_ == "主人公の部屋（夜）")
+        if (backgroundTextureName_ == "主人公の部屋（夜）"|| backgroundTextureName_ == "主人公の部屋(夜)")
         {
             id = 3;
         }
-        if (backgroundTextureName_ == "川（夜）")
+        if (backgroundTextureName_ == "川（夜）"|| backgroundTextureName_ == "川(夜)")
         {
             id = 16;
         }

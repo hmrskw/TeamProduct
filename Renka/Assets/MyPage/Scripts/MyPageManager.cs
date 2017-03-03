@@ -118,7 +118,7 @@ public class MyPageManager : MonoBehaviour
 
         likeNum.text = DataManager.Instance.masteringData.likeabillity.ToString();
 
-        likeID = DataManager.Instance.masteringData.likeabillity / 20;
+        likeID = Mathf.Min(DataManager.Instance.masteringData.readChapterID / 4, 2);
 
         //キャラクターの生成
         var i = DataManager.Instance.masteringData.masteringCharacterID;
