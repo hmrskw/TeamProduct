@@ -14376,10 +14376,10 @@ MonoBehaviour:
   normalRoads:
   - {fileID: 1375578195}
   - {fileID: 1645989201}
-  - {fileID: 434918312}
+  - {fileID: 1564960576}
   - {fileID: 254313850}
   - {fileID: 182802661}
-  - {fileID: 1564960576}
+  - {fileID: 1776244762}
   hardRoads:
   - {fileID: 583930858}
   - {fileID: 1564960576}
@@ -16467,7 +16467,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -510.3, y: -92.3}
+  m_AnchoredPosition: {x: -510.29688, y: -92.29999}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1478344761
@@ -18204,6 +18204,11 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114000014220252156, guid: 3e27c6c675a10f94683f7d769becd910,
+        type: 2}
+      propertyPath: speed
+      value: 0.06
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e27c6c675a10f94683f7d769becd910, type: 2}
   m_IsPrefabParent: 0
@@ -18728,6 +18733,11 @@ Prefab:
         type: 2}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000014220252156, guid: 3e27c6c675a10f94683f7d769becd910,
+        type: 2}
+      propertyPath: speed
+      value: 0.06
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e27c6c675a10f94683f7d769becd910, type: 2}

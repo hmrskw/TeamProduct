@@ -26,6 +26,8 @@ public class MoveBlock : MonoBehaviour
     private Texture[] nekoAnimationImages;
     private Material nekoMate;
 
+    public float speed=0.1f;
+
    
     // Use this for initialization
     void Start()
@@ -52,7 +54,7 @@ public class MoveBlock : MonoBehaviour
                 if (transform.position.x >= leftLimitPos)
                 {
                     TextureAnim();
-                    transform.Translate(-0.1f, 0, 0);
+                    transform.Translate(-speed, 0, 0);
 
                 }
             }
@@ -62,7 +64,7 @@ public class MoveBlock : MonoBehaviour
                 if (transform.position.x <= rightLimitPos)
                 {
                     TextureAnim();
-                    transform.Translate(0.1f, 0, 0);
+                    transform.Translate(speed, 0, 0);
                 }
 
             }
