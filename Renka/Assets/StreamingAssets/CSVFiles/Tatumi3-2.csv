@@ -89,4 +89,4 @@ send,,,,,,,"度胸を認めてもらえたことが
 "
 fadein,1,,,,,,
 bgmStop,,,,,,,
-sceneEnd,,,,,,,
+sceneEnd,minigame,,,,,,
