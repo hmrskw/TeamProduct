@@ -13,8 +13,10 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject[] hpImage;
 
+    
+
     [SerializeField]
-    private GameObject gameOverText;
+    Image gameOverImage;
 
     [SerializeField]
     private Sprite[] tatsumiFaceIconImages;
@@ -263,7 +265,86 @@ public class Player : MonoBehaviour
         string layerName = LayerMask.LayerToName(other.gameObject.layer);
         if (layerName == "Obstacle")
         {
+            ///////////////////////////////////////////////////////////////
+            if (SceneChanger.GetBeforeSceneName() == "MyPage")
+            {
+                if (DataManager.Instance.nowReadCharcterID == 0)
+                {
+                    if(hp==3)
+                    {
+                        SoundManager.Instance.PlayVoice("tatsumi_15");
+                    }
+                    if(hp==2)
+                    {
+                        SoundManager.Instance.PlayVoice("tatsumi_16");
+                    }
+                    if (hp == 1)
+                    {
+                        SoundManager.Instance.PlayVoice("tatsumi_17");
+                    }
+
+                }
+
+                if (DataManager.Instance.nowReadCharcterID == 1)
+                {
+                    if (hp == 3)
+                    {
+                        SoundManager.Instance.PlayVoice("yusuke_13");
+                    }
+                    if (hp == 2)
+                    {
+                        SoundManager.Instance.PlayVoice("yusuke_14");
+                    }
+                    if (hp == 1)
+                    {
+                        SoundManager.Instance.PlayVoice("yusuke_15");
+                    }
+                }
+
+
+            }
+
+            else
+            {
+                if (nowCharacterID == 0)
+                {
+                    if (hp == 3)
+                    {
+                        SoundManager.Instance.PlayVoice("tatsumi_15");
+                    }
+                    if (hp == 2)
+                    {
+                        SoundManager.Instance.PlayVoice("tatsumi_16");
+                    }
+                    if (hp == 1)
+                    {
+                        SoundManager.Instance.PlayVoice("tatsumi_17");
+                    }
+                }
+
+                if (nowCharacterID == 1)
+                {
+                    if (hp == 3)
+                    {
+                        SoundManager.Instance.PlayVoice("yusuke_13");
+                    }
+                    if (hp == 2)
+                    {
+                        SoundManager.Instance.PlayVoice("yusuke_14");
+                    }
+                    if (hp == 1)
+                    {
+                        SoundManager.Instance.PlayVoice("yusuke_15");
+                    }
+                }
+
+
+            }
+            ///////////////////////////////////////////////////////////////
+
             SoundManager.Instance.PlaySE("hit");
+
+
             other.GetComponent<BoxCollider>().enabled = false;
             StartCoroutine(Damage());
         }
@@ -317,7 +398,7 @@ public class Player : MonoBehaviour
             hpImage[0].SetActive(false);
             //ステージスクロールをとめる
             stage.ScrollSpeed = 0.0f;
-            gameOverText.SetActive(true);
+            gameOverImage.enabled = true;
             yield return new WaitForSeconds(1);
             SoundManager.Instance.StopBGM();
             SoundManager.Instance.StopSE();
