@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Goal : MonoBehaviour
 {
+
+    private int nowCharacterID = DataManager.Instance.masteringData.masteringCharacterID;
     [SerializeField]
     GameObject goalPopUp;
+    [SerializeField]
+    Image goalImage;
 
     [SerializeField]
     StageManager stageManager;
@@ -43,8 +48,46 @@ public class Goal : MonoBehaviour
         if (other.tag == "Player")
         {
             stageManager.ScrollSpeed = 0.0f;
+            ///////////////////////////////////////////////////////////////////
+            if (SceneChanger.GetBeforeSceneName() == "MyPage")
+            {
+                if (DataManager.Instance.nowReadCharcterID == 0)
+                {
+                    SoundManager.Instance.PlayVoice("tatsumi_14");
+
+                }
+
+                if (DataManager.Instance.nowReadCharcterID == 1)
+                {
+
+                    SoundManager.Instance.PlayVoice("yusuke_12");
+                }
+
+
+            }
+
+            else
+            {
+                if (nowCharacterID == 0)
+                {
+                    SoundManager.Instance.PlayVoice("tatsumi_14");
+                }
+
+                if (nowCharacterID == 1)
+                {
+                    SoundManager.Instance.PlayVoice("yusuke_12");
+                }
+
+
+            }
+            ///////////////////////////////////////////////////////////////
+
+
+
+
             SoundManager.Instance.PlaySE("taiko goal");
-            goalPopUp.SetActive(true);
+            goalImage.enabled=true;
+           // goalPopUp.SetActive(true);
             isGoal = true;
             
             StartCoroutine(ChangeScene());

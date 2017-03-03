@@ -7,6 +7,7 @@ using System.Linq;
 
 public class StageManager : MonoBehaviour
 {
+    private int nowCharacterID = DataManager.Instance.masteringData.masteringCharacterID;
 
     [SerializeField]
     GameObject[] roads;
@@ -54,6 +55,11 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     Button StartButton2;
 
+    [SerializeField]
+    Image image;
+
+    [SerializeField]
+    Sprite[] countSprite;
     private bool isStart=false;
 
     // Use this for initialization
@@ -100,20 +106,59 @@ public class StageManager : MonoBehaviour
     //スタート前のカウント    
     IEnumerator StartCount()
     {
-
-        startCountText.text = "参";
+        image.sprite = countSprite[0];
+        
         yield return new WaitForSeconds(1f);
-
-        startCountText.text = "弐";
+        image.sprite = countSprite[1];
+       
         yield return new WaitForSeconds(1f);
-
-        startCountText.text = "壱";
+        image.sprite = countSprite[2];
+        
         yield return new WaitForSeconds(1f);
-
-        startCountText.text = "始め";
+        image.sprite = countSprite[3];
+        
         SoundManager.Instance.PlaySE("taiko start");
+        
+        ///////////////////////////////////////////////////////////////
+        if (SceneChanger.GetBeforeSceneName() == "MyPage")
+        {
+            if (DataManager.Instance.nowReadCharcterID == 0)
+            {
+                SoundManager.Instance.PlayVoice("tatsumi_12");
+
+            }
+
+            if (DataManager.Instance.nowReadCharcterID == 1)
+            {
+                
+               SoundManager.Instance.PlayVoice("yusuke_11");
+            }
+
+
+        }
+
+        else
+        {
+            if (nowCharacterID == 0)
+            {
+                SoundManager.Instance.PlayVoice("tatsumi_12");
+            }
+
+            if (nowCharacterID == 1)
+            {
+                SoundManager.Instance.PlayVoice("yusuke_11");
+            }
+
+
+        }
+        ///////////////////////////////////////////////////////////////
+
+
+
+
         yield return new WaitForSeconds(1f);
-        startCountText.text = "";
+        image.enabled = false;
+       
         yield return null;
 
     }
