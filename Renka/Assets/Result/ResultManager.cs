@@ -24,6 +24,9 @@ public class ResultManager : MonoBehaviour {
     [SerializeField]
     GameObject[] life = new GameObject[3];
 
+    [SerializeField]
+    GameObject kihudaPopUp;
+
 	// Use this for initialization
 	void Start () {
         int minigameHp = DataManager.Instance.minigameHp;
@@ -71,10 +74,17 @@ public class ResultManager : MonoBehaviour {
 
     void Update()
     {
-        if (InputManager.Instance.IsTouchBegan())
-        {
-            SceneChanger.LoadBeforeScene(true);
-        }
+        //if (InputManager.Instance.IsTouchBegan())
+        //{
+        //    SceneChanger.LoadBeforeScene(true);
+        //}
+
+       
+    }
+
+    public void ButtonSceneChange()
+    {
+        SceneChanger.LoadBeforeScene(true);
     }
 
     void SetResultText(int minigameHp_)

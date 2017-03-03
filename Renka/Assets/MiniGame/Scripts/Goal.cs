@@ -29,10 +29,7 @@ public class Goal : MonoBehaviour
 
         yield return StartCoroutine(resultMakimono.MakimonoScroll());
 
-        while (InputManager.Instance.IsTouchBegan() == false)
-        {
-            yield return null;
-        }
+       
         SoundManager.Instance.StopBGM();
         SoundManager.Instance.StopSE();
         //SceneChanger.LoadScene("MyPage");
