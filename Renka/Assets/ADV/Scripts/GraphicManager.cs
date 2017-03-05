@@ -285,7 +285,7 @@ public class GraphicManager : MonoBehaviour
         {
             id = 7;
         }
-        if (backgroundTextureName_ == "庭（昼）" || backgroundTextureName_ == "庭(昼)")
+        if (backgroundTextureName_ == "庭（昼）" || backgroundTextureName_ == "庭(昼)" || backgroundTextureName_ == "庭")
         {
             id = 8;
         }
@@ -297,7 +297,7 @@ public class GraphicManager : MonoBehaviour
         {
             id = 10;
         }
-        if (backgroundTextureName_ == "広間（夜）" || backgroundTextureName_ == "広間(夜)")
+        if (backgroundTextureName_ == "広間（夜）"|| backgroundTextureName_ == "広間(夜)")
         {
             id = 11;
         }

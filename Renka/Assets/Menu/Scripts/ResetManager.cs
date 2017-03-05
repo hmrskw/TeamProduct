@@ -117,6 +117,7 @@ public class ResetManager : MonoBehaviour
 		DataManager.Instance.nowReadStoryID = 0;
 		DataManager.Instance.nowReadChapterID = 0;
 		DataManager.Instance.endLine = 1;
+        DataManager.Instance.masteringData.itemNum = 0;
 		DataManager.Instance.masteringData.likeabillity = 0;
 
 		Debug.Log("キャラクターデータの変更完了");
