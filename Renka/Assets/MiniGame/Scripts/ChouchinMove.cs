@@ -26,6 +26,9 @@ public class ChouchinMove : MonoBehaviour {
 
     [SerializeField]
     GameObject chouchinLight;
+
+    [SerializeField]
+    private float speed;
     // Use this for initialization
     void Start () {
 	
@@ -60,8 +63,8 @@ public class ChouchinMove : MonoBehaviour {
                     {
                         //transform.eulerAngles +=new Vector3(0.0f, 0.0f, 10.0f);
                         //GetComponent<Rigidbody>().velocity = (transform.right * -2);
-                        transform.Translate(-0.1f, 0, 0);
-                        totalMove += 0.1f;
+                        transform.Translate(-speed, 0, 0);
+                        totalMove += speed;
                         
                     }
                     else
@@ -75,8 +78,8 @@ public class ChouchinMove : MonoBehaviour {
                     if (transform.position.x <= rightLimitPos)
                     {
                        
-                        transform.Translate(0.1f, 0, 0);
-                        totalMove += 0.1f;
+                        transform.Translate(speed, 0, 0);
+                        totalMove += speed;
 
                     }
                     else
